@@ -1,6 +1,7 @@
 <?php
 namespace app\api\controller;
 use app\api\controller\Base;
+use \think\Db;
 
 class Information extends Base
 {
