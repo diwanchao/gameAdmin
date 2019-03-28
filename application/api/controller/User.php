@@ -14,7 +14,9 @@ class User extends Base
     	Session::delete('is_login');
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
 	}
-
+	/**
+	 * 获取用户信息
+	 */
 
 	public function getUserInfo()
 	{
@@ -31,6 +33,21 @@ class User extends Base
 			'dish'=>['A','B','C','D'],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+	}
+	/**
+	 * 用户信用资料
+	 */
+	public function creditInfo()
+	{
+		$data = [
+			'user_name'=>'dwc',
+			'credit_quota'=>0,
+			'use_quota'=>0,
+			'quick_open_quote'=>0,
+			'Ratio'=>['jlke'=>'0%','ssc'=>'0%'];
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+
 	}
 
 
