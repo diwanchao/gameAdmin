@@ -37,10 +37,10 @@ class Monitoring extends Base
     	$return_data = [];
 
 
-   		$game_key   	= $this->request->param('game_key','');
-   		$levelValue   	= $this->request->param('levelValue','');
-   		$periods   		= $this->request->param('periods','');
-   		$tab   			= $this->request->param('tab','');
+   		$game_key    = $this->request->param('game_key','');
+   		$levelValue  = $this->request->param('levelValue','');
+   		$periods     = $this->request->param('periods','');
+   		$tab   			 = $this->request->param('tab','');
 
    		if ($game_key && $levelValue && $periods && $tab) 
    		{
