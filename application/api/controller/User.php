@@ -44,7 +44,7 @@ class User extends Base
 			'credit_quota'=>0,
 			'use_quota'=>0,
 			'quick_open_quote'=>0,
-			'Ratio'=>['jlke'=>'0%','ssc'=>'0%'];
+			'Ratio'=>['jlke'=>'0%','ssc'=>'0%'],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
