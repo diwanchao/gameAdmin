@@ -3,6 +3,7 @@ namespace app\api\controller;
 use think\Controller;
 use think\facade\Session;
 use think\Request;
+use \think\Db;
 
 class Base extends Controller
 {    

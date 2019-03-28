@@ -2,7 +2,7 @@
 namespace app\api\controller;
 use app\api\controller\Base;
 use \think\Request;
-
+use \think\Db;
 
 class Index extends Base
 {
@@ -24,7 +24,8 @@ class Index extends Base
     public function firstNotice()
     {
     	
-        return json(['msg' => 'succeed','code' => 200, 'data' =>['content'=>'我是公告']]);
+        $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
+        return json(['msg' => 'succeed','code' => 200, 'data' =>['content'=>$first_notice]]);
     }
     /**
      * 获取当前期号

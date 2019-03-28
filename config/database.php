@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => '39.107.91.126',
     // 数据库名
-    'database'        => '',
+    'database'        => 'game',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'dwc',
     // 密码
-    'password'        => '',
+    'password'        => '123456',
     // 端口
     'hostport'        => '',
     // 连接dsn

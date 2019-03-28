@@ -27,7 +27,8 @@ class User extends Base
 			'game_list'=>[
 				['game_key'=>'jlk3','name'=>'吉林快3'],
 				//['game_key'=>'ssc','name'=>'重庆时时彩'],
-			]
+			],
+			'dish'=>['A','B','C','D'],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
