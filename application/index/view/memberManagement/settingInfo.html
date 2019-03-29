@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>详细设定</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    #msg_win{border:1px solid #A67901;background:#EAEAEA;width:300px;right:2;margin:0px;overflow:hidden;z-index:99;}
+#msg_win .icos{position:absolute;top:2px;*top:0px;right:2px;z-index:9;}
+.icos a{float:left;color:#833B02;margin:1px;text-align:center;text-decoration:none;font-family:webdings;}
+.icos a:hover{color:#fff;}
+#msg_title{background:#FECD00;border-bottom:1px solid #A67901;border-top:1px solid #FFF;border-left:1px solid #FFF;color:#000;height:25px;line-height:25px;text-indent:5px;}
+#msg_content{margin:2px;width:300px;height:200px;overflow:hidden;}
+#msg_content table,
+#msg_content table tr,
+#msg_content table tr th,
+#msg_content table tr td
+{
+    background: transparent;
+    color: #000;
+}
+#msg_content .buttongmin{
+    color: #000;
+}
+#msg_win{
+    position: fixed;
+    top: auto;
+    bottom: -205px;
+    transition: all .3s linear;
+}
+#msg_win.active{
+    bottom: 15px;
+}
+    </style>
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <h5 style="margin-top: 0;">
+            会员
+            － han321 详细设定 [
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=FC3D&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">福彩3D</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=PL3&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">体彩PL3</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SSC&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">各省时时彩</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=K3&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">各省快3</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SC&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">赛车飞艇</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SZ&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">各省骰宝</a></b>
+            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=11X5&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
+                    class="ab">各省11选5</a></b>
+            ]
+            <span class="fright">引用同级数据：
+                <select class="textradius" name="uslist" id="uslist"
+                    onchange="readus(this.options[this.selectedIndex].value,'K3');" title="读取其它用户已设置好的退水信息">
+                    <option value="">选择
+
+                        会员
+
+                    </option>
+                    <option value="26684">han2112(han2112)</option>
+                </select>
+            </span>
+            <small class="fright form-lineheight"><a href="http://ag.xh33.net/hylb.do?id0=11771">返回上一页</a></small></h5>
+
+
+        <p class="center pstyle">各省快3</p>
+
+        <table id="list" width="100%" border="0" cellpadding="0" cellspacing="1"
+            style="border:1px solid #76694c;font-size:14px !important;">
+            <thead>
+                <tr height="24" class="note_title">
+                    <th style="font-size: 14px;">类型</th>
+                    <th style="font-size: 14px;">A盘</th>
+                    <th style="font-size: 14px;">B盘</th>
+                    <th style="font-size: 14px;">C盘</th>
+                    <th style="font-size: 14px;">D盘</th>
+                    <th style="font-size: 14px;">单项(号)限额</th>
+                    <th style="font-size: 14px;">单注最高限额</th>
+                    <th style="font-size: 14px;">单注最低限额</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr v-for="(item, index) in data" bgcolor="#f0f0f0">
+                    <td style="font-size: 14px;" height="23" align="right" nowrap="">{{item.methods}} <input type="checkbox" v-model="item.select">
+                    </td>
+
+                    <td style="font-size: 14px;" align="right">
+                        <select class="textradius" style="width: 80px" v-model="item.A">
+                            <option v-for="(num, i) in (item.Amax / 0.05) + 1" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                        </select>
+                    </td>
+
+
+                    <td style="font-size: 14px;" align="right">
+                        <select class="textradius" style="width: 80px" v-model="item.B">
+                            <option v-for="(num, i) in (item.Bmax / 0.05) + 1" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                        </select>
+                    </td>
+
+
+                    <td style="font-size: 14px;" align="right">
+                        <select class="textradius" style="width: 80px" v-model="item.C">
+                            <option v-for="(num, i) in (item.Cmax / 0.05) + 1" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                        </select>
+                    </td>
+
+
+                    <td style="font-size: 14px;" align="right">
+                        <select class="textradius" style="width: 80px" v-model="item.D">
+                            <option v-for="(num, i) in (item.Dmax / 0.05) + 1" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                        </select>
+                    </td>
+
+
+
+
+
+
+
+
+
+                    <td style="font-size: 14px;" onmousemove="title='二同号复选单项(号)限额最高可设定 30000';">
+                        <input class="textradius width6em" id="pour_limit" onkeypress="event.returnValue=Isnum();"
+                            size="11" name="pour[]" value="30000">≤<span id="mpour1">30000</span>
+                    </td>
+                    <td style="font-size: 14px;" onmousemove="title='二同号复选单注限额最高可设定 6000'">
+                        <input class="textradius width6em" id="unit_limit" onkeypress="event.returnValue=Isnum();"
+                            value="6000" size="11" name="unit[]">≤<span id="munit1">6000</span>
+                        <input id="sign" value="1" type="hidden" name="sign[]">
+                    </td>
+                    <td style="font-size: 14px;" onmousemove="title='二同号复选單註限額低高可設定 2'">
+                        <input class="textradius width6em" id="low_limit" onkeypress="event.returnValue=Isnum();"
+                            value="2" size="11" name="low[]">&gt;=<span id="munitlow1">2</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td height="23" colspan="14" align="center"><input class="btn btn-success" type="button"
+                            name="submit2" value=" 重置 " onclick="form2.reset();tbcolor();">
+                        &nbsp;
+                        <input class="btn btn-success" type="submit" name="Submit" value="修改">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="msg_win">
+                <div class="icos"><a id="msg_min" title="最小化" href="javascript:void 0">0</a><a id="msg_close" title="关闭" href="javascript:void 0">r</a></div>
+                <div id="msg_title">快速调控：</div>
+                <div id="msg_content">
+                <table height="100%" align="center" cellpadding="2" cellspacing="1" class="t12" width="96%" id="qctk">
+                    <tbody><tr class="t11" align="center">
+                        <td height="20" class="t12">项目选择</td>
+                    </tr>
+                    <tr class="t15" align="center">
+                        <td>
+                        <input type="button" class="buttongmin" value="全选" id="b1">
+                        <input type="button" class="buttongmin" value="反选" id="b2">
+                        <input type="button" class="buttongmin" value="不定位" id="b3">
+                        <input type="button" class="buttongmin" value="定位" id="b4">
+                        <input type="button" class="buttongmin" value="双面" id="b5">
+                        <input type="button" class="buttongmin" value="和数" id="b6">
+                        <input type="button" class="buttongmin" value="尾数" id="b7">
+                        <input type="button" class="buttongmin" value="组合" id="b8">
+                        <input type="button" class="buttongmin" value="跨度" id="b9">
+                        <input type="button" class="buttongmin" value="取消" id="b10">
+                        </td>
+                    </tr>
+                    <tr class="t11" align="center">
+                        <td height="20" class="t12">退水</td>
+                    </tr>
+                    <tr class="t15" align="center">
+                        <td>
+                        <input type="button" class="buttongmin" value="调高" id="b11">
+                        <input type="button" class="buttongmin" value="调低" id="b12">
+                    <select size="1" name="tnum" id="tnum">
+                        <option selected="" value="1">0.05</option>
+                        <option value="2">0.1</option>
+                        <option value="10">0.5</option>
+                        <option value="20">1</option>
+                        <option value="40">2</option>
+                       
+                    </select>		
+                        <input type="button" class="buttongmin" value="最大" id="b13">
+                        <input type="button" class="buttongmin" value="归零" id="b14">
+                    <select size="1" name="tpan" id="tpan">
+                        <option selected="" value="all">全部</option>
+                         
+                        <option value="a">A盘</option>
+                        
+                        
+                        <option value="b">B盘</option>
+                        
+                        
+                        <option value="c">C盘</option>
+                        
+                        
+                        <option value="d">D盘</option>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </select>
+                        </td>
+                    </tr>
+                    
+                    <tr class="t15" align="center">
+                        <td height="25">
+                        金额:<input type="text" class="input" name="xrnum" id="xrnum" size="8" onkeypress="event.returnValue=Isnum();">
+                        <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" id="b16">
+                        <input type="button" class="buttongmin" value="单注限额" style="width:90px" id="b15">
+                        <input type="button" class="buttongmin" value="單註低限額" style="width:90px" id="b17">
+                        
+                        </td>
+                    </tr>
+                </tbody></table>
+                </div>
+                </div>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script type="text/javascript" src="/static/memberManagement/js/settingInfo.js"></script>
+
+</html>

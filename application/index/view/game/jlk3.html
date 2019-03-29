@@ -1,0 +1,1297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>Welcome</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div class="main" id="main">
+        <!-- 选项卡 -->
+        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td>
+                        <table width="100%" height="28" border="0" cellpadding="0" cellspacing="0" bgcolor="#E1E1E1">
+                            <tbody>
+                                <tr>
+                                    <td width="5%" valign="middle" nowrap="">&nbsp;即时注单</td>
+                                    <td valign="middle" nowrap="">
+                                        盘类<select v-model="levelValue">
+                                            <option v-for="(item, index) in level" :value="item">{{item}}盘
+                                            </option>
+                                        </select>
+                                        更新<select v-model="refresh">
+                                            <option value="0">停止</option>
+                                            <option value="10000">10秒</option>
+                                            <option value="20000">20秒</option>
+                                            <option value="60000">60秒</option>
+                                        </select>
+                                    <td width="14%" align="center">香港时间:<br>{{count_down}}</td>
+                                    <td width="70%">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'szhs'"
+                                                            class="ared">三字和数</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'szzh'"
+                                                            class="ared">三字组合</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'ezzh'"
+                                                            class="ared">二字组合</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'slhtxsthtx'"
+                                                            class="ared">三连号通选 三同号通选</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'bszkhhm'"
+                                                            class="ared">豹顺杂跨黑红码</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'sj'"
+                                                            class="ared">三军</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td width="40%" align="left">
+
+                                    </td>
+                                    <td width="17%">
+                                    </td>
+                                    <td width="3%">
+                                        <div align="center">
+                                            <input type="button" name="Submit" class="buttongmin" value="刷新" @click="init">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 第几期 -->
+        <div align="center" style="padding:3px;">吉林快3 第<span align="center" style="padding:3px;">{{periods}}</span>期
+            <span v-if="tab == 'szhs'">三字和数</span>
+            <span v-if="tab == 'szzh'">三字组合</span>
+            <span v-if="tab == 'ezzh'">二字组合</span>
+            <span v-if="tab == 'slhtxsthtx'">三连号通选 三同号通选</span>
+            <span v-if="tab == 'bszkhhm'">豹顺杂跨黑红码</span>
+            <span v-if="tab == 'sj'">三军</span>
+
+        </div>
+        <!-- 表格（一） -->
+        <div align="center" v-if="tab == 'szhs'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <th width="90" align="center"></th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td rowspan="4" align="center">佰拾個和數</td>
+                        <td align="center" class="numty">3</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhi3 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">4</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63</font>
+                            <font v-else color="blue">61</font>
+                            <br />
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhi4 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">5</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">31.5</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhi5 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">6</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">19.5</font>
+                            <font v-else color="blue">19</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhi6 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">7</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">13</font>
+                            <font v-else color="blue">12.9</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi7 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">8</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">9.4</font>
+                            <font v-else color="blue">9.2</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi8 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">9</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">7.8</font>
+                            <font v-else color="blue">7.7</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi9 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">10</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">7.2</font>
+                            <font v-else color="blue">7.1</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi10 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">11</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">7.2</font>
+                            <font v-else color="blue">7.1</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi11 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">12</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">7.8</font>
+                            <font v-else color="blue">7.7</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi12 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">13</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">9.4</font>
+                            <font v-else color="blue">9.2</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi13 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">14</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">13</font>
+                            <font v-else color="blue">12.9</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi14 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">15</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">19.5</font>
+                            <font v-else color="blue">19</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi15 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">16</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">31.5</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi16 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">17</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12 ">0/{{data.hezhi17 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">18</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhi18 || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+                    <tr class="note_title" height="22">
+                        <th width="90" align="center"></th>
+                        <th width="70" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+
+                    </tr>
+                    <tr class="t15">
+                        <td align="center">
+                            大小單雙</td>
+                        <td align="center" class="numty">大</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.963</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">1.973</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">1.983</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhida || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">小</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.963</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">1.973</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">1.983</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhixiao || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">单</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.963</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">1.973</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">1.983</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhidan || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">双</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.963</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">1.973</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">1.983</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hezhishuang || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" style="color:red">红码大小單雙</td>
+                        <td align="center" class="numty">大</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4.2</font>
+                            <font v-else color="blue">4</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hongmada || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">小</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4.2</font>
+                            <font v-else color="blue">4</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hongmaxiao || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">单</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4.2</font>
+                            <font v-else color="blue">4</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hongmadan || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">双</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4.2</font>
+                            <font v-else color="blue">4</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hongmashuang || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center">黑码大小單雙</td>
+                        <td align="center" class="numty">大</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">3.1</font>
+                            <font v-else color="blue">3</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.heimada || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">小</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">3.1</font>
+                            <font v-else color="blue">3</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.heimaxiao || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">单</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">3.1</font>
+                            <font v-else color="blue">3</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.heimadan || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">双</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">3.1</font>
+                            <font v-else color="blue">3</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.heimashuang || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center">
+                            大单双&nbsp;/&nbsp;小单双</td>
+                        <td align="center" class="numty">大单</td>
+                        <td align="center">
+                            <font color="blue">3.3</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.dadan || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">大双</td>
+                        <td align="center">
+                            <font color="blue">4.3</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.dashuang || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">小单</td>
+                        <td align="center">
+                            <font color="blue">4.3</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.xiaodan || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">小双</td>
+                        <td align="center">
+                            <font color="blue">3.3</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.xiaoshuang || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+
+
+                    <tr class="t15">
+                        <td align="center">
+                            大单双&nbsp;/&nbsp;小单双</td>
+                        <td align="center" class="numty">黑码</td>
+                        <td align="center">
+                            <font color="blue">1.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.heima || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">红码</td>
+                        <td align="center">
+                            <font color="blue">2</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szhs'"><span class="fb12">0/{{data.hongma || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty"></td>
+                        <td align="center"></td>
+                        <td align="center" class="numty"></td>
+                        <td align="center"></td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 表格（二） -->
+        <div align="center" v-if="tab == 'szzh'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">111</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi111 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">112</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi112 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">113</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi1113 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">114</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi114 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">115</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi115 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">116</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi116 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">122</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi122 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">123</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi123 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">124</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi124 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">125</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi125 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">126</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi126 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">133</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi133 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">134</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi134 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">135</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi135 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">136</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12">0/{{data.sanzi136 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">144</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi144 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">145</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi145 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">146</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi146 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">155</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi155 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">156</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi156 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">166</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi166 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">222</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi222 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">223</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi223 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">224</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi224 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">225</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi225 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">226</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi226 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">233</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi233 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">234</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi234 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">235</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi235 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">236</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi236 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">244</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi244 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">245</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi245 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">246</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi246 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">255</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi255 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">256</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi256 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">266</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi266 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">333</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi333 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">334</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi334 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">335</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi335 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">336</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi336 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">344</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi344 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">345</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi345 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">346</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi346 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">355</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi255 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">356</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi356 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">366</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi366 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">444</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi444 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">445</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi445 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">446</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi446 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">455</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi455 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">456</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">32</font>
+                            <font v-else color="blue">31</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi456 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">466</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi466 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">555</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi555|| 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">556</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi556 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">566</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">63.5</font>
+                            <font v-else color="blue">61</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi566 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">666</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">190</font>
+                            <font v-else color="blue">181</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=szzh'"><span class="fb12 sanzi">0/{{data.sanzi666 || 0}}</span></a>
+                        </td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+        <!-- 表格（三） -->
+        <div align="center" v-if="tab == 'ezzh'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">11</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi11 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">12</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font>
+                            <br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi12 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">13</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi13 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">14</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi14 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">15</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi15 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">16</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi16 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td colspan="2" align="center"></td>
+                        <td align="center" class="numty">22</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi22 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">23</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi23 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">24</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi24 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">25</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi25 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">26</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi26 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td align="center" class="numty">33</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi33 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">34</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi34 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">35</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi35 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">36</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi36 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td align="center" class="numty">44</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi44 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">45</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi45 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">46</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi46 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td align="center" class="numty">55</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi55 || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">56</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi56 || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td colspan="2" align="center"></td>
+                        <td align="center" class="numty">66</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">12.5</font>
+                            <font v-else color="blue">12</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=ezzh'"><span class="fb12">0/{{data.erzi66 || 0}}</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 表格（四） -->
+        <div align="center" v-if="tab == 'slhtxsthtx'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <th width="113" height="30" align="center">&nbsp;</th>
+                        <th width="214" align="center">项目</th>
+                        <th width="242" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="note_title">三同号</td>
+                        <td align="center" class="numty">111,222,333,444,555,666</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">31.5</font>
+                            <font v-else color="blue">30</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=slhtxsthtx'"><span class="fb12">0/{{data.santonghao || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="note_title">三连号</td>
+                        <td align="center" class="numty">123,234,345,456</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">8</font>
+                            <font v-else color="blue">7.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=slhtxsthtx'"><span class="fb12">0/{{data.sanlianhao || 0}}</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 表格（五） -->
+        <div align="center" v-if="tab == 'bszkhhm'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <td width="72" rowspan="2" align="center">顺杂</td>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">豹子</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">31.5</font>
+                            <font v-else color="blue">30</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data.baozi || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">半顺</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">2.65</font>
+                            <font v-else color="blue">2.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data.banshun || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">全顺</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">8</font>
+                            <font v-else color="blue">7.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data.quanshun || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">杂</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">8</font>
+                            <font v-else color="blue">7.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data.za || 0}}</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <td width="72" rowspan="3" align="center">跨</td>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">1跨</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['1kua'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">2跨</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4</font>
+                            <font v-else color="blue">3.75</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['2kua'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">3跨</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">3.5</font>
+                            <font v-else color="blue">3.3</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['3kua'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">4跨</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">4</font>
+                            <font v-else color="blue">3.75</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['4kua'] || 0}}</span></a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        
+                        <td align="center" class="numty">5跨</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'D'" color="blue">6.35</font>
+                            <font v-else color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['5kua'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty"></td>
+                        <td align="center">
+                        </td>
+                        <td align="center" class="numty"></td>
+                        <td align="center">
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr class="note_title" height="22">
+                        <td width="72" rowspan="2" align="center">黑红码</td>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                        <th width="62" align="center">项目</th>
+                        <th width="70" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">4码黑</td>
+                        <td align="center">
+                            <font color="blue">6</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['4heima'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">4码红</td>
+                        <td align="center">
+                            <font color="blue">5.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['4hongma'] || 0}}</span></a>
+                        </td>
+                        <td align="center" class="numty">5码黑</td>
+                        <td align="center">
+                            <font color="blue">2.5</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=bszkhhm'"><span class="fb12">0/{{data['5mahei'] || 0}}</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <!-- 表格（六） -->
+        <div align="center" v-if="tab == 'sj'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <thead>
+                    <tr class="note_title" height="22">
+                        <th width="42" height="25" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                        <th width="42" align="center">项目</th>
+                        <th width="64" align="center">注单</th>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" class="numty">1</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun1 || 0}}</font>
+                            </a>
+                        </td>
+                        <td height="50" align="center" class="numty">2</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun2 || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" class="numty">3</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun3 || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" class="numty">4</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun4 || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" class="numty">5</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun5 || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" class="numty">6</td>
+                        <td align="center">
+                            <font v-if="levelValue == 'A'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'B'" color="blue">1.95</font>
+                            <font v-else-if="levelValue == 'C'" color="blue">2.005</font>
+                            <font v-else-if="levelValue == 'D'" color="blue">2.005</font><br>
+                            <a :href="'/?game_key=' + game_key + '&level=' + levelValue + '&gameType=sj'">
+                                <font color="red">0/{{data.sanjun6 || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script type="text/javascript" src="/static/game/js/jlk3.js"></script>
+
+</html>

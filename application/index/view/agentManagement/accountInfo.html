@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>修改代理成数</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <h4>修改代理成数 <small class="fright topmargin-sm"><a href="javascript:history.back(1);">返回上一页</a></small></h4>
+        <br />
+        修改账号：han12
+        &nbsp;&nbsp;占成数据
+        <table width="50%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+            style="border:1px solid #76694c;font-size:14px;">
+            <tbody>
+                <tr class="note_title" height="25">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <font color="white">调整本列值</font>
+                    </td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>福彩3D</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+
+                    </td>
+                    <td><select name="fc3d_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="fc3d_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成
+                    </td>
+                    <td>
+                        <select name="fc3d_down_percentage" onchange="change_percentage('fc3d','down')"
+                            id="fc3d_down_percentage">
+                            <option value="0">0%</option>
+                        </select> </td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>体彩PL3</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="pl3_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="pl3_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成：
+                    </td>
+                    <td>
+                        <select name="pl3_down_percentage" onchange="change_percentage('pl3','down')"
+                            id="pl3_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省时时彩</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="ssc_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="ssc_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成
+                    </td>
+                    <td>
+                        <select name="ssc_down_percentage" onchange="change_percentage('ssc','down')"
+                            id="ssc_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省快3</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="k3_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="k3_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成
+                    </td>
+                    <td>
+                        <select name="k3_down_percentage" onchange="change_percentage('k3','down')"
+                            id="k3_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>赛车飞艇</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="sc_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="sc_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成
+                    </td>
+                    <td>
+                        <select name="sc_down_percentage" onchange="change_percentage('sc','down')"
+                            id="sc_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省骰宝</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="sz_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="sz_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+
+
+
+
+
+
+                        代理占成
+
+                    </td>
+                    <td>
+                        <select name="sz_down_percentage" onchange="change_percentage('sz','down')"
+                            id="sz_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省11选5</td>
+                    <td align="center">
+
+
+
+
+
+
+                        总代理占成
+                    </td>
+                    <td>
+                        <select name="jl11x5_up_percentage" onchange="this.selectedIndex=this.defOpt;"
+                            onfocus="this.defOpt=this.selectedIndex" id="jl11x5_up_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                    <td align="right">
+                        代理占成
+                    </td>
+                    <td>
+                        <select name="jl11x5_down_percentage" onchange="change_percentage('jl11x5','down')"
+                            id="jl11x5_down_percentage">
+                            <option value="0">0%</option>
+                        </select></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="form-group topmargin">
+            <div class="col-sm-offset-2 col-sm-10" style="padding-left:200px">
+                <input type="hidden" name="id0" value="11771" id="id0">
+
+                <input type="button" class="btn btn-success" id="Submit" name="Submit" value="确认修改"
+                    onclick="f_submit()">
+
+                <font color="red">每天05:00至8:00修改占成</font>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+</html>

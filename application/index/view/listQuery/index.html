@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>注单查询</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="5"> </td>
+                </tr>
+            </tbody>
+        </table>
+        &nbsp;&nbsp;&nbsp;&nbsp;会员账号： 
+        <input id="account" value="">
+        &nbsp;&nbsp;&nbsp;&nbsp;彩种： 
+        <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" id="selgame" size="1">
+            <option value="ALL">全部</option>
+            <option value="FC3D">福彩3D</option>
+            <option value="PL3">体彩PL3</option>
+            <option value="SSC">重庆时时彩</option>
+            <option value="XJSC">新疆时时彩</option>
+            <option value="BJSC">北京赛车</option>
+            <option value="JLK3">吉林快3</option>
+            <option value="JLSZ">吉林骰宝</option>
+            <option value="XYFT">幸运飞艇</option>
+            <option value="BJK3">北京快3</option>
+            <option value="BJSZ">北京骰宝</option>
+            <option value="HBK3">湖北快3</option>
+            <option value="HEBK3">河北快3</option>
+            <option value="GSK3">甘肃快3</option>
+            <option value="JSK3">江苏快3</option>
+            <option value="NMGK3">内蒙古快3</option>	
+            <option value="JL11X5">吉林11选5</option>	 
+            <option value="LN11X5">辽宁111选5</option>                       
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;时间： 
+        <input id="time" value="2019-03-29">
+        "YYYY-MM-DD"&nbsp;&nbsp;&nbsp;&nbsp;是否结算： 
+        <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" id="seljiesuan" size="1">
+            <option value="ALL" selected="">全部</option>
+            <option value="0">未结算</option>
+            <option value="1">已结算</option>
+        </select>
+        <input class="button" type="button" value="查询" onclick="sub()">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="5"> </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="datatable" style="border:1px solid #76694c;font-size:14px;" border="0" cellspacing="1" cellpadding="0" width="100%">
+            <tbody>
+                <tr align="middle">
+                    <td class="note_title" width="10%" height="16">账号(名字)(id)</td>
+                    <td class="note_title" width="10%" height="16">投注时间</td>
+        
+                    <td class="note_title" width="5%" height="16">彩种</td>
+                    <td class="note_title" width="10%" height="16">账单单号</td>
+                    <td class="note_title" width="5%">盘</td>
+                    <td class="note_title" width="20%">下注内容</td>
+                    <td class="note_title" width="20%">开奖结果</td>
+                    <td class="note_title" width="5%">金额</td>
+                    <td class="note_title" width="5%">派彩</td>
+                    <td class="note_title" width="5%">退水</td>
+                    <td class="note_title" width="5%">收交金额</td>
+                </tr>
+        
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
+                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
+        
+                    <td height="22" nowrap="">吉林快3</td>
+                    <td>108249668</td>
+                    <td>A</td>
+                    <td>
+        
+        
+                        第036 期 -
+                        <font color="blue">红码单双</font>
+                        <font color="red">(双)</font>
+                        <span class="style1"> @ </span>
+                        <font color="red">4</font>
+        
+                    </td>
+                    <td></td>
+                    <td>
+        
+        
+                        12.0
+        
+                    </td>
+                    <td>0</td>
+                    <td>
+        
+        
+                        1.2
+        
+                    </td>
+                    <td width="10%">
+        
+                        <font color="red">0.0</font>
+        
+                    </td>
+                </tr>
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
+                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
+        
+                    <td height="22" nowrap="">吉林快3</td>
+                    <td>108249671</td>
+                    <td>A</td>
+                    <td>
+        
+        
+                        第036 期 -
+                        <font color="blue">黑码单双</font>
+                        <font color="red">(双)</font>
+                        <span class="style1"> @ </span>
+                        <font color="red">3</font>
+        
+                    </td>
+                    <td></td>
+                    <td>
+        
+        
+                        12.0
+        
+                    </td>
+                    <td>0</td>
+                    <td>
+        
+        
+                        1.2
+        
+                    </td>
+                    <td width="10%">
+        
+                        <font color="red">0.0</font>
+        
+                    </td>
+                </tr>
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
+                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
+        
+                    <td height="22" nowrap="">吉林快3</td>
+                    <td>108249674</td>
+                    <td>A</td>
+                    <td>
+        
+        
+                        第036 期 -
+                        <font color="blue">红码</font>
+                        <font color="red">(红码)</font>
+                        <span class="style1"> @ </span>
+                        <font color="red">2</font>
+        
+                    </td>
+                    <td></td>
+                    <td>
+        
+        
+                        12.0
+        
+                    </td>
+                    <td>0</td>
+                    <td>
+        
+        
+                        1.2
+        
+                    </td>
+                    <td width="10%">
+        
+                        <font color="red">0.0</font>
+        
+                    </td>
+                </tr>
+        
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" colspan="7" nowrap="">笔数:
+                        <strong>3</strong>
+                    </td>
+                    <td nowrap="">
+                        <strong>36.00</strong>
+                    </td>
+                    <td nowrap="">
+                        <strong>0.00</strong>
+                    </td>
+                    <td nowrap="">
+                        <strong>3.60</strong>
+                    </td>
+                    <td nowrap="">
+                        <strong>0.00</strong>
+                    </td>
+                </tr>
+        
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+</html>

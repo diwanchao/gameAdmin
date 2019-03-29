@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>资讯管理</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/statics/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div class="main" id="main" style="margin-top:5px;">
+
+        <!-- 信用资料 -->
+        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td>
+                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#E1E1E1">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div align="right">
+                                            <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td height="26">
+                                                            <div align="left">
+                                                                <table width="720" border="0" cellspacing="0"
+                                                                    cellpadding="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="216" height="19">
+                                                                                <div align="left">&nbsp;&nbsp;&nbsp;信用资料
+                                                                                </div>
+                                                                            </td>
+                                                                            <td width="252" nowrap="">　</td>
+                                                                            <td width="252" nowrap=""></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 空白 -->
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td height="5"> </td>
+                </tr>
+            </tbody>
+        </table>
+        <table width="99%" height="45" border="0" align="center" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td height="45">
+                        <table width="97%" border="0" align="left" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="30%" height="225" valign="top">
+                                        <table width="90%" border="0" cellpadding="0" cellspacing="1"
+                                            style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="25" colspan="2" align="center" class="note_title">{{user_type}}</td>
+                                                </tr>
+                                                <tr class="t15">
+                                                    <td width="50%" height="23" align="right">账户名称:</td>
+                                                    <td width="50%" height="23" align="left">{{user_name}}</td>
+                                                </tr>
+                                                <tr class="t15">
+                                                    <td height="28" align="right">信用额度:</td>
+                                                    <td align="left">
+                                                        　{{credit_limit}}<div align="left"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="t15">
+                                                    <td height="27" align="right">
+                                                        <div align="right">已用额度:</div>
+                                                    </td>
+                                                    <td align="left">
+                                                        　{{already_limit}} <div align="left"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="t15">
+                                                    <td height="27" align="right">
+                                                        <div align="right">快开额度:</div>
+                                                    </td>
+                                                    <td align="left">
+                                                        　{{fast_limit}} <div align="left"></div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="t15">
+                                                    <td height="25" align="right">
+                                                        <div align="right">占成:</div>
+                                                    </td>
+                                                    <td>
+                                                        <table width="200" border="0" cellpadding="1" cellspacing="1"
+                                                            bordercolor="#CCCCCC" bgcolor="#CCCCCC">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td width="48" bgcolor="#FFFFFF">&nbsp;</td>
+                                                                    <td width="52" bgcolor="#FFFFFF">{{user_type}}</td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr v-for="(item, index) in occpuy">
+                                                                    <td bgcolor="#FFFFFF">{{item.name}}</td>
+                                                                    <td bgcolor="#FFFFFF">{{item.reate}}%</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td width="72%" valign="top">
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                            class="solid-bottom" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="19">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td align="center" :class="game_key == 'ssc' ? 'sec3': 'sec1'" @click="game_key = 'ssc'"><a :class="game_key == 'ssc' ? 'fgreng': 'fb12'" href="javascript:void(0);">各省时时彩</a>
+                                                                    </td>
+                                                                    <td align="center" :class="game_key == 'jlk3' ? 'sec3': 'sec1'" @click="game_key = 'jlk3'"><a :class="game_key == 'jlk3' ? 'fgreng': 'fb12'" href="javascript:void(0);">各省快3</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <table border="0" cellspacing="5" cellpadding="0" width="100%" height="120">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="120" valign="top">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                                                            style="border:1px solid #76694c;font-size:14px;background:#E1E1E1">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td height="25" nowrap="" class="note_title">
+                                                                        <div align="center">类型(各省快3)</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">A盘</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">B盘</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">C盘</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">D盘</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">单项(号)限额</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">单注限额</div>
+                                                                    </td>
+                                                                    <td nowrap="" class="note_title">
+                                                                        <div align="center">赔率方式</div>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr v-for="(item, index) in data" class="t15" align="center">
+                                                                    <td height="22" nowrap="" class="t15">{{item.name}}</td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.A}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.B}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.C}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.D}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.single}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        <div align="center">{{item.single_note}}</div>
+                                                                    </td>
+                                                                    <td class="t15">
+                                                                        自动 </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table><br>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</body>
+<script src="/statics/global/js/jquery-2.1.4.min.js"></script>
+<script src="/statics/global/js/vue.min.js"></script>
+<script src="/statics/global/js/global.js"></script>
+</html>

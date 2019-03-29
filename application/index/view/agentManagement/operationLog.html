@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>操作日志</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <h5><a onclick="javascript:history.back(1)" style="CURSOR: pointer">返回上一页</a></h5>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+            style="border:1px solid #76694c;font-size:14px;">
+            <thead>
+                <tr class="note_title" height="25">
+                    <th>编号</th>
+                    <th>操作内容</th>
+                    <th>操作时间</th>
+                    <th>操作人账号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr bgcolor="#f0f0f0">
+                    <td height="24">
+                        <div align="center">1430352</div>
+                    </td>
+                    <td height="24">
+                        <div align="left">调整账号han321福彩3D的赔率</div>
+                    </td>
+                    <td height="24">
+                        <div align="center">2019-03-29 17:09:16</div>
+                    </td>
+                    <td height="24">
+                        <div align="center">han12</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 需要分页 30一页 -->
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+
+</html>

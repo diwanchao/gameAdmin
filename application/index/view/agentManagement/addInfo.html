@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>添加代理</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+
+        <table height="91" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+        <table width="800" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+            style="border:1px solid #76694c;font-size:14px;">
+            <tbody>
+                <tr class="note_title">
+                    <td width="530" height="25">
+                        <strong class="fw12">　
+                            添加代理
+
+                        </strong></td>
+                    <td width="90"><a onclick="location.href='http://ag.xh33.net/dllba.do?id0=11770&amp;agent_level=6'"
+                            style="CURSOR: pointer;font-weight:bold">返回上一页</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div align="center">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+                                style="font-size:14px;">
+
+                                <tbody>
+                                    <tr>
+                                        <td width="21%">
+                                            <div align="right">
+
+                                                总代理：
+
+                                            </div>
+                                        </td>
+                                        <td width="79%">
+                                            <select name="upagent" id="upagent" onchange="addagentlink(this.value)">
+
+                                                <option value="11770">han123</option>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td height="22" nowrap="">
+                                            <div align="right">
+
+
+
+
+
+                                                代理账号：
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="account" maxlength="8" size="8" value=""
+                                                    onkeypress="javascript:return CheckKey(event);"
+                                                    onchange="javascript:chkuser();" id="account" class="input"><img
+                                                    id="isuserimg" src="/static/global/image/s01.gif">
+                                                <span class="fbred">
+                                                    <input type="button" name="Submit3" value="检测是否重复"
+                                                        onclick="chkuser()">
+                                                </span>
+                                                <span class="fbred">帐号必须至少4个字元长，并只能有数字(0-9)，及英文大小写字母</span>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="24">
+                                            <div align="right">
+
+
+
+
+
+
+                                                代理名字：
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="name" maxlength="15" size="15" value=""
+                                                    id="name" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">密码：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="password" name="passwd" maxlength="15" size="15" value=""
+                                                    id="passwd" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="25">
+                                            <div align="right">确认密码：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="password" name="passwordResult" maxlength="15" size="15"
+                                                    value="" id="passwordResult" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">开放盘别：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+
+                                                <input type="checkbox" name="plate_no" value="A" checked="">A
+
+
+                                                <input type="checkbox" name="plate_no" value="B" checked="">B
+
+
+                                                <input type="checkbox" name="plate_no" value="C" checked="">C
+
+
+                                                <input type="checkbox" name="plate_no" value="D" checked="">D
+
+
+                                                <input type="checkbox" name="plate_no" value="E" checked="">E
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td height="26">
+                                            <div align="right">信用额度：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="balance" maxlength="15" size="15" value=""
+                                                    onkeydown="onlyNum2(event);" id="balance" class="input">
+
+                                                (可用额度 <span class="fred12" id="balance_value">0</span>)
+                                                (目前用于单日单期数彩球游戏(香港六合彩，福彩3D，体彩PL3...等)
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td height="26">
+                                            <div align="right">快开额度：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="balance_jk" maxlength="15" size="15" value=""
+                                                    onkeydown="onlyNum2(event);" id="balance_jk" class="input">
+
+                                                (可用额度 <span class="fred12"
+                                                    id="balance_jk_value">0</span>)(目前用于单日多期数彩球游戏(新疆时时彩，重庆时时彩...等)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="18">
+                                            <div align="right">占成设置：</div>
+                                        </td>
+                                        <td>
+
+                                            <table width="400" border="0" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <font color="red">调整此列</font>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>福彩3D</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="fc3d_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="fc3d_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td> <select name="fc3d_down_percentage"
+                                                                onchange="change_percentage('fc3d','down')"
+                                                                id="fc3d_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>体彩PL3</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+                                                        </td>
+                                                        <td> <select name="pl3_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="pl3_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="pl3_down_percentage"
+                                                                onchange="change_percentage('pl3','down')"
+                                                                id="pl3_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>各省时时彩</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="ssc_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="ssc_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="ssc_down_percentage"
+                                                                onchange="change_percentage('ssc','down')"
+                                                                id="ssc_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>各省快3</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="k3_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="k3_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="k3_down_percentage"
+                                                                onchange="change_percentage('k3','down')"
+                                                                id="k3_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>赛车快艇</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="sc_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="sc_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="sc_down_percentage"
+                                                                onchange="change_percentage('sc','down')"
+                                                                id="sc_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>各省骰宝</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="sz_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="sz_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="sz_down_percentage"
+                                                                onchange="change_percentage('sz','down')"
+                                                                id="sz_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>各省11选5</td>
+                                                        <td align="center">
+
+
+
+
+
+
+                                                            总代理占成：
+
+                                                        </td>
+                                                        <td><select name="jl11x5_up_percentage"
+                                                                onchange="this.selectedIndex=this.defOpt;"
+                                                                onfocus="this.defOpt=this.selectedIndex"
+                                                                id="jl11x5_up_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                        <td align="right">
+
+
+
+
+
+
+                                                            代理占成：
+
+                                                        </td>
+                                                        <td><select name="jl11x5_down_percentage"
+                                                                onchange="change_percentage('jl11x5','down')"
+                                                                id="jl11x5_down_percentage">
+                                                                <option value="0">0%</option>
+                                                            </select></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">开放：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="checkbox" name="gameid" checked="true">福彩3D
+                                                <input type="checkbox" name="gameid" checked="true">体彩PL3<br>
+                                                <input type="checkbox" name="gameid" checked="true">重庆时时彩
+                                                <input type="checkbox" name="gameid" checked="true">吉林11选5
+                                                <input type="checkbox" name="gameid" checked="true">新疆时时彩<br>
+                                                <input type="checkbox" name="gameid" checked="true">北京赛车
+                                                <input type="checkbox" name="gameid" checked="true">吉林快3
+                                                <input type="checkbox" name="gameid" checked="true">吉林骰宝
+                                                <input type="checkbox" name="gameid" checked="true"> 幸运飞艇
+                                                <input type="checkbox" name="gameid" checked="true">北京快3
+                                                <input type="checkbox" name="gameid" checked="true">北京骰宝
+                                                <input type="checkbox" name="gameid" checked="true">湖北快3
+                                                <input type="checkbox" name="gameid" checked="true">河北北快三
+                                                <input type="checkbox" name="gameid" checked="true">甘肃快三
+                                                <input type="checkbox" name="gameid" checked="true">江苏快三
+                                                <input type="checkbox" name="gameid" checked="true">内蒙古快三
+                                                <input type="checkbox" name="gameid" checked="true">辽宁11选5
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right"></div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="hidden" name="id0" value="11770" id="id0">
+                                                <input type="button" id="Submit" name="Submit" value="确认添加"
+                                                    onclick="f_submit()"> 　
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+</html>

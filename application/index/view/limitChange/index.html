@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>额度变动</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td class="talkabout" valign="middle">|&nbsp;额度变动查询&nbsp;|</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>类型：
+            <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" id="account2_type" size="1">
+                <option value="2" selected="">会员</option>
+                <option value="1">代理</option>
+            </select>
+            用户名：
+            <input id="account_name" value="han321">
+            <input class="button" type="button" value="查询" onclick="sub()">
+        </div>
+        <br>
+        <table width="805" border="0" cellpadding="0" cellspacing="1" id="Table_01" style="border:1px solid #76694c;font-size:14px;">
+            <tbody>
+                <tr>
+                    <th width="10%" height="16" class="note_title">上级代理</th>
+                    <th width="10%" height="16" class="note_title">账号</th>
+                    <th width="10%" height="16" class="note_title">时间</th>
+                    <th width="10%" height="16" class="note_title">说明</th>
+                    <th width="10%" height="16" class="note_title">金额</th>
+                    <th width="11%" class="note_title" height="22px">操作者</th>
+                </tr>
+        
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han12</td>
+                    <td height="22" nowrap="">han321</td>
+                    <td height="22" nowrap="">2019-03-09 17:49:23</td>
+                    <td height="22" nowrap="">存入金额</td>
+                    <td>500</td>
+                    <td>ffa975</td>
+        
+                </tr>
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han12</td>
+                    <td height="22" nowrap="">han321</td>
+                    <td height="22" nowrap="">2019-03-09 17:40:54</td>
+                    <td height="22" nowrap="">存入金额</td>
+                    <td>100</td>
+                    <td>ffa975</td>
+        
+                </tr>
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han12</td>
+                    <td height="22" nowrap="">han321</td>
+                    <td height="22" nowrap="">2019-02-26 16:39:11</td>
+                    <td height="22" nowrap="">提取金额</td>
+                    <td>-100</td>
+                    <td>ffa975</td>
+        
+                </tr>
+        
+                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
+                    <td height="22" nowrap="">han12</td>
+                    <td height="22" nowrap="">han321</td>
+                    <td height="22" nowrap="">2019-02-26 15:27:10</td>
+                    <td height="22" nowrap="">初始金额</td>
+                    <td>100</td>
+                    <td>han12</td>
+        
+                </tr>
+        
+        
+        
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+</html>

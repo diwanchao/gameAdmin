@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>报表</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <table border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td height="5"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="tmove" border="0" cellspacing="0" cellpadding="0" width="99%" align="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#e1e1e1" align="center">
+                            <tbody>
+                                <tr>
+
+                                    <td>
+                                        <div align="right">
+                                            <table border="0" cellspacing="0" cellpadding="0" width="100%" align="left">
+                                                <tbody>
+                                                    <tr>
+                                                        <td height="26">
+                                                            <div align="left">　报表管理</div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td height="5"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="0" cellspacing="0" cellpadding="0" width="99%" align="center" height="125">
+            <tbody>
+                <tr>
+                    <td height="125" valign="top">
+                        <table class="tmove" border="0" cellspacing="0" cellpadding="0" align="left" height="168">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellspacing="1" bordercolor="#000000" cellpadding="0"
+                                            width="900" height="311" class="table1" style="font-size:14px;">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="24" rowspan="2" align="right" class="titletr"
+                                                        style="font-size:14px;">游戏类别:</td>
+                                                    <td bgcolor="#ffffff" align="left" width="779"
+                                                        style="font-size:14px;"> 类型:
+                                                        <input type="radio" name="select_all_game_n"
+                                                            id="select_all_game" onclick="selectall(1);"
+                                                            checked="checked">
+                                                        全部
+                                                        <input type="radio" name="select_all_game_n"
+                                                            id="select_all_game" onclick="selectall(0);">
+                                                        全部不选 </td>
+                                                </tr>
+                                                <!-- <tr>
+                                                    <td bgcolor="#ffffff" align="left" style="font-size:14px;"><input
+                                                            type="checkbox" name="select_yb_game_n" id="select_yb_game"
+                                                            onclick="selectyb();" checked="checked">
+                                                        <b>一般彩球</b> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#ffffff" align="left" style="font-size:14px;">
+                                                        &nbsp;&nbsp;
+                                                        <input name="checkgame_n" type="checkbox" value="FC3D"
+                                                            id="FC3D_Select" onclick="GetSelect('select_yb_game',this);"
+                                                            checked="checked">
+                                                        福彩3D
+                                                        <input name="checkgame_n" type="checkbox" value="PL3"
+                                                            id="PL3_Select" onclick="GetSelect('select_yb_game',this);"
+                                                            checked="checked">
+                                                        体彩PL3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td bgcolor="#ffffff" align="left" style="font-size:14px;"><input
+                                                            type="checkbox" name="select_kk_game_n" id="sele_kk_game"
+                                                            onclick="selectkk();" checked="checked">
+                                                        <b>快开彩球</b></td>
+                                                </tr> -->
+                                                <tr>
+                                                    <td bgcolor="#ffffff" align="left" style="font-size:14px;">
+                                                        <input name="checkgame_n" type="checkbox" value="SSC"
+                                                            id="SSC_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        重庆时时彩
+                                                        <input name="checkgame_n" type="checkbox" value="XJSC"
+                                                            id="XJSC_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        新疆时时彩
+                                                        <input name="checkgame_n" type="checkbox" value="JL11X5"
+                                                            id="JL11X5_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        吉林11选5
+                                                        <input name="checkgame_n" type="checkbox" value="BJSC"
+                                                            id="BJSC_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        北京赛车
+                                                        <input name="checkgame_n" type="checkbox" value="JLK3"
+                                                            id="JLK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        吉林快3
+                                                        <input name="checkgame_n" type="checkbox" value="JLSZ"
+                                                            id="JLSZ_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        吉林骰宝
+                                                        <input name="checkgame_n" type="checkbox" value="XYFT"
+                                                            id="XYFT_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        幸运飞艇<br>
+                                                        <input name="checkgame_n" type="checkbox" value="BJK3"
+                                                            id="BJK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        北京快3
+                                                        <input name="checkgame_n" type="checkbox" value="BJSZ"
+                                                            id="BJSZ_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        北京骰宝
+                                                        <input name="checkgame_n" type="checkbox" value="HBK3"
+                                                            id="HBK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        湖北快三
+                                                        <input name="checkgame_n" type="checkbox" value="HEBK3"
+                                                            id="HEBK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        河北快3
+                                                        <input name="checkgame_n" type="checkbox" value="GSK3"
+                                                            id="GSK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        甘肃快3
+                                                        <input name="checkgame_n" type="checkbox" value="JSK3"
+                                                            id="JSK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        江苏快3
+                                                        <input name="checkgame_n" type="checkbox" value="NMGK3"
+                                                            id="NMGK3_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        内蒙古快3
+                                                        <input name="checkgame_n" type="checkbox" value="LN11X5"
+                                                            id="LN11X5_Select" onclick="GetSelect('sele_kk_game',this);"
+                                                            checked="checked">
+                                                        辽宁11选5
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td height="70" rowspan="2" align="right" class="titletr"
+                                                        style="font-size:14px;">账单查询:</td>
+                                                    <td height="40" bgcolor="#ffffff">
+                                                        <div style="font-size:14px;">&nbsp;&nbsp;&nbsp;
+                                                            <input type="hidden" value="2019-03-29" maxlength="11"
+                                                                size="12" name="todaydate">
+                                                            <input name="chaxun1" id="chaxun1" type="button"
+                                                                onclick="yanzheng(3)" value="今日实时" class="btn"
+                                                                style="font-size:14px;">
+                                                            <input onclick="go_yesterday(4);" id="chaxun6" value="昨日"
+                                                                type="button" name="B4" class="btn"
+                                                                style="font-size:14px;">
+                                                            <input name="chaxun7" id="chaxun7" type="button"
+                                                                onclick="go_today(1)" value="今日" class="btn"
+                                                                style="font-size:14px;">
+                                                            <input onclick="go_week(2);" id="chaxun2" value="本星期"
+                                                                type="button" name="B3" class="btn"
+                                                                style="font-size:14px;">
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="40" bgcolor="#ffffff">
+                                                        <label style="font-size:14px;">选择日期：
+                                                            <input class="laydate-icon" id="date_start"
+                                                                name="date_start" value=""> </label>
+                                                        &nbsp;~&nbsp;
+                                                        <label style="font-size:14px;">
+                                                            <input class="laydate-icon" id="date_end" name="date_end"
+                                                                value=""> </label>
+                                                        <input style="font-size:14px;" name="chaxun" id="chaxun"
+                                                            type="button" onclick="yanzheng(8)" value="查询"
+                                                            class="btn"><br>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+
+</html>
