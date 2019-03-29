@@ -1,0 +1,1249 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.425;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.header {
+	FONT-SIZE: 12px; MARGIN: 0px;
+	background-image :  url(../../global/image/body_03.gif);
+	font-family: "Microsoft YaHei";
+}
+.header A:link {
+	 TEXT-DECORATION: none
+}
+.header A:visited {
+	TEXT-DECORATION: none
+}
+.header A:hover {
+	COLOR: #000000;  TEXT-DECORATION: none
+}
+.header A:active {
+	 TEXT-DECORATION: none
+}
+.header .header_link {
+	FONT-SIZE: 12px; COLOR: #FFFF00; font-weight:bold
+}
+.header .account_link{
+    FONT-SIZE: 12px; 
+	COLOR: #FFFF00; 
+	position:absolute;
+	left:130px;
+	top:3px;
+}
+.header .header_body {
+	MARGIN: 0px; BACKGROUND-COLOR: #000000
+}
+.header A {
+	SCROLLBAR-FACE-COLOR: #dcdcde; FONT-WEIGHT: normal; FONT-SIZE: 12px; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #e7e7e9; COLOR: #333333; SCROLLBAR-3DLIGHT-COLOR: #c2c2c2; SCROLLBAR-ARROW-COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; SCROLLBAR-DARKSHADOW-COLOR: #808080; LETTER-SPACING: 1px
+}
+
+.header .VPNCSS{
+	color:WHITE;
+	cursor:hand;
+}
+.header .vpnspan{
+   margin-left:5px;
+   margin-right:10px;
+}
+.header .marclass{
+   color:#000000;
+   FONT-SIZE: 12px; 
+   font-weight:bold;	
+}
+.header .onlinestr{
+	color:#b92403;
+	left:860px; 
+	position:absolute;
+	top:3px;
+	FONT-SIZE: 12px; 
+}
+.header .autoComplement_div{
+	display:none;
+}
+.header .onlinenum{
+	color:#b92403;
+	position:absolute;
+	top:7px;
+	left:960px; 
+	font-weight:bold;
+	FONT-SIZE: 12px; 
+}
+.header .hum_num{
+	color:#b92403;	
+}
+.header .header_button:hover{
+	cursor: pointer; 
+	background:url('../images/buttonicon.gif') -0px -74px;
+	border:#999999 1px solid;
+	height:21px;
+	width:60px;
+	text-align:center;
+}
+.header .header_button{
+	cursor: pointer;
+	background:url('../images/buttonicon.gif') -0px -97px;
+	border:#999999 1px solid;
+	height:21px;
+	width:60px;
+	text-align:center;
+}
+
+.header .account_str{
+   color:#b92403;
+   FONT-SIZE: 12px;   
+}
+.header .account_str2{
+   color:#b92403;
+   font-SIZE: 12px; 
+   font-weight:bold;
+  
+}.header .logout_txt{
+   color:#b92403;
+}
+.header .marquee_td{
+   width:350px;
+}
+.header .marquee_sc{
+   width:350px;
+}
+.header .online_time{
+	color:#b92403;
+	top:7px;
+	left:750px; 
+	position:absolute;
+	FONT-SIZE: 12px; 
+}
+.header .online_time2{
+	color:#b92403;
+	top:7px;
+	left:810px; 
+	position:absolute;
+	font-weight:bold;
+	FONT-SIZE: 12px; 
+}
+.header .header_title_link{
+	top:36px;
+	position:absolute;
+	left:50px;
+}
+
+.header .header_div{
+background-color:#ffffff;
+filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#f7f7f7', endColorStr='#e0e0e0', gradientType=0);
+padding: 0px 10px; background:-webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e0e0e0));
+background:-moz-linear-gradient(top, #f7f7f7, #f7f7f7);
+ line-height: 20px;
+}
+.header .header_div a{
+color:#cf0303;
+}
+.header .header_div a:hover{
+border-bottom:#cf0303 1px solid;
+
+}
+
+.header .header_div .mark_div{
+	display: -moz-inline-stack;  
+	display: inline-block;       
+	width:5px;  background-color:#9e0000;
+	margin:1px;
+	
+	
+}
+.header .titlehref{
+	padding-right:3px;
+	padding-left:3px;
+}
+
+.header .logout_txt{
+	color:#b92403;
+}
+
+.header td {
+    white-space: nowrap;
+}
+
+.header .line-none {
+    background-image: none;
+}
+
+.header .result {
+    font-size: 14;
+    font-weight: 700;
+    color: #000000;
+}
+
+.header .results {
+    font-size: 14;
+    font-weight: 700;
+    color: #FF0000;
+}
+
+.header .symCode {
+    FONT-FAMILY: Wingdings 2;
+    FONT-SIZE: 20px;
+}
+
+.header A.symCode {
+    FONT-FAMILY: Wingdings 2;
+    TEXT-DECORATION: none;
+    COLOR: #000000;
+}
+
+.header A.symCode:hover {
+    FONT-FAMILY: Wingdings 2;
+    TEXT-DECORATION: none;
+    COLOR: #000000;
+}
+
+.header A.symCode:visited {
+    FONT-FAMILY: Wingdings 2;
+    TEXT-DECORATION: none;
+    COLOR: #000000;
+}
+
+.header .overtime {
+    background-color: #FFFF00;
+    color: #000000;
+    width: 50px;
+    text-align: center;
+}
+
+.header .ovdiv {
+    color: #000000;
+    height: 30px;
+    padding-top: 3px;
+    padding-left: 3px;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.header .opentime_div {
+    /**/
+    top: 33px;
+    /**/
+    position: absolute;
+    right: 1px;
+    width: 175px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.main {
+    SCROLLBAR-FACE-COLOR: #dad9ba;
+    FONT-SIZE: 9pt;
+    SCROLLBAR-HIGHLIGHT-COLOR: #f4faff;
+    SCROLLBAR-SHADOW-COLOR: #dad9ba;
+    SCROLLBAR-3DLIGHT-COLOR: #f4faff;
+    SCROLLBAR-ARROW-COLOR: #f4faff;
+    SCROLLBAR-TRACK-COLOR: #ecf5ff;
+    SCROLLBAR-DARKSHADOW-COLOR: #ecf5ff;
+    TEXT-DECORATION: none;
+}
+
+.main {
+    MARGIN: 0px;
+}
+
+.main {
+    FONT-SIZE: 12px
+}
+
+.main TD {
+    FONT-SIZE: 12px
+}
+
+.main TH {
+    FONT-SIZE: 12px
+}
+
+.main .input {
+    BORDER-RIGHT: #7f9db9 1px solid;
+    BORDER-TOP: #7f9db9 1px solid;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #7f9db9 1px solid;
+    BORDER-BOTTOM: #7f9db9 1px solid;
+    BACKGROUND-COLOR: #ffffff
+}
+
+.main A.ah:link {
+    COLOR: #ffff20
+}
+
+.main A.ah:visited {
+    COLOR: #ffff20
+}
+
+.main A.ah:hover {
+    COLOR: #ff0000
+}
+
+.main A.ah:active {
+    COLOR: #ff0000
+}
+
+.main A.aw:link {
+    COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+
+.main A.aw:visited {
+    COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+
+.main A.aw:hover {
+    COLOR: #ffff00;
+    TEXT-DECORATION: none
+}
+
+.main A.aw:active {
+    COLOR: #ffff00;
+    TEXT-DECORATION: none
+}
+
+.main A.ab:link {
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+
+.main A.ab:visited {
+    COLOR: #000000;
+    TEXT-DECORATION: none
+}
+
+.main A.ab:hover {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.ab:active {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.awnoline:link {
+    COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+
+.main A.awnoline:visited {
+    COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+
+.main A.awnoline:hover {
+    COLOR: #ffd83a
+}
+
+.main A.awnoline:active {
+    COLOR: #ffd83a
+}
+
+.main A.ag:visited {
+    COLOR: #003366;
+    TEXT-DECORATION: none
+}
+
+.main A.ag:hover {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.ag:active {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.ared:link {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.ared:visited {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none
+}
+
+.main A.ared:hover {
+    COLOR: #0000ff
+}
+
+.main A.ared:active {
+    COLOR: #0000ff
+}
+
+.main A.bred:link {
+    COLOR: #ff0000
+}
+
+.main A.bred:visited {
+    COLOR: #ff0000
+}
+
+.main A.bred:hover {
+    COLOR: #0000ff
+}
+
+.main A.bred:active {
+    COLOR: #0000ff
+}
+
+.main A.az:link {
+    COLOR: #993366
+}
+
+.main A.az:visited {
+    COLOR: #993366
+}
+
+.main A.az:hover {
+    COLOR: #ff0000
+}
+
+.main A.az:active {
+    COLOR: #ff0000
+}
+
+.main A.ags:link {
+    COLOR: #003366
+}
+
+.main A.ags:visited {
+    COLOR: #003366
+}
+
+.main A.ags:hover {
+    COLOR: #ff0000
+}
+
+.main A.ags:active {
+    COLOR: #ff0000
+}
+
+.main A.as:link {
+    COLOR: #976eb8;
+    TEXT-DECORATION: none
+}
+
+.main A.as:visited {
+    COLOR: #976eb8;
+    TEXT-DECORATION: none
+}
+
+.main A.as:hover {
+    COLOR: #ff0000
+}
+
+.main A.as:active {
+    COLOR: #ff0000
+}
+
+.main .buttonr {
+    FONT-SIZE: 9pt;
+    COLOR: #ff0000;
+    HEIGHT: 26px
+}
+
+.main .buttong {
+    FONT-SIZE: 9pt;
+    COLOR: #008400;
+    HEIGHT: 26px
+}
+
+.main .hands {
+    CURSOR: hand
+}
+
+.main .buttongmin {
+    FONT-SIZE: 9pt;
+    COLOR: #008400;
+    HEIGHT: 23px
+}
+
+.main .buttonrmin {
+    FONT-SIZE: 9pt;
+    COLOR: #ff0000;
+    HEIGHT: 23px
+}
+
+.main .tmove {
+    FILTER: progid:DXImageTransform.Microsoft.Shadow (Color=#333333, Direction=120, strength=3)
+}
+
+.main .fpro {
+    FONT-SIZE: 14px;
+    COLOR: #000000
+}
+
+.main .fred {
+    FONT-SIZE: 14px;
+    COLOR: #ff0000
+}
+
+.main .fred12 {
+    FONT-SIZE: 12px;
+    COLOR: #ff0000
+}
+
+.main .fb13 {
+    FONT-SIZE: 13px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+.main .fb14 {
+    font-size: 13px;
+    text-decoration: none;
+    color: red;
+    font-weight: bold
+}
+
+.main .fblue12 {
+    FONT-SIZE: 12px;
+    COLOR: #0000ff
+}
+
+.main .fgreen12 {
+    FONT-SIZE: 12px;
+    COLOR: #00572c
+}
+
+.main .f12g {
+    FONT-SIZE: 12px;
+    COLOR: #537D00
+}
+
+.main .fgreng {
+    FONT-SIZE: 12px;
+    COLOR: #008400
+}
+
+.main .fw14 {
+    FONT-SIZE: 14px;
+    COLOR: #ffffff
+}
+
+.main .fw12 {
+    FONT-SIZE: 12px;
+    COLOR: #ffffff
+}
+
+.main .fb12 {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+.main .fhhh {
+    FONT-SIZE: 12px;
+    COLOR: #ffff00
+}
+
+.main .fat {
+    FONT-SIZE: 18px
+}
+
+.main .fz {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #003366
+}
+
+.main .fbback {
+    FONT-WEIGHT: bold;
+    COLOR: #000000
+}
+
+.main .fbred {
+    FONT-WEIGHT: bold;
+    COLOR: #ff0000
+}
+
+.main .fblue {
+    FONT-WEIGHT: bold;
+    COLOR: #0000ff
+}
+
+.main .fgreen {
+    FONT-WEIGHT: bold;
+    COLOR: #008400
+}
+
+.main .t11 {
+    BACKGROUND-COLOR: #745237;
+    color: #FFFFFF
+}
+
+.main .t12 {
+    BACKGROUND-COLOR: #cccccc
+}
+
+.main .t13 {
+    BACKGROUND-COLOR: #fff9b6
+}
+
+.main .t14 {
+    BACKGROUND-COLOR: #f0f0f0
+}
+
+.main .t15 {
+    BACKGROUND-COLOR: #f0f0f0
+}
+
+.main .t16 {
+    BACKGROUND-COLOR: #c0d6eb
+}
+
+.main .t17 {
+    BACKGROUND-COLOR: #f0f0f0
+}
+
+.main .t18 {
+    BACKGROUND-COLOR: #4ba5db
+}
+
+.main .t19 {
+    BACKGROUND-COLOR: #2b5286
+}
+
+.main .t20 {
+    BACKGROUND-COLOR: #ffffff
+}
+
+.main .t21 {
+    BACKGROUND-COLOR: #225A01
+}
+
+.main .t22 {
+    BACKGROUND-COLOR: #FFFF33
+}
+
+.main .tred {
+    BACKGROUND-COLOR: #008400
+}
+
+.main .tgreen {
+    BACKGROUND-COLOR: #ff0000
+}
+
+.main .tblue {
+    BACKGROUND-COLOR: #0000ff
+}
+
+.main .ballr {
+    font-size: 16px;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.main .ballg {
+    font-size: 16px;
+    color: #00FF00;
+    font-weight: bold;
+}
+
+.main .ballb {
+    font-size: 16px;
+    color: #0000FF;
+    font-weight: bold;
+}
+
+.main .tbuttonr {
+    FONT-SIZE: 9pt;
+    COLOR: #ff0000;
+    HEIGHT: 20px;
+    WIDTH: 10%;
+    padding: 2 4 0 4;
+    font-size: 12px;
+    background-color: #ece9d8;
+    border-width: 1;
+}
+
+.main .tbuttong {
+    FONT-SIZE: 9pt;
+    COLOR: #008400;
+    HEIGHT: 20px;
+    WIDTH: 10%;
+    padding: 2 4 0 4;
+    font-size: 12px;
+    background-color: #ece9d8;
+    border-width: 1;
+}
+
+.main .tbuttonb {
+    FONT-SIZE: 9pt;
+    COLOR: #0000FF;
+    HEIGHT: 20px;
+    WIDTH: 10%;
+    padding: 2 4 0 4;
+    font-size: 12px;
+    background-color: #ece9d8;
+    border-width: 1;
+}
+
+.main .tbuttonse {
+    FONT-SIZE: 9pt;
+    COLOR: #ff0000;
+    HEIGHT: 20px;
+    WIDTH: 10%;
+    padding: 2 4 0 4;
+    font-size: 12px;
+    background-color: #00477D;
+    border-width: 1;
+}
+
+.main A.ab15:active {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none;
+    FONT-SIZE: 15pt;
+}
+
+.main A.ab15:link {
+    COLOR: #000000;
+    TEXT-DECORATION: none;
+    FONT-SIZE: 15pt;
+}
+
+.main A.ab15:visited {
+    COLOR: #000000;
+    TEXT-DECORATION: none;
+    FONT-SIZE: 15pt;
+}
+
+.main A.ab15:hover {
+    COLOR: #ff0000;
+    TEXT-DECORATION: none;
+    FONT-SIZE: 15pt;
+}
+
+.main A.fb12:active {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+.main A.fb12:link {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+.main A.fb12:visited {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+.main A.fb12:hover {
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    text-decoration: none;
+}
+
+
+.main {
+    margin-left: 0px;
+    margin-right: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main .numty {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FF0000
+}
+
+.main .style1 {
+    font-size: 13px
+}
+
+.main {
+
+    FONT-SIZE: 12px;
+    MARGIN: 0px;
+    /*filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#000000', endColorStr='000000', gradientType=0);*/
+    overflow: hidden;
+    font-family: Microsoft YaHei, Arial;
+}
+
+.main input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.main a {
+    color: #cf0303
+}
+
+.main .tb_title {
+    background-color: #786c56;
+    color: #fff
+}
+
+.main .note_title {
+    background-color: #9e906f;
+    color: #fff
+}
+
+.main .style3 {
+    color: #464031
+}
+
+.main .talkabout {
+    font-size: 12px;
+    font-family: Arial;
+    color: #ce0202;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-bottom: 12px
+}
+
+.main .table1 {
+    font-size: 12px;
+    color: #000;
+    background-color: #76694c;
+    border: 0px
+}
+
+.main .table1 .titletr {
+    background-color: #9e906f;
+    color: #fff
+}
+
+.main .table1 .title {
+    color: #fff
+}
+
+.main .table1 .tb1_title {
+    font-size: 12px;
+    background-color: #e8e8e8;
+    text-align: center;
+    color: #000
+}
+
+.main .table1 .tb1_title2 {
+    font-size: 12px;
+    background-color: #999;
+    text-align: center;
+    color: #fff
+}
+
+.main .table1 .tb1_body {
+    background-color: #fff;
+    text-align: center
+}
+
+.main .table1 .tb1_body2 {
+    background-color: #fff;
+    text-align: right
+}
+
+.main .table1 .tb1_body3 {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .table1 .titletr a {
+    color: #fff;
+    text-decoration: underline
+}
+
+.main .table2 {
+    font-size: 12px;
+    color: #006ad5;
+    background-color: #8be9a3;
+    border: 0px
+}
+
+.main .table2 .tb1_title {
+    font-size: 12px;
+    background-color: #ccffc7;
+    text-align: center
+}
+
+.main .table2 .tb1_body {
+    background-color: #fff;
+    text-align: center
+}
+
+.main .table2 .tb1_body2 {
+    background-color: #fff;
+    text-align: right
+}
+
+.main .table3 {
+    font-size: 16px;
+    color: #006ad5;
+    background-color: #76694c;
+    border: 0px
+}
+
+.main .table3 .title_1 {
+    background-color: #9e906f;
+    text-align: center;
+    color: #fff;
+    height: 28px
+}
+
+.main .table3 .title_2 {
+    background-color: #e8e8e8;
+    text-align: center;
+    color: #000;
+    height: 28px
+}
+
+.main .table3 .title_3 {
+    background-color: #999;
+    text-align: center;
+    color: #fff;
+    height: 28px
+}
+
+.main .table3 .body_c {
+    background-color: #fff;
+    text-align: center;
+    white-space: nowrap
+}
+
+.main .table3 .body_l {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .table4 {
+    font-size: 16px;
+    color: #006ad5;
+    background-color: #76694c;
+    border: 0px
+}
+
+.main .table4 .titld_1 {
+    background-color: #9e906f;
+    text-align: center;
+    color: #fff;
+    height: 28px
+}
+
+.main .table4 .title_2 {
+    background-color: #e8e8e8;
+    text-align: center;
+    color: #000;
+    height: 28px
+}
+
+.main .table4 .title_3 {
+    background-color: #999;
+    text-align: center;
+    color: #fff;
+    height: 28px
+}
+
+.main .table4 .body_c {
+    background-color: #fff;
+    text-align: center;
+    white-space: nowrap
+}
+
+.main .table4 .body_l {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .table5 {
+    font-size: 12px;
+    color: #000;
+    background-color: #ccd1d7
+}
+
+.main .table5 .tb1_title {
+    font-size: 12px;
+    background-color: #22aaa7;
+    text-align: center;
+    color: #fff
+}
+
+.main .table5 TD {
+    color: #000
+}
+
+.main .table5 .tb1_body {
+    background-color: #fff;
+    text-align: center
+}
+
+.main .table5 .tb1_body2 {
+    background-color: #fff;
+    text-align: right
+}
+
+.main .table5 .tb1_body3 {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .jumptable1 {
+    background-color: #86a8cb
+}
+
+.main .jumptable1 .jumptable2 {
+    background-color: #86a8cb
+}
+
+.main .jumptable2 .titletr {
+    background-color: #56407e;
+    color: #fff
+}
+
+.main .jumptable2 .main {
+    background-color: #e1e1e1;
+    color: #000
+}
+
+.main .accounttb {
+    font-size: 12px;
+    color: #000;
+    background-color: #9aacbd;
+    border: 0px
+}
+
+.main .accounttb .titletr {
+    background-color: #56417d;
+    color: #fff
+}
+
+.main .accounttb .title {
+    color: #fff
+}
+
+.main .accounttb .tb1_title {
+    font-size: 12px;
+    background-color: #e1e1e1;
+    text-align: center;
+    color: #000
+}
+
+.main .accounttb TD {
+    color: #000
+}
+
+.main .accounttb .tb1_body {
+    background-color: #fff;
+    text-align: center
+}
+
+.main .accounttb .tb1_body2 {
+    background-color: #fff;
+    text-align: right
+}
+
+.main .accounttb .tb1_body3 {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .edituser {
+    font-size: 16px;
+    color: #006ad5;
+    background-color: #9cadbf;
+    border: 0px
+}
+
+.main .edituser .titld_1 {
+    background-color: #e1e1e1;
+    text-align: center
+}
+
+.main .edituser .title_2 {
+    background-color: #56407e;
+    text-align: center;
+    color: #fff
+}
+
+.main .edituser .body_c {
+    background-color: #fff;
+    text-align: center;
+    white-space: nowrap
+}
+
+.main .edituser .body_l {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .editwin {
+    font-size: 16px;
+    color: #006ad5;
+    background-color: #9c8446;
+    border: 0px
+}
+
+.main .editwin .title_1 {
+    background-color: #e1e1e1;
+    text-align: center
+}
+
+.main .editwin .title_2 {
+    background-color: #786c56;
+    text-align: center;
+    color: #fff
+}
+
+.main .editwin .title_3 {
+    background-color: #009acd;
+    text-align: center;
+    color: #fff
+}
+
+.main .editwin .body_c {
+    background-color: #fff;
+    text-align: center;
+    white-space: nowrap
+}
+
+.main .editwin .body_l {
+    background-color: #fff;
+    text-align: left
+}
+
+.main .memcount {
+    background-color: #9aacbd
+}
+
+.main .memcount .form_font_title {
+    background-color: #e1e1e1
+}
+
+.main .memcount .form_font_title2 {
+    background-color: #56407e;
+    color: #fff
+}
+
+.main .memcount .tb1_body {
+    background-color: #fff
+}
+
+.main .reporttb {
+    background-color: #9aacbd
+}
+
+.main .reporttb .titletr {
+    background-color: #56407e;
+    color: #fff
+}
+
+.main .reporttb a {
+    color: #fff
+}
+
+.main .reporttb .tb1_title {
+    background-color: #e1e1e1
+}
+
+.main .reportlisttb {
+    background-color: #9c8446
+}
+
+.main .reportlisttb .td {
+    border: solid #9aacbd 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px
+}
+
+.main .reportlisttb .td2 {
+    border: solid #9aacbd 1px;
+    border-right-width: 0px
+}
+
+.main .reportlisttb .td3 {
+    background-color: #9e906f;
+    color: #fff;
+    border: solid #9aacbd 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px
+}
+
+.main .reportlisttb .titletr {
+    background-color: #9e906f;
+    color: #fff
+}
+
+.main .reportlisttb .titletr2 {
+    background-color: #56407e;
+    color: #fff
+}
+
+.main .reportlisttb .titletr2 a {
+    color: #fff
+}
+
+.main .reportlisttb .title {
+    color: #fff
+}
+
+.main .reportlisttb .tb1_title {
+    background-color: #e1e1e1
+}
+
+.main .reportlisttb .tb1_title2 {
+    background-color: #e7cdff
+}
+
+.main .reportlisttb .tb1_body {
+    background-color: #fff
+}
+
+.main .reportlisttb .tb1_body2 {
+    background-color: #fff
+}
+
+.main .linetb {
+    background-color: #9c8446
+}
+
+.main .linetb .tb1_title {
+    background-color: #e8e8e8
+}
+
+.main .linetb .tb1_title2 {
+    background-color: #e7cdff
+}
+
+.main .buttona {
+    color: #fff
+}
+
+.main .solid-bottom {BORDER-BOTTOM: #dddddd 1px solid}
+.main .sec1  {
+background-color:  #F4F4F4;
+cursor:  hand;
+color:  #000000;
+border-left:  1px  solid  #FFFFFF;
+border-top:  1px  solid  #FFFFFF;
+border-right:  1px  solid  gray;
+border-bottom:  1px  solid  #FFFFFF
+}
+.main .sec3  {
+background-color:  #EAEAEA;
+cursor:  hand;
+color:  #000000;
+border-left:  1px  solid  #FFFFFF;
+border-top:  1px  solid  #FFFFFF;
+border-right:  1px  solid  gray;
+border-bottom:  1px  solid  #FFFFFF
+}
+.main .sec2  {
+background-color:  #EAEAEA;
+cursor:  hand;
+color:  #58A200;
+border-left:  1px  solid  #FFFFFF;
+border-top:  1px  solid  #FFFFFF;
+border-right:  1px  solid  gray;
+font-weight:  bold;
+}

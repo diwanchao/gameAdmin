@@ -1,0 +1,296 @@
+
+.main .input {
+	BORDER-BOTTOM: #7f9db9 1px solid; BORDER-LEFT: #7f9db9 1px solid; BACKGROUND-COLOR: #ffffff; FONT-SIZE: 9pt; BORDER-TOP: #7f9db9 1px solid; BORDER-RIGHT: #7f9db9 1px solid
+}
+.main A.ah:link {
+	COLOR: #ffff20
+}
+.main A.ah:visited {
+	COLOR: #ffff20
+}
+.main A.ah:hover {
+	COLOR: #ff0000
+}
+.main A.ah:active {
+	COLOR: #ff0000
+}
+.main A.aw:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.main A.aw:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.main A.aw:hover {
+	COLOR: #ffff00; TEXT-DECORATION: none
+}
+.main A.aw:active {
+	COLOR: #ffff00; TEXT-DECORATION: none
+}
+.main A.ab:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.main A.ab:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.main A.ab:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.ab:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.awnoline:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.main A.awnoline:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.main A.awnoline:hover {
+	COLOR: #ffd83a
+}
+.main A.awnoline:active {
+	COLOR: #ffd83a
+}
+.main A.ag:visited {
+	COLOR: #003366; TEXT-DECORATION: none
+}
+.main A.ag:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.ag:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.ared:link {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.ared:visited {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.main A.ared:hover {
+	COLOR: #0000ff
+}
+.main A.ared:active {
+	COLOR: #0000ff
+}
+.main A.bred:link {
+	COLOR: #ff0000
+}
+.main A.bred:visited {
+	COLOR: #ff0000
+}
+.main A.bred:hover {
+	COLOR: #0000ff
+}
+.main A.bred:active {
+	COLOR: #0000ff
+}
+.main A.az:link {
+	COLOR: #993366
+}
+.main A.az:visited {
+	COLOR: #993366
+}
+.main A.az:hover {
+	COLOR: #ff0000
+}
+.main A.az:active {
+	COLOR: #ff0000
+}
+.main A.ags:link {
+	COLOR: #003366
+}
+.main A.ags:visited {
+	COLOR: #003366
+}
+.main A.ags:hover {
+	COLOR: #ff0000
+}
+.main A.ags:active {
+	COLOR: #ff0000
+}
+.main A.as:link {
+	COLOR: #976eb8; TEXT-DECORATION: none
+}
+.main A.as:visited {
+	COLOR: #976eb8; TEXT-DECORATION: none
+}
+.main A.as:hover {
+	COLOR: #ff0000
+}
+.main A.as:active {
+	COLOR: #ff0000
+}
+.main .buttonr {
+	HEIGHT: 26px; COLOR: #ff0000; FONT-SIZE: 9pt
+}
+.main .buttong {
+	HEIGHT: 26px; COLOR: #008400; FONT-SIZE: 9pt
+}
+.main .hands {
+	CURSOR: hand
+}
+.main .buttongmin {
+	HEIGHT: 23px; COLOR: #008400; FONT-SIZE: 9pt
+}
+.main .buttonrmin {
+	HEIGHT: 23px; COLOR: #ff0000; FONT-SIZE: 9pt
+}
+
+.main .fpro {
+	COLOR: #000000; FONT-SIZE: 14px
+}
+.main .fred {
+	COLOR: #ff0000; FONT-SIZE: 14px
+}
+.main .fred12 {
+	COLOR: #ff0000; FONT-SIZE: 12px
+}
+.main .fblue12 {
+	COLOR: #0000ff; FONT-SIZE: 12px
+}
+.main .fgreen12 {
+	COLOR: #00572c; FONT-SIZE: 12px
+}
+.main .fgreng {
+	COLOR: #008400; FONT-SIZE: 12px
+}
+.main .fw14 {
+	COLOR: #ffffff; FONT-SIZE: 14px
+}
+.main .fw12 {
+	COLOR: #ffffff; FONT-SIZE: 12px
+}
+.main .fb12 {
+	COLOR: #000000; FONT-SIZE: 12px
+}
+.main .fhhh {
+	COLOR: #ffff00; FONT-SIZE: 12px
+}
+.main .fat {
+	FONT-SIZE: 18px
+}
+.main .fz {
+	COLOR: #003366; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+.main .fbback {
+	COLOR: #000000; FONT-WEIGHT: bold
+}
+.main .fbred {
+	COLOR: #ff0000; FONT-WEIGHT: bold
+}
+.main .fblue {
+	COLOR: #0000ff; FONT-WEIGHT: bold
+}
+.main .fgreen {
+	COLOR: #008400; FONT-WEIGHT: bold
+}
+.main .t11 {
+	BACKGROUND-COLOR: #90810a
+}
+.main .t12 {
+	BACKGROUND-COLOR: #cccccc
+}
+.main .t13 {
+	BACKGROUND-COLOR: #fff9b6
+}
+.main .t14 {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.main .t15 {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.main .t16 {
+	BACKGROUND-COLOR: #c0d6eb
+}
+.main .t17 {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.main .t18 {
+	BACKGROUND-COLOR: #4ba5db
+}
+.main .t19 {
+	BACKGROUND-COLOR: #2b5286
+}
+.main .t20 {
+	BACKGROUND-COLOR: #ffffff
+}
+.main .t21 {
+	BACKGROUND-COLOR: #225a01
+}
+.main .tred {
+	BACKGROUND-COLOR: #008400
+}
+.main .tgreen {
+	BACKGROUND-COLOR: #ff0000
+}
+.main .tblue {
+	BACKGROUND-COLOR: #0000ff
+}
+.main .ballr {
+	COLOR: #ff0000; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+.main .ballg {
+	COLOR: #00ff00; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+.main .ballb {
+	COLOR: #0000ff; FONT-SIZE: 16px; FONT-WEIGHT: bold
+}
+.main .tbuttonr {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #ece9d8; PADDING-LEFT: 4px; WIDTH: 10%; PADDING-RIGHT: 4px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 20px; COLOR: #ff0000; FONT-SIZE: 12px; BORDER-LEFT-WIDTH: 1px; PADDING-TOP: 2px
+}
+.main .tbuttong {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #ece9d8; PADDING-LEFT: 4px; WIDTH: 10%; PADDING-RIGHT: 4px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 20px; COLOR: #008400; FONT-SIZE: 12px; BORDER-LEFT-WIDTH: 1px; PADDING-TOP: 2px
+}
+.main .tbuttonb {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #ece9d8; PADDING-LEFT: 4px; WIDTH: 10%; PADDING-RIGHT: 4px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 20px; COLOR: #0000ff; FONT-SIZE: 12px; BORDER-LEFT-WIDTH: 1px; PADDING-TOP: 2px
+}
+.main .tbuttonse {
+	PADDING-BOTTOM: 0px; BORDER-RIGHT-WIDTH: 1px; BACKGROUND-COLOR: #00477d; PADDING-LEFT: 4px; WIDTH: 10%; PADDING-RIGHT: 4px; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; HEIGHT: 20px; COLOR: #ff0000; FONT-SIZE: 12px; BORDER-LEFT-WIDTH: 1px; PADDING-TOP: 2px
+}
+.main A.ab15:active {
+	COLOR: #ff0000; FONT-SIZE: 15pt; TEXT-DECORATION: none
+}
+.main A.ab15:link {
+	COLOR: #000000; FONT-SIZE: 15pt; TEXT-DECORATION: none
+}
+.main A.ab15:visited {
+	COLOR: #000000; FONT-SIZE: 15pt; TEXT-DECORATION: none
+}
+.main A.ab15:hover {
+	COLOR: #ff0000; FONT-SIZE: 15pt; TEXT-DECORATION: none
+}
+.main .tb_title {
+	BACKGROUND-COLOR: #786c56; COLOR: #ffffff
+}	
+.main TD {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; WHITE-SPACE: nowrap; PADDING-TOP: 0px
+}
+.main .line {
+	BORDER-BOTTOM: #205ca5 1px solid; BORDER-LEFT: #205ca5 1px solid; BORDER-TOP: #205ca5 1px solid; BORDER-RIGHT: #205ca5 1px solid
+}
+.main .icon {
+	background: url(../../global/image/icon.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left bottom; COLOR: #ffffff; FONT-SIZE: 12px
+}
+.main .style1 {
+	COLOR: #000000
+}
+.main .s1 {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ff0000; FONT-WEIGHT: bold
+}
+.watable TD {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 3px; PADDING-TOP: 0px
+}
+.main .top_css {
+	Z-INDEX: 1; POSITION: absolute; MARGIN-TOP: 3px; WIDTH: 17px; HEIGHT: 17px; MARGIN-LEFT: 120px
+}
+.main .linetb {
+	BACKGROUND-COLOR: #9c8446
+}
+.main .linetb .tb1_title {
+	BACKGROUND-COLOR: #e8e8e8
+}
+.main .linetb .tb1_title2 {
+	BACKGROUND-COLOR: #e7cdff
+}
+.main .buttona {
+	COLOR: #ffffff
+}
