@@ -20,26 +20,7 @@ var app = new Vue({
 
         /**  右侧  **/
         game_key: 'jlk3',
-        data: [
-            {
-                name: '二同号复选',
-                A: '10',
-                B: '10',
-                C: '10',
-                D: '10',
-                single: '300000',
-                single_note: '600000',
-            },
-            {
-                name: '二不同号',
-                A: '10',
-                B: '10',
-                C: '10',
-                D: '10',
-                single: '300000',
-                single_note: '600000',
-            }
-        ]
+        data: []
     },
     methods: {
         init: function(){
@@ -68,5 +49,10 @@ var app = new Vue({
             }
         })
         this.init();
+    },
+    watch: {
+        game_key: function(){
+            this.init();
+        }
     }
 })
