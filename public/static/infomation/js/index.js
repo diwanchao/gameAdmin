@@ -10,11 +10,11 @@ var app = new Vue({
         occpuy: [ // 占成
             {
                 name: '吉林快3',
-                rate: '0'
+                reate: '0'
             },
             {
                 name: '重庆时时彩',
-                rate: '87'
+                reate: '87'
             },
         ],
 
@@ -40,5 +40,33 @@ var app = new Vue({
                 single_note: '600000',
             }
         ]
+    },
+    methods: {
+        init: function(){
+            var _this = this;
+            utils.getAjax({
+                url: '/api/Information/list',
+                type: 'GET',
+                data: {game_key: this.game_key},
+                success: function(result){
+                    _this.data = result.data;
+                }
+            })
+        },
+    },
+    mounted: function(){
+        var _this = this;
+        utils.getAjax({
+            url: '/api/user/creditInfo',
+            type: 'GET',
+            success: function(result){
+                _this.user_name = result.user_name;
+                _this.credit_limit = result.credit_quota;
+                _this.already_limit = result.use_quota;
+                _this.fast_limit = result.quick_open_quote;
+                // 缺少类型（是否总代理），占成格式不对
+            }
+        })
+        init();
     }
 })
