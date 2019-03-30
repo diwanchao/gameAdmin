@@ -439,9 +439,9 @@ var ENV = {
 				_this.user_type = result.role_name;
 				_this.user_name = result.user_name;
 				_this.game_list = result.game_list;
-				this.baseInit();
-				this.gameInit();
-				this.logoutInit();
+				_this.baseInit();
+				_this.gameInit();
+				_this.logoutInit();
 			}
 		});
 	}
