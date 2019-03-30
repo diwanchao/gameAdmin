@@ -46,7 +46,7 @@ class Monitoring extends Base
    		{
    			if ($game_key == 'jlk3') 
    			{
-   				$periods 	= get_k3_number() == $periods ? $periods : get_k3_number();
+   				//$periods 	= get_k3_number() == $periods ? $periods : get_k3_number();
    				$data  		= Db::table('order')->field('COUNT(`no`) AS num,play_key')->where('play_name','in',$this->tab_map[$tab])->where('part','=',$levelValue)->where('number','=',$periods)->group('play_key')->select();
    				$return_data = array_column($data,'num','play_key');
    			}
