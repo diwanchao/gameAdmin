@@ -28,7 +28,7 @@ var app = new Vue({
         init: function(){
 
             var _this = this;
-            
+
             var data = {
                 game_key: this.game_key,
                 levelValue: this.levelValue,
@@ -40,6 +40,7 @@ var app = new Vue({
                 type: 'GET',
                 data: data,
                 success: function(result){
+                    _this.data = result;
                     console.log(result);
                 }
             });
