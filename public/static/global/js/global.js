@@ -427,7 +427,7 @@ var ENV = {
 			url: '/api/index/firstNotice',
 			type: 'GET',
 			success: function(result){
-				_this.notice = result.content;
+				_this.data.notice = result.content;
 				_this.noticeInit();
 			}
 		});
@@ -435,10 +435,10 @@ var ENV = {
 			url: '/api/user/getuserinfo',
 			type: 'GET',
 			success: function(result){
-				_this.user_type_id = result.role_type;
-				_this.user_type = result.role_name;
-				_this.user_name = result.user_name;
-				_this.game_list = result.game_list;
+				_this.data.user_type_id = result.role_type;
+				_this.data.user_type = result.role_name;
+				_this.data.user_name = result.user_name;
+				_this.data.game_list = result.game_list;
 				_this.baseInit();
 				_this.gameInit();
 				_this.logoutInit();
