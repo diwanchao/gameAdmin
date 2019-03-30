@@ -26,6 +26,9 @@ var app = new Vue({
 
         },
         init: function(){
+
+            var _this = this;
+            
             var data = {
                 game_key: this.game_key,
                 levelValue: this.levelValue,
