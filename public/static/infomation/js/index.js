@@ -67,6 +67,6 @@ var app = new Vue({
                 // 缺少类型（是否总代理），占成格式不对
             }
         })
-        init();
+        this.init();
     }
 })
