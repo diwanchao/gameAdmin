@@ -26,20 +26,37 @@ var app = new Vue({
 
         },
         init: function(){
+
+            var _this = this;
+            
             var data = {
                 game_key: this.game_key,
                 levelValue: this.levelValue,
                 tab: this.tab,
-                periods: this.periods,
+                periods: '20190330006',
             }
-            // utils.getAjax({
-            //     url: '/',
-            //     type: 'GET',
-            //     data: data,
-            //     success: function(result){
-            //         console.log(result);
-            //     }
-            // })
+            utils.getAjax({
+                url: '/api/Monitoring/game',
+                type: 'GET',
+                data: data,
+                success: function(result){
+                    console.log(result);
+                }
+            });
+
+            utils.getAjax({
+                url: '/api/index/getNowExpect',
+                type: 'GET',
+                data: {
+                    game_key: this.game_key,
+
+                },
+                success: function(result){
+                    _this.periods = result.number;
+                    
+                }
+    
+            });
             console.log('请求加载：game_key=' + this.game_key + '; levelValue=' + this.levelValue + '; refresh=' + this.refresh + '; tab=' + this.tab)
         }
     },
@@ -52,23 +69,9 @@ var app = new Vue({
 			time = new Date(time) * 1 + 1000;
 			_this.count_down = utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss');
         }, 1000);
-        
-        // utils.getAjax({
-        //     url: '/api/index/getNowExpect',
-        //     type: 'GET',
-        //     data: {
-        //         game_key: this.game_key
-        //     },
-        //     success: function(result){
-        //         _this.
-        //         _this.init();
-        //     }
-
-        // })
-        // this.$nextTick = function(){
-            
-        // }
-        
+    },
+    mounted: function(){
+        this.init();
     },
     watch: {
         tab: function(){
