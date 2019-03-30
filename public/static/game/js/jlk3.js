@@ -66,9 +66,9 @@ var app = new Vue({
 			time = new Date(time) * 1 + 1000;
 			_this.count_down = utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss');
         }, 1000);
-
-        _this.init();
-        
+    },
+    mounted: function(){
+        this.init();
     },
     watch: {
         tab: function(){
