@@ -200,59 +200,59 @@
 
 
 
-    // var H_confirm = function(msg, callback, cancel){
-    //     var id = '#h-confirm-'+ new Date().getTime();
-    //     this.ele = $('<div class="h-modal" id="'+ id.replace('#', '') +'" data-width="550"><div class="h-modal-title"><h5>系统提示</h5><span class="h-modal-close" data-methods="close"><i class="fa fa-times"></i></span></div><div class="h-modal-body">是否确认当前操作？</div><div class="h-modal-footer"><span class="h-modal-button submit" data-methods="submit"><i class="fa fa-save"></i> 确认</span><span class="h-modal-button cancel" data-methods="close"><i class="fa fa-times"></i> 取消</span></div></div>');
-    //     $('body').append(this.ele);
-    //     this.callback = callback;
-    //     this.cancel = cancel;
-    //     msg ? this.ele.find('.h-modal-body').html(msg) : null;
-    //     H_modal.prototype.constructor.call(this, id);
-    //     this.confirmInit();
-    // }
+    var H_confirm = function(msg, callback, cancel){
+        var id = '#h-confirm-'+ new Date().getTime();
+        this.ele = $('<div class="h-modal" id="'+ id.replace('#', '') +'" data-width="550"><div class="h-modal-title"><h5>系统提示</h5><span class="h-modal-close" data-methods="close"><i class="fa fa-times"></i></span></div><div class="h-modal-body">是否确认当前操作？</div><div class="h-modal-footer"><span class="h-modal-button submit" data-methods="submit"><i class="fa fa-save"></i> 确认</span><span class="h-modal-button cancel" data-methods="close"><i class="fa fa-times"></i> 取消</span></div></div>');
+        $('body').append(this.ele);
+        this.callback = callback;
+        this.cancel = cancel;
+        msg ? this.ele.find('.h-modal-body').html(msg) : null;
+        H_modal.prototype.constructor.call(this, id);
+        this.confirmInit();
+    }
 
-    // inhert(H_confirm, H_modal);
+    inhert(H_confirm, H_modal);
 
-    // H_confirm.prototype.confirmInit = function(){
-    //     var _this = this;
-    //     this.show();
-    //     this.ele.on('bs-beforeClose', function(){
-    //         utils.isTypeOf(_this.cancel, 'function') ? _this.cancel() : null;
-    //         window.setTimeout(function(){
-    //             _this.ele.remove();
-    //             _this.ele = null;
-    //         }, 500);
-    //     });
-    //     this.ele.on('bs-beforeSubmit', function(){
-    //         utils.isTypeOf(_this.callback, 'function') ? _this.callback() : null;
-    //         _this.hide(false);
-    //     });
-    // }
+    H_confirm.prototype.confirmInit = function(){
+        var _this = this;
+        this.show();
+        this.ele.on('bs-beforeClose', function(){
+            utils.isTypeOf(_this.cancel, 'function') ? _this.cancel() : null;
+            window.setTimeout(function(){
+                _this.ele.remove();
+                _this.ele = null;
+            }, 500);
+        });
+        this.ele.on('bs-beforeSubmit', function(){
+            utils.isTypeOf(_this.callback, 'function') ? _this.callback() : null;
+            _this.hide(false);
+        });
+    }
 
     
-    // var H_alert = function(msg){
-    //     var id = '#h-confirm-'+ new Date().getTime();
-    //     this.ele = $('<div class="h-modal" id="'+ id.replace('#', '') +'" data-width="550"><div class="h-modal-title"><h5>系统提示</h5><span class="h-modal-close" data-methods="close"><i class="fa fa-times"></i></span></div><div class="h-modal-body">是否确认当前操作？</div><div class="h-modal-footer"><span class="h-modal-button submit" data-methods="close"><i class="fa fa-save"></i> 确认</span></div></div>');
-    //     $('body').append(this.ele);
-    //     msg ? this.ele.find('.h-modal-body').html(msg) : null;
-    //     H_modal.prototype.constructor.call(this, id);
-    //     this.initAlert();
-    // }
+    var H_alert = function(msg){
+        var id = '#h-confirm-'+ new Date().getTime();
+        this.ele = $('<div class="h-modal" id="'+ id.replace('#', '') +'" data-width="550"><div class="h-modal-title"><h5>系统提示</h5><span class="h-modal-close" data-methods="close"><i class="fa fa-times"></i></span></div><div class="h-modal-body">是否确认当前操作？</div><div class="h-modal-footer"><span class="h-modal-button submit" data-methods="close"><i class="fa fa-save"></i> 确认</span></div></div>');
+        $('body').append(this.ele);
+        msg ? this.ele.find('.h-modal-body').html(msg) : null;
+        H_modal.prototype.constructor.call(this, id);
+        this.initAlert();
+    }
 
-    // inhert(H_alert, H_modal);
+    inhert(H_alert, H_modal);
 
-    // H_alert.prototype.initAlert = function(){
-    //     this.show();
-    // }
+    H_alert.prototype.initAlert = function(){
+        this.show();
+    }
 
     
 
 
     window.H_modal = H_modal;
-    // window.H_confirm = function(msg, callback, cancel){
-    //     return new H_confirm(msg, callback, cancel);
-    // }
-    // window.H_alert = function(msg){
-    //     return new H_alert(msg);
-    // }
+    window.H_confirm = function(msg, callback, cancel){
+        return new H_confirm(msg, callback, cancel);
+    }
+    window.H_alert = function(msg){
+        return new H_alert(msg);
+    }
 })();

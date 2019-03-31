@@ -34,7 +34,7 @@
                                                                 <tr>
                                                                     <td width="12%" height="21" align="center">会员管理</td>
                                                                     <td width="40%" nowrap="">
-                                                                        <select @change="init" v-model="search.state" class="asas">
+                                                                        <select @change="init" v-model="search.status" class="asas">
                                                                             <option value="1">启用</option>
                                                                             <option value="0">停用</option>
                                                                         </select>
@@ -171,6 +171,24 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- 快开额度 -->
+    <div class="h-modal" id="confirmModal" data-width="350">
+        <div class="h-modal-title">
+            <h5>下注内容</h5>
+            <span class="h-modal-close" data-methods="close">&times;</span>
+        </div>
+        <div class="h-modal-body">
+            <div style="text-align: center;">
+                <input type="hidden" name="id" class="id">
+                金额：<input type="text" name="money" class="money"> / <span class="use_money">12</span>(可用) | <input type="button" data-methods="submit" value="存入" style="color: #008400">
+            </div>
+        </div>
+        <!-- <div class="h-modal-footer">
+            <span class="h-modal-button submit" data-methods="submit">确认下注</span>
+            <span class="h-modal-button cancel" data-methods="close">取消</span>
+        </div> -->
     </div>
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
