@@ -149,14 +149,14 @@ var app = new Vue({
     },
     mounted: function(){
         var _this = this;
-        // utils.getAjax({
-        //     url: '/api/member/memberList',
-        //     type: 'GET',
-        //     success: function(result){
-        //         delete result[_this.id];
-        //         _this.memberList = result;
-        //     }
-        // });
+        utils.getAjax({
+            url: '/api/member/memberList',
+            type: 'GET',
+            success: function(result){
+                delete result[_this.id];
+                _this.memberList = result;
+            }
+        });
 
         
         this.init();
