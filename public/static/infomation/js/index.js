@@ -7,16 +7,7 @@ var app = new Vue({
         credit_limit: '0', // 信用额度
         already_limit: '0', // 以开额度
         fast_limit: '0', // 快开额度
-        occpuy: [ // 占成
-            {
-                name: '吉林快3',
-                reate: '0'
-            },
-            {
-                name: '重庆时时彩',
-                reate: '87'
-            },
-        ],
+        occpuy: {},
 
         /**  右侧  **/
         game_key: 'jlk3',
