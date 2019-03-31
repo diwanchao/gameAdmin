@@ -40,8 +40,8 @@ class Member extends Base
 	 */
 	public function getQuick()
 	{
-		$type    = $this->request->param('type',0);
-		$data['number'=>'123'];
+		$type 	= $this->request->param('type',0);
+		$data 	= ['number'=>'123'];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
 	}
