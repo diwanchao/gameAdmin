@@ -40,10 +40,10 @@
                                                                         </select>
                                                                         排序
                                                                         <select @change="init" v-model="search.sort" class="asas">
-                                                                            <option value="createTime">新增日期</option>
-                                                                            <option value="account">会员名称</option>
+                                                                            <option value="create_time">新增日期</option>
+                                                                            <option value="user_name">会员名称</option>
                                                                             <!-- <option value="balance">信用额度</option> -->
-                                                                            <option value="loginTime">最后登录</option>
+                                                                            <option value="login_time">最后登录</option>
                                                                         </select>
                                                                         用户名：<input type="text" v-model="search.user_name" class="input">
                                                                         <input type="button" value="查询" @click="init">
@@ -163,17 +163,9 @@
                                         <a href="#" class="ags" onclick="upgame_item(0,26075)">暂停投注</a>
 
                                         ::
-                                        <a href="xghy.do?id0=26075" class="ags">修改资料</a>
+                                        <a href="/index/member_management/memberInfo?id=" class="ags">修改资料</a>
                                         ::
-                                        <a href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=FC3D&amp;agent_id=11771&amp;account=han321"
-                                            class="ags">详细设定</a>
-
-
-                                        ::
-                                        <a href="edit_user_odds.jsp?ID=26075&amp;account_type=7&amp;game_name=FC3D&amp;agent_id=11771&amp;account=han321"
-                                            class="ags">扣赔率</a>
-
-                                        ::
+                                        <a href="/index/member_management/settingInfo?id=" class="ags">详细设定</a>
 
                                         <input type="hidden" value="1" name="sbh_26075">
                                         <input type="hidden" value="1" name="tzsbh_26075">
@@ -190,5 +182,5 @@
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-
+<script src="/static/memberManagement/js/index.js"></script>
 </html>
