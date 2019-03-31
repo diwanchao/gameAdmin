@@ -43,11 +43,11 @@ var app = new Vue({
 
             if(status == 1) {
                 $('#modal h5').html('提取 -- ' + data.user_name);
-                $('#modal [type=button]').value('提取');
+                $('#modal [type=button]').val('提取');
             }
             else {
                 $('#modal h5').html('存入 -- ' + data.user_name);
-                $('#modal [type=button]').value('存入');
+                $('#modal [type=button]').val('存入');
             }
 
             utils.getAjax({
