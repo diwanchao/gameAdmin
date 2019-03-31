@@ -99,6 +99,7 @@ modal.on('bs-beforeSubmit', function(){
         alert: true,
         success: function(){
             app.init();
+            modal.hide();
         },
         alert: true,
     })
