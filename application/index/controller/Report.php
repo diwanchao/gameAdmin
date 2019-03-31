@@ -9,5 +9,12 @@ class Report extends Base
     {
         return $this->fetch();
     }
-  
+    public function reportAgent()
+    {
+        return $this->fetch();
+    }  
+    public function reportMember()
+    {
+        return $this->fetch();
+    }
 }
