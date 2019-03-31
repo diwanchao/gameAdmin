@@ -41,10 +41,11 @@ class User extends Base
 	{
 		$data = [
 			'user_name'=>'dwc',
+			'role_name'=>'总代理',
 			'credit_quota'=>0,
 			'use_quota'=>0,
 			'quick_open_quote'=>0,
-			'Ratio'=>['jlke'=>'0%','ssc'=>'0%'],
+			'Ratio'=>['吉林快3'=>'0%','重庆时时彩'=>'0%'],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
