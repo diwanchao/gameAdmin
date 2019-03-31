@@ -71,7 +71,7 @@ var app = new Vue({
     },
     mounted: function(){
         this.create_user_name = ENV.userInfo.user_name;
-        this.usable_quick = ENV.userInfo.usable_quote;
+        this.usable_quick = ENV.userInfo.quick_open_quote;
 
         var level = {};
         for(var i = 0; i < ENV.userInfo.dish.length; i++) {
