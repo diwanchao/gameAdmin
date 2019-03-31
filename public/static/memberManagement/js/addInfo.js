@@ -14,14 +14,15 @@ var app = new Vue({
         name: '', // 会员名称
         pwd: '', // 密码
         confirm_pwd: '', // 确认密码
-        levelValue: [],
-        quick: 1000,
-        usable_quick: 2000,
+        levelValue: {},
+        quick: '',
+        usable_quick: 1,
         game_list: [],
     },
     methods: {
         // 验证
         verificationUsername: function(){
+            var _this = this;
             utils.getAjax({
                 url: '/api/Member/checkUserName',
                 data: {
@@ -29,22 +30,55 @@ var app = new Vue({
                 },
                 type: 'POST',
                 success: function(){
-                    this.usernameStatus = 1;
+                    _this.usernameStatus = 1;
                 }
+            })
+        },
+
+        submit: function(){
+            if(this.usernameStatus == 0){
+                alert('请检测账号是否重复！');
+                return;
+            }
+            var game = {};
+            for(var i  =0 ; i < this.game_list.length; i++) {
+                if(this.game_list[i].select){
+                    game[this.game_list[i].game_key] = true;
+                }
+            }
+            var data = {
+                agent_name: this.create_user_name,
+                user_num: this.username,
+                user_name: this.user_name,
+                password: this.pwd,
+                confirm_pwd: this.confirm_pwd,
+                quick_open_quote: this.quick,
+                part: this.levelValue,
+                game: game
+            };
+
+            utils.getAjax({
+
+                url: '/api/Member/addUser',
+                type: 'POST',
+                data: data,
+                success: function(result){
+                    history.back(1);
+                },
+                alert: true,
             })
         }
     },
     mounted: function(){
         this.create_user_name = ENV.userInfo.user_name;
-        
+        this.usable_quick = ENV.userInfo.quick_open_quote;
 
         var level = {};
         for(var i = 0; i < ENV.userInfo.dish.length; i++) {
-            level[ENV.userInfo.dish[i]] = 0
+            level[ENV.userInfo.dish[i]] = false;
         }
         this.levelValue = level;
-
-
+        
         this.game_list = ENV.userInfo.game_list;
     },
 
