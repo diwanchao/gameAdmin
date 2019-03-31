@@ -41,6 +41,13 @@ var app = new Vue({
 
         quickLimit: function(data, status){
 
+            if(status == 1) {
+                $('#modal h5').html('提取 -- ' + data.user_name);
+            }
+            else {
+                $('#modal h5').html('存入 -- ' + data.user_name);
+            }
+
             utils.getAjax({
                 url: '/api/Member/getQuick',
                 data: {type: status, id: data.id},
