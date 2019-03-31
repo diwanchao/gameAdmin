@@ -49,7 +49,7 @@ var app = new Vue({
             var data = {
                 agent_name: this.create_user_name,
                 user_num: this.username,
-                user_name: this.user_name,
+                user_name: this.name,
                 password: this.pwd,
                 confirm_pwd: this.confirm_pwd,
                 quick_open_quote: this.quick,
