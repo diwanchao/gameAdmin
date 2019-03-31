@@ -55,6 +55,7 @@ var app = new Vue({
                     $('#modal .use_money').text(result.number);
                     $('#modal .id').val(data.id);
                     $('#modal .type').val(status);
+                    $('#modal .money').val('');
                     bindValue($('#modal .money'), result.number);
                     modal.show();
                 }
