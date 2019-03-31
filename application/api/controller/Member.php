@@ -81,11 +81,13 @@ class Member extends Base
 
 	public function editUser()
 	{
+		$user_id 	= $this->request->param('id',0);
 		$data = [
 			'agent_name'=>'111',
 			'user_num'=>'会员账号',
 			'user_name'=>'会员名称',
 			'quick_open_quote'=>100,
+			'usable_quote'=>50,
 			'part'=>['A'=>true,'B'=>false],
 			'game'=>['jlk3'=>true],
 		];
