@@ -59,7 +59,7 @@ var app = new Vue({
 
             utils.getAjax({
 
-                url: '/Member/addUser',
+                url: '/api/Member/addUser',
                 type: 'POST',
                 data: data,
                 success: function(result){
