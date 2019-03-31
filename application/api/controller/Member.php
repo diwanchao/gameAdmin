@@ -72,4 +72,17 @@ class Member extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
 
+
+	public function addUser()
+	{
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+
+	}
+
+	public function addAgent()
+	{
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+
+	}
+
 }
