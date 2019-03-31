@@ -22,6 +22,7 @@ var app = new Vue({
     methods: {
         // 验证
         verificationUsername: function(){
+            var _this = this;
             utils.getAjax({
                 url: '/api/Member/checkUserName',
                 data: {
@@ -29,13 +30,13 @@ var app = new Vue({
                 },
                 type: 'POST',
                 success: function(){
-                    this.usernameStatus = 1;
+                    _this.usernameStatus = 1;
                 }
             })
         },
 
         submit: function(){
-            if(usernameStatus == 0){
+            if(this.usernameStatus == 0){
                 alert('请检测账号是否重复！');
                 return;
             }
@@ -74,7 +75,7 @@ var app = new Vue({
 
         var level = {};
         for(var i = 0; i < ENV.userInfo.dish.length; i++) {
-            level[ENV.userInfo.dish[i]] = 0
+            level[ENV.userInfo.dish[i]] = false;
         }
         this.levelValue = level;
         
