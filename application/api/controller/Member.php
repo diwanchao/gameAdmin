@@ -75,12 +75,19 @@ class Member extends Base
 
 	public function addUser()
 	{
+		$data = $this->request->param();
+
+
+
+
+
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
 
 	public function addAgent()
 	{
+		$data = $this->request->param();
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
