@@ -14,41 +14,38 @@ var app = new Vue({
         name: '', // 会员名称
         pwd: '', // 密码
         confirm_pwd: '', // 确认密码
-        levelValue: { // 分盘
-            'A': 0,
-            'B': 1,
-            'C': 0,
-            'D': 1
-        },
-        credit: 100,
-        usable_credit: 101,
+        levelValue: [],
         quick: 1000,
         usable_quick: 2000,
-        game_list: [
-            {game_key: 'jlk3', name: '吉林快3', select: 1},
-            {game_key: 'ssc', name: '重庆时时彩', select: 0}
-        ],
+        game_list: [],
     },
     methods: {
         // 验证
         verificationUsername: function(){
-            this.usernameStatus = 1;
+            utils.getAjax({
+                url: '/api/Member/checkUserName',
+                data: {
+                    user_name: this.user_name
+                },
+                type: 'POST',
+                success: function(){
+                    this.usernameStatus = 1;
+                }
+            })
         }
     },
     mounted: function(){
+        this.create_user_name = ENV.user_name;
+        
 
-        console.log(ENV)
+        var level = {};
+        for(var i = 0; i < ENV.dish.length; i++) {
+            level[ENV.dish[i]] = 0
+        }
+        this.levelValue = level;
 
-        // utils.getAjax({
-        //     url: '/api/user/getuserinfo',
-        //     type: 'GET',
-        //     success: function(result){
-
-        //     }
-        // })
-        // if(!this.id){
-        //     this.agentValue = Object.keys(this.agentList)[0];
-        // }
+        
+        this.game_list = ENV.game_list;
     },
 
 
