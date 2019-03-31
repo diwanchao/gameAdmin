@@ -69,17 +69,17 @@ var app = new Vue({
                     for(var i = 0; i < data.length; i++){
                         data[i] = Object.assign(data[i],ary[i]);
                     }
-                    _this.data = JSON.parse(JSON.stringify(data));
+                    _this.data = data;
                 }
             })
-            var data = [
-                {methods: '二同号复选', A: '7', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'},
-                {methods: '三同号复选', A: '6', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'}
-            ];
-            for(var i = 0; i < data.length; i++){
-                data[i] = Object.assign(data[i],ary[i]);
-            }
-            _this.data = data;
+            // var data = [
+            //     {methods: '二同号复选', A: '7', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'},
+            //     {methods: '三同号复选', A: '6', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'}
+            // ];
+            // for(var i = 0; i < data.length; i++){
+            //     data[i] = Object.assign(data[i],ary[i]);
+            // }
+            // _this.data = data;
         },
         computed: function(num){
             var ary = num.toString().split('.');
