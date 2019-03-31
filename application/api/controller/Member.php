@@ -81,14 +81,14 @@ class Member extends Base
 
 
 
-        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+        return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);	
 
 	}
 
 	public function addAgent()
 	{
 		$data = $this->request->param();
-        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+        return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);	
 
 	}
 
