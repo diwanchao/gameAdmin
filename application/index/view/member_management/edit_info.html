@@ -110,7 +110,7 @@
                                                         </td>
                                                     </tr>
         
-                                                    <tr>
+                                                    <tr v-for="(item, index) in game_list">
                                                         <td></td>
                                                         <td>
                                                             开放:<input type="checkbox" :value="item.game_key" v-model="item.select"> {{item.name}}
