@@ -69,7 +69,7 @@ var app = new Vue({
                     for(var i = 0; i < data.length; i++){
                         data[i] = Object.assign(data[i],ary[i]);
                     }
-                    console.log(data);
+                    _this.data = data;
                 }
             })
             var data = [
