@@ -46,4 +46,16 @@ class Member extends Base
 
 	}
 
+
+	public function setQuick()
+	{
+		$type 		= $this->request->param('type',0);
+		$user_id 	= $this->request->param('id',0);
+		if (!$user_id) {
+	        return json(['msg' => '保存失败,数据异常.','code' => 201, 'data' =>[]]);		
+		}
+		$data 	= ['number'=>'123'];
+        return json(['msg' => '','code' => 200, 'data' =>$data]);
+	}
+
 }
