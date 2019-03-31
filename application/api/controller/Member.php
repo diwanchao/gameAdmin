@@ -34,4 +34,16 @@ class Member extends Base
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
+
+	/**
+	 * 获取快开额度
+	 */
+	public function getQuick()
+	{
+		$type    = $this->request->param('type',0);
+		$data['number'=>'123'];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+
+	}
+
 }
