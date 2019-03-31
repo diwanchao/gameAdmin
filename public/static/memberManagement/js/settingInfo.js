@@ -26,11 +26,24 @@ var jlk3 = [
     {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
     {select: false, Amax: 6, Bmax: 6, Cmax: 0.5, Dmax: 0.5},
 ];
+
+
 var ssc = [];
+
+
+var id = utils.getURL(location.search, 'id');
+
+if(!id){
+    alert('请正确进入～');
+    history.back(1);
+}
+
 var app = new Vue({
     el: '#main',
     data: {
         userInfo: ENV.userInfo,
+        memberList: {},
+        memberValue: id,
         game_key: 'jlk3',
         setting: {
             jlk3: jlk3,
@@ -60,6 +73,14 @@ var app = new Vue({
         },
     },
     mounted: function(){
+        var _this = this;
+        utils.getAjax({
+            url: '/api/member/memberList',
+            type: 'GET',
+            success: function(result){
+                _this.memberList = result;
+            }
+        })
         this.init();
     }
 })

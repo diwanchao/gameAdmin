@@ -45,25 +45,19 @@
     <div id="main" class="main">
         <h5 style="margin-top: 0;">
             会员
-            － han321 详细设定 [
+            － {{memberList[memberValue]}} 详细设定 [
             <b><a href="javascript:void(0);" @click="game_key = 'jlk3'" style="color:#cf0303;text-decoration: underline;" class="ab">各省时时彩</a></b>
             <b><a href="javascript:void(0);" @click="game_key = 'ssc'" style="color:#cf0303;text-decoration: underline;" class="ab">各省快3</a></b>
             ]
             <span class="fright">引用同级数据：
-                <select class="textradius" name="uslist" id="uslist"
-                    onchange="readus(this.options[this.selectedIndex].value,'K3');" title="读取其它用户已设置好的退水信息">
-                    <option value="">选择
-
-                        会员
-
-                    </option>
-                    <option value="26684">han2112(han2112)</option>
+                <select  class="textradius" title="读取其它用户已设置好的退水信息">
+                    <option v-for="(item, index) in memberList" :value="index">{{item}}</option>
                 </select>
             </span>
-            <small class="fright form-lineheight"><a href="http://ag.xh33.net/hylb.do?id0=11771">返回上一页</a></small></h5>
+            <small class="fright form-lineheight"><a href="javascript: history.back(1)">返回上一页</a></small></h5>
 
 
-        <p class="center pstyle">各省快3</p>
+        <p class="center pstyle">{{(game_key = 'jlk3' ? '各省快3' : '各省时时彩')}}</p>
 
         <table id="list" width="100%" border="0" cellpadding="0" cellspacing="1"
             style="border:1px solid #76694c;font-size:14px !important;">
