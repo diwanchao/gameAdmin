@@ -60,7 +60,7 @@ var app = new Vue({
         init: function(){
             var ary = this.setting[this.game_key];
             var _this = this;
-            utils.getAjax({,
+            utils.getAjax({
                 url: '/api/Information/list',
                 data: {game_key: this.game_key, me: this.memberValue},
                 success: function(result){
