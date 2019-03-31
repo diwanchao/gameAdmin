@@ -63,6 +63,34 @@ var app = new Vue({
                 }
             })
             
+        },
+        changeMember: function(id, status){
+            var _this = this;
+            status = status == 1 ? 0 : 1;
+            H_confirm('是否确认<b style="color: red">' + (status == 0 ? '封存' : '启用') + '</b>当前账号',function(){
+                utils.getAjax({
+                    url: '/api/Member/changeMemberStatus',
+                    data: {type: status, id: id},
+                    success: function(result){
+                        _this.init();
+                    },
+                    alert: true,
+                })
+            });
+        },
+        changeBet: function(id, status){
+            var _this = this;
+            status = status == 1 ? 0 : 1;
+            H_confirm('是否确认<b style="color: red">' + (status == 0 ? '封存' : '解封') + '</b>当前账号',function(){
+                utils.getAjax({
+                    url: '/api/Member/changeBet',
+                    data: {type: status, id: id},
+                    success: function(result){
+                        _this.init();
+                    },
+                    alert: true,
+                })
+            });
         }
     },
     mounted: function(){

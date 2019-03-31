@@ -2,7 +2,7 @@
 var app = new Vue({
     el: '#main',
     data: {
-        id: null, // 有id 编辑 id->被操作人的id
+        // id: null, // 有id 编辑 id->被操作人的id
         agentList: {
             '1213': 'han213',
             '3425': 'han433'

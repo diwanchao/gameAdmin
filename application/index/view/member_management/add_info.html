@@ -5,6 +5,11 @@
     <TITLE>会员管理</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .mian input[type=text]{
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +28,7 @@
                             style="border:1px solid #76694c;font-size:14px;">
                             <tbody>
                                 <tr class="note_title" height="25">
-                                    <td width="526" height="22"><strong class="fw12"> {{id ? '编辑会员' : '添加会员'}}</strong></td>
+                                    <td width="526" height="22"><strong class="fw12"> 添加会员</strong></td>
                                     <td width="108"><a href="javascript: history.back(1);">返回上一页</a></td>
                                 </tr>
                                 <tr>
@@ -37,8 +42,7 @@
                                                         </td>
                                                         <td colspan="2">
                                                             <div align="left">
-                                                                <span v-if="id">{{agentList[agentValue] || ''}}</span>
-                                                                <select v-else v-model="agentValue">
+                                                                <select v-model="agentValue">
                                                                     <option v-for="(item, index) in agentList" :value="index">{{item}}</option>
                                                                 </select>
                                                             </div>
@@ -49,17 +53,12 @@
                                                             <div align="right">账号：</div>
                                                         </td>
                                                         <td width="534" nowrap="">
-                                                            <template v-if="id">
-                                                                <span>{{username}}</span>
-                                                            </template>
-                                                            <template v-else>
-                                                                    <input type="text" class="input" v-model="username" @blur="verificationUsername">
-                                                                    <img :src="usernameStatus == '1' ? '/static/global/image/s01.gif' : '/static/global/image/s02.gif'">
-                                                                    <span class="fbred">
-                                                                        <input type="button" value="检测" @click="verificationUsername">
-                                                                    </span>
-                                                                    <span class="fbred">帐号必须至少4个字元长，并只能有数字(0-9)，及英文大小写字母</span>
-                                                            </template>
+                                                            <input type="text" class="input" v-model="username" @blur="verificationUsername">
+                                                            <img :src="usernameStatus == '1' ? '/static/global/image/s01.gif' : '/static/global/image/s02.gif'">
+                                                            <span class="fbred">
+                                                                <input type="button" value="检测" @click="verificationUsername">
+                                                            </span>
+                                                            <span class="fbred">帐号必须至少4个字元长，并只能有数字(0-9)，及英文大小写字母</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -79,7 +78,7 @@
                                                         <td colspan="2" nowrap="">
                                                             <div align="left">
                                                                 <input type="password" class="input" v-model="pwd">
-                                                                {{id ? '（密码框为空,则默认为原密码）' : '(密码必须至少4个字元长，最多8个字元长，并只能有数字(0-9)，及英文大小写字母)'}}
+                                                                (密码必须至少4个字元长，最多8个字元长，并只能有数字(0-9)，及英文大小写字母)
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -174,6 +173,6 @@
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-<script type="text/javascript" src="/static/memberManagement/js/memberInfo.js"></script>
+<script type="text/javascript" src="/static/memberManagement/js/addInfo.js"></script>
 
 </html>

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>添加代理</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+
+        <table height="91" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+        <table width="800" height="91" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td width="100%" height="91" valign="top">
+                        <table id="list" width="100%" border="0" cellpadding="0" cellspacing="1" style="border:1px solid #76694c;font-size:14px;background:#E1E1E1">
+                            <tbody>
+                                <tr class="note_title">
+                                    <td width="526" height="22">
+                                        <strong class="fw12">　修改用户</strong>
+                                    </td>
+                                    <td width="108">
+                                        <a href="javascript: history.back(1);" class="ah">返回上一页</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div align="left">
+                                            <table height="207" border="0" cellspacing="1">
+                                                <tbody>
+                                                    <tr>
+                                                        <td height="22">
+                                                            <div align="right">代理商：</div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left"></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="22" nowrap="">
+                                                            <div align="right">账号：</div>
+                                                        </td>
+                                                        <td width="534" nowrap="">han321</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="24">
+                                                            <div align="right">会员名称：</div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left">
+                                                                <input type="text" name="user_name" maxlength="15" size="15" value="hanxx" id="user_name" class="input">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right">密码：</div>
+                                                        </td>
+                                                        <td colspan="2" nowrap="">
+                                                            <div align="left">
+                                                                <input type="password" name="passwd" maxlength="15" size="15" value="" id="passwd" class="input"> （密码框为空,则默认为原密码） </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="25">
+                                                            <div align="right">确认密码：</div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left">
+                                                                <input type="password" name="passwordResult" maxlength="15" size="15" value="" id="passwordResult" class="input">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right">开放盘别：</div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="left">
+        
+                                                                <input type="checkbox" name="plate_nos" value="A">A
+        
+        
+                                                                <input type="checkbox" name="plate_nos" value="B">B
+        
+        
+                                                                <input type="checkbox" name="plate_nos" value="C">C
+        
+        
+                                                                <input type="checkbox" name="plate_nos" value="D">D
+        
+        
+                                                                <input type="checkbox" name="plate_nos" value="E">E
+        
+        
+        
+        
+        
+        
+        
+        
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+        
+                                                    <tr>
+                                                        <td height="26">
+                                                            <div align="right">信用额度：</div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left">
+                                                                <input type="text" name="balance" maxlength="15" size="15" value="0" onkeydown="onlyNum2(event);" onkeyup="copyvalue(1)"
+                                                                    id="balance" class="input"> (可用额度
+                                                                <span class="fred12" id="balance_value">0</span>)(目前用于单日单期数彩球游戏(福彩3D，体彩PL3)
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="26">
+                                                            <div align="right">快开额度：</div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left">
+                                                                100 (可用额度
+                                                                <span class="fred12" id="balance_jk_value">1</span>)(目前用于单日多期数彩球游戏(重庆时时彩等)
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+        
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 福彩3D </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 体彩PL3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 重庆时时彩
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 吉林11选5
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 新疆时时彩
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 北京赛车
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 吉林快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 吉林骰宝
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 幸运飞艇
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 北京快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 北京骰宝
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 湖北快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 河北快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 甘肃快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 江苏快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 内蒙古快3
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>　</td>
+                                                        <td>
+                                                            开放:
+                                                            <input type="checkbox" name="gameid" checked="true"> 辽宁11选5
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right"></div>
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <div align="left">
+                                                                <input type="hidden" name="id0" value="26075" id="id0">
+                                                                <input type="button" name="Submit" value="确认修改" onclick="f_submit()">
+        
+                                                                <!--<input type=button name=Submit22 value='会员数已达到上限,添加会员无效' disabled>-->
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script src="/static/memberManagement/js/editInfo.js"></script>
+</html>
