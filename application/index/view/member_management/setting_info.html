@@ -50,7 +50,8 @@
             <b><a href="javascript:void(0);" @click="game_key = 'ssc'" style="color:#cf0303;text-decoration: underline;" class="ab">各省时时彩</a></b>
             ]
             <span class="fright">引用同级数据：
-                <select  class="textradius" title="读取其它用户已设置好的退水信息">
+                <select @change="init" class="textradius" title="读取其它用户已设置好的退水信息">
+                    <option value="">选择 会员</option>
                     <option v-for="(item, index) in memberList" :value="index">{{item}}</option>
                 </select>
             </span>
@@ -145,23 +146,23 @@
             </div>
             <div id="msg_title">快速调控：</div>
             <div id="msg_content">
-                <table height="100%" align="center" cellpadding="2" cellspacing="1" class="t12" width="96%" id="qctk">
+                <table height="100%" align="center" cellpadding="2" cellspacing="1" class="t12" width="96%">
                     <tbody>
                         <tr class="t11" align="center">
                             <td height="20" class="t12">项目选择</td>
                         </tr>
                         <tr class="t15" align="center">
                             <td>
-                                <input type="button" class="buttongmin" value="全选" id="b1">
-                                <input type="button" class="buttongmin" value="反选" id="b2">
-                                <input type="button" class="buttongmin" value="不定位" id="b3">
-                                <input type="button" class="buttongmin" value="定位" id="b4">
-                                <input type="button" class="buttongmin" value="双面" id="b5">
-                                <input type="button" class="buttongmin" value="和数" id="b6">
-                                <input type="button" class="buttongmin" value="尾数" id="b7">
-                                <input type="button" class="buttongmin" value="组合" id="b8">
-                                <input type="button" class="buttongmin" value="跨度" id="b9">
-                                <input type="button" class="buttongmin" value="取消" id="b10">
+                                <input type="button" class="buttongmin" value="全选" @click="selectAll">
+                                <input type="button" class="buttongmin" value="反选" @click="selectOver">
+                                <input type="button" class="buttongmin" value="不定位" @click="selectN1">
+                                <input type="button" class="buttongmin" value="定位" @click="selectN2">
+                                <input type="button" class="buttongmin" value="双面" @click="selectN3">
+                                <input type="button" class="buttongmin" value="和数" @click="selectN4">
+                                <input type="button" class="buttongmin" value="尾数" @click="selectN5">
+                                <input type="button" class="buttongmin" value="组合" @click="selectN6">
+                                <input type="button" class="buttongmin" value="跨度" @click="selectN7">
+                                <input type="button" class="buttongmin" value="取消" @click="selectUnAll">
                             </td>
                         </tr>
                         <tr class="t11" align="center">
