@@ -26,6 +26,7 @@ class User extends Base
 			'role_type'=>1,
 			'role_name'=>'代理',
 			'user_name'=>'账号',
+			'quick_open_quote'=>1000,
 			'game_list'=>[
 				['game_key'=>'jlk3','name'=>'吉林快3'],
 				//['game_key'=>'ssc','name'=>'重庆时时彩'],
