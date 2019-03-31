@@ -114,48 +114,42 @@
                                         <div align="center" class="fw12">功能设定</div>
                                     </td>
                                 </tr>
-                                <tr class="t15" height="22">
+                                <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
-                                        <div align="center" class="fblue12">
-                                            han12
-                                        </div>
+                                        <div align="center" class="fblue12">{{item.agent_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">han321</div>
+                                        <div align="center">{{item.user_number}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">hanxx</div>
+                                        <div align="center">{{item.user_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">A,B,C,E盘</div>
+                                        <div align="center">{{item.part}}盘</div>
                                     </td>
                                     <td>
-                                        <div class="fred12" align="center">0/<span id="qc26075">570</span>
-                                            <input style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
-                                                class="tbuttonr" title="给帐户存入快开额度"
-                                                onclick="ch_quick('han321',0,26075,7)" value="存入" type="button"
-                                                name="sm">
+                                        <div class="fred12" align="center">0/<span>{{item.quick_open_quote}}</span>
+                                            <input style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
+                                                class="tbuttonr" title="给帐户存入快开额度" value="存入" type="button" name="sm">
                                             <input
-                                                style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
-                                                class="tbuttong" title="从帐户里提出快开额度"
-                                                onclick="ch_quick('han321',1,26075,7)" value="提取" type="button"
+                                                style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
+                                                class="tbuttong" title="从帐户里提出快开额度" value="提取" type="button"
                                                 name="sm">
                                         </div>
                                     </td>
                                     <td>
-                                        <div align="center">02-26 15:27:10</div>
+                                        <div align="center">{{item.create_time}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">33</div>
+                                        <div align="center">{{item.login_count}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">03-20 20:12:34</div>
+                                        <div align="center">{{item.login_time}}</div>
                                     </td>
                                     <td>
                                         <div align="center" class="fblue12">
-                                            <a href="#" onclick="upstate(0,26075)">启用</a>
-
-
+                                            
+                                            <a href="javascript:void(0)" onclick="upstate(0,26075)">{{item.status == 1 ? '启用' : '封存'}}</a>
                                         </div>
                                     </td>
                                     <td align="center">
