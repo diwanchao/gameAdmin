@@ -3,13 +3,10 @@ namespace app\index\controller;
 use app\index\controller\Base;
 
 
-class Game extends Base
+class ChangePwd extends Base
 {
-    public function jlk3()
+    public function index()
     {
         return $this->fetch();
-    }
-    public function detail(){
-    	return $this->fetch();
     }
 }
