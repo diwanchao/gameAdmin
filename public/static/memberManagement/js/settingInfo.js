@@ -60,21 +60,26 @@ var app = new Vue({
         init: function(){
             var ary = this.setting[this.game_key];
             var _this = this;
-            // utils.getAjax({
-            //     url: '/api/Information/list',
-            //     data: {game_key: this.game_key, me: this.memberValue},
-            //     success: function(result){
-            //         var data = result.data;
-            //         for(var i = 0; i < data.length; i++){
-            //             data[i] = Object.assign(data[i],ary[i]);
-            //         }
-            //         _this.data = data;
-            //     }
-            // })
-            // var data = [
-            //     {methods: '二同号复选', A: '7', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'},
-            //     {methods: '三同号复选', A: '6', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'}
-            // ];
+            utils.getAjax({,
+                url: '/api/Information/list',
+                data: {game_key: this.game_key, me: this.memberValue},
+                success: function(result){
+                    
+                    var data = result.data;
+                    for(var i = 0; i < data.length; i++){
+                        data[i] = Object.assign(data[i],ary[i]);
+                    }
+                    console.log(data);
+                }
+            })
+            var data = [
+                {methods: '二同号复选', A: '7', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'},
+                {methods: '三同号复选', A: '6', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'}
+            ];
+            for(var i = 0; i < data.length; i++){
+                data[i] = Object.assign(data[i],ary[i]);
+            }
+            _this.data = data;
         },
         computed: function(num){
             var ary = num.toString().split('.');
