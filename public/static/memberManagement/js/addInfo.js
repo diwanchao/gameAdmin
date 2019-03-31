@@ -43,7 +43,7 @@ var app = new Vue({
             var game = {};
             for(var i  =0 ; i < this.game_list.length; i++) {
                 if(this.game_list[i].select){
-                    game[this.game_list[i].game_key] = this.game_list[i];
+                    game[this.game_list[i].game_key] = true;
                 }
             }
             var data = {
