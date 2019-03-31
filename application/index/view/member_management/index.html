@@ -130,9 +130,9 @@
                                     </td>
                                     <td>
                                         <div class="fred12" align="center">0/<span>{{item.quick_open_quote}}</span>
-                                            <input style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
+                                            <input @click="quickLimit(item, 0)" style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
                                                 class="tbuttonr" title="给帐户存入快开额度" value="存入" type="button" name="sm">
-                                            <input
+                                            <input @click="quickLimit(item, 1)"
                                                 style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
                                                 class="tbuttong" title="从帐户里提出快开额度" value="提取" type="button"
                                                 name="sm">
@@ -174,8 +174,8 @@
         </table>
     </div>
 
-    <!-- 快开额度 -->
-    <div class="h-modal" id="confirmModal" data-width="350">
+    <!-- 快开额度(存入) -->
+    <div class="h-modal" id="modal" data-width="350">
         <div class="h-modal-title">
             <h5>存入</h5>
             <span class="h-modal-close" data-methods="close">&times;</span>
@@ -183,6 +183,7 @@
         <div class="h-modal-body">
             <div style="text-align: center;">
                 <input type="hidden" name="id" class="id">
+                <input type="hidden" name="type" class="type">
                 金额：<input type="text" name="money" class="money"> / <span class="use_money">12</span>(可用) | <input type="button" data-methods="submit" value="存入" style="color: #008400">
             </div>
         </div>
