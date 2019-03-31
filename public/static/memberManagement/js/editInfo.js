@@ -78,7 +78,7 @@ var app = new Vue({
                         game_list[i].select = true;
                     }
                 }
-                _this.game = game_list;
+                _this.game_list = game_list;
 
                 var level = {};
                 for(var i = 0 ; i < part_list.length; i++) {
