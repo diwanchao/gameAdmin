@@ -410,7 +410,7 @@ var ENV = {
 			user_name: 'han123',
 			notice: '这是假的一条公告',
 			game_list: [
-				{name: '吉林快3', url: '/'},
+				{name: '吉林快3', url: '/index/game/jlk3'},
 				{name: '重庆时时彩', url: '/'}
 			],
 		}
@@ -438,7 +438,7 @@ var ENV = {
 				_this.data.user_type_id = result.role_type;
 				_this.data.user_type = result.role_name;
 				_this.data.user_name = result.user_name;
-				_this.data.game_list = result.game_list;
+				//_this.data.game_list = result.game_list;
 				_this.baseInit();
 				_this.gameInit();
 				_this.logoutInit();
