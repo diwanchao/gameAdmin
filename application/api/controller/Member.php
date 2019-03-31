@@ -117,7 +117,7 @@ class Member extends Base
 			'13'=>'hdj',
 			'88'=>'dwc',
 		];
-        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 
 
