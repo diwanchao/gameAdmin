@@ -85,4 +85,9 @@ class Member extends Base
 
 	}
 
+
+	public function checkUserName()
+	{
+        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
+	}
 }
