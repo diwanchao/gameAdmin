@@ -140,7 +140,7 @@
         </table>
         <div id="msg_win" :class="quick.show ? 'active' : ''">
             <div class="icos">
-                <a @click="quick.show = false" title="最小化" href="javascript:void 0">{{quick.show ? '0' : '2'}}</a>
+                <a @click="quick.show = !quick.show" title="最小化" href="javascript:void 0">{{quick.show ? '0' : '2'}}</a>
                 <a @click="quick.show = false" title="关闭" href="javascript:void 0">r</a>
             </div>
             <div id="msg_title">快速调控：</div>
