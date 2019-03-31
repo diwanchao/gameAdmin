@@ -50,7 +50,7 @@
             <b><a href="javascript:void(0);" @click="game_key = 'ssc'" style="color:#cf0303;text-decoration: underline;" class="ab">各省时时彩</a></b>
             ]
             <span class="fright">引用同级数据：
-                <select @change="init" class="textradius" title="读取其它用户已设置好的退水信息">
+                <select v-model="memberValue" @change="init" class="textradius" title="读取其它用户已设置好的退水信息">
                     <option value="">选择 会员</option>
                     <option v-for="(item, index) in memberList" :value="index">{{item}}</option>
                 </select>
