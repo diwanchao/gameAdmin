@@ -3,11 +3,12 @@ var app = new Vue({
     el: '#main',
     data: {
         // id: null, // 有id 编辑 id->被操作人的id
-        agentList: {
-            '1213': 'han213',
-            '3425': 'han433'
-        },
-        agentValue: '',
+        // agentList: {
+        //     '1213': 'han213',
+        //     '3425': 'han433'
+        // },
+        // agentValue: '',
+        create_user_name: '', 
         username: '', // 会员账号
         usernameStatus: 0, // 0=》未检测 -》检测通过
         name: '', // 会员名称
@@ -35,9 +36,20 @@ var app = new Vue({
         }
     },
     mounted: function(){
-        if(!this.id){
-            this.agentValue = Object.keys(this.agentList)[0];
-        }
+
+        console.log(ENV)
+
+        // utils.getAjax({
+        //     url: '/api/user/getuserinfo',
+        //     type: 'GET',
+        //     success: function(result){
+
+        //     }
+        // })
+        // if(!this.id){
+        //     this.agentValue = Object.keys(this.agentList)[0];
+        // }
     },
+
 
 })

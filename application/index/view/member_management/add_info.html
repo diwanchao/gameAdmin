@@ -6,7 +6,7 @@
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
     <style type="text/css">
-        .mian input[type=text]{
+        .main input[type=text]{
             width: 100px;
         }
     </style>
@@ -42,9 +42,10 @@
                                                         </td>
                                                         <td colspan="2">
                                                             <div align="left">
-                                                                <select v-model="agentValue">
+                                                                {{create_user_name}}
+                                                                <!-- <select v-model="agentValue">
                                                                     <option v-for="(item, index) in agentList" :value="index">{{item}}</option>
-                                                                </select>
+                                                                </select> -->
                                                             </div>
                                                         </td>
                                                     </tr>

@@ -142,6 +142,7 @@ var utils = {
 			dataType: opt.dataType || 'JSON',
 			url: opt.url || '/',
 			data: opt.data || {},
+			async: opt.async === 'undefined' ? true : opt.async,
 			success: function (result) {
 				if (result.code == 304) {
 					// alert('登陆超时……');
@@ -387,6 +388,10 @@ var ENV = {
 
 })();
 
+var ENV = {
+	userInfo: {},
+};
+
 
 (function () {
 
@@ -434,14 +439,15 @@ var ENV = {
 		utils.getAjax({
 			url: '/api/user/getuserinfo',
 			type: 'GET',
+			async: false,
 			success: function(result){
 				_this.data.user_type_id = result.role_type;
 				_this.data.user_type = result.role_name;
 				_this.data.user_name = result.user_name;
-				//_this.data.game_list = result.game_list;
 				_this.baseInit();
 				_this.gameInit();
 				_this.logoutInit();
+				ENV.userInfo = result;
 			}
 		});
 	}
