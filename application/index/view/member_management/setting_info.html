@@ -138,84 +138,72 @@
                 </tr>
             </tbody>
         </table>
-        <div id="msg_win">
-                <div class="icos"><a id="msg_min" title="最小化" href="javascript:void 0">0</a><a id="msg_close" title="关闭" href="javascript:void 0">r</a></div>
-                <div id="msg_title">快速调控：</div>
-                <div id="msg_content">
+        <div id="msg_win" :class="quick.show ? 'active' : ''">
+            <div class="icos">
+                <a @click="quick.show = false" title="最小化" href="javascript:void 0">{{quick.show ? '0' : '2'}}</a>
+                <a @click="quick.show = false" title="关闭" href="javascript:void 0">r</a>
+            </div>
+            <div id="msg_title">快速调控：</div>
+            <div id="msg_content">
                 <table height="100%" align="center" cellpadding="2" cellspacing="1" class="t12" width="96%" id="qctk">
-                    <tbody><tr class="t11" align="center">
-                        <td height="20" class="t12">项目选择</td>
-                    </tr>
-                    <tr class="t15" align="center">
-                        <td>
-                        <input type="button" class="buttongmin" value="全选" id="b1">
-                        <input type="button" class="buttongmin" value="反选" id="b2">
-                        <input type="button" class="buttongmin" value="不定位" id="b3">
-                        <input type="button" class="buttongmin" value="定位" id="b4">
-                        <input type="button" class="buttongmin" value="双面" id="b5">
-                        <input type="button" class="buttongmin" value="和数" id="b6">
-                        <input type="button" class="buttongmin" value="尾数" id="b7">
-                        <input type="button" class="buttongmin" value="组合" id="b8">
-                        <input type="button" class="buttongmin" value="跨度" id="b9">
-                        <input type="button" class="buttongmin" value="取消" id="b10">
-                        </td>
-                    </tr>
-                    <tr class="t11" align="center">
-                        <td height="20" class="t12">退水</td>
-                    </tr>
-                    <tr class="t15" align="center">
-                        <td>
-                        <input type="button" class="buttongmin" value="调高" id="b11">
-                        <input type="button" class="buttongmin" value="调低" id="b12">
-                    <select size="1" name="tnum" id="tnum">
-                        <option selected="" value="1">0.05</option>
-                        <option value="2">0.1</option>
-                        <option value="10">0.5</option>
-                        <option value="20">1</option>
-                        <option value="40">2</option>
-                       
-                    </select>		
-                        <input type="button" class="buttongmin" value="最大" id="b13">
-                        <input type="button" class="buttongmin" value="归零" id="b14">
-                    <select size="1" name="tpan" id="tpan">
-                        <option selected="" value="all">全部</option>
-                         
-                        <option value="a">A盘</option>
-                        
-                        
-                        <option value="b">B盘</option>
-                        
-                        
-                        <option value="c">C盘</option>
-                        
-                        
-                        <option value="d">D盘</option>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </select>
-                        </td>
-                    </tr>
-                    
-                    <tr class="t15" align="center">
-                        <td height="25">
-                        金额:<input type="text" class="input" name="xrnum" id="xrnum" size="8" onkeypress="event.returnValue=Isnum();">
-                        <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" id="b16">
-                        <input type="button" class="buttongmin" value="单注限额" style="width:90px" id="b15">
-                        <input type="button" class="buttongmin" value="單註低限額" style="width:90px" id="b17">
-                        
-                        </td>
-                    </tr>
-                </tbody></table>
-                </div>
-                </div>
+                    <tbody>
+                        <tr class="t11" align="center">
+                            <td height="20" class="t12">项目选择</td>
+                        </tr>
+                        <tr class="t15" align="center">
+                            <td>
+                                <input type="button" class="buttongmin" value="全选" id="b1">
+                                <input type="button" class="buttongmin" value="反选" id="b2">
+                                <input type="button" class="buttongmin" value="不定位" id="b3">
+                                <input type="button" class="buttongmin" value="定位" id="b4">
+                                <input type="button" class="buttongmin" value="双面" id="b5">
+                                <input type="button" class="buttongmin" value="和数" id="b6">
+                                <input type="button" class="buttongmin" value="尾数" id="b7">
+                                <input type="button" class="buttongmin" value="组合" id="b8">
+                                <input type="button" class="buttongmin" value="跨度" id="b9">
+                                <input type="button" class="buttongmin" value="取消" id="b10">
+                            </td>
+                        </tr>
+                        <tr class="t11" align="center">
+                            <td height="20" class="t12">退水</td>
+                        </tr>
+                        <tr class="t15" align="center">
+                            <td>
+                                <input type="button" class="buttongmin" value="调高" id="b11">
+                                <input type="button" class="buttongmin" value="调低" id="b12">
+                                <select size="1" name="tnum" id="tnum">
+                                    <option selected="" value="1">0.05</option>
+                                    <option value="2">0.1</option>
+                                    <option value="10">0.5</option>
+                                    <option value="20">1</option>
+                                    <option value="40">2</option>
+        
+                                </select>
+                                <input type="button" class="buttongmin" value="最大" id="b13">
+                                <input type="button" class="buttongmin" value="归零" id="b14">
+                                <select size="1" name="tpan" id="tpan">
+                                    <option selected="" value="all">全部</option>
+                                    <option value="a">A盘</option>
+                                    <option value="b">B盘</option>
+                                    <option value="c">C盘</option>
+                                    <option value="d">D盘</option>
+                                </select>
+                            </td>
+                        </tr>
+        
+                        <tr class="t15" align="center">
+                            <td height="25">
+                                金额:
+                                <input type="text" class="input" name="xrnum" id="xrnum" size="8" onkeypress="event.returnValue=Isnum();">
+                                <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" id="b16">
+                                <input type="button" class="buttongmin" value="单注限额" style="width:90px" id="b15">
+                                <input type="button" class="buttongmin" value="單註低限額" style="width:90px" id="b17">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 

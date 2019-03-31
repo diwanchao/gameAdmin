@@ -30,7 +30,6 @@ var jlk3 = [
 
 var ssc = [];
 
-
 var id = utils.getURL(location.search, 'id');
 
 if(!id){
@@ -49,7 +48,12 @@ var app = new Vue({
             jlk3: jlk3,
             ssc: ssc,
         },
-        data: []
+        data: [],
+
+        // 快速调控
+        quick: {
+            show: false,
+        }
     },
     methods:{
         init: function(){
@@ -80,7 +84,7 @@ var app = new Vue({
             success: function(result){
                 _this.memberList = result;
             }
-        })
+        });
         this.init();
     }
 })
