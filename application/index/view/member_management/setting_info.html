@@ -82,28 +82,28 @@
 
                     <td style="font-size: 14px;" align="right">
                         <select class="textradius" style="width: 80px" v-model="item.A">
-                            <option v-for="(num, i) in ((item.Amax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                            <option v-for="(num, i) in Math.round((item.Amax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
                         </select>
                     </td>
 
 
                     <td style="font-size: 14px;" align="right">
                         <select class="textradius" style="width: 80px" v-model="item.C">
-                            <option v-for="(num, i) in ((item.Bmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                            <option v-for="(num, i) in Math.round((item.Bmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
                         </select>
                     </td>
 
 
                     <td style="font-size: 14px;" align="right">
                         <select class="textradius" style="width: 80px" v-model="item.C">
-                            <option v-for="(num, i) in ((item.Cmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                            <option v-for="(num, i) in Math.round((item.Cmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
                         </select>
                     </td>
 
 
                     <td style="font-size: 14px;" align="right">
                         <select class="textradius" style="width: 80px" v-model="item.D">
-                            <option v-for="(num, i) in ((item.Dmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
+                            <option v-for="(num, i) in Math.round((item.Dmax / 0.05) + 1)" :value="parseFloat((i * 0.05).toFixed(2))">{{computed(parseFloat((i * 0.05).toFixed(2)))}}</option>
                         </select>
                     </td>
 
