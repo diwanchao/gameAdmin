@@ -14,5 +14,14 @@ class MemberManagement extends Base
     }
     public function settingInfo(){
     	return $this->fetch();
-    }    
+    }     
+    public function addInfo(){
+        return $this->fetch();
+    }  
+    public function editInfo(){
+        return $this->fetch();
+    } 
+
+
+
 }
