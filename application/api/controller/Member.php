@@ -75,15 +75,24 @@ class Member extends Base
 
 	public function addUser()
 	{
-		$data = $this->request->param();
-
-
-
-
-
-        return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);	
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
+
+	public function editUser()
+	{
+		$data = [
+			'agent_name'=>'111',
+			'user_num'=>'会员账号',
+			'user_name'=>'会员名称',
+			'quick_open_quote'=>100,
+			'part'=>['A'=>true,'B'=>false],
+			'game'=>['jlk3'=>true],
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
+
+
 
 	public function addAgent()
 	{
