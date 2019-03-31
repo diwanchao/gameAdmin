@@ -89,7 +89,7 @@
 
                     <td style="font-size: 14px;" align="right">
                         <select class="textradius" style="width: 80px" v-model="item.B">
-                            <option v-for="(num, i) in (item.Bmax / 0.05) + 1" :value="parseFloat((i * 0.05).toFixed(2))"></option>
+                            <option  value="s">{{(item.Amax / 0.05) + 1}}</option>
                         </select>
                     </td>
 
