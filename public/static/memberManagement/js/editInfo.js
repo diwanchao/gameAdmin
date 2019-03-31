@@ -24,10 +24,6 @@ var app = new Vue({
     methods: {
 
         submit: function(){
-            if(this.usernameStatus == 0){
-                alert('请检测账号是否重复！');
-                return;
-            }
             var game = {};
             for(var i  =0 ; i < this.game_list.length; i++) {
                 if(this.game_list[i].select){
