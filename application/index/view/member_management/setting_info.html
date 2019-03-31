@@ -46,20 +46,8 @@
         <h5 style="margin-top: 0;">
             会员
             － han321 详细设定 [
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=FC3D&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">福彩3D</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=PL3&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">体彩PL3</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SSC&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">各省时时彩</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=K3&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">各省快3</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SC&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">赛车飞艇</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=SZ&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">各省骰宝</a></b>
-            <b><a style="color:#cf0303;text-decoration: underline;" href="xgfdx.jsp?ID=26075&amp;account_type=7&amp;game_type=11X5&amp;agent_id=11771&amp;account=han321&amp;uppage=http%3A%2F%2Fag.xh33.net%2Fhylb.do%3Fid0%3D11771"
-                    class="ab">各省11选5</a></b>
+            <b v-for="(item, index) in userInfo.game_list"><a @click="game_key = item.game_key" style="color:#cf0303;text-decoration: underline;" href="javascript:void(0);"
+                    class="ab">{{item.name}}</a></b>
             ]
             <span class="fright">引用同级数据：
                 <select class="textradius" name="uslist" id="uslist"
