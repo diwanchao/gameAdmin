@@ -108,4 +108,17 @@ class Member extends Base
 	{
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
+
+
+	public function memberList()
+	{
+		$user_id = $this->request->param('id',0);
+		$data =[
+			'13'=>'hdj',
+			'88'=>'dwc',
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
+	}
+
+
 }
