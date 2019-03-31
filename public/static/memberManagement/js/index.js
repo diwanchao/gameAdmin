@@ -63,6 +63,30 @@ var app = new Vue({
                 }
             })
             
+        },
+        changeMember: function(id, status){
+            var _this = this;
+            status = status == 1 ? 0 : 1;
+            utils.getAjax({
+                url: '/api/Member/changeMemberStatus',
+                data: {type: status, id: id},
+                success: function(result){
+                    _this.init();
+                },
+                alert: true,
+            })
+        },
+        changeBet: function(id, status){
+            var _this = this;
+            status = status == 1 ? 0 : 1;
+            utils.getAjax({
+                url: '/api/Member/changeBet',
+                data: {type: status, id: id},
+                success: function(result){
+                    _this.init();
+                },
+                alert: true,
+            })
         }
     },
     mounted: function(){
