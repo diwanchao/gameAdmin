@@ -35,17 +35,17 @@ var app = new Vue({
         }
     },
     mounted: function(){
-        this.create_user_name = ENV.user_name;
+        this.create_user_name = ENV.userInfo.user_name;
         
 
         var level = {};
-        for(var i = 0; i < ENV.dish.length; i++) {
-            level[ENV.dish[i]] = 0
+        for(var i = 0; i < ENV.userInfo.dish.length; i++) {
+            level[ENV.userInfo.dish[i]] = 0
         }
         this.levelValue = level;
 
-        
-        this.game_list = ENV.game_list;
+
+        this.game_list = ENV.userInfo.game_list;
     },
 
 
