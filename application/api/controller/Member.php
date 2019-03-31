@@ -55,7 +55,21 @@ class Member extends Base
 	        return json(['msg' => '保存失败,数据异常.','code' => 201, 'data' =>[]]);		
 		}
 		$data 	= ['number'=>'123'];
-        return json(['msg' => '','code' => 200, 'data' =>$data]);
+        return json(['msg' => '保存成功','code' => 200, 'data' =>$data]);
+	}
+
+
+	public function changeMemberStatus()
+	{
+		$type 		= $this->request->param('type',0);
+		$user_id 	= $this->request->param('id',0);
+        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
+	}
+
+	public function changeBet(){
+		$type 		= $this->request->param('type',0);
+		$user_id 	= $this->request->param('id',0);
+        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
 
 }
