@@ -113,17 +113,17 @@ var app = new Vue({
         selectNumber: function(arr){
             for(var i = 0 ; i < this.data.length; i++) {
                 if($.inArray(i, arr) == -1) {
-                    this.data.select = false;
+                    this.data[i].select = false;
                 }
                 else{
-                    this.data.select = true;
+                    this.data[i].select = true;
                 }
             }
         },
 
         // 不定位
         selectN1: function(){
-            selectNumber([0,1,2,18])
+            this.selectNumber([0,1,2,18])
         },
 
         // 定位
