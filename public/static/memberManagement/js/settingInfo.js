@@ -30,6 +30,7 @@ var ssc = [];
 var app = new Vue({
     el: '#main',
     data: {
+        userInfo: ENV.userInfo,
         game_key: 'jlk3',
         setting: {
             jlk3: jlk3,
