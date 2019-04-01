@@ -49,7 +49,7 @@ var app = new Vue({
             type: 'GET',
             data: {id: this.id},
             success: function(result){
-                _this.create_user_name = result.agent_name;
+                _this.create_user_name = result.general_name;
                 _this.username = result.user_num;
                 _this.name = result.user_name;
                 _this.usable_quick = result.usable_quote;
