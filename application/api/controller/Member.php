@@ -94,6 +94,7 @@ class Member extends Base
 		$part 			= $this->request->param('part/a',0);
 		$game_list 		= $this->request->param('game/a',0);
 
+		Db::startTrans();
 		try {
 			if (!$user_number) 
 				throw new \Exception("账号不能为空");
@@ -121,10 +122,11 @@ class Member extends Base
 			Db::name('menber')->insert($data);
 
 
-
+			Db::commit();
 
 			
 		} catch (\Exception $e) {
+			Db::rollback();
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
 		}
 
@@ -148,7 +150,21 @@ class Member extends Base
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
-
+	/**
+	 * 编辑代理
+	 */
+	public function editAgent()
+	{
+		$user_id 	= $this->request->param('id',0);
+		$data = [
+			'general_name'=>'111',
+			'user_num'=>'会员账号',
+			'user_name'=>'会员名称',
+			'quick_open_quote'=>100,
+			'usable_quote'=>50,
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
 
 	/**
 	 * 新增代理
@@ -211,5 +227,7 @@ class Member extends Base
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
+
+
 
 }
