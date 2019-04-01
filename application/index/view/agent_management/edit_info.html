@@ -42,7 +42,7 @@
                                                             <div align="right">
                                                                 总代理：</div>
                                                         </td>
-                                                        <td>&nbsp;han123</td>
+                                                        <td>&nbsp;{{create_user_name}}</td>
                                                     </tr>
 
 
@@ -51,21 +51,19 @@
                                                             <div align="right">账号：</div>
                                                         </td>
                                                         <td>
-                                                            <div align="left">han12</div>
+                                                            <div align="left">{{username}}</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td height="24">
                                                             <div align="right">
-
                                                                 代理名称：
-
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div align="left">
                                                                 <input type="text" name="name" maxlength="15" size="15"
-                                                                    value="hanxiao" id="name" class="input">
+                                                                    v-model="name" class="input">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -76,7 +74,7 @@
                                                         <td>
                                                             <div align="left">
                                                                 <input type="password" name="passwd" maxlength="15"
-                                                                    size="15" value="" id="passwd" class="input">
+                                                                    size="15" v-model="pwd" class="input">
                                                                 <span class="fred12">密码框为空,则默认为原密码</span></div>
                                                         </td>
                                                     </tr>
@@ -87,8 +85,7 @@
                                                         <td>
                                                             <div align="left">
                                                                 <input type="password" name="passwordResult"
-                                                                    maxlength="15" size="15" value=""
-                                                                    id="passwordResult" class="input">
+                                                                    maxlength="15" size="15" v-model="confirm_pwd" class="input">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -113,13 +110,10 @@
                                                         <td height="26">
                                                             <div align="right">快开额度：</div>
                                                         </td>
-                                                        <td>
+                                                        <td colspan="2">
                                                             <div align="left">
-                                                                0
-
-
-                                                                (可用额度 <span class="fred12"
-                                                                    id="balance_jk_value">0</span>)(目前用于单日多期数彩球游戏(新疆时时彩，重庆时时彩...等)
+                                                                <input maxlength="15" size="15" type="text" class="input" v-model="quick">
+                                                                (可用额度 <span class="fred12">{{usable_quick}}</span>)(目前用于单日多期数彩球游戏(新疆时时彩，重庆时时彩...等)
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -133,7 +127,7 @@
                                                             <div align="left">
                                                                 <input type="hidden" name="id0" value="11771" id="id0">
                                                                 <input type="button" name="Submit" value="确认修改"
-                                                                    onclick="f_submit()">
+                                                                    onclick="submit">
 
                                                             </div>
                                                         </td>
@@ -154,5 +148,7 @@
 
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+<script src="/static/agentManagement/js/editInfo.js"></script>
 </html>
