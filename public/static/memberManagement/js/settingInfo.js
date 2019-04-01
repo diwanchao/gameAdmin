@@ -291,17 +291,14 @@ var app = new Vue({
         submit: function(){
             var _this = this;
 
-            confirm('是否确认修改？', function(flag){
-                console.log(flag);
-                if(flag){
-                    var data = {
-                        id: _this.id,
-                        game_key: _this.game_key,
-                        list: _this.data
-                    }
-                    console.log(data);
+            if(confirm('是否确认修改？')) {
+                var data = {
+                    id: _this.id,
+                    game_key: _this.game_key,
+                    list: _this.data
                 }
-            })
+                console.log(data);
+            }
         }
 
     },
