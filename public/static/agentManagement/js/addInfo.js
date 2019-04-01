@@ -108,7 +108,16 @@ var app = new Vue({
     watch: {
         'accountList.jlk3.agent': function(val){
             this.accountList.jlk3.member = 100 - val;
-        }
+        },
+        'accountList.jlk3.member': function(val){
+            this.accountList.jlk3.agent = 100 - val;
+        },
+        'accountList.ssc.agent': function(val){
+            this.accountList.ssc.member = 100 - val;
+        },
+        'accountList.ssc.member': function(val){
+            this.accountList.ssc.agent = 100 - val;
+        },
     }
 
 })
