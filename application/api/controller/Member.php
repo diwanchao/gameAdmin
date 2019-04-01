@@ -92,6 +92,21 @@ class Member extends Base
 		$part 			= $this->request->param('part/a',0);
 		$game_list 		= $this->request->param('game/a',0);
 
+		try {
+			if (!$user_number) 
+				throw new \Exception("账号不能为空", 1);
+
+			
+		} catch (\Exception $e) {
+			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
+		}
+
+
+
+
+
+
+
 
 
 
@@ -171,9 +186,10 @@ class Member extends Base
 	 */
 	public function getProportion()
 	{
+		$type 		= $this->request->param('type',0);
 		$data = [
-			'jlk3'=>10,
-			'ssc'=>10,
+			'jlk3'=>100,
+			'ssc'=>100,
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
