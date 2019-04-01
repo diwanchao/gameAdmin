@@ -43,9 +43,6 @@
                                                         <td colspan="2">
                                                             <div align="left">
                                                                 {{create_user_name}}
-                                                                <!-- <select v-model="agentValue">
-                                                                    <option v-for="(item, index) in agentList" :value="index">{{item}}</option>
-                                                                </select> -->
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -54,7 +51,7 @@
                                                             <div align="right">账号：</div>
                                                         </td>
                                                         <td width="534" nowrap="">
-                                                            <input maxlength="15" size="15" type="text" class="input" v-model="username" @blur="verificationUsername" @change="usernameStatus = '0'">
+                                                            <input maxlength="15" size="15" type="text" class="input" v-model="username" @blur="verificationUsername" @input="usernameStatus = '0'">
                                                             <img :src="usernameStatus == '1' ? '/static/global/image/s01.gif' : '/static/global/image/s02.gif'">
                                                             <span class="fbred">
                                                                 <input type="button" value="检测" @click="verificationUsername">
