@@ -104,14 +104,14 @@ class Member extends Base
 			if ($password != $confirm_pwd) 
 				throw new \Exception("两次密码输入不一致");
 
-			$parent_blance = Db::name('menber')->where('user_number=?',['dwc'])->value('blance');
-			if ($parent_blance < $blance) 
+			$parent_info = Db::name('menber')->field('id,blance')->where('user_number=?',['dwc'])->find();
+			if ($parent_info['blance'] < $blance) 
 				throw new \Exception("代理可用额度不够");
 
 
 
 			$data = [
-				'parent_id' => $parent_id,
+				'parent_id' => $parent_info['id'],
 				'password' 	=> md5($password),
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
