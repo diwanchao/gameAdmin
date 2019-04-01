@@ -30,15 +30,7 @@
     transition: all .3s linear;
 }
 #msg_win.active{
-    bottom: 15px;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
- 
-input[type="number"] {
-    -moz-appearance: textfield;
+    bottom: 2px;
 }
     </style>
 </head>
@@ -130,7 +122,7 @@ input[type="number"] {
                     <td height="23" colspan="14" align="center"><input class="btn btn-success" type="button"
                             name="submit2" value=" 重置 " @click="reset">
                         &nbsp;
-                        <input class="btn btn-success" type="submit" name="Submit" value="修改">
+                        <input class="btn btn-success" type="submit" name="Submit" @click="submit" value="修改">
                     </td>
                 </tr>
             </tbody>
