@@ -75,14 +75,6 @@ var app = new Vue({
                     _this.data = data;
                 }
             })
-            // var data = [
-            //     {methods: '二同号复选', A: '7', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'},
-            //     {methods: '三同号复选', A: '6', B: '7', C: '7', D: '2', limit: '1', max: '1000', min: '10'}
-            // ];
-            // for(var i = 0; i < data.length; i++){
-            //     data[i] = Object.assign(data[i],ary[i]);
-            // }
-            // _this.data = data;
         },
         computed: function(num){
             var ary = num.toString().split('.');
@@ -94,7 +86,7 @@ var app = new Vue({
 
         reset: function(){
             this.memberValue = '';
-            init();
+            this.init();
         },
 
 
@@ -294,6 +286,21 @@ var app = new Vue({
                 return;
             }
             return true;
+        },
+
+        submit: function(){
+            var _this = this;
+
+            confirm('是否确认修改？', function(flag){
+                if(flag){
+                    var data = {
+                        id: _this.id,
+                        game_key: _this.game_key,
+                        list: _this.data
+                    }
+                    console.log(data);
+                }
+            })
         }
 
     },
