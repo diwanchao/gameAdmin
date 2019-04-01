@@ -64,7 +64,7 @@ var app = new Vue({
                 type: 'POST',
                 data: data,
                 success: function(result){
-                    // history.back(1);
+                    history.back(1);
                 },
                 alert: true,
             })
