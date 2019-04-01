@@ -1,3 +1,4 @@
+// 吉林快3 基础验证
 var jlk3 = [
     {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
     {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
@@ -30,6 +31,7 @@ var jlk3 = [
 
 var ssc = [];
 
+// 当前被操作人的id
 var id = utils.getURL(location.search, 'id');
 
 if(!id){
@@ -40,24 +42,26 @@ if(!id){
 var app = new Vue({
     el: '#main',
     data: {
-        userInfo: ENV.userInfo,
-        id: id,
-        username: '',
-        memberList: {},
-        memberValue: '',
-        game_key: 'jlk3',
+        userInfo: ENV.userInfo, // 登录人用户信息
+        id: id, // 被操作人id
+        username: '', // 被操作人用户名
+        memberList: {}, // 当前登录人（代理）下管控的会员（不包括被操作人）
+        memberValue: '', // 被选中管控的会员（用来引用他的数据）
+        game_key: 'jlk3', // 游戏切换
+        // jlk3 时时彩的基础验证信息
         setting: {
             jlk3: jlk3,
             ssc: ssc,
         },
+        // 表格数据
         data: [],
 
         // 快速调控
         quick: {
-            show: true,
-            progress: 0.05,
-            level: 'ABCD',
-            money: ''
+            show: true, // 收起隐藏快速调控
+            progress: 0.05, // 调高低进度
+            level: 'ABCD', // 分盘
+            money: '' // 金额
         }
     },
     methods:{

@@ -200,6 +200,7 @@ var utils = {
 		}
 	},
 
+	// 深度拷贝
 	deepCopy: function(obj) {
 		return JSON.parse(JSON.stringify(obj));
 	}
