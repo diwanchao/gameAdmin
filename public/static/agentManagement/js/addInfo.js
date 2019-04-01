@@ -68,7 +68,9 @@ var app = new Vue({
                 },
                 alert: true,
             })
-        }
+        },
+
+
     },
 
 
@@ -102,5 +104,11 @@ var app = new Vue({
             }
         })
     },
+
+    watch: {
+        'accountList.jlk3.agent': function(val){
+            this.accountList.jlk3.member = 100 - val;
+        }
+    }
 
 })
