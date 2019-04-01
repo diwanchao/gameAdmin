@@ -228,6 +228,23 @@ class Member extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 
-
+	/**
+	 * 获取代理占比
+	 */
+	public function getAccountList()
+	{
+		$data = [
+			'jlk3'	=> ['agent'=>100,'member'=>0],
+			'ssc' 	=> ['agent'=>100,'member'=>0],
+		];
+		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
+	/**
+	 * 保存代理占比
+	 */
+	public function setAccount()
+	{
+		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
+	}
 
 }
