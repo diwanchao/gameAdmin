@@ -297,7 +297,16 @@ var app = new Vue({
                     game_key: _this.game_key,
                     list: _this.data
                 }
-                console.log(data);
+
+                utils.getAjax({
+                    url: '/api/member/setMemberMethod',
+                    type: 'POST',
+                    data: data,
+                    success: function(){
+                        history.back(1);
+                    },
+                    alert: true
+                })
             }
         }
 
