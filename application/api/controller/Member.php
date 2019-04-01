@@ -120,5 +120,10 @@ class Member extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 
+	public function setMemberMethod()
+	{
+        return json(['msg' => '保存成功','code' => 200, 'data' =>$data]);	
+	}
+
 
 }
