@@ -53,7 +53,7 @@ var app = new Vue({
 
         // 快速调控
         quick: {
-            show: false,
+            show: true,
             progress: 0.05,
             level: 'ABCD',
             money: ''
