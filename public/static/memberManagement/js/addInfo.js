@@ -82,8 +82,6 @@ var app = new Vue({
         for(var i = 0; i < ENV.userInfo.game_list.length; i++){
             ENV.userInfo.game_list[i].select = true;
         }
-        this.game_list = ENV.userInfo.game_list_list;
-        
         this.game_list = ENV.userInfo.game_list;
     },
 
