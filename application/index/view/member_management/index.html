@@ -155,7 +155,7 @@
                                     </td>
                                     <td align="center">
 
-                                        <a href="#" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.status == 1 ? '解封投注' : '暂停投注'}}</a>
+                                        <a href="javascript:void(0);" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.status == 1 ? '解封投注' : '暂停投注'}}</a>
                                         ::
                                         <a :href="'/index/member_management/editinfo?id=' + item.id" class="ags">修改资料</a>
                                         ::

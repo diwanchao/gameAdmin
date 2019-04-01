@@ -5,6 +5,7 @@
     <TITLE>代理商管理</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+    <link href="/static/global/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -113,53 +114,45 @@
                                         <div align="center" class="fw12">功能设定</div>
                                     </td>
                                 </tr>
-                                <tr class="t15" height="22">
+                                <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
-                                        <div align="center" class="fblue12">
-                                            han12
-                                        </div>
+                                        <div align="center" class="fblue12">{{item.general_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">han321</div>
+                                        <div align="center">{{item.user_number}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">hanxx</div>
+                                        <div align="center">{{item.user_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">2</div>
+                                        <div align="center">{{item.count_user}}</div>
                                     </td>
                                     <td>
-                                        <div class="fred12" align="center">0/<span id="qc26075">570</span>
-                                            <input style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
-                                                class="tbuttonr" title="给帐户存入快开额度"
-                                                onclick="ch_quick('han321',0,26075,7)" value="存入" type="button"
-                                                name="sm">
-                                            <input
-                                                style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
-                                                class="tbuttong" title="从帐户里提出快开额度"
-                                                onclick="ch_quick('han321',1,26075,7)" value="提取" type="button"
+                                        <div class="fred12" align="center">0/<span>{{item.quick_open_quote}}</span>
+                                            <input @click="quickLimit(item, 0)" style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
+                                                class="tbuttonr" title="给帐户存入快开额度" value="存入" type="button" name="sm">
+                                            <input @click="quickLimit(item, 1)"
+                                                style="TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; width: 30px; PADDING-RIGHT: 0px; HEIGHT: 17px; PADDING-TOP: 0px"
+                                                class="tbuttong" title="从帐户里提出快开额度" value="提取" type="button"
                                                 name="sm">
                                         </div>
                                     </td>
                                     <td>
-                                        <div align="center">02-26 15:27:10</div>
+                                        <div align="center">{{item.create_time}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">33</div>
+                                        <div align="center">{{item.login_count}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">03-20 20:12:34</div>
+                                        <div align="center">{{login_time}}</div>
                                     </td>
                                     <td>
                                         <div align="center" class="fblue12">
-                                            <a href="#" onclick="upstate(0,26075)">启用</a>
-
-
+                                                <a href="javascript:void(0)" @click="changeMember(item.id, item.status)">{{item.status == 1 ? '启用' : '封存'}}</a>
                                         </div>
                                     </td>
                                     <td align="center">
-
-                                        <a href="#" class="ags" onclick="upgame_item(0,26075)">暂停投注</a>
+                                        <a href="javascript:void(0);" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.status == 1 ? '解封投注' : '暂停投注'}}</a>
                                         ::
                                         <a href="#" class="ags">修改信息</a>
                                         ::
@@ -179,8 +172,24 @@
             </tbody>
         </table>
     </div>
+    <!-- 快开额度(存入) -->
+    <div class="h-modal" id="modal" data-width="350">
+        <div class="h-modal-title">
+            <h5>存入</h5>
+            <span class="h-modal-close" data-methods="close">&times;</span>
+        </div>
+        <div class="h-modal-body" style="background: #eee;">
+            <div style="text-align: center;">
+                <input type="hidden" name="id" class="id">
+                <input type="hidden" name="type" class="type">
+                金额：<input type="text" name="money" class="money"> / <span class="use_money">12</span>(可用) &nbsp;&nbsp;&nbsp; <input type="button" data-methods="submit" value="存入" style="color: #008400">
+            </div>
+        </div>
+    </div>
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+<script src="/static/global/js/modal.js"></script>
+<script src="/static/agentManagement/js/index.js"></script>
 </html>
