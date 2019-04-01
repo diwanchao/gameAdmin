@@ -331,7 +331,7 @@ var app = new Vue({
             url: '/api/member/memberList',
             type: 'GET',
             success: function(result){
-                _this.username = result[_this.id];
+                _this.username = result[_this.id] || '';
                 delete result[_this.id];
                 _this.memberList = result;
             }
