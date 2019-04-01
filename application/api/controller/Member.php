@@ -94,25 +94,38 @@ class Member extends Base
 
 		try {
 			if (!$user_number) 
-				throw new \Exception("账号不能为空", 1);
+				throw new \Exception("账号不能为空");
+			if (!$user_name) 
+				throw new \Exception("会员名称不能为空");
+			if (!$password) 
+				throw new \Exception("密码不能为空");
+			if ($password != $confirm_pwd) 
+				throw new \Exception("两次密码输入不一致");
+
+			$parent_blance = Db::name('menber')->where('user_number=?',[$user_number])->value('blance');
+			if ($parent_blance < $blance) 
+				throw new \Exception("代理可用额度不够");
+
+
+
+			$data = [
+				'parent_id' => $parent_id,
+				'password' 	=> md5($password),
+				'user_name' => $user_name,
+				'blance' 	=> $blance,
+				'rule_name' => '会员',
+				'user_number' => $user_number,
+			];
+
+			Db::name('menber')->insert($data);
+
+
+
 
 			
 		} catch (\Exception $e) {
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
