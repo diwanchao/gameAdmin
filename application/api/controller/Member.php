@@ -265,4 +265,14 @@ class Member extends Base
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
 
+	public function getOperationLog()
+	{
+		$data = [
+			['id'=>1,'content'=>'代理dwc登录','time'=>date('Y-m-d H:i:s',time()),'admin'=>'dwc'],
+			['id'=>1,'content'=>'代理dwc登录','time'=>date('Y-m-d H:i:s',time()),'admin'=>'dwc'],
+
+		];
+		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
+
 }
