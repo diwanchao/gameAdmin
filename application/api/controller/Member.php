@@ -28,8 +28,8 @@ class Member extends Base
 		$data =[
 			'total'=>10,
 			'data'=>[
-				['general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-				['general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
+				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
+				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
 			],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
@@ -83,6 +83,22 @@ class Member extends Base
 
 	public function addUser()
 	{
+		$parent_id 		= $this->request->param('agent_name',0);
+		$user_number 	= $this->request->param('user_num',0);
+		$user_name 		= $this->request->param('user_name',0);
+		$password 		= $this->request->param('password',0);
+		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
+		$blance 		= $this->request->param('quick_open_quote',0);
+		$part 			= $this->request->param('part/a',0);
+		$game_list 		= $this->request->param('game/a',0);
+
+
+
+
+
+
+
+
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
@@ -120,7 +136,13 @@ class Member extends Base
 
 	public function checkUserName()
 	{
-        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
+
+
+		$user_name 	= $this->request->param('user_name','');
+		$user   	= Db::name('menber')->where('user_name=?',[$user_name])->find();
+		$code 		= $user ? 200 : 201;
+
+        return json(['msg' => 'succeed','code' => $code, 'data' =>[]]);	
 	}
 	/**
 	 * 会员列表
