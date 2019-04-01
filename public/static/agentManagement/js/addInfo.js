@@ -80,11 +80,14 @@ var app = new Vue({
 
         var level = {};
         for(var i = 0; i < ENV.userInfo.dish.length; i++) {
-            level[ENV.userInfo.dish[i]] = false;
+            level[ENV.userInfo.dish[i]] = true;
         }
         this.levelValue = level;
         
-        this.game_list = ENV.userInfo.game_list;
+        for(var i = 0; i < ENV.userInfo.game_list.length; i++){
+            ENV.userInfo.game_list[i].select = true;
+        }
+        this.game_list = ENV.userInfo.game_list_list;
 
         utils.getAjax({
             url: '/api/Member/getProportion',
