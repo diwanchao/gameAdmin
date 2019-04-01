@@ -55,7 +55,8 @@ var app = new Vue({
         quick: {
             show: false,
             progress: 0.05,
-            level: 'ABCD'
+            level: 'ABCD',
+            money: ''
         }
     },
     methods:{
@@ -96,6 +97,9 @@ var app = new Vue({
             init();
         },
 
+
+        // 两数运算 处理浮点
+        
 
         // 快速调控
 
@@ -173,6 +177,8 @@ var app = new Vue({
                 }
             }
         },
+
+        // 调低
         lower: function(){
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
@@ -186,7 +192,63 @@ var app = new Vue({
                     }
                 }
             }
-        }
+        },
+
+        // 最大
+        max: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    for(var s = 0; s < this.quick.level.length; s++) {
+                        var str = this.quick.level[s];
+                        cur[str] = cur[str + 'max'];
+                    }
+                }
+            }
+        },
+
+        // 最小
+        min: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    for(var s = 0; s < this.quick.level.length; s++) {
+                        var str = this.quick.level[s];
+                        cur[str] = 0;
+                    }
+                }
+            }
+        },
+
+        // 单号限额
+        setLimit: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    cur.limit = this.quick.money;
+                }
+            }
+        },
+
+        // 单注限额
+        setMax: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    cur.max = this.quick.money;
+                }
+            }
+        },
+
+        // 单注低限额
+        setMin: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    cur.min = this.quick.money;
+                }
+            }
+        },
 
     },
     mounted: function(){

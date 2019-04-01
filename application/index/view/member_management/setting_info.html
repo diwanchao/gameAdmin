@@ -32,6 +32,14 @@
 #msg_win.active{
     bottom: 15px;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+ 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
     </style>
 </head>
 
@@ -108,14 +116,14 @@
                     </td>
 
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单项(号)限额最高可设定 30000';">
-                        <input class="textradius width6em" size="11" :value="item.limit">≤<span>30000</span>
+                        <input class="textradius width6em" type="number" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" max="30000" min="2" :value="item.limit">≤<span>30000</span>
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单注限额最高可设定 6000'">
-                        <input class="textradius width6em" id="unit_limit" :value="item.max">≤<span>6000</span>
+                        <input class="textradius width6em" type="number" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" max="6000" min="2" :value="item.max">≤<span>6000</span>
                        
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选單註限額低高可設定 2'">
-                        <input class="textradius width6em" id="low_limit" :value="item.min">&gt;=<span>2</span>
+                        <input class="textradius width6em" type="number" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" min="2" max="6000" :value="item.min">&gt;=<span>2</span>
                     </td>
                 </tr>
 
@@ -168,8 +176,8 @@
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                 </select>
-                                <input type="button" class="buttongmin" value="最大" id="b13">
-                                <input type="button" class="buttongmin" value="归零" id="b14">
+                                <input type="button" class="buttongmin" value="最大" @click="max">
+                                <input type="button" class="buttongmin" value="归零" @click="min">
                                 <select v-model="quick.level" size="1" name="tpan">
                                     <option value="ABCD">全部</option>
                                     <option value="A">A盘</option>
@@ -183,10 +191,10 @@
                         <tr class="t15" align="center">
                             <td height="25">
                                 金额:
-                                <input type="text" class="input" name="xrnum">
-                                <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" id="b16">
-                                <input type="button" class="buttongmin" value="单注限额" style="width:90px" id="b15">
-                                <input type="button" class="buttongmin" value="單註低限額" style="width:90px" id="b17">
+                                <input type="number" class="input" name="xrnum" v-model="quick.money">
+                                <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" @click="setLimit">
+                                <input type="button" class="buttongmin" value="单注限额" style="width:90px" @click="setMax">
+                                <input type="button" class="buttongmin" value="單註低限額" style="width:90px" @click="setMin">
                             </td>
                         </tr>
                     </tbody>
