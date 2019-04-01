@@ -165,7 +165,7 @@ var app = new Vue({
                     var cur = this.data[i];
                     for(var s = 0; s < this.quick.level.length; s++) {
                         var str = this.quick.level[s];
-                        cur[str] += this.quick.progress;
+                        cur[str] = Number(cur[str]) + Number(this.quick.progress);
                         if(cur[str] >= cur[str + 'max']){
                             cur[str] = cur[str + 'max'];
                         }
