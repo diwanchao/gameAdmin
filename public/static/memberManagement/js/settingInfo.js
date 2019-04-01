@@ -165,7 +165,7 @@ var app = new Vue({
                     var cur = this.data[i];
                     for(var s = 0; s < this.quick.level.length; s++) {
                         var str = this.quick.level[s];
-                        cur[str] = Math.round(Number(cur[str]) + Number(this.quick.progress));
+                        cur[str] = (cur[str] * 1000 + this.quick.progress * 1000) / 1000;
                         if(cur[str] >= cur[str + 'max']){
                             cur[str] = cur[str + 'max'];
                         }
@@ -179,7 +179,7 @@ var app = new Vue({
                     var cur = this.data[i];
                     for(var s = 0; s < this.quick.level.length; s++) {
                         var str = this.quick.level[s];
-                        cur[str] = Math.round(Number(cur[str]) - Number(this.quick.progress));
+                        cur[str] = (cur[str] * 1000 - this.quick.progress * 1000) / 1000;
                         if(cur[str] <= 0){
                             cur[str] = 0;
                         }
