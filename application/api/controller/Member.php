@@ -122,7 +122,7 @@ class Member extends Base
 
 	public function setMemberMethod()
 	{
-        return json(['msg' => '保存成功','code' => 200, 'data' =>$data]);	
+        return json(['msg' => '保存成功','code' => 200, 'data' =>[]]);	
 	}
 
 
