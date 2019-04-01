@@ -292,6 +292,7 @@ var app = new Vue({
             var _this = this;
 
             confirm('是否确认修改？', function(flag){
+                console.log(flag);
                 if(flag){
                     var data = {
                         id: _this.id,
