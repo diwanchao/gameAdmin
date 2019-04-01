@@ -246,5 +246,23 @@ class Member extends Base
 	{
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
+	/**
+	 * 获取代理游戏信息
+	 */
+	public function addAgentGameInfo()
+	{
+		$data = [
+			'part'	=> ['A'=>true,'B'=>false,'C'=>true,'D'=>true],
+			'game' 	=> ['jlk3'=>true,'ssc'=>false],
+		];	
+		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
+	/**
+	 * 保存代理游戏信息
+	 */
+	public function setAgentGameInfo()
+	{
+		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
+	}
 
 }
