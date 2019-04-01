@@ -105,10 +105,8 @@ class Member extends Base
 				throw new \Exception("两次密码输入不一致");
 
 			$parent_info = Db::name('menber')->field('id,blance')->where('user_number=?',['dwc'])->find();
-			var_dump($parent_info);die();
 			if ($parent_info['blance'] < $blance) 
 				throw new \Exception("代理可用额度不够");
-
 
 
 			$data = [
