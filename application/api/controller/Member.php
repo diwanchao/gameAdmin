@@ -170,9 +170,13 @@ class Member extends Base
 
 		$user_name 	= $this->request->param('user_name','');
 		$user   	= Db::name('menber')->where('user_name=?',[$user_name])->find();
-		$code 		= $user ? 200 : 201;
 
-        return json(['msg' => 'succeed','code' => $code, 'data' =>[]]);	
+		if ($user) {
+        	return json(['msg' => '账号重复','code' => 201, 'data' =>[]]);
+		}else{
+        	return json(['msg' => '账号可用','code' => 200, 'data' =>[]]);
+		}
+
 	}
 	/**
 	 * 会员列表
