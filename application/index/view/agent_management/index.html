@@ -40,10 +40,10 @@
                                                                         </select>
                                                                         排序
                                                                         <select @change="init" v-model="search.sort" class="asas">
-                                                                            <option value="createTime">新增日期</option>
-                                                                            <option value="account">会员名称</option>
+                                                                            <option value="create_time">新增日期</option>
+                                                                            <option value="user_name">会员名称</option>
                                                                             <!-- <option value="balance">信用额度</option> -->
-                                                                            <option value="loginTime">最后登录</option>
+                                                                            <option value="login_time">最后登录</option>
                                                                         </select>
                                                                         用户名：<input type="text" v-model="search.user_name" class="input">
                                                                         <input type="button" value="查询" @click="init">
