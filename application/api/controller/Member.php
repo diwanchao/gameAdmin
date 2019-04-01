@@ -166,5 +166,16 @@ class Member extends Base
         return json(['msg' => '保存成功','code' => 200, 'data' =>[]]);	
 	}
 
+	/**
+	 * 获取占比
+	 */
+	public function getProportion()
+	{
+		$data = [
+			'jlk3'=>10,
+			'ssc'=>10,
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
 
 }
