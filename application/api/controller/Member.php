@@ -2,6 +2,8 @@
 namespace app\api\controller;
 use app\api\controller\Base;
 use think\facade\Session;
+use \think\Db;
+
 
 class Member extends Base
 {
