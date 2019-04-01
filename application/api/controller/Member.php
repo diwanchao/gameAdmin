@@ -104,7 +104,7 @@ class Member extends Base
 			if ($password != $confirm_pwd) 
 				throw new \Exception("两次密码输入不一致");
 
-			$parent_blance = Db::name('menber')->where('user_number=?',[$user_number])->value('blance');
+			$parent_blance = Db::name('menber')->where('user_number=?',['dwc'])->value('blance');
 			if ($parent_blance < $blance) 
 				throw new \Exception("代理可用额度不够");
 
