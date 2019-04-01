@@ -54,6 +54,8 @@ var app = new Vue({
         // 快速调控
         quick: {
             show: false,
+            progress: 0.05,
+            level: 'ABCD'
         }
     },
     methods:{
@@ -87,6 +89,11 @@ var app = new Vue({
                 num = num + '.0';
             }
             return num;
+        },
+
+        reset: function(){
+            this.memberValue = '';
+            init();
         },
 
 
@@ -150,6 +157,22 @@ var app = new Vue({
         selectN7: function(){
             this.selectNumber([14]);
         },
+
+        // 调高
+        heigher: function(){
+            for(var i = 0; i < this.data.length; i++) {
+                if(this.data[i].select) {
+                    var cur = this.data[i];
+                    for(var s = 0; s < this.quick.level.length; s++) {
+                        var str = this.quick.level[s];
+                        cur[str] += this.quick.progress;
+                        if(cur[str] >= cur[str + 'max']){
+                            cur[str] = cur[str + 'max'];
+                        }
+                    }
+                }
+            }
+        }
 
     },
     mounted: function(){

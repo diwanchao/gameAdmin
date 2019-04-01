@@ -108,23 +108,20 @@
                     </td>
 
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单项(号)限额最高可设定 30000';">
-                        <input class="textradius width6em" id="pour_limit" onkeypress="event.returnValue=Isnum();"
-                            size="11" name="pour[]" value="30000">≤<span id="mpour1">30000</span>
+                        <input class="textradius width6em" size="11" :value="item.limit">≤<span>30000</span>
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单注限额最高可设定 6000'">
-                        <input class="textradius width6em" id="unit_limit" onkeypress="event.returnValue=Isnum();"
-                            value="6000" size="11" name="unit[]">≤<span id="munit1">6000</span>
-                        <input id="sign" value="1" type="hidden" name="sign[]">
+                        <input class="textradius width6em" id="unit_limit" :value="item.max">≤<span>6000</span>
+                       
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选單註限額低高可設定 2'">
-                        <input class="textradius width6em" id="low_limit" onkeypress="event.returnValue=Isnum();"
-                            value="2" size="11" name="low[]">&gt;=<span id="munitlow1">2</span>
+                        <input class="textradius width6em" id="low_limit" :value="item.min">&gt;=<span>2</span>
                     </td>
                 </tr>
 
                 <tr>
                     <td height="23" colspan="14" align="center"><input class="btn btn-success" type="button"
-                            name="submit2" value=" 重置 " onclick="form2.reset();tbcolor();">
+                            name="submit2" value=" 重置 " @click="reset">
                         &nbsp;
                         <input class="btn btn-success" type="submit" name="Submit" value="修改">
                     </td>
@@ -164,22 +161,22 @@
                             <td>
                                 <input type="button" class="buttongmin" value="调高" id="b11">
                                 <input type="button" class="buttongmin" value="调低" id="b12">
-                                <select size="1" name="tnum" id="tnum">
-                                    <option selected="" value="1">0.05</option>
-                                    <option value="2">0.1</option>
-                                    <option value="10">0.5</option>
-                                    <option value="20">1</option>
-                                    <option value="40">2</option>
+                                <select size="1" name="tnum">
+                                    <option selected="" value="0.05">0.05</option>
+                                    <option value="0.1">0.1</option>
+                                    <option value="0.5">0.5</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
         
                                 </select>
                                 <input type="button" class="buttongmin" value="最大" id="b13">
                                 <input type="button" class="buttongmin" value="归零" id="b14">
                                 <select size="1" name="tpan" id="tpan">
-                                    <option selected="" value="all">全部</option>
-                                    <option value="a">A盘</option>
-                                    <option value="b">B盘</option>
-                                    <option value="c">C盘</option>
-                                    <option value="d">D盘</option>
+                                    <option selected="ABCD" value="all">全部</option>
+                                    <option value="A">A盘</option>
+                                    <option value="B">B盘</option>
+                                    <option value="C">C盘</option>
+                                    <option value="D">D盘</option>
                                 </select>
                             </td>
                         </tr>
@@ -187,7 +184,7 @@
                         <tr class="t15" align="center">
                             <td height="25">
                                 金额:
-                                <input type="text" class="input" name="xrnum" id="xrnum" size="8" onkeypress="event.returnValue=Isnum();">
+                                <input type="text" class="input" name="xrnum">
                                 <input type="button" class="buttongmin" value="单项(号)限额" style="width:90px" id="b16">
                                 <input type="button" class="buttongmin" value="单注限额" style="width:90px" id="b15">
                                 <input type="button" class="buttongmin" value="單註低限額" style="width:90px" id="b17">
