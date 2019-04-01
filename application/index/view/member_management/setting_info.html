@@ -116,13 +116,13 @@ input[type="number"] {
                     </td>
 
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单项(号)限额最高可设定 30000';">
-                        <input class="textradius width6em" type="text" :value="item.limit">≤<span>30000</span>
+                        <input @blur="vailInput(item, 'limit')" class="textradius width6em" type="text" :value="item.limit">≤<span>30000</span>
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选单注限额最高可设定 6000'">
-                        <input class="textradius width6em" type="text" :value="item.max">≤<span>6000</span>
+                        <input @blur="vailInput(item, 'max')" class="textradius width6em" type="text" :value="item.max">≤<span>6000</span>
                     </td>
                     <td style="font-size: 14px;" onmousemove="title='二同号复选單註限額低高可設定 2'">
-                        <input class="textradius width6em" type="text" :value="item.min">&gt;=<span>2</span>
+                        <input @blur="vailInput(item, 'min')" class="textradius width6em" type="text" :value="item.min">&gt;=<span>2</span>
                     </td>
                 </tr>
 
