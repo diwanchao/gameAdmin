@@ -293,7 +293,7 @@ var app = new Vue({
 
             if(confirm('是否确认修改？')) {
 
-                var data = deepCopy(_this.data);
+                var data = utils.deepCopy(_this.data);
                 for(var i = 0; i < data.length; i++) {
                     var cur = data[i];
                     delete cur.Amax;
@@ -333,5 +333,10 @@ var app = new Vue({
 
         
         this.init();
+    },
+    watch:{
+        game_key: function(){
+            this.init();
+        }
     }
 })
