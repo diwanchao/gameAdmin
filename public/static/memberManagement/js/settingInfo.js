@@ -222,6 +222,12 @@ var app = new Vue({
 
         // 单号限额
         setLimit: function(){
+            if(this.quick.money > 30000) {
+                return alert('不可高于30000限额');
+            }
+            else if(this.quick.money < 2){
+                return alert('不可低于2限额');
+            }
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
                     var cur = this.data[i];
@@ -232,6 +238,12 @@ var app = new Vue({
 
         // 单注限额
         setMax: function(){
+            if(this.quick.money > 6000) {
+                return alert('不可高于6000限额');
+            }
+            else if(this.quick.money < 2){
+                return alert('不可低于2限额');
+            }
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
                     var cur = this.data[i];
@@ -242,6 +254,12 @@ var app = new Vue({
 
         // 单注低限额
         setMin: function(){
+            if(this.quick.money > 6000) {
+                return alert('不可高于6000限额');
+            }
+            else if(this.quick.money < 2){
+                return alert('不可低于2限额');
+            }
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
                     var cur = this.data[i];
@@ -249,6 +267,34 @@ var app = new Vue({
                 }
             }
         },
+
+        vailInput: function(item, type) {
+            var max = 0;
+            var min = 2;
+            switch (type) {
+                case 'limit': {
+                    max = 30000;
+                    break;
+                }
+                case 'max':
+                case 'min': {
+                    max = 6000;
+                    break;
+                }
+            }
+
+            if(item[type] > max){
+                item[type] = max;
+                alert('不可高于' + max + '限额');
+                return;
+            }
+            else if(item[type] < min) {
+                item[type] = min;
+                alert('不可低于' + min + '限额');
+                return;
+            }
+            return true;
+        }
 
     },
     mounted: function(){
