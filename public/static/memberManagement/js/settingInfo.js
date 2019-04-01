@@ -292,16 +292,25 @@ var app = new Vue({
             var _this = this;
 
             if(confirm('是否确认修改？')) {
-                var data = {
-                    id: _this.id,
-                    game_key: _this.game_key,
-                    list: _this.data
+
+                var data = deepCopy(_this.data);
+                for(var i = 0; i < data.length; i++) {
+                    var cur = data[i];
+                    delete cur.Amax;
+                    delete cur.Bmax;
+                    delete cur.Cmax;
+                    delete cur.Dmax;
+                    delete cur.select;
                 }
 
                 utils.getAjax({
                     url: '/api/member/setMemberMethod',
                     type: 'POST',
-                    data: data,
+                    data: {
+                        id: _this.id,
+                        game_key: _this.game_key,
+                        list: data
+                    },
                     success: function(){
                         history.back(1);
                     },

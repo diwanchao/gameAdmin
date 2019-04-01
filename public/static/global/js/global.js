@@ -171,7 +171,7 @@ var utils = {
 	 * @param {All} val 值
 	 * @param {string} type 预期类型
 	 */
-	isTypeOf(val, type) {
+	isTypeOf: function(val, type) {
 		switch (type) {
 			case 'noEmpty':
 				{ // 不为空
@@ -199,6 +199,10 @@ var utils = {
 				}
 		}
 	},
+
+	deepCopy: function(obj) {
+		return JSON.parse(JSON.stringify(obj));
+	}
 
 
 
