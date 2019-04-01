@@ -28,8 +28,8 @@ class Member extends Base
 		$data =[
 			'total'=>10,
 			'data'=>[
-				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
+				['general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
+				['general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
 			],
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
@@ -46,7 +46,9 @@ class Member extends Base
 
 	}
 
-
+	/**
+	 * 存入快开额度
+	 */
 	public function setQuick()
 	{
 		$type 		= $this->request->param('type',0);
@@ -57,7 +59,9 @@ class Member extends Base
 		$data 	= ['number'=>'123'];
         return json(['msg' => '保存成功','code' => 200, 'data' =>$data]);
 	}
-
+	/**
+	 * 变更账号状态
+	 */
 
 	public function changeMemberStatus()
 	{
@@ -65,20 +69,26 @@ class Member extends Base
 		$user_id 	= $this->request->param('id',0);
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
 	}
-
+	/**
+	 * 变更是否投注状态
+	 */
 	public function changeBet(){
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
-
+	/**
+	 * 新建会员
+	 */
 
 	public function addUser()
 	{
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
-
+	/**
+	 * 编辑会员
+	 */
 	public function editUser()
 	{
 		$user_id 	= $this->request->param('id',0);
@@ -95,20 +105,26 @@ class Member extends Base
 	}
 
 
-
+	/**
+	 * 新增代理
+	 */
 	public function addAgent()
 	{
 		$data = $this->request->param();
         return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);	
 
 	}
-
+	/**
+	 * 检测用户名
+	 */
 
 	public function checkUserName()
 	{
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
-
+	/**
+	 * 会员列表
+	 */
 
 	public function memberList()
 	{
@@ -119,6 +135,9 @@ class Member extends Base
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
+	/**
+	 * 保存投注反水信息
+	 */
 
 	public function setMemberMethod()
 	{
