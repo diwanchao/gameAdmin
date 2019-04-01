@@ -26,7 +26,7 @@ var app = new Vue({
             utils.getAjax({
                 url: '/api/Member/checkUserName',
                 data: {
-                    user_name: this.user_name
+                    user_name: this.username
                 },
                 type: 'POST',
                 success: function(){
