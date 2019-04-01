@@ -468,9 +468,9 @@ var ENV = {
 	 * 初始化最新公告
 	 */
 	InitHeader.prototype.baseInit = function () {
-		if(this.data.user_type_id == 1){
-			this.$jurisdiction.hide();
-		}
+		// if(this.data.user_type_id == 1){
+		// 	this.$jurisdiction.hide();
+		// }
 		this.$userType.text(this.data.user_type);
 		this.$username.text(this.data.user_name);
 	}
