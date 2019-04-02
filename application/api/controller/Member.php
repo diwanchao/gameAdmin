@@ -116,6 +116,8 @@ class Member extends Base
 				'blance' 	=> $blance,
 				'rule_name' => '会员',
 				'user_number' => $user_number,
+				'game_list' => json_encode($game_list),
+				'part' 		=> json_encode($part),
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
