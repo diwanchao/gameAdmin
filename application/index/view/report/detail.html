@@ -43,7 +43,7 @@
                                                                         <tr>
                                                                             <td width="20" height="18"></td>
                                                                             <td width="709" nowrap="" class="fb">
-                                                                                报表　日期：2019-03-29 ~ 2019-03-30 报表类型:总账
+                                                                                报表　日期：{{startTime}} ~ {{endTime}} 报表类型:总账
                                                                                 投注方式：全部
                                                                                 投注种类：全部
                                                                             </td>
@@ -75,20 +75,29 @@
         <br>
         <table class="linetb" border="0" cellspacing="1" cellpadding="0" width="320">
             <tbody>
-                <tr align="middle">
+                <tr v-if="user_type == 0" align="middle">
+                    <td width="150" height="25" class="tb1_title">会员</td>
+                    <td width="100" class="tb1_title">总代</td>
+                    <td width="100" class="tb1_title">会员</td>
+                    <td width="140" class="tb1_title">代理净利</td>
+                </tr>
+                <tr v-else-if="user_type == 1" align="middle">
                     <td width="150" height="25" class="tb1_title">代理</td>
                     <td width="100" class="tb1_title">股东</td>
                     <td width="100" class="tb1_title">代理</td>
                     <td width="140" class="tb1_title">总代净利</td>
                 </tr>
-
+                x
             </tbody>
         </table>
-        <table style="POSITION: static; MARGIN-TOP: 10px" id="JLK3_div" class="watable" border="0" cellspacing="0"
+
+        <table v-for="(item, index) in list" style="POSITION: static; MARGIN-TOP: 10px" class="watable" border="0" cellspacing="0"
             cellpadding="0" width="100%">
             <tbody>
                 <tr>
-                    <td style="PADDING-LEFT: 10px" class="icon" height="20" valign="bottom" width="150" nowrap="">吉林快3
+                    <td style="PADDING-LEFT: 10px" class="icon" height="20" valign="bottom" width="150" nowrap="">
+                        <span v-if="index == 'ssc'">重庆时时彩</span>
+                        <span v-else-if="index == 'jlk3'">吉林快3</span>
                     </td>
                     <td height="20" valign="bottom"><a onclick="javascript:history.back(1)"
                             style="CURSOR: pointer">上一页</a></td>
@@ -98,33 +107,59 @@
                         <table id="JLK3_datatable" class="linetb" border="0" cellspacing="1" cellpadding="0"
                             width="100%">
                             <tbody>
-                                <tr align="middle">
-                                    <td class="tb_title" height="20">层级</td>
-                                    <td class="tb_title" colspan="3">总额</td>
-                                    <td class="tb_title" scope="col">总损益</td>
-                                    <td class="tb_title" colspan="3">占成</td>
-                                    <td class="tb_title" colspan="2">退水</td>
-                                    <td class="tb_title">返利</td>
-                                    <td class="tb_title" colspan="3">交收额度</td>
-                                </tr>
-                                <tr align="middle">
-                                    <td width="150" height="25" class="tb1_title">代理</td>
-                                    <td width="80" class="tb1_title">已开笔数</td>
-                                    <td width="80" class="tb1_title">未开笔数</td>
-                                    <td width="145" class="tb1_title">已开下注金额</td>
-                                    <td width="130" class="tb1_title">总损益</td>
-                                    <td width="100" class="tb1_title">股东(向上总计)</td>
-                                    <td width="100" class="tb1_title">总代理(自身)</td>
-                                    <td width="100" class="tb1_title">代理(向下总计)</td>
-                                    <td width="100" class="tb1_title">总代退水</td>
-                                    <td width="140" class="tb1_title">代理退水</td>
-                                    <td class="tb1_title">总代赔率返利</td>
-                                    <td width="100" class="tb1_title">股东</td>
-                                    <td width="100" class="tb1_title">代理</td>
-                                    <td width="140" class="tb1_title">总代净利</td>
-                                </tr>
-
-
+                                <template v-if="user_type == 0">
+                                    <tr align="middle">
+                                        <td class="tb_title" height="20">层级</td>
+                                        <td class="tb_title" colspan="3">总额</td>
+                                        <td class="tb_title" scope="col">损益</td>
+                                        <td class="tb_title" colspan="2">占成</td>
+                                        <td class="tb_title" colspan="2">退水</td>
+                                        <td class="tb_title">返利</td>
+                                        <td class="tb_title" colspan="3">交收额度</td>
+                                    </tr>
+                                    <tr align="middle">
+                                        <td width="150" height="25" class="tb1_title">会员</td>
+                                        <td width="80" class="tb1_title">已开笔数</td>
+                                        <td width="80" class="tb1_title">未开笔数</td>
+                                        <td width="145" class="tb1_title">已开下注金额</td>
+                                        <td width="130" class="tb1_title">总损益</td>
+                                        <td width="100" class="tb1_title">总代(向上总计)</td>
+                                        <td width="100" class="tb1_title">代理(自身)</td>
+                                        <td width="100" class="tb1_title">代理退水</td>
+                                        <td width="100" class="tb1_title">会员退水</td>
+                                        <td class="tb1_title">代理赔率返利</td>
+                                        <td width="100" class="tb1_title">总代</td>
+                                        <td width="100" class="tb1_title">会员</td>
+                                        <td width="140" class="tb1_title">代理净利</td>
+                                    </tr>
+                                </template>
+                                <template v-else-if="user_type == 1">
+                                    <tr align="middle">
+                                        <td class="tb_title" height="20">层级</td>
+                                        <td class="tb_title" colspan="3">总额</td>
+                                        <td class="tb_title" scope="col">总损益</td>
+                                        <td class="tb_title" colspan="3">占成</td>
+                                        <td class="tb_title" colspan="2">退水</td>
+                                        <td class="tb_title">返利</td>
+                                        <td class="tb_title" colspan="3">交收额度</td>
+                                    </tr>
+                                    <tr align="middle">
+                                        <td width="150" height="25" class="tb1_title">代理</td>
+                                        <td width="80" class="tb1_title">已开笔数</td>
+                                        <td width="80" class="tb1_title">未开笔数</td>
+                                        <td width="145" class="tb1_title">已开下注金额</td>
+                                        <td width="130" class="tb1_title">总损益</td>
+                                        <td width="100" class="tb1_title">股东(向上总计)</td>
+                                        <td width="100" class="tb1_title">总代理(自身)</td>
+                                        <td width="100" class="tb1_title">代理(向下总计)</td>
+                                        <td width="100" class="tb1_title">总代退水</td>
+                                        <td width="140" class="tb1_title">代理退水</td>
+                                        <td class="tb1_title">总代赔率返利</td>
+                                        <td width="100" class="tb1_title">股东</td>
+                                        <td width="100" class="tb1_title">代理</td>
+                                        <td width="140" class="tb1_title">总代净利</td>
+                                    </tr>
+                                </template>
 
                                 <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)"
                                     onclick="change_backcolor(this);">
@@ -191,6 +226,8 @@
 
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+<script src="/static/report/js/detail.js"></script>
 
 </html>

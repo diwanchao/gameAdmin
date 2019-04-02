@@ -27,7 +27,7 @@ var app = new Vue({
                 alert('请选择游戏！');
                 return;
             }
-            window.location = '/index/report/detail?tiem=' + this.startTime + '-' + this.endTime + '&game_list=' + game.toString();
+            window.location = '/index/report/detail?time=' + this.startTime + ',' + this.endTime + '&game_list=' + game.toString();
         },
 
         selectAll: function(){
@@ -61,7 +61,8 @@ var app = new Vue({
             this.query();
         },
 
-        getFirstDayOfWeek: function (date) {
+        getFirstDayOfWeek: function () {
+            var date = new Date();
             var weekday = date.getDay()||7; 
             date.setDate(date.getDate()-weekday+1);
             return utils.paseDate(date);
