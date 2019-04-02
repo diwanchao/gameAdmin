@@ -26,7 +26,7 @@
                                     <td width="530" height="25"><strong>
                                             修改代理开放游戏设定
                                         </strong></td>
-                                    <td width="90"><a href="http://ag.xh33.net/dllba.do?id0=11770&amp;agent_level=6"
+                                    <td width="90"><a href="javascript:history.back(1)"
                                             class="ah">返回上一页</a></td>
                                 </tr>
                                 <tr>
@@ -42,7 +42,7 @@
                                                             <div align="right">
                                                                 总代理：</div>
                                                         </td>
-                                                        <td>&nbsp;han123</td>
+                                                        <td>&nbsp;{{create_user_name}}</td>
                                                     </tr>
 
 
@@ -51,7 +51,7 @@
                                                             <div align="right">账号：</div>
                                                         </td>
                                                         <td>
-                                                            <div align="left">han12</div>
+                                                            <div align="left">{{name}}</div>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -60,29 +60,10 @@
                                                         </td>
                                                         <td>
                                                             <div align="left">
-
-
-                                                                <input type="checkbox" name="plate_nos" value="A">A
-
-
-                                                                <input type="checkbox" name="plate_nos" value="B">B
-
-
-                                                                <input type="checkbox" name="plate_nos" value="C">C
-
-
-                                                                <input type="checkbox" name="plate_nos" value="D">D
-
-
-                                                                <input type="checkbox" name="plate_nos" value="E">E
-
-
-
-
-
-
-
-
+                                                                <template v-for="(item, index) in levelValue">
+                                                                    <input  type="checkbox" :value="index"
+                                                                    v-model="levelValue[index]">{{index}}
+                                                                </template>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -92,31 +73,9 @@
                                                         </td>
                                                         <td>
                                                             <div align="left">
-                                                                <input type="checkbox" name="gameid" checked="true">福彩3D
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">体彩PL3<br>
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">重庆时时彩
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">吉林11选5
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">新疆时时彩<br>
-                                                                <input type="checkbox" name="gameid" checked="true">北京赛车
-                                                                <input type="checkbox" name="gameid" checked="true">吉林快3
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">吉林骰宝<br>
-                                                                <input type="checkbox" name="gameid" checked="true">幸运飞艇
-                                                                <input type="checkbox" name="gameid" checked="true">北京快3
-                                                                <input type="checkbox" name="gameid" checked="true">北京骰宝
-                                                                <input type="checkbox" name="gameid" checked="true">湖北快3
-                                                                <input type="checkbox" name="gameid" checked="true">河北快三
-                                                                <input type="checkbox" name="gameid" checked="true">甘肃快三
-                                                                <input type="checkbox" name="gameid" checked="true">江苏快三
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">内蒙古快三
-                                                                <input type="checkbox" name="gameid"
-                                                                    checked="true">辽宁11选5
-
+                                                                <template v-for="(item, index) in game_list">
+                                                                    <input type="checkbox" :value="item.game_key" v-model="item.select"> {{item.name}}
+                                                                </template>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -126,9 +85,8 @@
                                                         </td>
                                                         <td>
                                                             <div align="left">
-                                                                <input type="hidden" name="id0" value="11771" id="id0">
                                                                 <input type="button" name="Submit" value="确认修改"
-                                                                    onclick="f_submit()">
+                                                                    @click="submit">
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -148,6 +106,7 @@
 
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-
+<script src="/static/agentManagement/js/kindInfo.js"></script>
 </html>
