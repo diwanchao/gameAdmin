@@ -34,7 +34,7 @@ var ssc = [];
 // 当前被操作人的id
 var id = utils.getURL(location.search, 'id');
 var name = utils.getURL(location.search, 'name');
-var type = utils.getURL(location.search, 'name');
+var type = utils.getURL(location.search, 'type');
 
 if(!id){
     alert('请正确进入～');
