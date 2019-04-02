@@ -76,13 +76,11 @@
                                                         style="font-size:14px;">游戏类别:</td>
                                                     <td bgcolor="#ffffff" align="left" width="779"
                                                         style="font-size:14px;"> 类型:
-                                                        <input type="radio" name="select_all_game_n"
-                                                            id="select_all_game" onclick="selectall(1);"
-                                                            checked="checked">
+                                                        <input type="radio" v-model="" name="select_all_game_n" value="select_all" checked="checked">
                                                         全部
-                                                        <input type="radio" name="select_all_game_n"
-                                                            id="select_all_game" onclick="selectall(0);">
-                                                        全部不选 </td>
+                                                        <input type="radio" name="select_all_game_n" value="select_un_all">
+                                                        全部不选 
+                                                    </td>
                                                 </tr>
                                                 <!-- <tr>
                                                     <td bgcolor="#ffffff" align="left" style="font-size:14px;"><input
@@ -193,7 +191,6 @@
                                                             <input onclick="go_week(2);" id="chaxun2" value="本星期"
                                                                 type="button" name="B3" class="btn"
                                                                 style="font-size:14px;">
-
                                                         </div>
                                                     </td>
                                                 </tr>
