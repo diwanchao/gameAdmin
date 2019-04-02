@@ -9,7 +9,7 @@ class Report extends Base
     {
         return $this->fetch();
     }
-    public function dateil()
+    public function detail()
     {
         return $this->fetch();
     }  
