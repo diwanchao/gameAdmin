@@ -15,8 +15,8 @@
     {include file="public/header"}
 
     <div id="main" class="main">
-        <h5><a onclick="javascript:history.back(1)" style="CURSOR: pointer">返回上一页</a></h5>
-        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+        <h5><a href="javascript:history.back(1)" style="CURSOR: pointer">返回上一页</a></h5>
+        <table width="100%" border="0" cellpadding="0" cellspacing="1"
             style="border:1px solid #76694c;font-size:14px;">
             <thead>
                 <tr class="note_title" height="25">
@@ -27,18 +27,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr bgcolor="#f0f0f0">
+                <tr v-for="(item, index) in data" bgcolor="#f0f0f0">
                     <td height="24">
-                        <div align="center">1430352</div>
+                        <div align="center">{{item.id}}</div>
                     </td>
                     <td height="24">
-                        <div align="left">调整账号han321福彩3D的赔率</div>
+                        <div align="left">{{item.content}}</div>
                     </td>
                     <td height="24">
-                        <div align="center">2019-03-29 17:09:16</div>
+                        <div align="center">{{item.time}}</div>
                     </td>
                     <td height="24">
-                        <div align="center">han12</div>
+                        <div align="center">{{item.admin}}</div>
                     </td>
                 </tr>
             </tbody>
@@ -49,7 +49,7 @@
 
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-<script type="text/javascript" src="./js/index.js"></script>
-
+<script src="/static/agentManagement/js/operationLog.js"></script>
 </html>
