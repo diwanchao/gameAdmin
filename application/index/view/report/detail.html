@@ -170,11 +170,11 @@
                                     <td>{{item.down_proportion}}</td>
                                     <td>{{item.all_agent_break}}</td>
                                     <td>{{item.agent_break}}</td>
-                                    <td>0.00</td>
+                                    <td>{{item.rebate}}</td>
 
-                                    <td bgcolor="#ffff00">0.00</td>
-                                    <td bgcolor="#ffff00">0.00</td>
-                                    <td bgcolor="#ffff00">0.00</td>
+                                    <td bgcolor="#ffff00">{{item.up_profit}}</td>
+                                    <td bgcolor="#ffff00">{{item.down_profit}}</td>
+                                    <td bgcolor="#ffff00">{{item.self_profit}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -214,7 +214,23 @@
                     <td width="100" class="tb1_title">代理</td>
                     <td width="140" class="tb1_title">总代净利</td>
                 </tr>
+                <tr align="right" bgcolor="#FFFFFF">
+                    <td height="20">小计</td>
+                    <td>{{sum.open_count}}</td>
+                    <td>{{sum.not_open_count}}</td>
+                    <td>{{sum.bet_amount}}</td>
+                    <td>{{sum.sum_loss}}</td>
+                    <td>{{sum.up_proportion}}</td>
+                    <td>{{sum.self_proportion}}</td>
+                    <td>{{sum.down_proportion}}</td>
+                    <td>{{sum.all_agent_break}}</td>
+                    <td>{{sum.agent_break}}</td>
+                    <td>{{sum.rebate}}</td>
 
+                    <td bgcolor="#ffff00">{{sum.up_profit}}</td>
+                    <td bgcolor="#ffff00">{{sum.down_profit}}</td>
+                    <td bgcolor="#ffff00">{{sum.self_profit}}</td>
+                </tr>
 
             </tbody>
         </table>
