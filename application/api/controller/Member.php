@@ -232,7 +232,7 @@ class Member extends Base
 
 
 		$user_name 	= $this->request->param('user_name','');
-		$user   	= Db::name('menber')->where('user_name=?',[$user_name])->find();
+		$user   	= Db::name('menber')->where('user_number=?',[$user_name])->find();
 
 		if ($user) {
         	return json(['msg' => '账号重复','code' => 201, 'data' =>[]]);
