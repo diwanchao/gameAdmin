@@ -1,4 +1,6 @@
 var modal = new H_modal('#modal');
+var search = utils.getURL(location.search, 'search');
+
 var app = new Vue({
     el: '#main',
     data: {
@@ -7,7 +9,7 @@ var app = new Vue({
             index: 1, // 当前第几页
             state: 1, // 停用启用 0->停用 1->启用
             sort: 'create_time', // createTime->新增日期 account->名称 balance->信用额度 loginTime->最后登录
-            user_name: '', // 用户姓名
+            user_name: search || '', // 用户姓名
         },
         data: [
         ],

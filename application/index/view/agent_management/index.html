@@ -119,10 +119,11 @@
                                         <div align="center" class="fblue12">{{item.general_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center"><a :href="'/index/member_management?search=' + item.user_number">{{item.user_number}}</a></div>
+                                        <div align="center">{{item.user_num}}</div>
                                     </td>
                                     <td>
-                                        <div align="center">{{item.user_name}}</div>
+                                        <div align="center"><a :href="'/index/member_management?search=' + escape(item.user_name)">{{item.user_name}}</a></div>
+                                        
                                     </td>
                                     <td>
                                         <div align="center">{{item.count_user}}</div>
