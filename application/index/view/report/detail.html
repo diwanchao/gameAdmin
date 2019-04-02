@@ -87,11 +87,9 @@
                     <td width="100" class="tb1_title">代理</td>
                     <td width="140" class="tb1_title">总代净利</td>
                 </tr>
-                x
             </tbody>
         </table>
-
-        <table v-for="(item, index) in list" style="POSITION: static; MARGIN-TOP: 10px" class="watable" border="0" cellspacing="0"
+        <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
             cellpadding="0" width="100%">
             <tbody>
                 <tr>
@@ -161,18 +159,17 @@
                                     </tr>
                                 </template>
 
-                                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)"
-                                    onclick="change_backcolor(this);">
+                                <tr align="right" bgcolor="#FFFFFF">
                                     <td height="20">小计</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
-                                    <td>0.00</td>
+                                    <td>{{item.open_count}}</td>
+                                    <td>{{item.not_open_count}}</td>
+                                    <td>{{item.bet_amount}}</td>
+                                    <td>{{item.sum_loss}}</td>
+                                    <td>{{item.up_proportion}}</td>
+                                    <td>{{item.self_proportion}}</td>
+                                    <td>{{item.down_proportion}}</td>
+                                    <td>{{item.all_agent_break}}</td>
+                                    <td>{{item.agent_break}}</td>
                                     <td>0.00</td>
 
                                     <td bgcolor="#ffff00">0.00</td>
