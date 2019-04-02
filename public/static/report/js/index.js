@@ -76,17 +76,32 @@ var app = new Vue({
     },
 
     directives:{
-        'time':{
+        'stime':{
             inserted: function(el, binding){
-                console.log(this)
                 bindTime(el.id, function(obj){
-                    console.log(obj.val);
-                })
-                console.log(binding)
-                
+                    app.startTime = obj.val;
+                });
+            }
+        },
+        'etime':{
+            inserted: function(el, binding){
+                bindTime(el.id, function(obj){
+                    app.endTime = obj.val;
+                });
             }
         },
     },
+
+    watch: {
+        selectBtn: function(val){
+            if(val == 'select_all'){
+                this.selectAll();
+            }
+            else {
+                this.selectUnAll();
+            }
+        }
+    }
 });
 
 function bindTime(id, callback) {
