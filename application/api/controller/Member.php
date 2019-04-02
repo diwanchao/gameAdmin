@@ -109,7 +109,6 @@ class Member extends Base
 			if ($parent_info['blance'] < $blance) 
 				throw new \Exception("代理可用额度不够");
 
-
 			$data = [
 				'parent_id' => $parent_info['id'],
 				'password' 	=> md5($password),
@@ -119,12 +118,12 @@ class Member extends Base
 				'user_number' => $user_number,
 			];
 
-			Db::name('menber')->insert($data);
-
+			$user_id  = Db::name('menber')->insertGetId($data);
+			set_integral($user_id,1,'存入金额',$blance);
+			init_user_method($user_id,'jlk3');
 
 			Db::commit();
 
-			
 		} catch (\Exception $e) {
 			Db::rollback();
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
@@ -133,6 +132,55 @@ class Member extends Base
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
 	}
+
+
+
+
+	/**
+	 * 初始化游戏玩法
+	 */
+	public function init_user_method($user_id,$game_key)
+	{
+		if ($game_key == 'jlk3') 
+		{
+			$data = [
+				['methods'=>'二同号复选','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'二不同号','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三同号单选','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'二同号单选','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三不同号','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和值','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和值大小','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和值单双','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三同号通选','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三连号通选','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'半顺','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'全顺','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'杂','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'跨','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'4码黑','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'4码红','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'5码黑','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'红大小','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'红单双','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'黑大小','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'黑单双','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和值大单双','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和值小单双','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'黑码','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'红码','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三军','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+
+			];
+			Db::name('user_game_method')->insertAll($data);
+		}
+
+	}
+
+
+
+
+
 	/**
 	 * 编辑会员
 	 */
