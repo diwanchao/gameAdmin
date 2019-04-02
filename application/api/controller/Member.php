@@ -120,7 +120,7 @@ class Member extends Base
 
 			$user_id  = Db::name('menber')->insertGetId($data);
 			set_integral($user_id,1,'存入金额',$blance);
-			init_user_method($user_id,'jlk3');
+			$this->init_user_method($user_id,'jlk3');
 
 			Db::commit();
 
