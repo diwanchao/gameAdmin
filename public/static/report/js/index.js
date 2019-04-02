@@ -13,20 +13,19 @@ var app = new Vue({
 
     methods: {
         query: function(){
-            if(!startTime || !this.endTime){
+            if(!this.startTime || !this.endTime){
                 alert('请选择时间区间!');
                 return;
             }
-            else if(!selectGameList.length){
-                alert('请选择游戏！');
-                return;
-            }
-
             var game = [];
             for(var i = 0; i < this.game.length; i++) {
                 if(this.game[i].select){
                     game.push(this.game[i].game_key);
                 }
+            }
+            if(!game.length){
+                alert('请选择游戏！');
+                return;
             }
             window.location = '/index/report/detail?tiem=' + this.startTime + '-' + this.endTime + '&game_list=' + game.toString();
         },
