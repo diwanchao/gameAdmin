@@ -34,6 +34,7 @@ var ssc = [];
 // 当前被操作人的id
 var id = utils.getURL(location.search, 'id');
 var name = utils.getURL(location.search, 'name');
+var type = utils.getURL(location.search, 'name');
 
 if(!id){
     alert('请正确进入～');
@@ -43,6 +44,7 @@ if(!id){
 var app = new Vue({
     el: '#main',
     data: {
+        type: type, // 从哪个入口 0->会员 1->代理
         userInfo: ENV.userInfo, // 登录人用户信息
         id: id, // 被操作人id
         username: name, // 被操作人用户名

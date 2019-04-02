@@ -44,14 +44,14 @@
 
     <div id="main" class="main">
         <h5 style="margin-top: 0;">
-            {{(userInfo.role_type == 1 ? '代理' : '会员')}}
+            {{(type == 1 ? '代理' : '会员')}}
             － {{username}} 详细设定 [
             <b><a href="javascript:void(0);" @click="game_key = 'jlk3'" style="color:#cf0303;text-decoration: underline;" class="ab">各省快3</a></b>
             <b><a href="javascript:void(0);" @click="game_key = 'ssc'" style="color:#cf0303;text-decoration: underline;" class="ab">各省时时彩</a></b>
             ]
             <span class="fright">引用同级数据：
                 <select v-model="memberValue" @change="init" class="textradius" title="读取其它用户已设置好的退水信息">
-                    <option value="">选择 {{(userInfo.role_type == 1 ? '代理' : '会员')}}</option>
+                    <option value="">选择 {{(type == 1 ? '代理' : '会员')}}</option>
                     <option v-for="(item, index) in memberList" :value="index">{{item}}</option>
                 </select>
             </span>

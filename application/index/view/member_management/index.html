@@ -159,7 +159,7 @@
                                         ::
                                         <a :href="'/index/member_management/editinfo?id=' + item.id" class="ags">修改资料</a>
                                         ::
-                                        <a :href="'/index/member_management/settingInfo?id=' + item.id + '&name=' + item.user_name" class="ags">详细设定</a>
+                                        <a :href="'/index/member_management/settingInfo?id=' + item.id + '&name=' + escape(item.user_name) + '&type=0'" class="ags">详细设定</a>
                                     </td>
                                 </tr>
                             </tbody>
