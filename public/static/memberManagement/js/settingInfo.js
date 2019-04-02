@@ -33,6 +33,7 @@ var ssc = [];
 
 // 当前被操作人的id
 var id = utils.getURL(location.search, 'id');
+var name = utils.getURL(location.search, 'name');
 
 if(!id){
     alert('请正确进入～');
@@ -44,7 +45,7 @@ var app = new Vue({
     data: {
         userInfo: ENV.userInfo, // 登录人用户信息
         id: id, // 被操作人id
-        username: '', // 被操作人用户名
+        username: name, // 被操作人用户名
         memberList: {}, // 当前登录人（代理）下管控的会员（不包括被操作人）
         memberValue: '', // 被选中管控的会员（用来引用他的数据）
         game_key: 'jlk3', // 游戏切换
@@ -331,7 +332,6 @@ var app = new Vue({
             url: '/api/member/memberList',
             type: 'GET',
             success: function(result){
-                _this.username = result[_this.id] || '';
                 delete result[_this.id];
                 _this.memberList = result;
             }
