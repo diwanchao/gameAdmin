@@ -9,7 +9,7 @@ var app = new Vue({
         },
         money: 0, //金额
         handsel: 0, // 派彩
-        break: 0, // 反水
+        _break: 0, // 反水
         amount: 0, // 总计
         data: [],
     },
@@ -33,7 +33,7 @@ var app = new Vue({
                     for(var i = 0; i < result.length; i++) {
                         _this.money += Number(result[i].money);
                         _this.handsel += Number(result[i].handsel);
-                        _this.break += Number(result[i].break);
+                        _this._break += Number(result[i].break);
                         _this.amount += Number(result[i].amount);
                     }
                     _this.data = result;
