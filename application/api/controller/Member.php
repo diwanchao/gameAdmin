@@ -238,8 +238,8 @@ class Member extends Base
 		if ($data)
 		{
 			$return_data = $data[0];
-			$return_data['part'] 		= json_decode($return_data['part']);
-			$return_data['game_list'] 	= json_decode($return_data['game_list']);
+			$return_data['part'] = json_decode($return_data['part']);
+			$return_data['game'] = json_decode($return_data['game']);
 		}
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
