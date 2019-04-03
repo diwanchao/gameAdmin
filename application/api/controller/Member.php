@@ -230,12 +230,17 @@ class Member extends Base
 	 */
 	public function editUser()
 	{
-		$user_id 	= $this->request->param('id',0);
+		$data = [];
 
-		$sql 		= "SELECT a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id}";
-		$data 	= Db::query($sql);
-		$data['part'] 		= json_decode($data['part']);
-		$data['game_list'] 	= json_decode($data['game_list']);
+		$user_id 	= $this->request->param('id',0);
+		$sql 		= "SELECT a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id} limit 1";
+		$data 		= Db::query($sql);
+		if ($data)
+		{
+			$data = $data[0];
+			$data['part'] 		= json_decode($data['part']);
+			$data['game_list'] 	= json_decode($data['game_list']);
+		}
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
