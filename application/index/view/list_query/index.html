@@ -5,6 +5,7 @@
     <TITLE>注单查询</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+    <link href="/static/global/style/jedate.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -23,37 +24,22 @@
             </tbody>
         </table>
         &nbsp;&nbsp;&nbsp;&nbsp;会员账号： 
-        <input id="account" value="">
+        <input v-model="search.username" value="">
         &nbsp;&nbsp;&nbsp;&nbsp;彩种： 
-        <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" id="selgame" size="1">
-            <option value="ALL">全部</option>
-            <option value="FC3D">福彩3D</option>
-            <option value="PL3">体彩PL3</option>
-            <option value="SSC">重庆时时彩</option>
-            <option value="XJSC">新疆时时彩</option>
-            <option value="BJSC">北京赛车</option>
-            <option value="JLK3">吉林快3</option>
-            <option value="JLSZ">吉林骰宝</option>
-            <option value="XYFT">幸运飞艇</option>
-            <option value="BJK3">北京快3</option>
-            <option value="BJSZ">北京骰宝</option>
-            <option value="HBK3">湖北快3</option>
-            <option value="HEBK3">河北快3</option>
-            <option value="GSK3">甘肃快3</option>
-            <option value="JSK3">江苏快3</option>
-            <option value="NMGK3">内蒙古快3</option>	
-            <option value="JL11X5">吉林11选5</option>	 
-            <option value="LN11X5">辽宁111选5</option>                       
+        <select v-model="game_key" style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" size="1">
+            <option value="">全部</option>
+            <option value="ssc">重庆时时彩</option>
+            <option value="jlk3">吉林快3</option>
         </select>
         &nbsp;&nbsp;&nbsp;&nbsp;时间： 
-        <input id="time" value="2019-03-29">
+        <input v-time v-model="search.time">
         "YYYY-MM-DD"&nbsp;&nbsp;&nbsp;&nbsp;是否结算： 
-        <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" id="seljiesuan" size="1">
-            <option value="ALL" selected="">全部</option>
+        <select v-model="search.status" style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" size="1">
+            <option value="" selected="">全部</option>
             <option value="0">未结算</option>
             <option value="1">已结算</option>
         </select>
-        <input class="button" type="button" value="查询" onclick="sub()">
+        <input class="button" type="button" value="查询" @click="query">
         <table border="0" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
@@ -77,141 +63,27 @@
                     <td class="note_title" width="5%">退水</td>
                     <td class="note_title" width="5%">收交金额</td>
                 </tr>
-        
-        
-                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
-                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
-                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
-        
-                    <td height="22" nowrap="">吉林快3</td>
-                    <td>108249668</td>
-                    <td>A</td>
+                <tr v-for="(item, index) in data" align="right" bgcolor="#FFFFFF">
+                    <td height="22" nowrap="">{{item.user_name}}({{item.user_num}})({{item.user_id}})</td>
+                    <td height="22" nowrap="">{{item.time}}</td>
+                    <td height="22" nowrap="">{{item.game_type}}</td>
+                    <td>{{item.number}}</td>
+                    <td>{{item.part}}</td>
                     <td>
-        
-        
-                        第036 期 -
-                        <font color="blue">红码单双</font>
-                        <font color="red">(双)</font>
+                        第{{item.game_num}} 期 -
+                        <font color="blue">{{item.play_name}}</font>
+                        <font color="red">({{item.content}})</font>
                         <span class="style1"> @ </span>
-                        <font color="red">4</font>
-        
+                        <font color="red">{{item.odds}}</font>
                     </td>
-                    <td></td>
-                    <td>
-        
-        
-                        12.0
-        
-                    </td>
-                    <td>0</td>
-                    <td>
-        
-        
-                        1.2
-        
-                    </td>
+                    <td>{{item.game_result}}</td>
+                    <td>{{item.money}}</td>
+                    <td>{{item.handsel}}</td>
+                    <td>{{item.break}}</td>
                     <td width="10%">
-        
-                        <font color="red">0.0</font>
-        
+                        <font color="red">{{item.amount}}</font>
                     </td>
                 </tr>
-        
-                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
-                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
-                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
-        
-                    <td height="22" nowrap="">吉林快3</td>
-                    <td>108249671</td>
-                    <td>A</td>
-                    <td>
-        
-        
-                        第036 期 -
-                        <font color="blue">黑码单双</font>
-                        <font color="red">(双)</font>
-                        <span class="style1"> @ </span>
-                        <font color="red">3</font>
-        
-                    </td>
-                    <td></td>
-                    <td>
-        
-        
-                        12.0
-        
-                    </td>
-                    <td>0</td>
-                    <td>
-        
-        
-                        1.2
-        
-                    </td>
-                    <td width="10%">
-        
-                        <font color="red">0.0</font>
-        
-                    </td>
-                </tr>
-        
-                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
-                    <td height="22" nowrap="">han321(hanxx)(26075)</td>
-                    <td height="22" nowrap="">2019-03-29 20:08:18</td>
-        
-                    <td height="22" nowrap="">吉林快3</td>
-                    <td>108249674</td>
-                    <td>A</td>
-                    <td>
-        
-        
-                        第036 期 -
-                        <font color="blue">红码</font>
-                        <font color="red">(红码)</font>
-                        <span class="style1"> @ </span>
-                        <font color="red">2</font>
-        
-                    </td>
-                    <td></td>
-                    <td>
-        
-        
-                        12.0
-        
-                    </td>
-                    <td>0</td>
-                    <td>
-        
-        
-                        1.2
-        
-                    </td>
-                    <td width="10%">
-        
-                        <font color="red">0.0</font>
-        
-                    </td>
-                </tr>
-        
-        
-                <tr align="right" bgcolor="#FFFFFF" onmouseover="sbar(this)" onmouseout="cbar(this)" onclick="change_backcolor(this);">
-                    <td height="22" colspan="7" nowrap="">笔数:
-                        <strong>3</strong>
-                    </td>
-                    <td nowrap="">
-                        <strong>36.00</strong>
-                    </td>
-                    <td nowrap="">
-                        <strong>0.00</strong>
-                    </td>
-                    <td nowrap="">
-                        <strong>3.60</strong>
-                    </td>
-                    <td nowrap="">
-                        <strong>0.00</strong>
-                    </td>
-                </tr>
-        
             </tbody>
         </table>
     </div>
@@ -219,5 +91,8 @@
 
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/jedate.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+<script src="/static/listQuery/js/index.js"></script>
 </html>
