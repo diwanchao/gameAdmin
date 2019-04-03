@@ -44,6 +44,11 @@ var app = new Vue({
         }
     },
 
+    mounted: function(){
+        this.query();
+
+    },
+
     directives: {
         'time': {
             inserted: function(el){
