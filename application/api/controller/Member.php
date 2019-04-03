@@ -36,15 +36,15 @@ class Member extends Base
 
 		$data =[
 			'total' => 10,
-			'data' 	=> $user_data, /*[
-				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-			],*/
+			'data' 	=> $user_data,
+
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
 
-
+	/**
+	 * 会员盘json转字符串
+	 */
 	public function part_to_str($part_json)
 	{
         $item       = [];
@@ -106,6 +106,9 @@ class Member extends Base
 	{
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
+
+		Db::name('menber')->where('id', $user_id)->update(['status' => $type]);
+
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
 	}
 	/**
@@ -114,6 +117,7 @@ class Member extends Base
 	public function changeBet(){
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
+		Db::name('menber')->where('id', $user_id)->update(['bet_status' => $type]);
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);	
 	}
 	/**
@@ -227,15 +231,21 @@ class Member extends Base
 	public function editUser()
 	{
 		$user_id 	= $this->request->param('id',0);
-		$data = [
-			'agent_name'=>'111',
-			'user_num'=>'会员账号',
-			'user_name'=>'会员名称',
-			'quick_open_quote'=>100,
-			'usable_quote'=>50,
-			'part'=>['A'=>true,'B'=>false],
-			'game'=>['jlk3'=>true],
-		];
+
+		$sql 	= "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id}";
+		echo $sql;die();
+		$data 	= Db::query($sql);
+
+
+/*		$data = [
+			'agent_name' 	=> '111',
+			'user_num' 		=> 	'会员账号',
+			'user_name' 	=> '会员名称',
+			'quick_open_quote' => 100,
+			'usable_quote' 	=> 50,
+			'part' 			=> ['A'=>true,'B'=>false],
+			'game' 			=> ['jlk3'=>true],
+		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 	/**
