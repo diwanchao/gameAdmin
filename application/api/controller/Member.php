@@ -19,7 +19,7 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 
-		$where = "a.parent_id = 1 and a.status ={status}";
+		$where = "a.parent_id = 1 and a.status ={$status}";
 		$order = "{$order} DESC";
 		if ($user_name) 
 			$where .= " and a.user_name={$user_name}";
@@ -30,7 +30,6 @@ class Member extends Base
 
 		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE {$where} ORDER BY {$order}";
 
-		echo $sql; die();
 		$user_data = Db::query($sql);
 
 		foreach ($user_data as $key => $value) 
