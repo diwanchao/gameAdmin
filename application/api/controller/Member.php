@@ -232,20 +232,11 @@ class Member extends Base
 	{
 		$user_id 	= $this->request->param('id',0);
 
-		$sql 	= "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id}";
-		echo $sql;die();
+		$sql 		= "SELECT a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id}";
 		$data 	= Db::query($sql);
+		$data['part'] 		= json_decode($data['part']);
+		$data['game_list'] 	= json_decode($data['game_list']);
 
-
-/*		$data = [
-			'agent_name' 	=> '111',
-			'user_num' 		=> 	'会员账号',
-			'user_name' 	=> '会员名称',
-			'quick_open_quote' => 100,
-			'usable_quote' 	=> 50,
-			'part' 			=> ['A'=>true,'B'=>false],
-			'game' 			=> ['jlk3'=>true],
-		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 	/**
