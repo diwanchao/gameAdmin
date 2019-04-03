@@ -39,7 +39,7 @@
             <option value="0">未结算</option>
             <option value="1">已结算</option>
         </select>
-        <input class="button" type="button" value="查询" @click="query">
+        <input class="button" type="button" value="查询" @click="query" id="query_time">
         <table border="0" cellpadding="0" cellspacing="0">
             <tbody>
                 <tr>
@@ -85,13 +85,13 @@
                     </td>
                 </tr>
 
-                <!-- <tr align="right" bgcolor="#FFFFFF">
+                <tr align="right" bgcolor="#FFFFFF">
                     <td colspan="7"><b>总计</b></td>
                     <td><b>{{money}}</b></td>
                     <td><b>{{handsel}}</b></td>
                     <td><b>{{break}}</b></td>
                     <td width="10%"><b>{{amount}}</b></td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
     </div>
