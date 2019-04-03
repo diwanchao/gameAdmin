@@ -300,14 +300,8 @@ class Member extends Base
 
 		if ($data)
 		{
-			$return_data = array_column($data, 'id', 'user_name');
+			$return_data = array_column($data, 'user_name','id');
 		}
-
-/*
-		$data =[
-			'13'=>'hdj',
-			'88'=>'dwc',
-		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);	
 	}
 	/**
