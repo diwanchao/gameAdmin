@@ -6,15 +6,11 @@ var app = new Vue({
             game_key: '',
             time: utils.paseDate(),
             status: '',
-            money: 0, //金额
-            handsel: 0, // 派彩
-            break: 0, // 反水
-            amount: 0, // 总计
-
         },
-
-        
-
+        money: 0, //金额
+        handsel: 0, // 派彩
+        break: 0, // 反水
+        amount: 0, // 总计
         data: [],
     },
 
