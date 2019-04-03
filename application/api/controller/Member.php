@@ -92,7 +92,8 @@ class Member extends Base
 	{
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
-		if (!$user_id) {
+		if (!$user_id) 
+		{
 	        return json(['msg' => '保存失败,数据异常.','code' => 201, 'data' =>[]]);		
 		}
 		$data 	= ['number'=>'123'];
@@ -242,7 +243,7 @@ class Member extends Base
 			$return_data['game'] = json_decode($return_data['game']);
 		}
 
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);	
 	}
 	/**
 	 * 编辑代理
@@ -293,12 +294,21 @@ class Member extends Base
 
 	public function memberList()
 	{
-		$user_id = $this->request->param('id',0);
+		$return_data = [];
+		$user_id 	= $this->request->param('id',0);
+		$data 		= Db::name('menber')->field('id,user_name')->where('parent_id=?',[$user_id])->select();
+
+		if ($data)
+		{
+			$return_data = array_column($data, 'id', 'user_name');
+		}
+
+/*
 		$data =[
 			'13'=>'hdj',
 			'88'=>'dwc',
-		];
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+		];*/
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);	
 	}
 	/**
 	 * 保存投注反水信息
