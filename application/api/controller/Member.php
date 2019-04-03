@@ -22,7 +22,7 @@ class Member extends Base
 		$where = "a.parent_id = 1 and a.status ={$status}";
 		$order = "{$order} DESC";
 		if ($user_name) 
-			$where .= " and a.user_name={$user_name}";
+			$where .= " and a.user_name='{$user_name}'";
 
 
 
