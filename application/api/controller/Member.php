@@ -19,7 +19,12 @@ class Member extends Base
 
 		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.parent_id = 1";
 		$user_data = Db::query($sql);
-		//var_dump($user_data);die();
+		
+		foreach ($user_data as $key => $value) 
+		{
+			if ($value['part']) 
+				$user_data[$key]['part'] = $value['part'];
+		}
 
 		$data =[
 			'total' => 10,
@@ -29,7 +34,23 @@ class Member extends Base
 			],*/
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
-	}	
+	}
+
+
+	public function part_to_str($part_json)
+	{
+        $item       = [];
+        foreach (json_decode($part_json,true) as $key => $value) 
+        {
+            if ($value == 'true') 
+                $item[] = $key;
+        }
+        return implode(',', $item);
+
+	}
+
+
+
 	/**
 	 * 代理管理列表
 	 */
