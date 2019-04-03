@@ -17,8 +17,7 @@ class Member extends Base
 
 
 
-		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.parent_id = {$parent_id}";
-
+		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.parent_id = 1";
 		$user_data = Db::query($sql);
 		//var_dump($user_data);die();
 
