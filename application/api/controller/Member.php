@@ -13,12 +13,21 @@ class Member extends Base
 	 */
 	public function userList()
 	{
+		$parent_id = $this->request->param('id',1);
+
+
+
+		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.parent_id = {$parent_id}";
+
+		$user_data = Db::query($sql);
+		//var_dump($user_data);die();
+
 		$data =[
-			'total'=>10,
-			'data'=>[
+			'total' => 10,
+			'data' 	=> $user_data, /*[
 				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
 				['agent_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','part'=>'A,C,D','id'=>1,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-			],
+			],*/
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}	
@@ -118,6 +127,7 @@ class Member extends Base
 				'user_number' => $user_number,
 				'game_list' => json_encode($game_list),
 				'part' 		=> json_encode($part),
+				'create_time' => date('Y-m-d H:i:s',time()),
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
