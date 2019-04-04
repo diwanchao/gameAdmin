@@ -15,18 +15,18 @@
     <div class="login">
         <h2>管理专区</h2>
         <p>Username	</p>
-        <input name="userName" class="form-control input" type="text" placeholder="Account">
+        <input name="username" class="form-control input" type="text" placeholder="Account">
         <p>Password</p>
         <input name="password" class="form-control input" type="password" placeholder="password">
         <div class="ensure">
-            <input type="text" class="form-control">
-            <img src="/static/global/image/image.jpeg" alt="">
+            <input type="text" name="ensure" class="form-control">
+            <img id="code" onclick="this.src='{:captcha_src()}?'+Math.random()" src="{:captcha_src()}" alt="captcha" />
         </div>
-        <div class="btn">路线选择</div>
-        <div class="btn">登入</div>
+        <div class="btn" id="login">登入</div>
     </div>
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/login/js/index.js"></script>
 <!-- <script src="../../public/js/TouchSlide.1.1.js"></script> -->
 <!-- <script>
     TouchSlide({

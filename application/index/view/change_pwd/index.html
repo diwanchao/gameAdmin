@@ -34,7 +34,7 @@
                                             <div align="right">旧密码</div>
                                         </td>
                                         <td class="tb1_body" scope="col" nowrap="" width="150">
-                                            <input type="password" name="oldPwd" maxlength="12" size="13" value="" id="oldPwd">
+                                            <input type="password" name="oldPwd" maxlength="12" size="13" value="" v-model="old_pwd">
                                         </td>
                                     </tr>
                                     <tr>
@@ -42,7 +42,7 @@
                                             <div align="right">新密码</div>
                                         </td>
                                         <td class="tb1_body" scope="col" nowrap="" width="150">
-                                            <input type="password" name="newPwd" maxlength="12" size="13" value="" id="newPwd">
+                                            <input type="password" name="newPwd" maxlength="12" size="13" value="" v-model="new_pwd">
                                         </td>
                                     </tr>
                                     <tr>
@@ -50,20 +50,20 @@
                                             <div align="right">确认新密码</div>
                                         </td>
                                         <td class="tb1_body" scope="col" nowrap="" width="150">
-                                            <input type="password" name="enPwd" maxlength="12" size="13" value="" id="enPwd">
+                                            <input type="password" name="enPwd" maxlength="12" size="13" value="" v-model="repeat_pwd">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="tb1_body" scope="col" nowrap="" width="250">
                                             ◎密码规则：须为
-                                            <strong>6~12码英数字夹杂</strong>并且同一字元不得连续超过3码且符合0~9及a~z A~Z字,特殊字元可包含 _ . ! @ # $ &amp; * + = |
+                                            <strong>6~12码英数字夹杂</strong>符合0~9及a~z A~Z字,不可包含特殊字元
                                         </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="tb1_body" scope="col" nowrap="" width="250">
                                             <div align="center">
-                                                <input class="title_button" type="reset" name="cancel" value="重置"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input type="submit" name="editpasswd" value="确认" class="title_button">
+                                                <input @click="reset" class="title_button" type="reset" name="cancel" value="重置"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input @click="submit" type="submit" name="editpasswd" value="确认" class="title_button">
                                             </div>
                                             <div>
                                                 <span style="color:red"></span>

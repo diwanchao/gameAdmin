@@ -415,7 +415,7 @@ var ENV = {
 
 
 		this.data = {
-			user_type_id: 0, // 0->总代理 1->代理
+			user_type_id: 1, // 0->代理 1->总代理
 			user_type: '总代理',
 			user_name: 'han123',
 			notice: '这是假的一条公告',
@@ -468,7 +468,7 @@ var ENV = {
 	 * 初始化最新公告
 	 */
 	InitHeader.prototype.baseInit = function () {
-		// if(this.data.user_type_id == 1){
+		// if(this.data.user_type_id == 0){
 		// 	this.$jurisdiction.hide();
 		// }
 		this.$userType.text(this.data.user_type);
