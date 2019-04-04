@@ -1,4 +1,4 @@
-var tablePage = new Page('#pageInfo', function(index){ app.search();});
+var tablePage = new Page('#pageInfo', function(index){ app.query();});
 
 var app = new Vue({
     el: '#main',
