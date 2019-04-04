@@ -83,7 +83,21 @@ class User extends Base
             return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);          
         }
         return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);
+    }
+    /**
+     * 额度变动
+     */
+    public function limitChange()
+    {
+		$data = [
+			['parent_name'=>'dwc','user_number'=>'hdj','time'=>date('Y-m-d H:i:s',time()),'type'=>'充值','num'=>1,'admin'=>'股东'],
+		];
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
     }
+
+
+
+
 
 }
