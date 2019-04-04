@@ -1,3 +1,4 @@
+var tablePage = new Page('#pageInfo', function(index){ app.query();});
 var app = new Vue({
     el: '#main',
     data: {
@@ -29,17 +30,15 @@ var app = new Vue({
                 url: '/api/Bet/list',
                 data: data,
                 type: 'GET',
-                success: function(result){
-                    for(var i = 0; i < result.length; i++) {
-                        _this.money += Number(result[i].money);
-                        _this.handsel += Number(result[i].handsel);
-                        _this.breaks += Number(result[i].break);
-                        _this.amount += Number(result[i].amount);
-                    }
-                    _this.data = result;
+                success: function(json){
+                    tablePage.init({total: json.total});
+                    _this.money = json.money;
+                    _this.handsel = json.handsel;
+                    _this.breaks = json.break;
+                    _this.amount = json.amount;
+                    _this.data = json.data;
                 }
-
-            })
+            });
 
         }
     },

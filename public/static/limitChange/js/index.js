@@ -1,4 +1,4 @@
-var tablePage = new Page('#pageInfo', function(index){ app.search();});
+var tablePage = new Page('#pageInfo', function(index){ app.query();});
 
 var app = new Vue({
     el: '#main',
@@ -22,15 +22,16 @@ var app = new Vue({
                 data: data,
                 url: '/',
                 type: 'GET',
-                success: function(result){
-                    _this.data = result
+                success: function(json){
+                    tablePage.init({total: json.total});
+                    _this.data = json.data;
                 }
             });
         }
     },
 
     mounted: function(){
-        query();
+        this.query();
     }
 
 })
