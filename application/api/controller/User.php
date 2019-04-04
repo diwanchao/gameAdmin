@@ -55,9 +55,9 @@ class User extends Base
 	 */
     public function changePassword()
     {
-        $old_pwd  = Request::instance()->param('old_pwd');
-        $new_pwd  = Request::instance()->param('new_pwd');
-        $repeat_pwd  = Request::instance()->param('repeat_pwd');
+        $old_pwd  	= $this->request->param('old_pwd');
+        $new_pwd  	= $this->request->param('new_pwd');
+        $repeat_pwd = $this->request->param('repeat_pwd');
         try {
             if (!$old_pwd) 
                 throw new \Exception("旧密码不能为空", 1);

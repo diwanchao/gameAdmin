@@ -43,7 +43,8 @@ class Login extends Controller
      */
     public function index()
     {
-        $data = Request::instance()->param();
+        $data = $this->request->param();
+
         try {
         	if (!($data['user_name']??'')) 
         		throw new \Exception("用户名不能为空", 1);
