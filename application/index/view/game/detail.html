@@ -7,20 +7,59 @@
     <link href="/static/global/style/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <!--時間-->
     <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
 
     <!--帳號-->
     {include file="public/header"}
-    
-    <div id="main" class="main">
 
-        
+    <div id="main" class="main">
+        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+            style="border:1px solid #76694c;font-size:14px;">
+            <thead>
+                <tr class="note_title" height="25">
+                    <th width="10%" height="16">单号/时间</th>
+                    <th width="11%">账号</th>
+                    <th width="7%">名称</th>
+                    <th width="7%">退水</th>
+                    <th width="11%">盘类/期数</th>
+                    <th width="20%">下注内容</th>
+                    <th width="5%">赔率</th>
+                    <th width="11%">下注金额</th>
+                    <th width="7%">退水</th>
+                    <th width="11%">结果</th>
+                    <th width="11%"><input type="button" onclick="javascript: history.back(1);" value="关闭"></th>
+                </tr>
+            </thead>
+
+
+
+            <tbody>
+                <tr class="t14">
+                    <td height="22" colspan="7" nowrap="">
+                        <div align="right">小计:<strong>0</strong></div>
+                    </td>
+                    <td nowrap="">
+                        <div align="right" class="fbback">0.00</div>
+                    </td>
+                    <td nowrap="">
+                        <div align="right"><strong>0.00</strong></div>
+                    </td>
+                    <td nowrap="">
+                        <div align="right" class="fbback">0.00</div>
+                    </td>
+                    <td nowrap=""></td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 
-    
+
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+
 </html>
