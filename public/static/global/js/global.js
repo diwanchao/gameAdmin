@@ -29,7 +29,7 @@ var utils = {
 		exp.setTime(exp.getTime() - 1);
 		var cval = utils.getCookie(name);
 		if (cval != null)
-			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ';path=/';
 	},
 
 	/**
@@ -41,7 +41,7 @@ var utils = {
 		var Days = 1;
 		var exp = new Date();
 		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + 'path=/';
+		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ';path=/';
 	},
 
 	/**
