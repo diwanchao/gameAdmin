@@ -55,9 +55,7 @@ class Login extends Controller
         	if (!captcha_check($data['code'])) 
         		throw new \Exception("验证码不正确", 1);
 
-            $where['user_number']   = ['=',$data['user_name']];
-            $where['role_id']       = ['!=',0];
-        	$user_data = Db::name('menber')->field('id,user_name,password,blance')->where($where)->find();
+        	$user_data = Db::name('menber')->field('id,user_name,password,blance')->where('user_number=? and role_id !=?',[$data['user_name'],0])->find();
         	if (!$user_data) 
         		throw new \Exception("用户名不存在", 1);
         	if ($user_data['password'] != md5($data['user_pwd'])) 
