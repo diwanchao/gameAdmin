@@ -31,7 +31,7 @@ class Member extends Base
 		foreach ($user_data as $key => $value) 
 		{
 			if ($value['part']) 
-				$user_data[$key]['part'] = $this->part_to_str($value['part']);
+				$user_data[$key]['part'] = part_to_str($value['part']);
 		}
 
 		$data =[
@@ -42,20 +42,6 @@ class Member extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
 
-	/**
-	 * 会员盘json转字符串
-	 */
-	public function part_to_str($part_json)
-	{
-        $item       = [];
-        foreach (json_decode($part_json,true) as $key => $value) 
-        {
-            if ($value == 'true') 
-                $item[] = $key;
-        }
-        return implode(',', $item);
-
-	}
 
 
 

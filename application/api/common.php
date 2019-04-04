@@ -40,6 +40,20 @@ use \think\Db;
     }
 
 
+    /**
+     * 会员盘json转字符串
+     */
+    function part_to_str($part_json)
+    {
+        $item       = [];
+        foreach (json_decode($part_json,true) as $key => $value) 
+        {
+            if ($value == 'true') 
+                $item[] = $key;
+        }
+        return implode(',', $item);
+
+    }
 
 
 
