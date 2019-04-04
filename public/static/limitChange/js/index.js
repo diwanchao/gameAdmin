@@ -11,7 +11,7 @@ var app = new Vue({
     },
 
     methods: {
-        search: function(){
+        query: function(){
             var _this = this;
             var data = {
                 index: tablePage.data.index,
@@ -30,7 +30,7 @@ var app = new Vue({
     },
 
     mounted: function(){
-        search();
+        query();
     }
 
 })
