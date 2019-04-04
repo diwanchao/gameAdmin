@@ -22,8 +22,9 @@ var app = new Vue({
                 data: data,
                 url: '/',
                 type: 'GET',
-                success: function(result){
-                    _this.data = result
+                success: function(json){
+                    tablePage.init({total: json.total});
+                    _this.data = json.data;
                 }
             });
         }
