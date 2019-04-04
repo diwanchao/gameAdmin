@@ -2,35 +2,36 @@ var tablePage = new Page('#pageInfo', function(index){ app.query();});
 
 var app = new Vue({
     el: '#main',
-    data: {
-        search: {
-            type: 0,
-            user_name: ''
-        },
+    data:{
+        game_key: 'jlk3',
         data: [],
     },
 
     methods: {
         query: function(){
             var _this = this;
-            var data = {
-                index: tablePage.data.index,
-                type: this.search.type,
-                user_name: this.search.user_name
-            };
             utils.getAjax({
-                data: data,
-                url: '/',
+                url: '/api/game/resultList',
                 type: 'GET',
+                data: {
+                    index: tablePage.data.index,
+                    game_key: this.game_key,
+                },
                 success: function(json){
                     tablePage.init({total: json.total});
                     _this.data = json.data;
                 }
-            });
+            })
         }
     },
 
     mounted: function(){
         this.query();
-    },
+    }
+    ,
+    watch: {
+        game_key: function(){
+            this.query();
+        }
+    }
 })

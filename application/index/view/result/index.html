@@ -39,26 +39,9 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td height="22">&nbsp;&nbsp;开奖结果
-                                                                                <select style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" name="fr_language" size="1" onchange="window.location = this.options[this.selectedIndex].value;">
-                                                                                    <option value="jga.do?game_name=FC3D">福彩3D</option>
-                                                                                    <option value="jga.do?game_name=PL3">体彩PL3</option>
-                                                                                    <option value="jga.do?game_name=SSC" selected="">重庆时时彩</option>
-                                                                                    <option value="jga.do?game_name=XJSC">新疆时时彩</option>
-                                                                                    <option value="scjga.do?game_name=BJSC">北京赛车</option>
-                                                                                    <option value="szjga.do?game_name=JLSZ">吉林骰宝</option>
-                                                                                    <option value="jl11x5jg.do?game_name=JL11X5">吉林11选5</option>
-                                                                                    <option value="xyftjga.do?game_name=XYFT">幸运飞艇</option>
-                                                                                    <option value="bjszjga.do?game_name=BJSZ">北京骰宝</option>
-        
-                                                                                    <option value="k3jga.do?game_name=JLK3">吉林快3</option>
-                                                                                    <option value="k3jga.do?game_name=BJK3">北京快3</option>
-                                                                                    <option value="k3jga.do?game_name=HBK3">湖北快3</option>
-                                                                                    <option value="k3jga.do?game_name=HEBK3">河北快3</option>
-                                                                                    <option value="k3jga.do?game_name=GSK3">甘肃快3</option>
-                                                                                    <option value="k3jga.do?game_name=JSK3">江苏快3</option>
-                                                                                    <option value="k3jga.do?game_name=NMGK3">内蒙古快3</option>
-                                                                                    <option value="jl11x5jg.do?game_name=LN11X5">辽宁11选5</option>
-        
+                                                                                <select v-model="game_key" style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" name="fr_language" size="1" onchange="window.location = this.options[this.selectedIndex].value;">
+                                                                                    <option value="ssc">重庆时时彩</option>
+                                                                                    <option value="jlk3">吉林快3</option>
                                                                                 </select>
                                                                             </td>
                                                                             <td nowrap=""></td>
@@ -97,142 +80,166 @@
                                     <td valign="top">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01" style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
                                             <tbody>
-                                                <tr class="t12">
-                                                    <td rowspan="2" align="center" class="note_title">
-                                                        <div align="center">期数</div>
-                                                    </td>
-                                                    <td rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">星期</div>
-                                                    </td>
-                                                    <td rowspan="2" nowrap="" align="center" class="note_title">
-                                                        <div align="center">时间</div>
-                                                    </td>
-                                                    <td height="17" colspan="5" align="center" class="note_title">
-                                                        <div align="center">
-                                                            <span>彩球号码</span>
-                                                        </div>
-                                                    </td>
-                                                    <td rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">和数</div>
-                                                    </td>
-                                                    <td rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">跨度</div>
-                                                    </td>
-        
-                                                    <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">万</div>
-                                                    </td>
-                                                    <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">千</div>
-                                                    </td>
-        
-                                                    <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">百</div>
-                                                    </td>
-                                                    <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">拾</div>
-                                                    </td>
-                                                    <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
-                                                        <div align="center">个</div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="t11">
-        
-                                                    <td width="26" height="24" class="note_title">
-                                                        <div align="center">万</div>
-                                                    </td>
-                                                    <td width="26" class="note_title">
-                                                        <div align="center">千</div>
-                                                    </td>
-        
-                                                    <td width="26" height="24" class="note_title">
-                                                        <div align="center">百</div>
-                                                    </td>
-                                                    <td width="26" class="note_title">
-                                                        <div align="center">拾</div>
-                                                    </td>
-                                                    <td width="26" class="note_title">
-                                                        <div align="center">个</div>
-                                                    </td>
-                                                </tr>
+                                                <template v-if="game_key == 'ssc'">
+                                                    <tr class="t12">
+                                                        <td rowspan="2" align="center" class="note_title">
+                                                            <div align="center">期数</div>
+                                                        </td>
+                                                        <td rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">星期</div>
+                                                        </td>
+                                                        <td rowspan="2" nowrap="" align="center" class="note_title">
+                                                            <div align="center">时间</div>
+                                                        </td>
+                                                        <td height="17" colspan="5" align="center" class="note_title">
+                                                            <div align="center">
+                                                                <span>彩球号码</span>
+                                                            </div>
+                                                        </td>
+                                                        <!-- <td rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">和数</div>
+                                                        </td>
+                                                        <td rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">跨度</div>
+                                                        </td> -->
+            
+                                                        <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">万</div>
+                                                        </td>
+                                                        <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">千</div>
+                                                        </td>
+            
+                                                        <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">百</div>
+                                                        </td>
+                                                        <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">拾</div>
+                                                        </td>
+                                                        <td colspan="3" rowspan="2" align="center" nowrap="" class="note_title">
+                                                            <div align="center">个</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="t11">
+            
+                                                        <td width="26" height="24" class="note_title">
+                                                            <div align="center">万</div>
+                                                        </td>
+                                                        <td width="26" class="note_title">
+                                                            <div align="center">千</div>
+                                                        </td>
+            
+                                                        <td width="26" height="24" class="note_title">
+                                                            <div align="center">百</div>
+                                                        </td>
+                                                        <td width="26" class="note_title">
+                                                            <div align="center">拾</div>
+                                                        </td>
+                                                        <td width="26" class="note_title">
+                                                            <div align="center">个</div>
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                                <template v-else-if="game_key == 'jlk3'">
+                                                    <tr class="t12">
+                                                        <td  class="note_title"><div align="center">期数</div></td>
+                                                        <td  class="note_title"><div align="center">星期</div></td>
+                                                        <td  class="note_title"><div align="center">时间</div></td>
+                                                        <td  class="note_title" colspan="3"><div align="center">开奖号</div></td>
+                                                        <td  class="note_title"><div align="center">和值</div></td>
+                                                        <td  class="note_title"><div align="center">和值单双</div></td>
+                                                        <td  class="note_title"><div align="center">和值大小</div></td>
+                                                    </tr>
+                                                </template>
 
-
-                                                <tr class="t15">
-                                                    <td nowrap="" class="t13" height="26" align="center">034</td>
-                                                    <td nowrap="" height="26" align="center">五</td>
-                                                    <td nowrap="" height="26" align="center">2019-03-29</td>
-        
-                                                    <td nowrap="" height="26" align="center">
-                                                        <div align="center" class="fbback">2</div>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <div align="center" class="fbback">7</div>
-                                                    </td>
-        
-                                                    <td nowrap="" height="26" align="center">
-                                                        <div align="center" class="fbback">0</div>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <div align="center" class="fbback">1</div>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <div align="center" class="fbback">1</div>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">2</td>
-                                                    <td nowrap="" height="26" align="center">1</td>
-        
-        
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="green">小</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-        
-                                                        <font color="green">双</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">质</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-        
-                                                        <font color="blue">大</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">单</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">质</font>
-                                                    </td>
-        
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="green">小</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-        
-                                                        <font color="green">双</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-        
-                                                        <font color="green">合</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="green">小</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">单</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">质</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="green">小</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">单</font>
-                                                    </td>
-                                                    <td nowrap="" height="26" align="center">
-                                                        <font color="blue">质</font>
-                                                    </td>
-                                                </tr>
+                                                <template v-if="game_key == 'ssc'">
+                                                    <tr class="t15" v-for="(item, index) in data">
+                                                        <td nowrap="" class="t13" height="26" align="center">{{item.no}}</td>
+                                                        <td nowrap="" height="26" align="center">{{item.week}}</td>
+                                                        <td nowrap="" height="26" align="center">{{item.time}}</td>
+            
+                                                        <td nowrap="" height="26" align="center" v-for="item2 in item.content">
+                                                            <div align="center" class="fbback">{{item2}}</div>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+                                                            <div align="center" class="fbback">7</div>
+                                                        </td>
+            
+                                                        <td nowrap="" height="26" align="center">
+                                                            <div align="center" class="fbback">0</div>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <div align="center" class="fbback">1</div>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <div align="center" class="fbback">1</div>
+                                                        </td> -->
+                                                        <!-- <td nowrap="" height="26" align="center">2</td>
+                                                        <td nowrap="" height="26" align="center">1</td> -->
+            
+            
+                                                        <td v-for="w in item.tenThousand" nowrap="" height="26" align="center">
+                                                            <font :class=" ((w == '小' || w == '双' || w == '合') ? 'f-c-deep-green' : 'f-c-blue')">{{w}}</font>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+            
+                                                            <font color="green">双</font>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <font color="blue">质</font>
+                                                        </td> -->
+                                                        <td v-for="q in item.thousand" nowrap="" height="26" align="center">
+                                                            <font :class=" ((q == '小' || q == '双' || q == '合') ? 'f-c-deep-green' : 'f-c-blue')">{{q}}</font>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+                                                            <font color="blue">单</font>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <font color="blue">质</font>
+                                                        </td> -->
+            
+                                                        <td v-for="b in item.hundred" nowrap="" height="26" align="center">
+                                                            <font :class=" ((b == '小' || b == '双' || b == '合') ? 'f-c-deep-green' : 'f-c-blue')">{{b}}</font>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+            
+                                                            <font color="green">双</font>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+            
+                                                            <font color="green">合</font>
+                                                        </td> -->
+                                                        <td v-for="s in item.ten" nowrap="" height="26" align="center">
+                                                            <font :class=" ((s == '小' || s == '双' || s == '合') ? 'f-c-deep-green' : 'f-c-blue')">{{s}}</font>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+                                                            <font color="blue">单</font>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <font color="blue">质</font>
+                                                        </td> -->
+                                                        <td v-for="g in item.one" nowrap="" height="26" align="center">
+                                                            <font :class=" ((g == '小' || g == '双' || g == '合') ? 'f-c-deep-green' : 'f-c-blue')">{{g}}</font>
+                                                        </td>
+                                                        <!-- <td nowrap="" height="26" align="center">
+                                                            <font color="blue">单</font>
+                                                        </td>
+                                                        <td nowrap="" height="26" align="center">
+                                                            <font color="blue">质</font>
+                                                        </td> -->
+                                                    </tr>
+                                                </template>
+                                                <template v-else-if="game_key = 'jlk3'">
+                                                    <tr v-for="(item, index) in data" class="t15">
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.no}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.week}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.time}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.content}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.sum}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.oddEven}}</div></td>
+                                                        <td nowrap="" height="26" align="center"><div align="center">{{item.bigSmall}}</div></td>
+                                                    </tr>
+                                                </template>
 
 
                                                 
@@ -246,24 +253,28 @@
                 </tr>
             </tbody>
         </table>
-
-        <table border="0" align="left" cellpadding="0" cellspacing="0" class="tmove" width="100%" style="padding-left:10px;">
-            <tbody>
-                <tr>
-                    <td colspan="28" height="25" class="note_title">
-                        <a href="javascript:void(0);">第一页</a>
-                        <a href="javascript:void(0);">上一页</a>
-                        <a href="javascript:void(0);">下一页</a>
-                        <a href="javascript:void(0);">最终页</a>
-                        <select>
-                            <option value="1">1</option>
-                        </select>页/ 84 页
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-
+    <div class="main">
+            <table width="805" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+                <tbody>
+                    <tr>
+                        <td colspan="28" height="25" class="note_title">
+                            <div class="page-info" id="pageInfo">
+                                <span>当前页合计:&nbsp;<b class="page-total">1</b>&nbsp;条</span>
+                                <span>&nbsp;&nbsp;跳至&nbsp;</span>
+                                <select name="" class="form-control page-index" id=""></select>
+                                <span>&nbsp;页&nbsp;／&nbsp;<b class="page-page">1</b>&nbsp;页&nbsp;&nbsp;</span>
+                                <a href="javascript:void(0)" class="page-first">首页</a>
+                                <a href="javascript:void(0)" class="page-prev">上一页</a>
+                                <a href="javascript:void(0)" class="page-next">下一页</a>
+                                <a href="javascript:void(0)" class="page-last">末页</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
     
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
