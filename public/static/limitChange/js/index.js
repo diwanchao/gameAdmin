@@ -31,7 +31,7 @@ var app = new Vue({
     },
 
     mounted: function(){
-        query();
+        this.query();
     }
 
 })
