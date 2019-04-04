@@ -3,7 +3,7 @@ namespace app\api\controller;
 use think\Controller;
 use \think\Request;
 use \think\Db;
-use \think\Session;
+use think\facade\Session;
 class Login extends Controller
 {
     /**
