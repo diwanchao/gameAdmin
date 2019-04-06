@@ -37,11 +37,11 @@
 
             <tbody>
                 <tr class="t15" v-for="(item, index) in data">
-                    <td>{{item.number}} / {{item.time}}</td>
+                    <!-- <td>{{item.number}} / {{item.time}}</td>
                     <td>{{item.user_num}}</td>
                     <td>{{item.user_name}}</td>
                     <td>{{item.break}}</td>
-                    <td>{{item.part}}盘 / {{item.game_num}}期</td>
+                    <td>{{item.part}}盘 / {{item.game_num}}期</td> -->
                     <td>
                         第{{item.game_num}} 期 -
                         <font color="blue">{{item.play_name}}</font>
@@ -49,10 +49,10 @@
                         <span class="style1"> @ </span>
                         <font color="red">{{item.odds}}</font>
                     </td>
-                    <!-- <td>{{item.odds}}</td>
+                    <td>{{item.odds}}</td>
                     <td>{{item.money}}</td>
                     <td>{{item.break}}</td>
-                    <td>{{item.result}}</td> -->
+                    <td>{{item.result}}</td>
                 </tr>
                 <tr class="t14">
                     <td height="22" colspan="7" nowrap="">
