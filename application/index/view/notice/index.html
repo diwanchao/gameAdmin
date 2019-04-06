@@ -58,14 +58,14 @@
             style="border:1px solid #76694c;font-size:14px;">
             <thead>
                 <tr class="note_title" height="25">
-                    <th height="16">发布时间</th>
+                    <th align="center" height="16">发布时间</th>
                     <th>内容</th>
-                    <th width="200">操作</th>
+                    <th align="center" width="200">操作</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, index) in data" class="t15">
-                    <td>{{item.create_time}}</td>
+                    <td align="center">{{item.create_time}}</td>
                     <td>{{item.content}}</td>
                     <td align="center"><button @click="del(item.id)" type="button">删除</button></td>
                 </tr>
