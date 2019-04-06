@@ -36,7 +36,7 @@ var app = new Vue({
                     _this.money = result.money;
                     _this.break2 = result.break;
                     _this.result = result.result;
-                    _this.data = result.data;
+                    _this.data = result.data || [];
                 }
             })
         }
