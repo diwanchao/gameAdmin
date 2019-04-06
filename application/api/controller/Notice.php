@@ -23,7 +23,7 @@ class Notice extends Base
      */
     public function list()
     {
-        $data = Db::name('nitoce')->select();
+        $data = Db::name('notice')->select();
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
 
@@ -44,7 +44,7 @@ class Notice extends Base
     public function edit()
     {
         $id   = $this->request->param('id',0);
-        $data = Db::name('nitoce')->where('id=?',[$id])->find();
+        $data = Db::name('notice')->where('id=?',[$id])->find();
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
     }
