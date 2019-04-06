@@ -4,7 +4,6 @@
 <HEAD>
     <TITLE>Welcome</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
-    <link href="/static/global/style/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -38,11 +37,11 @@
 
             <tbody>
                 <tr class="t15" v-for="(item, index) in data">
-                    <td>{{number}} / {{time}}</td>
-                    <td>{{user_num}}</td>
-                    <td>{{user_name}}</td>
-                    <td>{{break}}</td>
-                    <td>{{part}}盘 / {{item.game_num}}期</td>
+                    <td>{{item.number}} / {{item.time}}</td>
+                    <td>{{item.user_num}}</td>
+                    <td>{{item.user_name}}</td>
+                    <td>{{item.break}}</td>
+                    <td>{{item.part}}盘 / {{item.game_num}}期</td>
                     <td>
                         第{{item.game_num}} 期 -
                         <font color="blue">{{item.play_name}}</font>
@@ -52,7 +51,7 @@
                     </td>
                     <td>{{item.odds}}</td>
                     <td>{{item.money}}</td>
-                    <td>{{break}}</td>
+                    <td>{{item.break}}</td>
                     <td>{{item.result}}</td>
                 </tr>
                 <tr class="t14">
