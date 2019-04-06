@@ -9,7 +9,7 @@ var app = new Vue({
         data: [],
         total: 0,
         money: 0,
-        break: 0,
+        break2: 0,
         result: 0,
     },
 
@@ -27,13 +27,16 @@ var app = new Vue({
                 type: 'GET',
                 data: data,
                 success: function(result){
-                    for(var i = 0; i < result.length; i++) {
-                        _this.money += Number(result[i].money);
-                        _this.break += Number(result[i].break);
-                        _this.result += Number(result[i].result);
-                    }
-                    _this.total = result.length;
-                    _this.data = result;
+                    // for(var i = 0; i < result.length; i++) {
+                    //     _this.money += Number(result[i].money);
+                    //     _this.break += Number(result[i].break);
+                    //     _this.result += Number(result[i].result);
+                    // }
+                    _this.total = result.amount;
+                    _this.money = result.money;
+                    _this.break2 = result.break;
+                    _this.result = result.result;
+                    _this.data = result.data;
                 }
             })
         }
