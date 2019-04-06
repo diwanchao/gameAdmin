@@ -32,7 +32,7 @@
                                                                 <tr>
                                                                     <td width="12%" height="21" align="center">公告管理</td>
                                                                     <td width="40%" nowrap="nowrap">
-                                                                        总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
+                                                                        总页数：<select @change="query" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                                 <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                             </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
                                                                     <td width="48%" align="center">
@@ -79,7 +79,7 @@
             <h5>添加公告</h5>
             <span class="h-modal-close" data-methods="close">&times;</span>
         </div>
-        <div class="h-modal-body" style="background: #eee;">
+        <div class="h-modal-body">
             <div style="text-align: center;">
                 <textarea style="width: 100%;border-radius: 4px;" name="content" cols="30" rows="4"></textarea>
             </div>
