@@ -5,6 +5,7 @@
     <TITLE>公告</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+    <link href="/static/global/style/modal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!--時間-->
@@ -66,7 +67,7 @@
                 <tr v-for="(item, index) in data" class="t15">
                     <td>{{item.create_time}}</td>
                     <td>{{item.content}}</td>
-                    <td><button @click="del(item.id)" type="button">删除</button></td>
+                    <td align="center"><button @click="del(item.id)" type="button">删除</button></td>
                 </tr>
             </tbody>
 
@@ -94,5 +95,6 @@
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
+<script src="/static/global/js/modal.js"></script>
 <script src="/static/notice/js/index.js"></script>
 </html>
