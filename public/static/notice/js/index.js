@@ -50,6 +50,11 @@ var app = new Vue({
 });
 
 modal.on('bs-beforeSubmit', function(){
+    var content = $('#modal [name=content]').val();
+    if(!content.replace(/^ +| +$/, "")){
+        alert('请填写公告内容，公告内容不许为空！');
+        return;
+    }
     var data = {
         content: $('#modal [name=content]').val()
     };
