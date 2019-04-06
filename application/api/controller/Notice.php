@@ -31,11 +31,18 @@ class Notice extends Base
     public function add()
     {
         $content   = $this->request->param('content','');
+        $id   = $this->request->param('id',0);
+
         $data = [
             'content'=>$content,
             'create_time'=>date('Y-m-d H:i:s',time()),
         ];
-        Db::name('notice')->insert($data);
+        if ($id) 
+        {
+            Db::name('notice')->where('id=?',[$id])->update($data);
+        }else{
+            Db::name('notice')->insert($data);
+        }
 
         return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);
     }
