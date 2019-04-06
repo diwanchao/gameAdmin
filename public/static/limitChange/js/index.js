@@ -20,7 +20,7 @@ var app = new Vue({
             };
             utils.getAjax({
                 data: data,
-                url: '/',
+                url: '/api/user/limitChange',
                 type: 'GET',
                 success: function(json){
                     tablePage.init({total: json.total});
