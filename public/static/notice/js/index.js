@@ -13,6 +13,12 @@ var app = new Vue({
     methods: {
         add: function(){
             $('#modal h5').html('添加公告');
+            $('#modal [name=id]').val('');
+            modal.show();
+        },
+        edit: function(item){
+            $('#modal h5').html('编辑公告');
+            $('#modal [name=id]').val(item.id);
             modal.show();
         },
         query: function(){
@@ -55,8 +61,10 @@ modal.on('bs-beforeSubmit', function(){
         alert('请填写公告内容，公告内容不许为空！');
         return;
     }
+    
     var data = {
-        content: $('#modal [name=content]').val()
+        content: $('#modal [name=content]').val(),
+        id: $('#modal [name=id]').val(),
     };
     
     utils.getAjax({
