@@ -20,7 +20,7 @@ var app = new Vue({
             utils.getAjax({
                 url: '/api/notice/list',
                 type: 'GET',
-                data: {index: this.index},
+                data: {index: this.search.index},
                 success: function(result){
                     _this.search.total = result.total;
                     _this.data = result.data;
@@ -43,6 +43,9 @@ var app = new Vue({
             }
         },
 
+    },
+    mounted: function(){
+        this.query();
     }
 });
 
