@@ -132,9 +132,9 @@ var utils = {
 	getAjax: function (opt) {
 		var userInfo = ENV.userInfo;
 		if (!userInfo) {
-			// alert('登陆超时……');
-			// window.location.href = '/index/login';
-			// return;
+			alert('登陆超时……');
+			window.location.href = '/index/login';
+			return;
 		}
 
 		$.ajax({
@@ -145,9 +145,9 @@ var utils = {
 			async: opt.async === 'undefined' ? true : opt.async,
 			success: function (result) {
 				if (result.code == 304) {
-					// alert('登陆超时……');
-					// window.location.href = '/index/login';
-					// return;
+					alert('登陆超时……');
+					window.location.href = '/index/login';
+					return;
 				} else if (result.code == 200) {
 					typeof opt.success == 'function' ? opt.success(result.data) : null;
 					if (opt.alert) {
@@ -161,7 +161,7 @@ var utils = {
 			},
 			error: function (err) {
 				typeof opt.error == 'function' ? opt.error(err) : null;
-				// alert('服务器错误');
+				alert('服务器错误');
 			}
 		})
 	},
@@ -468,9 +468,9 @@ var ENV = {
 	 * 初始化最新公告
 	 */
 	InitHeader.prototype.baseInit = function () {
-		// if(this.data.user_type_id == 0){
-		// 	this.$jurisdiction.hide();
-		// }
+		if(this.data.user_type_id == 0){
+			this.$jurisdiction.hide();
+		}
 		this.$userType.text(this.data.user_type);
 		this.$username.text(this.data.user_name);
 	}
