@@ -152,6 +152,7 @@ class Member extends Base
 			$user_id  = Db::name('menber')->insertGetId($data);
 			set_integral($user_id,1,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
+			$this->init_user_method($user_id,'ssc');
 
 			Db::commit();
 
@@ -205,6 +206,44 @@ class Member extends Base
 			];
 			Db::name('user_game_method')->insertAll($data);
 		}
+
+		if ($game_key == 'ssc') 
+		{
+			$data = [
+				['methods'=>'一字组合','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'二字组合','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'三字组合','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'百定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'拾定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'个定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'百拾定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'百个定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'双面','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'和数','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'尾数','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'一字过关','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'跨度','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'组选三','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'组选六','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'复式组合','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'一字组合[全五]	','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'万定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'千定位','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'豹子','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'顺子','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'对子','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'半顺','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'杂六','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'准对','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'不出号','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'龙虎','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'龙虎和局','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+				['methods'=>'总和','A'=>1,'B'=>1,'C'=>1,'D'=>1,'limit'=>2,'max'=>10000,'min'=>2,'user_id'=>$user_id,'game_key'=>$game_key],
+
+			];
+			Db::name('user_game_method')->insertAll($data);
+		}
+
 
 	}
 
