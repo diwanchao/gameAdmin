@@ -61,13 +61,19 @@ use \think\Db;
     function get_user_info_by_user_id($user_id=0)
     {
         $item       = [];
+        $game_data  = [];
         $user_game  = Db::name('menber')->where('id=?',[$user_id])->value('game_list');
-        foreach (json_decode($user_game,true) as $key => $value) 
+        if ($user_game) 
         {
-            if ($value == 'true') 
-                $item[] = $key;
+            foreach (json_decode($user_game,true) as $key => $value) 
+            {
+                if ($value == 'true') 
+                    $item[] = $key;
+            }
+            $game_data          = Db::name('game_info')->field('`name`,game_key,url')->where('game_key', 'in', $item)->select();
         }
-        $game_data          = Db::name('game_info')->field('`name`,game_key,url')->where('game_key', 'in', $item)->select();
+
+
         return $game_data;
     }
 
