@@ -38,6 +38,12 @@ class Index extends Base
         {
     		$expect = get_k3_number() ?? '';
         }
+        if ($game_key == 'ssc') 
+        {
+            $expect = get_ssc_number() ?? '';
+        }
+
+
         return json(['msg' => 'succeed','code' => 200, 'data' =>['number'=>$expect]]);
     }
 

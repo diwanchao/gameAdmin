@@ -76,6 +76,26 @@ use \think\Db;
 
         return $game_data;
     }
+    function get_ssc_number()
+    {
+        $openstamp  = strtotime(date('Y-m-d 00:10:00',time()));
+        $closestamp = strtotime(date('Y-m-d 23:50:00',time()));
+        $period     = 20*60;
+        $now        = time(); 
 
+        if ($now>$closestamp) 
+        {
+            return date('Ymd',strtotime('+1 day')).'001';
+        }
+        if ($now<$openstamp) 
+        {
+            return date('Ymd',$now).'001';
+        }
+        $num = ceil((($now-$openstamp)/$period))+1;
+        $num = ($num<10) ? '00'.$num : '0'.$num;
+
+        return date('Ymd').$num;
+
+    }
 
  ?>
