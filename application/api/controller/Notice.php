@@ -57,4 +57,12 @@ class Notice extends Base
 
     }
 
+    public function delete()
+    {
+        $id   = $this->request->param('id',0);
+        $data = Db::name('notice')->where('id=?',[$id])->delete();
+        return json(['msg' => '删除成功','code' => 200, 'data' =>$data]);
+    }
+
+
 }
