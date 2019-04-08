@@ -1,0 +1,579 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>Welcome</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div class="main" id="main">
+        <!-- 选项卡 -->
+        <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td>
+                        <table width="100%" height="28" border="0" cellpadding="0" cellspacing="0" bgcolor="#E1E1E1">
+                            <tbody>
+                                <tr>
+                                    <td width="5%" valign="middle" nowrap="">&nbsp;即时注单</td>
+                                    <td valign="middle" nowrap="">
+                                        盘类<select v-model="levelValue">
+                                            <option v-for="(item, index) in level" :value="item">{{item}}盘
+                                            </option>
+                                        </select>
+                                        更新<select v-model="refresh">
+                                            <option value="0">停止</option>
+                                            <option value="10000">10秒</option>
+                                            <option value="20000">20秒</option>
+                                            <option value="60000">60秒</option>
+                                        </select>
+                                    <td width="14%" align="center">香港时间:<br>{{count_down}}</td>
+                                    <td width="70%">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'lhh'"
+                                                            class="ared">龙虎和</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'zxs'"
+                                                            class="ared">组选三</a>
+                                                    </td>
+                                                    <td align="center"
+                                                        onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#FFFF66'"
+                                                        onmouseout="this.style.backgroundColor=c">
+                                                        <a href="javascript:void(0);" @click="tab = 'zxl'"
+                                                            class="ared">组选六</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td width="40%" align="left">
+
+                                    </td>
+                                    <td width="17%">
+                                    </td>
+                                    <td width="3%">
+                                        <div align="center">
+                                            <input type="button" name="Submit" class="buttongmin" value="刷新" @click="init">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 第几期 -->
+        <div align="center" style="padding:3px;">重庆时时彩 第<span align="center" style="padding:3px;">{{periods}}</span>期
+            <span v-if="tab == 'lhh'">龙虎和</span>
+            <span v-if="tab == 'zxs'">组选三</span>
+            <span v-if="tab == 'zxl'">组选六</span>
+        </div>
+        <!-- 龙虎和（一） -->
+        <div align="center" v-if="tab == 'szhs'">
+            <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                style="border:1px solid #76694c;font-size:14px; background:#E1E1E1">
+                <thead>
+                    <tr class="note_title">
+                        <th height="25" width="5%">&nbsp;</th>
+                        <th width="5%">
+                            <div align="center" class="fw12">
+                                号码</div>
+                        </th>
+                        <th width="12%">
+                            <div align="center" class="fw12">
+                                注单</div>
+                        </th>
+                        <th width="5%">
+                            <div align="center" class="fw12">
+                                号码</div>
+                        </th>
+                        <th width="12%">
+                            <div align="center" class="fw12">
+                                注单</div>
+                        </th>
+                        <th width="5%">
+                            <div align="center" class="fw12">
+                                号码</div>
+                        </th>
+                        <th width="12%">
+                            <div align="center" class="fw12">
+                                注单</div>
+                        </th>
+                        <th width="5%">
+                            <div align="center" class="fw12">
+                                号码</div>
+                        </th>
+                        <th width="12%">
+                            <div align="center" class="fw12">
+                                注单</div>
+                        </th>
+
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" height="56" rowspan="3">
+                            1VS</td>
+                        <td align="center" height="31" class="numty">2龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v2long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">3龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v3long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v4long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v5long] || 0}}</font>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty">2和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v2he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">3和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v3he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v4he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v5he] || 0}}</font>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty">2虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v2hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">3虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v3hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v4hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[1v5hu] || 0}}</font>
+                            </a>
+                        </td>
+
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" height="56" rowspan="3">
+                            2VS</td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">3龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v3long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v4long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v5long] || 0}}</font>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">3和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v3he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v4he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v5he] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">3虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v3hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">4虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v4hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[2v5hu] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+
+
+
+                    <tr class="t15">
+                        <td align="center" height="56" rowspan="3">
+                            3VS</td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">4龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v4long] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v5long] || 0}}</font>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">4和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v4he] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v5he] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">4虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v4hu] || 0}}</font>
+                            </a>
+                        </td>
+                        <td align="center" height="31" class="numty">5虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[3v5hu] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="t15">
+                        <td align="center" height="56" rowspan="3">
+                            4VS</td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">5龙</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[4v5long] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">5和局</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">9</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">9.25</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">9.54</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">9.79</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[4v5he] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="t15">
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty"></td>
+                        <td align="center" class="t20">
+                        </td>
+                        <td align="center" height="31" class="numty">5虎</td>
+                        <td align="center" class="t20">
+                            <font v-if="levelValue == 'A'" size="2" color="blue">2</font>
+                            <font v-else-if="levelValue == 'B'" size="2" color="blue">2.06</font>
+                            <font v-else-if="levelValue == 'C'" size="2" color="blue">2.12</font>
+                            <font v-else-if="levelValue == 'D'" size="2" color="blue">2.175</font>
+                            <br>
+                            <a :href="'/index/game/detail?game_key=' + game_key + '&level=' + levelValue + '&gameType=lhh'">
+                                <font color="red">0/{{data[4v5hu] || 0}}</font>
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <!-- 组选三（二） -->
+        <div align="center" v-if="tab == 'szzh'">
+        </div>
+        <!-- 组选六（三） -->
+        <div align="center" v-if="tab == 'ezzh'">
+        </div>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script type="text/javascript" src="/static/game/js/jlssc.js"></script>
+
+</html>
