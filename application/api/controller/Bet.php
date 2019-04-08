@@ -55,6 +55,7 @@ class Bet extends Base
             FROM
                 `order` o
             LEFT JOIN menber m ON o.user_id = m.id";
+            echo $sql;die();
         $res = Db::query($sql);
 
 
