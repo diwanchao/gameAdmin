@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#main',
     data: {
-        game_key: 'jlk3', // game_key
+        game_key: 'ssc', // game_key
         level: [ 'A', 'B', 'C', 'D'],
         levelValue: 'A', // 分盘值
         count_down: '2019-11-11 00:00:00', // 服务器时间
