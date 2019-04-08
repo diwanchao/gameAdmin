@@ -92,10 +92,14 @@ class User extends Base
     	$where 		= [];
     	$page 		= $this->request->param('index',1);
     	$user_name 	= $this->request->param('user_name','');
+
+
+    	$ids = $this->get_sons(1);
+    	$ids = rtrim($ids, ',');
+
+    	$where[] = ['i.user_id','in',explode(',', $ids)];
     	if ($user_name) 
     			$where[] = ['m1.user_number','=',$user_name];
-
-
 
     	$data = Db::name('integral')
 		->alias('i')
@@ -107,9 +111,17 @@ class User extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
     }
+    /**
+     * 获取子集
+     */
 
+	function get_sons($id){
 
-
-
+	    $category_ids = $id.",";
+	    $child_category = Db::query("select id from menber where parent_id = '{$id}'");
+	    foreach( $child_category as $key => $val )
+	        $category_ids .= $this->get_sons( $val["id"] );
+	    return $category_ids;
+	}
 
 }
