@@ -421,7 +421,7 @@ var ENV = {
 			notice: '这是假的一条公告',
 			game_list: [
 				{name: '吉林快3', url: '/index/game/jlk3'},
-				{name: '重庆时时彩', url: '/'}
+				{name: '重庆时时彩', url: '/index/game/jlssc'}
 			],
 		}
 	
