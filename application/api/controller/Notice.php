@@ -23,7 +23,7 @@ class Notice extends Base
      */
     public function list()
     {
-        $data = Db::name('notice')->field('content,create_time as time')->order('create_time desc')->paginate(10,false,['var_page'=>'index']);
+        $data = Db::name('notice')->field('content,create_time')->order('create_time desc')->paginate(10,false,['var_page'=>'index']);
        // $data = Db::name('notice')->select();
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
