@@ -40,9 +40,9 @@ class Monitoring extends Base
    		$game_key    = $this->request->param('game_key','');
    		$levelValue  = $this->request->param('levelValue','');
    		$periods     = $this->request->param('periods','');
-   		$tab   			 = $this->request->param('tab','');
+   		$tab   	     = $this->request->param('tab','');
 
-   		if ($game_key && $levelValue && $periods && $tab) 
+   		if ($game_key && $levelValue && $tab) 
    		{
    			if ($game_key == 'jlk3') 
    			{
@@ -53,17 +53,15 @@ class Monitoring extends Base
            		   $return_data = array_column($data,'num','play_key');
                 }
    			}
-        if ($game_key == 'ssc') 
-        {
-            $return_data = [
-                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-            ];
-        }
-
-
+            if ($game_key == 'ssc') 
+            {
+                $return_data = [
+                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                ];
+            }
    		}
         return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);
     }
