@@ -19,17 +19,17 @@
             style="border:1px solid #76694c;font-size:14px;">
             <thead>
                 <tr class="note_title" height="25">
-                    <th width="10%" height="16">单号/时间</th>
-                    <th width="11%">账号</th>
-                    <th width="7%">名称</th>
-                    <th width="7%">退水</th>
-                    <th width="11%">盘类/期数</th>
-                    <th width="20%">下注内容</th>
-                    <th width="5%">赔率</th>
-                    <th width="11%">下注金额</th>
-                    <th width="7%">退水</th>
-                    <th width="11%">结果</th>
-                    <th width="11%"><input type="button" onclick="javascript: history.back(1);" value="关闭"></th>
+                    <th height="16">单号/时间</th>
+                    <th>账号</th>
+                    <th>名称</th>
+                    <th>退水</th>
+                    <th>盘类/期数</th>
+                    <th>下注内容</th>
+                    <th>赔率</th>
+                    <th>下注金额</th>
+                    <th>退水</th>
+                    <th>结果</th>
+                    <th><input type="button" onclick="javascript: history.back(1);" value="关闭"></th>
                 </tr>
             </thead>
 
@@ -37,35 +37,35 @@
 
             <tbody>
                 <tr class="t15" v-for="(item, index) in data">
-                    <td>{{item.number}} / {{item.time}}</td>
-                    <td>{{item.user_num}}</td>
-                    <td>{{item.user_name}}</td>
-                    <td>{{item.break}}</td>
-                    <td>{{item.part}}盘 / {{item.game_num}}期</td>
-                    <td>
+                    <td align="center">{{item.number}} / {{item.time}}</td>
+                    <td align="center">{{item.user_num}}</td>
+                    <td align="center">{{item.user_name}}</td>
+                    <td align="center">{{item.break}}</td>
+                    <td align="center">{{item.part}}盘 / {{item.game_num}}期</td>
+                    <td align="center">
                         第{{item.game_num}} 期 -
                         <font color="blue">{{item.play_name}}</font>
                         <font color="red">({{item.content}})</font>
                         <span class="style1"> @ </span>
                         <font color="red">{{item.odds}}</font>
                     </td>
-                    <td>{{item.odds}}</td>
-                    <td>{{item.money}}</td>
-                    <td>{{item.break}}</td>
-                    <td>{{item.result}}</td>
+                    <td align="center">{{item.odds}}</td>
+                    <td align="center">{{item.money}}</td>
+                    <td align="center">{{item.break}}</td>
+                    <td align="center">{{item.result}}</td>
                 </tr>
                 <tr class="t14">
                     <td height="22" colspan="7" nowrap="">
-                        <div align="right">小计:<strong>{{total}}</strong></div>
+                        <div align="center">小计:<strong>{{total}}</strong></div>
                     </td>
                     <td nowrap="">
-                        <div align="right" class="fbback">{{money}}</div>
+                        <div align="center" class="fbback">{{money}}</div>
                     </td>
                     <td nowrap="">
-                        <div align="right"><strong>{{break2}}</strong></div>
+                        <div align="center"><strong>{{break2}}</strong></div>
                     </td>
                     <td nowrap="">
-                        <div align="right" class="fbback">{{result}}</div>
+                        <div align="center" class="fbback">{{result}}</div>
                     </td>
                     <td nowrap=""></td>
                 </tr>
