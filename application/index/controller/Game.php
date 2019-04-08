@@ -12,4 +12,10 @@ class Game extends Base
     public function detail(){
     	return $this->fetch();
     }
+
+    public function jlssc()
+    {
+    	return $this->fetch();
+    }
+
 }

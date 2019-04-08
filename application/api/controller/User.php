@@ -2,6 +2,8 @@
 namespace app\api\controller;
 use app\api\controller\Base;
 use think\facade\Session;
+use \think\Db;
+
 
 class User extends Base
 {
@@ -20,19 +22,15 @@ class User extends Base
 
 	public function getUserInfo()
 	{
-		$user_id = 1;
-		$data = 
-		[
-			'role_type'=>1,
-			'role_name'=>'代理',
-			'user_name'=>'账号',
-			'quick_open_quote'=>1000,
-			'game_list'=>[
-				['game_key'=>'jlk3','name'=>'吉林快3'],
-			],
-			'dish'=>['A','B','C','D'],
-		];
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+
+		$user_data = Db::name('menber')->field('role_id as role_type,rule_name as role_name,user_name,blance as quick_open_quote,game_list,part')->where('id=?',[$this->USER_ID])->find();
+		$game_data = get_user_info_by_user_id($this->USER_ID);
+
+		$user_data['role_type'] = $user_data['role_type'] -1;
+		$user_data['game_list'] = $game_data;
+		$user_data['dish'] 		= part_to_str($user_data['part']);
+
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$user_data]);
 	}
 	/**
 	 * 用户信用资料
