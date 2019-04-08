@@ -46,8 +46,6 @@ class Monitoring extends Base
    		{
    			if ($game_key == 'jlk3') 
    			{
-
-
    				$periods 	= get_k3_number() == $periods ? $periods : get_k3_number();
                 if ($this->tab_map[$tab] ?? '') {
 
@@ -55,9 +53,18 @@ class Monitoring extends Base
            		   $return_data = array_column($data,'num','play_key');
                 }
    			}
+        if ($game_key == 'ssc') 
+        {
+            $return_data = [
+                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+                ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
+            ];
+        }
+
+
    		}
         return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);
     }
-
-
 }
