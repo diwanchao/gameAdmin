@@ -33,7 +33,6 @@ var app = new Vue({
                 game_key: this.game_key,
                 levelValue: this.levelValue,
                 tab: this.tab,
-                periods: '20190330006',
             }
             utils.getAjax({
                 url: '/api/Monitoring/game',

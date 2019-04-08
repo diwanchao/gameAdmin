@@ -9,7 +9,11 @@ var app = new Vue({
         refresh: '0', // 自动刷新
         periods: "20190324-11", // 当前期数
         timer: null, // 自动刷新时间time
-        data: {}
+        data: {},
+        zxsData: [],
+        zxlData: [],
+        zxsMoneyTotal: 0,
+        zxlMoneyTotal: 0,
     },
     methods: {
         // 更新
@@ -36,7 +40,22 @@ var app = new Vue({
                 type: 'GET',
                 data: data,
                 success: function(result){
-                    _this.data = result;
+                    if(_this.tab == 'lhh'){
+                        _this.data = result;
+                    }
+                    else if(_this.tab == 'zxs'){
+                        for(var i = 0; i < result.length; i++) {
+                            _this.zxsMoneyTotal += Number(result[i].money);
+                        }
+                        _this.zxsData = result;
+                    }
+                    else if(_this.tab == 'zxl'){
+                        for(var i = 0; i < result.length; i++) {
+                            _this.zxlMoneyTotal += Number(result[i].money);
+                        }
+                        _this.zxlData = result;
+                    }
+                    
                     console.log(result);
                 }
             });
