@@ -23,7 +23,8 @@ class Notice extends Base
      */
     public function list()
     {
-        $data = Db::name('notice')->select();
+        $data = Db::name('notice')->field('id,content,create_time')->order('create_time desc')->paginate(10,false,['var_page'=>'index']);
+       // $data = Db::name('notice')->select();
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
 
@@ -55,5 +56,13 @@ class Notice extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
     }
+
+    public function delete()
+    {
+        $id   = $this->request->param('id',0);
+        $data = Db::name('notice')->where('id=?',[$id])->delete();
+        return json(['msg' => '删除成功','code' => 200, 'data' =>$data]);
+    }
+
 
 }
