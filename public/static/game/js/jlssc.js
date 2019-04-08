@@ -31,29 +31,29 @@ var app = new Vue({
                 levelValue: this.levelValue,
                 tab: this.tab,
             }
-            utils.getAjax({
-                url: '/api/Monitoring/game',
-                type: 'GET',
-                data: data,
-                success: function(result){
-                    _this.data = result;
-                    console.log(result);
-                }
-            });
+            // utils.getAjax({
+            //     url: '/api/Monitoring/game',
+            //     type: 'GET',
+            //     data: data,
+            //     success: function(result){
+            //         _this.data = result;
+            //         console.log(result);
+            //     }
+            // });
 
-            utils.getAjax({
-                url: '/api/index/getNowExpect',
-                type: 'GET',
-                data: {
-                    game_key: this.game_key,
+            // utils.getAjax({
+            //     url: '/api/index/getNowExpect',
+            //     type: 'GET',
+            //     data: {
+            //         game_key: this.game_key,
 
-                },
-                success: function(result){
-                    _this.periods = result.number;
+            //     },
+            //     success: function(result){
+            //         _this.periods = result.number;
                     
-                }
+            //     }
     
-            });
+            // });
             console.log('请求加载：game_key=' + this.game_key + '; levelValue=' + this.levelValue + '; refresh=' + this.refresh + '; tab=' + this.tab)
         }
     },
