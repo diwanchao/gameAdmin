@@ -37,38 +37,38 @@
 
             <tbody>
                 <tr class="t15" v-for="(item, index) in data">
-                    <td height="26" align="center">{{item.number}} / {{item.time}}</td>
-                    <td height="26" align="center">{{item.user_num}}</td>
-                    <td height="26" align="center">{{item.user_name}}</td>
-                    <td height="26" align="center">{{item.break}}</td>
-                    <td height="26" align="center">{{item.part}}盘 / {{item.game_num}}期</td>
-                    <td height="26" align="center">
+                    <td height="30" align="center">{{item.number}} / {{item.time}}</td>
+                    <td height="30" align="center">{{item.user_num}}</td>
+                    <td height="30" align="center">{{item.user_name}}</td>
+                    <td height="30" align="center">{{item.break}}</td>
+                    <td height="30" align="center">{{item.part}}盘 / {{item.game_num}}期</td>
+                    <td height="30" align="center">
                         第{{item.game_num}} 期 -
                         <font color="blue">{{item.play_name}}</font>
                         <font color="red">({{item.content}})</font>
                         <span class="style1"> @ </span>
                         <font color="red">{{item.odds}}</font>
                     </td>
-                    <td height="26" align="center">{{item.odds}}</td>
-                    <td height="26" align="center">{{item.money}}</td>
-                    <td height="26" align="center">{{item.break}}</td>
-                    <td height="26" align="center">{{item.result}}</td>
-                    <td height="26" align="center"></td>
+                    <td height="30" align="center">{{item.odds}}</td>
+                    <td height="30" align="center">{{item.money}}</td>
+                    <td height="30" align="center">{{item.break}}</td>
+                    <td height="30" align="center">{{item.result}}</td>
+                    <td height="30" align="center"></td>
                 </tr>
                 <tr class="t14">
-                    <td height="22" colspan="7" nowrap="">
+                    <td height="30" colspan="7" nowrap="">
                         <div align="right">小计:<strong>{{total}}</strong></div>
                     </td>
-                    <td nowrap="">
+                    <td height="30" nowrap="">
                         <div align="center" class="fbback">{{money}}</div>
                     </td>
-                    <td nowrap="">
+                    <td height="30" nowrap="">
                         <div align="center"><strong>{{break2}}</strong></div>
                     </td>
-                    <td nowrap="">
+                    <td height="30" nowrap="">
                         <div align="center" class="fbback">{{result}}</div>
                     </td>
-                    <td nowrap=""></td>
+                    <td height="30" nowrap=""></td>
                 </tr>
             </tbody>
         </table>
