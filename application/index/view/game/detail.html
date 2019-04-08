@@ -16,7 +16,7 @@
 
     <div id="main" class="main">
         <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
-            style="border:1px solid #76694c;font-size:14px;">
+            style="border: 1px solid rgb(118, 105, 76); font-size: 14px; background: rgb(225, 225, 225);">
             <thead>
                 <tr class="note_title" height="25">
                     <th height="16">单号/时间</th>
@@ -37,26 +37,27 @@
 
             <tbody>
                 <tr class="t15" v-for="(item, index) in data">
-                    <td align="center">{{item.number}} / {{item.time}}</td>
-                    <td align="center">{{item.user_num}}</td>
-                    <td align="center">{{item.user_name}}</td>
-                    <td align="center">{{item.break}}</td>
-                    <td align="center">{{item.part}}盘 / {{item.game_num}}期</td>
-                    <td align="center">
+                    <td height="26" align="center">{{item.number}} / {{item.time}}</td>
+                    <td height="26" align="center">{{item.user_num}}</td>
+                    <td height="26" align="center">{{item.user_name}}</td>
+                    <td height="26" align="center">{{item.break}}</td>
+                    <td height="26" align="center">{{item.part}}盘 / {{item.game_num}}期</td>
+                    <td height="26" align="center">
                         第{{item.game_num}} 期 -
                         <font color="blue">{{item.play_name}}</font>
                         <font color="red">({{item.content}})</font>
                         <span class="style1"> @ </span>
                         <font color="red">{{item.odds}}</font>
                     </td>
-                    <td align="center">{{item.odds}}</td>
-                    <td align="center">{{item.money}}</td>
-                    <td align="center">{{item.break}}</td>
-                    <td align="center">{{item.result}}</td>
+                    <td height="26" align="center">{{item.odds}}</td>
+                    <td height="26" align="center">{{item.money}}</td>
+                    <td height="26" align="center">{{item.break}}</td>
+                    <td height="26" align="center">{{item.result}}</td>
+                    <td height="26" align="center"></td>
                 </tr>
                 <tr class="t14">
                     <td height="22" colspan="7" nowrap="">
-                        <div align="center">小计:<strong>{{total}}</strong></div>
+                        <div align="right">小计:<strong>{{total}}</strong></div>
                     </td>
                     <td nowrap="">
                         <div align="center" class="fbback">{{money}}</div>
