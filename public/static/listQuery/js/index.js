@@ -20,10 +20,10 @@ var app = new Vue({
             var _this = this;
 
             var data = {
-                user_num: this.username,
-                game_key: this.game_key,
-                time: this.time,
-                status: this.status
+                user_num: this.search.username,
+                game_key: this.search.game_key,
+                time: this.search.time,
+                status: this.search.status
             }
 
             utils.getAjax({
