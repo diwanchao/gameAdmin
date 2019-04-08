@@ -22,7 +22,7 @@ var app = new Vue({
             var data = {
                 user_num: this.search.username,
                 game_key: this.search.game_key,
-                time: this.searchtime,
+                time: this.search.time,
                 status: this.search.status
             }
 
