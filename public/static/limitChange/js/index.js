@@ -4,7 +4,7 @@ var app = new Vue({
     el: '#main',
     data: {
         search: {
-            type: 0,
+            // type: 0,
             user_name: ''
         },
         data: [],
@@ -15,7 +15,7 @@ var app = new Vue({
             var _this = this;
             var data = {
                 index: tablePage.data.index,
-                type: this.search.type,
+                // type: this.search.type,
                 user_name: this.search.user_name
             };
             utils.getAjax({
