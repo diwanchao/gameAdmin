@@ -24,11 +24,13 @@ class User extends Base
 	{
 
 		$user_data = Db::name('menber')->field('role_id as role_type,rule_name as role_name,user_name,blance as quick_open_quote,game_list,part')->where('id=?',[$this->USER_ID])->find();
-		$game_data = get_user_info_by_user_id($this->USER_ID);
-
-		$user_data['role_type'] = $user_data['role_type'] -1;
-		$user_data['game_list'] = $game_data;
-		$user_data['dish'] 		= part_to_str($user_data['part']);
+		if ($user_data) 
+		{
+			$game_data = get_user_info_by_user_id($this->USER_ID);
+			$user_data['role_type'] = $user_data['role_type'] -1;
+			$user_data['game_list'] = $game_data;
+			$user_data['dish'] 		= part_to_str($user_data['part']);
+		}
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$user_data]);
 	}
@@ -87,9 +89,21 @@ class User extends Base
      */
     public function limitChange()
     {
-		$data = [
-			['parent_name'=>'dwc','user_number'=>'hdj','time'=>date('Y-m-d H:i:s',time()),'type'=>'充值','num'=>1,'admin'=>'股东'],
-		];
+    	$where 		= [];
+    	$page 		= $this->request->param('index',1);
+    	$user_name 	= $this->request->param('user_name','');
+    	if ($user_name) 
+    			$where[] = ['m1.user_number','=',$user_name];
+
+
+
+    	$data = Db::name('integral')
+		->alias('i')
+    	->field('i.type,i.num,i.time,m1.user_number,m2.user_number AS admin')
+		->leftJoin('menber m1','i.user_id=m1.id')
+		->leftJoin('menber m2','i.admin_id=m2.id')
+		->where($where)
+		->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
     }

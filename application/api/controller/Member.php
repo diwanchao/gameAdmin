@@ -14,12 +14,12 @@ class Member extends Base
 	public function userList()
 	{
 
-		$parent_id 	= $this->request->param('id',1);
+		$parent_id 	= $this->request->param('id',$this->USER_ID);
 		$status 	= $this->request->param('status',1);
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 
-		$where = "a.parent_id = 1 and a.status ={$status}";
+		$where = "a.parent_id = {$parent_id} and a.status ={$status}";
 		$order = "{$order} DESC";
 		if ($user_name) 
 			$where .= " and a.user_name='{$user_name}'";
@@ -150,7 +150,7 @@ class Member extends Base
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
-			set_integral($user_id,1,'存入金额',$blance);
+			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
 
