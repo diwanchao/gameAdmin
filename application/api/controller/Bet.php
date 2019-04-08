@@ -38,7 +38,7 @@ class Bet extends Base
 
         $sql = "SELECT
                 user_name,
-                user_number,
+                user_number as user_num,
                 o.user_id,
                 o.time,
                 o.game_key,
