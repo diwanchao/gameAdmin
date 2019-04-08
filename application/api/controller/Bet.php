@@ -51,8 +51,7 @@ class Bet extends Base
                 game_result,
                 money,
                 handsel,
-                break,
-
+                break
             FROM
                 `order` o
             LEFT JOIN menber m ON o.user_id = m.id";
