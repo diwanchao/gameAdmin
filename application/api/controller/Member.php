@@ -145,18 +145,18 @@ class Member extends Base
 				if ($user_data['blance'] < $number)
 					throw new \Exception("存入金额大于最大值", 1);
 
-				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance-'.$value['value'])]);
-				Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance+'.$value['value'])]);
+				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance-'.$number)]);
+				Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance+'.$number)]);
 				set_integral($user_id,$this->USER_ID,'上级提取',$number);
 				set_integral($user_data['parent_id'],$this->USER_ID,'提取下级',$number);
 			}else{
 				if ($user_data['parent_blance'] < $number)
 					throw new \Exception("提取金额大于最大值", 1);
 
-				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance+'.$value['value'])]);
+				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance+'.$number)]);
 				if ($user_data['role_id'] !=3) 
 				{
-					Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance-'.$value['value'])]);
+					Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance-'.$number)]);
 				}
 				set_integral($user_id,$this->USER_ID,'上级存入',$number);
 				set_integral($user_data['parent_id'],$this->USER_ID,'存入下级',$number);
