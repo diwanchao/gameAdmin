@@ -446,7 +446,7 @@ class Member extends Base
         	$data['password'] = md5($password);
 
         Db::name('menber')->where('id=?',[$user_id])->update($data);
-        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);
+        return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);
 	}
 	/**
 	 * 检测用户名
