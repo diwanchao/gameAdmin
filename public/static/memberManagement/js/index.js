@@ -102,11 +102,6 @@ var app = new Vue({
 
 function bindValue(ele, value){
     ele.unbind();
-    ele.bind('keydown', function(e){
-        if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-            e.preventDefault();
-        }
-    });
 
     ele.bind('blur', function(){
         if(isNaN(this.value)){
