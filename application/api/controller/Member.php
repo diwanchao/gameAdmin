@@ -485,7 +485,7 @@ class Member extends Base
 	public function addAgentGameInfo()
 	{
 		$user_id 	= $this->request->param('id',0);
-		$data 		= Db::name('menber')->field('game_list as game,part') ->where('id=?',$user_id)->find();
+		$data 		= Db::name('menber')->field('game_list as game,part')->where('id=?',[$user_id])->find();
 		$data['game'] = json_decode($data['game']);
 		$data['part'] = json_decode($data['part']);
 
