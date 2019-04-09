@@ -298,6 +298,9 @@ var app = new Vue({
                     delete cur.Bmax;
                     delete cur.Cmax;
                     delete cur.Dmax;
+                    delete cur.CSMax;
+                    delete cur.CSMin;
+                    delete cur.NSMax;
                     delete cur.select;
                 }
 
