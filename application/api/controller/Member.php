@@ -540,11 +540,20 @@ class Member extends Base
 	 */
 	public function getOperationLog()
 	{
-		$data = [
+		$data = Db::name('`integral`')
+		->alias('i')
+		->field("CONCAT(m1.rule_name,m1.user_name,i.type) AS content, i.time,m2.user_name AS admin")
+		->leftJoin('menber m1','m1.id=i.user_id')
+		->leftJoin('menber m2','i.admin_id=m2.id')
+		->select();
+
+
+
+/*		$data = [
 			['id'=>1,'content'=>'代理dwc登录','time'=>date('Y-m-d H:i:s',time()),'admin'=>'dwc'],
 			['id'=>1,'content'=>'代理dwc登录','time'=>date('Y-m-d H:i:s',time()),'admin'=>'dwc'],
 
-		];
+		];*/
 		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 
