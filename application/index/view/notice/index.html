@@ -36,7 +36,7 @@
                                                                                 <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                             </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
                                                                     <td width="48%" align="center">
-                                                                        <a href="javascript:void(0);" @click="add">新加公告</a>
+                                                                        <a v-if="ENV.userInfo.role_type == 3" href="javascript:void(0);" @click="add">新加公告</a>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -54,20 +54,20 @@
             </tbody>
         </table>
             <table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td height="5"></td></tr></tbody></table>
-        <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+        <table width="100%" border="0" cellpadding="0" cellspacing="1"
             style="border:1px solid #76694c;font-size:14px;">
             <thead>
                 <tr class="note_title" height="25">
                     <th align="center" height="16">发布时间</th>
                     <th>内容</th>
-                    <th align="center" width="200">操作</th>
+                    <th v-if="ENV.userInfo.role_type == 3" align="center" width="200">操作</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, index) in data" class="t15">
                     <td align="center">{{item.create_time}}</td>
                     <td>{{item.content}}</td>
-                    <td align="center"><button @click="del(item)" type="button">删除</button></td>
+                    <td v-if="ENV.userInfo.role_type == 3" align="center"><button @click="del(item)" type="button">删除</button></td>
                 </tr>
             </tbody>
 
