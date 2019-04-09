@@ -558,15 +558,12 @@ class Member extends Base
 			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);	
 		if ($accountList['jlk3'] ?? '') 
 		{
-			$k3_data = [
-				'user_proportion'	=>$accountList['jlk3']['member'],
-				'parent_proportion'	=>$accountList['jlk3']['agent'],
-			];
+			$k3_data = ['user_proportion'	=>$accountList['jlk3']['member'],'parent_proportion'	=>$accountList['jlk3']['agent']];
 			Db::name('proportion_log')->where("game_key = 'jlk3' and user_id=?",[$id])->update($k3_data);
 		}
 		if ($accountList['ssc'] ?? '') 
 		{
-			$ssc_data[] = [
+			$ssc_data = [
 				'user_proportion'	=>$accountList['ssc']['member'],
 				'parent_proportion'	=>$accountList['ssc']['agent'],
 			];
