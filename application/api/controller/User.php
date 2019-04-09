@@ -47,6 +47,7 @@ class User extends Base
 			->field('name,user_proportion')
 			->leftJoin('game_info g','p.game_key=g.game_key')
 			->select();
+			
 			if ($ratio_info) 
 				$ratio_info = array_column($ratio_info, 'user_proportion','name');
 		}else{
@@ -54,7 +55,7 @@ class User extends Base
 
 		}
 
-		$user_info['Ratio'] = $ratio_info ?? [];
+		$user_info['Ratio'] = $ratio_info ?? ['吉林快3'=>'0','重庆时时彩'=>'0'];
 
 /*		$data = [
 			'user_name'=>'dwc',
