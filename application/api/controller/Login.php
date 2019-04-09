@@ -60,12 +60,14 @@ class Login extends Controller
         		throw new \Exception("用户名不存在", 1);
         	if ($user_data['password'] != md5($data['user_pwd'])) 
         		throw new \Exception("密码错误", 1);
-        	unset($user_data['password']);
         	Session::set('user_name',$user_data['user_name']);
 			Session::set('user_id', $user_data['id']);
 			Session::set('is_login',1);
             if($user_data['role_id'] == 4)
                 Session::set('is_admin',1);
+
+            set_integral($user_data['id'],$user_data['id'],'用户登录');
+            Db::name('menber')->where('id=?',[$user_data['id']])->update(['login_time'=>date('Y-m-d H:i:s',time())]);
 
         } catch (\Exception $e) {
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
