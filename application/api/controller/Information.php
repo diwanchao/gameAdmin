@@ -23,7 +23,7 @@ class Information extends Base
     public function list()
     {
       	$game_key  	= $this->request->param('game_key','');
-      	$user_id 	= $this->USER_ID ?? 0;
+        $user_id    = $this->request->param('user_id',$this->USER_ID);
 
         $where  = 'user_id=? and game_key=?';
         $data   = Db::name('user_game_method')->where($where,[$user_id,$game_key])->select();
