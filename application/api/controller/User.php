@@ -40,7 +40,7 @@ class User extends Base
 	public function creditInfo()
 	{
 		$user_info = Db::name('menber')->field('user_name,role_name,blance as quick_open_quote')->where('id=?',[$this->USER_ID])->find();
-		if (!Session::get('is_admin') 
+		if (!Session::get('is_admin'))
 		{
 			$ratio_info = Db::name('proportion_log')
 			->alias('p')
