@@ -262,8 +262,9 @@ class Member extends Base
 		$password 		= $this->request->param('password',0);
 		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
 		$blance 		= $this->request->param('quick_open_quote',0);
-		$part 			= $this->request->param('part/a',0);
-		$game_list 		= $this->request->param('game/a',0);
+		$part 			= $this->request->param('part/a',[]);
+		$game_list 		= $this->request->param('game/a',[]);
+		$accountList 	= $this->request->param('accountList/a',[]);
 
 		Db::startTrans();
 		try {
@@ -295,6 +296,7 @@ class Member extends Base
 			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
+			$this->add_account_list($accountList,$user_id);
 
 			Db::commit();
 
@@ -305,6 +307,37 @@ class Member extends Base
 
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 
+	}
+	/**
+	 * 新建设置游戏占比
+	 */
+
+	public function add_account_list($data=[],$user_id)
+	{
+
+		$insert_data  = [];
+		if ($data['jlk3'] ?? '') 
+		{
+			$insert_data[] = [
+				'user_id'			=>$user_id,
+				'user_proportion'	=>$data['jlk3']['member'],
+				'parent_id'			=>$this->USER_ID,
+				'parent_proportion'	=>$data['jlk3']['agent'],
+				'game_key'			=>'jlk3',
+			]
+		}
+		if ($data['ssc'] ?? '') 
+		{
+			$insert_data[] = [
+				'user_id'			=>$user_id,
+				'user_proportion'	=>$data['ssc']['member'],
+				'parent_id'			=>$this->USER_ID,
+				'parent_proportion'	=>$data['ssc']['agent'],
+				'game_key'			=>'ssc',
+			]
+		}
+		if ($insert_data) 
+			Db::name('proportion_log')->insertAll($insert_data);
 	}
 
 
@@ -386,9 +419,6 @@ class Member extends Base
 
 
 	}
-
-
-
 
 
 	/**
