@@ -542,7 +542,6 @@ class Member extends Base
 	{
 		$user_id = $this->request->param('id',0);
 
-
 		$data = Db::name('`integral`')
 		->alias('i')
 		->field("CONCAT(m1.rule_name,m1.user_name,i.type) AS content, i.time,m2.user_name AS admin")
