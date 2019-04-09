@@ -53,7 +53,7 @@ var app = new Vue({
         'time': {
             inserted: function(el){
                 bindTime(el.id, function(obj){
-                    app.time = obj.val;
+                    app.search.time = obj.val;
                 });
             }
         }
