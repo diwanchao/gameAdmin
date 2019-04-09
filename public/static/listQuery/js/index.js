@@ -23,7 +23,8 @@ var app = new Vue({
                 user_num: this.search.username,
                 game_key: this.search.game_key,
                 time: this.search.time,
-                status: this.search.status
+                status: this.search.status,
+                index: tablePage.data.index,
             }
 
             utils.getAjax({
