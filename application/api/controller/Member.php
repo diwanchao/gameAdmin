@@ -432,9 +432,21 @@ class Member extends Base
 	 */
 	public function addAgent()
 	{
-		$data = $this->request->param();
-        return json(['msg' => '添加成功','code' => 200, 'data' =>$data]);	
+		$user_name 		= $this->request->param('user_name','');
+		$user_id 		= $this->request->param('id',0);
+		$password 		= $this->request->param('password','');
+		$confirm_pwd 	= $this->request->param('confirm_pwd','');
+		if (!$user_name) 
+        	return json(['msg' => '用户名不能为空','code' => 201, 'data' =>$data]);	
+        if ($password != $confirm_pwd) 
+        	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>$data]);	
 
+        $data = [
+        	'user_name' => $user_name,
+        	'password' 	=> md5($password)
+        ];
+        Db::name('menber')->where('id=?',[$user_id])->update($data)
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);
 	}
 	/**
 	 * 检测用户名
