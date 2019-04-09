@@ -437,9 +437,9 @@ class Member extends Base
 		$password 		= $this->request->param('password','');
 		$confirm_pwd 	= $this->request->param('confirm_pwd','');
 		if (!$user_name) 
-        	return json(['msg' => '用户名不能为空','code' => 201, 'data' =>$data]);	
+        	return json(['msg' => '用户名不能为空','code' => 201, 'data' =>[]]);	
         if ($password != $confirm_pwd) 
-        	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>$data]);	
+        	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>[]]);	
 
         $data = [
         	'user_name' => $user_name,
