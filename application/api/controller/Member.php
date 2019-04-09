@@ -101,12 +101,17 @@ class Member extends Base
 		$id 	= $this->request->param('id',0);
 		$user_data 	= Db::name('menber')
 		->alias('m1')
-		->field('m1.blance,m2.blance as parent_blance')
+		->field('m1.blance,m1.role_id,m2.blance as parent_blance')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->where('m1.id=?',[$id])
 		->find();
-		if ($type) 
-			$number = $user_data['parent_blance'] ?? 0;
+		if ($type == 0) 
+		{
+			if (($user_data['role_id'] ?? 0) == 3) 
+				$number = 99999;
+			}else
+				$number = $user_data['parent_blance'] ?? 0;
+		}
 		else
 			$number = $user_data['blance'] ?? 0;
 
