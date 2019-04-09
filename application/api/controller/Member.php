@@ -68,7 +68,7 @@ class Member extends Base
 		->alias('m1')
 		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,m3.count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
-		->leftJoin([$subsql=> 'm3'],'m1.parent_id=m2.id')
+		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
 		->order('m1.'.$order, 'desc')
 		->paginate(10,false,['var_page'=>'index']);
