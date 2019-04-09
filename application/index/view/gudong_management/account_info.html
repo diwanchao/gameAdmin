@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>修改代理成数</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <h4>修改代理成数 <small class="fright topmargin-sm"><a href="javascript:history.back(1);">返回上一页</a></small></h4>
+        修改账号：{{name}}
+        &nbsp;&nbsp;占成数据
+        <table width="50%" border="0" cellpadding="0" cellspacing="1"
+            style="border:1px solid #76694c;font-size:14px;">
+            <tbody>
+                <tr class="note_title" height="25">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <font color="white">调整本列值</font>
+                    </td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省时时彩</td>
+                    <td align="center">总代理占成</td>
+                    <td>
+                        <select v-model="accountList.ssc.agent">
+                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                        </select>
+                    </td>
+                    <td align="right">代理占成</td>
+                    <td>
+                        <select v-model="accountList.ssc.member">
+                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td>各省快3</td>
+                    <td align="center">总代理占成</td>
+                    <td>
+                        <select v-model="accountList.jlk3.agent">
+                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                        </select>
+                    </td>
+                    <td align="right">代理占成</td>
+                    <td>
+                        <select v-model="accountList.jlk3.member">
+                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group topmargin" style="margin-top: 10px;">
+            <div class="col-sm-offset-2 col-sm-10" style="padding-left:200px">
+                <input type="button" class="btn btn-success" name="Submit" value="确认修改"
+                    @click="submit">
+                <font color="red">每天05:00至8:00修改占成</font>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script src="/static/agentManagement/js/accountInfo.js"></script>
+</html>
