@@ -408,11 +408,9 @@ var ENV = {
 		this.$marqueeid = $header.find('.marqueeid');
 		this.$logout = $header.find('.logout');
 		this.$headerGameList = $header.find('.headerGameList');
-		this.$jurisdiction = $header.find('.jurisdiction');
+		this.$dailishang = $header.find('.dailishang');
+		this.$gudong = $header.find('.gudong');
 		this.$dropdown = $header.find('.dropdown');
-
-		// this.userInfo = ENV.userInfo;
-
 
 		this.data = {
 			user_type_id: 1, // 0->代理 1->总代理
@@ -468,8 +466,14 @@ var ENV = {
 	 * 初始化最新公告
 	 */
 	InitHeader.prototype.baseInit = function () {
-		if(this.data.user_type_id == 0){
-			this.$jurisdiction.hide();
+		// 不是总代理以上 删除代理管理
+		if(this.data.user_type_id < 1){
+			this.$dailishang.hide();
+		}
+		
+		// 不是管理员以上 删除股东管理
+		else if(this.data.user_type_id < 3) {
+			this.$gudong.hide();
 		}
 		this.$userType.text(this.data.user_type);
 		this.$username.text(this.data.user_name);
