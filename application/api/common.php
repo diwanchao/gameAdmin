@@ -97,5 +97,15 @@ use \think\Db;
         return date('Ymd').$num;
 
     }
+    /**
+     * 获取子集
+     */
 
+    function get_sons($id){
+        $category_ids = $id.",";
+        $child_category = Db::query("select id from menber where parent_id = '{$id}'");
+        foreach( $child_category as $key => $val )
+            $category_ids .= get_sons( $val["id"] );
+        return $category_ids;
+    }
  ?>
