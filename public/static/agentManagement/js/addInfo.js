@@ -60,7 +60,7 @@ var app = new Vue({
 
             utils.getAjax({
 
-                url: 'api/menber/addShareholder',
+                url: '/api/menber/addShareholder',
                 type: 'POST',
                 data: data,
                 success: function(result){
