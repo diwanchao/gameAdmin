@@ -441,10 +441,10 @@ class Member extends Base
         if ($password != $confirm_pwd) 
         	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>[]]);	
 
-        $data = [
-        	'user_name' => $user_name,
-        	'password' 	=> md5($password)
-        ];
+        $data['user_name'] = $user_name;
+        if ($password)
+        	$data['password'] = md5($password);
+
         Db::name('menber')->where('id=?',[$user_id])->update($data);
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);
 	}
