@@ -34,7 +34,7 @@ var app = new Vue({
 
             utils.getAjax({
 
-                url: '/api/Member/setAgentGameInfo',
+                url: '/api/Member/setGameInfo',
                 type: 'POST',
                 data: data,
                 success: function(result){
