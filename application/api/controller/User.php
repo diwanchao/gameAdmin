@@ -65,7 +65,7 @@ class User extends Base
 			'quick_open_quote'=>0,
 			'Ratio'=>['吉林快3'=>'0','重庆时时彩'=>'0'],
 		];*/
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$user_info]);
 
 	}
 	/**
