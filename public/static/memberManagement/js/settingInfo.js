@@ -1,31 +1,31 @@
 // 吉林快3 基础验证
 var jlk3 = [
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 2.15, Bmax: 1.5, Cmax: 1.0, Dmax: 0.5},
-    {select: false, Amax: 2.15, Bmax: 1.5, Cmax: 1.0, Dmax: 0.5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0},
-    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0},
-    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 4, Bmax: 4, Cmax: 4, Dmax: 4},
-    {select: false, Amax: 4, Bmax: 4, Cmax: 4, Dmax: 4},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5},
-    {select: false, Amax: 6, Bmax: 6, Cmax: 0.5, Dmax: 0.5},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 10000, CSMax: 1000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 10000, CSMax: 1000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 10000, CSMax: 1000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 3000, CSMax: 1000, CSMin: 2},
+    {select: false, Amax: 2.15, Bmax: 1.5, Cmax: 1.0, Dmax: 0.5, NSMax: 100000, CSMax: 100000, CSMin: 2},
+    {select: false, Amax: 2.15, Bmax: 1.5, Cmax: 1.0, Dmax: 0.5, NSMax: 100000, CSMax: 100000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 10000, CSMax: 1000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 1.0, Bmax: 1.0, Cmax: 1.0, Dmax: 1.0, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 30000, CSMax: 6000, CSMin: 2},
+    {select: false, Amax: 4, Bmax: 4, Cmax: 4, Dmax: 4, NSMax: 100000, CSMax: 30000, CSMin: 2},
+    {select: false, Amax: 4, Bmax: 4, Cmax: 4, Dmax: 4, NSMax: 100000, CSMax: 30000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 100000, CSMax: 30000, CSMin: 2},
+    {select: false, Amax: 10, Bmax: 10, Cmax: 10, Dmax: 5, NSMax: 100000, CSMax: 30000, CSMin: 2},
+    {select: false, Amax: 6, Bmax: 6, Cmax: 0.5, Dmax: 0.5, NSMax: 80000, CSMax: 50000, CSMin: 2},
 ];
 
 
@@ -222,42 +222,43 @@ var app = new Vue({
 
         // 单号限额
         setLimit: function(){
-            if(this.quick.money > 30000) {
-                return alert('不可高于30000限额');
-            }
-            else if(this.quick.money < 2){
+            if(this.quick.money < 2){
                 return alert('不可低于2限额');
             }
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
                     var cur = this.data[i];
-                    cur.limit = this.quick.money;
+                    if(cur.NSMax <= this.quick.money){
+                        cur.limit = cur.NSMax;
+                    }
+                    else {
+                        cur.limit = this.quick.money;
+                    }
                 }
             }
         },
 
         // 单注限额
         setMax: function(){
-            if(this.quick.money > 6000) {
-                return alert('不可高于6000限额');
-            }
-            else if(this.quick.money < 2){
+            if(this.quick.money < 2){
                 return alert('不可低于2限额');
             }
             for(var i = 0; i < this.data.length; i++) {
                 if(this.data[i].select) {
                     var cur = this.data[i];
-                    cur.max = this.quick.money;
+                    if(cur.CSMax <= this.quick.money){
+                        cur.max = cur.CSMax;
+                    }
+                    else {
+                        cur.max = this.quick.money;
+                    }
                 }
             }
         },
 
         // 单注低限额
         setMin: function(){
-            if(this.quick.money > 6000) {
-                return alert('不可高于6000限额');
-            }
-            else if(this.quick.money < 2){
+           if(this.quick.money < 2){
                 return alert('不可低于2限额');
             }
             for(var i = 0; i < this.data.length; i++) {
@@ -268,20 +269,9 @@ var app = new Vue({
             }
         },
 
-        vailInput: function(item, type) {
-            var max = 0;
+        vailInput: function(item, type, max) {
             var min = 2;
-            switch (type) {
-                case 'limit': {
-                    max = 30000;
-                    break;
-                }
-                case 'max':
-                case 'min': {
-                    max = 6000;
-                    break;
-                }
-            }
+            max = max || 9999999999999999999999999999999;
 
             if(item[type] > max){
                 item[type] = max;
