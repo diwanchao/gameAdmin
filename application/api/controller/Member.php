@@ -544,10 +544,7 @@ class Member extends Base
 		$user_data 	= Db::name('proportion_log')->field('game_key,user_proportion as member,parent_proportion as agent')->where('user_id=?',[$id])->select();
 		if ($user_data) 
 			$data = array_column($user_data, null,'game_key');
-/*		$data = [
-			'jlk3'	=> ['agent'=>100,'member'=>0],
-			'ssc' 	=> ['agent'=>100,'member'=>0],
-		];*/
+
 		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 	/**
@@ -555,6 +552,27 @@ class Member extends Base
 	 */
 	public function setAccount()
 	{
+		$id 			= $this->request->param('id',0);
+		$accountList 	= $this->request->param('accountList/a','');
+		if (!$accountList) 
+			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);	
+		if ($accountList['jlk3'] ?? '') 
+		{
+			$k3_data = [
+				'user_proportion'	=>$accountList['jlk3']['member'],
+				'parent_proportion'	=>$accountList['jlk3']['agent'],
+			];
+			Db::name('proportion_log')->where('user_id=?',[$id])->update($k3_data);
+		}
+		if ($accountList['ssc'] ?? '') 
+		{
+			$ssc_data[] = [
+				'user_proportion'	=>$accountList['ssc']['member'],
+				'parent_proportion'	=>$accountList['ssc']['agent'],
+			];
+			Db::name('proportion_log')->where('user_id=?',[$id])->update($ssc_data);
+		}
+
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
 	/**
