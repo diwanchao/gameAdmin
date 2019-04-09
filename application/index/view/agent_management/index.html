@@ -153,7 +153,7 @@
                                         </div>
                                     </td>
                                     <td align="center">
-                                        <a href="javascript:void(0);" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.status == 1 ? '解封投注' : '暂停投注'}}</a>
+                                        <a href="javascript:void(0);" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.bet_status == 1 ? '解封投注' : '暂停投注'}}</a>
                                         ::
                                         <a :href="'/index/agent_management/editinfo?id=' + item.id" class="ags">修改信息</a>
                                         ::
