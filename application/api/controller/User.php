@@ -39,14 +39,31 @@ class User extends Base
 	 */
 	public function creditInfo()
 	{
-		$data = [
+		$user_info = Db::name('menber')->field('user_name,role_name,blance as quick_open_quote')->where('id=?',[$this->USER_ID])->find();
+		if (!Session::get('is_admin') 
+		{
+			$ratio_info = Db::name('proportion_log')
+			->alias('p')
+			->field('name,user_proportion')
+			->leftJoin('game_info g','p.game_key=g.game_key')
+			->select();
+			if ($ratio_info) 
+				$ratio_info = array_column($ratio_info, 'user_proportion','name');
+		}else{
+			$ratio_info = ['吉林快3'=>'100','重庆时时彩'=>'100'];
+
+		}
+
+		$user_info['Ratio'] = $ratio_info ?? [];
+
+/*		$data = [
 			'user_name'=>'dwc',
 			'role_name'=>'总代理',
 			'credit_quota'=>0,
 			'use_quota'=>0,
 			'quick_open_quote'=>0,
-			'Ratio'=>['吉林快3'=>'0%','重庆时时彩'=>'0%'],
-		];
+			'Ratio'=>['吉林快3'=>'0','重庆时时彩'=>'0'],
+		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
 	}
