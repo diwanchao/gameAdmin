@@ -41,7 +41,40 @@ class Member extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
 
+	/**
+	 * 股东列表管理列表
+	 */
+	public function shareholderList()
+	{
+		if (!Session::get('is_admin')) 
+        	return json(['msg' => '您不是管理员不能查看股东列表','code' => 201, 'data' =>[]]);
+			
+		$status 	= $this->request->param('status',1);
+		$user_name 	= $this->request->param('user_name','');
+		$order 		= $this->request->param('sort','create_time');
 
+		$where[] = ['m1.role_id','=',3];
+		$where[] = ['m1.status','=',$status];
+		if ($user_name) 
+			$where[] = ['m1.user_name','=',$user_name];
+
+		$subsql = Db::name('menber')
+		->field('COUNT(1) AS count_user,parent_id')
+		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 3')
+		->group('parent_id')
+		->buildSql();
+
+		$data = Db::name('menber')
+		->alias('m1')
+		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,m3.count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->leftJoin('menber m2','m1.parent_id=m2.id')
+		->leftJoin([$subsql=> 'm3'],'m1.parent_id=m2.id')
+		->where($where)
+		->order('m1.'.$order, 'desc')
+		->paginate(10,false,['var_page'=>'index']);
+
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+	}
 
 
 	/**
@@ -192,16 +225,13 @@ class Member extends Base
 			if ($password != $confirm_pwd) 
 				throw new \Exception("两次密码输入不一致");
 
-			//$parent_info = Db::name('menber')->field('id,blance')->where('user_number=?',['dwc'])->find();
-/*			if ($parent_info['blance'] < $blance) 
-				throw new \Exception("代理可用额度不够");*/
-
 			$data = [
 				'parent_id' => $this->USER_ID,
 				'password' 	=> md5($password),
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
 				'rule_name' => '股东',
+				'role_id' 	=> '3',
 				'user_number' => $user_number,
 				'game_list' => json_encode($game_list),
 				'part' 		=> json_encode($part),
