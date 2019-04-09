@@ -126,6 +126,13 @@ class Member extends Base
 	{
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
+
+		$user_data 	= Db::name('menber')
+		->alias('m1')
+		->field('m1.blance,m1.role_id,m2.blance as parent_blance')
+		->leftJoin('menber m2','m1.parent_id=m2.id')
+		->where('m1.id=?',[$id])
+		->find();		
 		if (!$user_id) 
 		{
 	        return json(['msg' => '保存失败,数据异常.','code' => 201, 'data' =>[]]);		
@@ -486,8 +493,15 @@ class Member extends Base
 	/**
 	 * 保存代理游戏信息
 	 */
-	public function setAgentGameInfo()
+	public function setGameInfo()
 	{
+		$user_id 	= $this->request->param('id',0);
+		$part 		= $this->request->param('part/a',0);
+		$game_list 	= $this->request->param('game/a',0);
+		Db::name('menber')
+		->where('id=?',[$user_id])
+		->update(['part'=>json_encode($part),'game_list'=>json_encode($game_list)]);
+
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
 	/**
