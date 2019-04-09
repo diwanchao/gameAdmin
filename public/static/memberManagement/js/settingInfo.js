@@ -73,7 +73,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/Information/list',
-                data: {game_key: this.game_key, me: this.memberValue},
+                data: {game_key: this.game_key, me: this.memberValue || this.id,},
                 success: function(result){
                     
                     var data = result.data;
