@@ -31,7 +31,9 @@ class Bet extends Base
         $status     = $this->request->param('status',''); 
         $page       = $this->request->param('index',1); 
 
-        $where[] = ["DATE_FORMAT(time,'%Y-%m-%d')",'=',$time];
+        //$where[] = ["DATE_FORMAT(time,'%Y-%m-%d')",'=',$time];
+        //$where[] = ["DATE_FORMAT(o.time,'%Y-%m-%d')",'=',$time];
+        $where = [];
         if ($game_key) 
             $where[] = ['o.game_key','=',$game_key];
         if ($user_num) 
@@ -41,12 +43,13 @@ class Bet extends Base
 
         $money=$handsel=$break=$amount=0;
 
-
-        $total  = Db::name('order')->alias('o')->leftJoin('menber m','o.user_id = m.id')->value('count(1)');
+        $total  = Db::name('order')->alias('o')->leftJoin('menber m','o.user_id = m.id')->where("DATE_FORMAT(o.time,'%Y-%m-%d')=?",[$time])->where($where)->value('count(1)');
         $res    = Db::name('order')
             ->alias('o')
             ->field('user_name,user_number as user_num,o.user_id,o.time,o.game_key,o. NO AS number,o.part,o.number AS game_num,play_name,content,odds,game_result,money,handsel,break')
             ->leftJoin('menber m','o.user_id = m.id')
+            ->where("DATE_FORMAT(o.time,'%Y-%m-%d')=?",[$time])
+            ->where($where)
             ->page($page,10)
             ->select();
         if ($res) {
