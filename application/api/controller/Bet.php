@@ -52,11 +52,12 @@ class Bet extends Base
         if ($res) {
             foreach ($res as $key => $value) 
             {
+                $res[$key]['game_type'] = $game_type[$value['game_key']];
+                $res[$key]['amount']    = $value['money'] - $value['break'] - $value['handsel'];
                 $money      += $value['money'] ?? 0;
                 $handsel    += $value['handsel'] ?? 0;
                 $break      += $value['break'] ?? 0;
-                $amount     += $value['amount'] ?? 0;
-                $res[$key]['game_type'] = $game_type[$value['game_key']];
+                $amount     += $res[$key]['amount'] ?? 0;
             }
         }
 
