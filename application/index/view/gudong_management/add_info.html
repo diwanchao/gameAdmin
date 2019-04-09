@@ -2,7 +2,7 @@
 <html>
 
 <HEAD>
-    <TITLE>添加代理</TITLE>
+    <TITLE>添加股东</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
 </head>
@@ -29,7 +29,7 @@
                 <tr class="note_title">
                     <td width="530" height="25">
                         <strong class="fw12">　
-                            添加代理
+                            添加股东
 
                         </strong></td>
                     <td width="90"><a href="javascript: history.back(1);"
@@ -44,14 +44,14 @@
                                 <tbody>
                                     <tr>
                                         <td width="21%">
-                                            <div align="right">总代理：</div>
+                                            <div align="right">管理员：</div>
                                         </td>
                                         <td width="79%">{{create_user_name}}</td>
                                     </tr>
 
                                     <tr>
                                         <td height="22" nowrap="">
-                                            <div align="right">代理账号：</div>
+                                            <div align="right">股东账号：</div>
                                         </td>
                                         <td nowrap="">
                                             <input maxlength="15" size="15" type="text" class="input" v-model="username" @blur="verificationUsername" @input="usernameStatus = '0'">
@@ -64,7 +64,7 @@
                                     </tr>
                                     <tr>
                                         <td height="24">
-                                            <div align="right">代理名字：</div>
+                                            <div align="right">股东名字：</div>
                                         </td>
                                         <td>
                                             <div align="left">
@@ -220,5 +220,5 @@
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-<script src="/static/agentManagement/js/addInfo.js"></script>
+<script src="/static/gudongManagement/js/addInfo.js"></script>
 </html>

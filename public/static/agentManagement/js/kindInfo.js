@@ -1,5 +1,6 @@
 var id = utils.getURL(location.search, 'id');
 var name = utils.getURL(location.search, 'name');
+var general_name = utils.getURL(location.search, 'general_name');
 
 if(!id){
     alert('请正确进入～');
@@ -10,7 +11,7 @@ var app = new Vue({
     el: '#main',
     data: {
         id: id,
-        create_user_name: '',
+        create_user_name: general_name,
         name: name, // 会员名称
         game_list: [],
         levelValue: {},
@@ -49,7 +50,7 @@ var app = new Vue({
         var _this = this;
         var game_list = ENV.userInfo.game_list;
         var part_list = ENV.userInfo.dish;
-        this.create_user_name = ENV.userInfo.user_name;
+        // this.create_user_name = ENV.userInfo.user_name;
         utils.getAjax({
             url: '/api/Member/addAgentGameInfo',
             type: 'GET',

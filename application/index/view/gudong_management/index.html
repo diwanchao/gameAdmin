@@ -2,7 +2,7 @@
 <html>
 
 <HEAD>
-    <TITLE>代理商管理</TITLE>
+    <TITLE>股东管理</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
     <link href="/static/global/style/modal.css" rel="stylesheet" type="text/css">
@@ -50,7 +50,7 @@
                                                                         总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
-                                                                    <td v-if="ENV.userInfo.role_type == 3" width="48%" align="center"><a href="/index/agent_management/addinfo">新增</a></td>
+                                                                    <td v-if="ENV.userInfo.role_type == 3" width="48%" align="center"><a href="/index/shareholder_management/addinfo">新增</a></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -122,8 +122,8 @@
                                         <div align="center">{{item.user_number}}</div>
                                     </td>
                                     <td>
-                                        <div align="center"><a :href="'/index/member_management?search=' + escape(item.user_name)">{{item.user_name}}</a></div>
-                                        
+                                        <!-- <div align="center"><a :href="'/index/member_management?search=' + escape(item.user_name)">{{item.user_name}}</a></div> -->
+                                        <div align="center">{{item.user_name}}</div>
                                     </td>
                                     <td>
                                         <div align="center">{{item.count_user}}</div>
@@ -155,15 +155,15 @@
                                     <td align="center">
                                         <a href="javascript:void(0);" class="ags" @click="changeBet(item.id, item.bet_status)">{{item.status == 1 ? '解封投注' : '暂停投注'}}</a>
                                         ::
-                                        <a :href="'/index/agent_management/editinfo?id=' + item.id" class="ags">修改信息</a>
+                                        <a :href="'/index/shareholder_management/editinfo?id=' + item.id" class="ags">修改信息</a>
                                         ::
-                                        <a :href="'/index/agent_management/accountinfo?id=' + item.id + '&name=' + escape(item.user_name)" class="ags">修改成数</a>
+                                        <a :href="'/index/shareholder_management/accountinfo?id=' + item.id + '&name=' + escape(item.user_name)" class="ags">修改成数</a>
                                         ::
-                                        <a :href="'/index/agent_management/kindinfo?id=' + item.id + '&name=' + escape(item.user_name)" class="ags">修改彩种</a>
+                                        <a :href="'/index/shareholder_management/kindinfo?id=' + item.id + '&name=' + escape(item.user_name) + '&general_name=' + escape(item.general_name)" class="ags">修改彩种</a>
                                         ::
                                         <a :href="'/index/member_management/settingInfo?id=' + item.id + '&name=' + escape(item.user_name) + '&type=1'" class="ags">详细设定</a>
                                         ::
-                                        <a :href="'/index/agent_management/operationlog?id=' + item.id" class="ags">操作日志</a>
+                                        <a :href="'/index/shareholder_management/operationlog?id=' + item.id" class="ags">操作日志</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -192,5 +192,5 @@
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
 <script src="/static/global/js/modal.js"></script>
-<script src="/static/agentManagement/js/index.js"></script>
+<script src="/static/gudongManagement/js/index.js"></script>
 </html>
