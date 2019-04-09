@@ -539,10 +539,15 @@ class Member extends Base
 	 */
 	public function getAccountList()
 	{
-		$data = [
+		$data 		= [];
+		$id 		= $this->request->param('id',0);
+		$user_data 	= Db::name('proportion_log')->field('game_key,user_proportion as member,parent_proportion as agent')->where('user_id=?',[$id])->select();
+		if ($user_data) 
+			$data = array_column($user_data, null,'game_key');
+/*		$data = [
 			'jlk3'	=> ['agent'=>100,'member'=>0],
 			'ssc' 	=> ['agent'=>100,'member'=>0],
-		];
+		];*/
 		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 	/**
