@@ -562,7 +562,7 @@ class Member extends Base
 				'user_proportion'	=>$accountList['jlk3']['member'],
 				'parent_proportion'	=>$accountList['jlk3']['agent'],
 			];
-			Db::name('proportion_log')->where('user_id=?',[$id])->update($k3_data);
+			Db::name('proportion_log')->where("game_key = 'jlk3' and user_id=?",[$id])->update($k3_data);
 		}
 		if ($accountList['ssc'] ?? '') 
 		{
@@ -570,7 +570,7 @@ class Member extends Base
 				'user_proportion'	=>$accountList['ssc']['member'],
 				'parent_proportion'	=>$accountList['ssc']['agent'],
 			];
-			Db::name('proportion_log')->where('user_id=?',[$id])->update($ssc_data);
+			Db::name('proportion_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
 		}
 
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
