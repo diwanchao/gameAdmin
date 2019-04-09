@@ -5,7 +5,7 @@ var app = new Vue({
         user_type: '总代理',
         user_name: 'han12',
         credit_limit: '0', // 信用额度
-        already_limit: '0', // 以开额度
+        // already_limit: '0', // 以开额度
         fast_limit: '0', // 快开额度
         occpuy: {},
 
@@ -35,7 +35,7 @@ var app = new Vue({
                 _this.user_name = result.user_name;
                 _this.user_type = result.role_name;
                 _this.credit_limit = result.credit_quota;
-                _this.already_limit = result.use_quota;
+                // _this.already_limit = result.use_quota;
                 _this.fast_limit = result.quick_open_quote;
                 _this.occpuy = result.Ratio;
             }
