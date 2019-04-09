@@ -12,7 +12,7 @@
     <div class="bg">
     </div>
 
-    <div class="login">
+    <form action="javascript:void(0);" class="login">
         <h2>管理专区</h2>
         <p>Username	</p>
         <input name="username" class="form-control input" type="text" placeholder="Account">
@@ -23,7 +23,7 @@
             <img id="code" onclick="this.src='{:captcha_src()}?'+Math.random()" src="{:captcha_src()}" alt="captcha" />
         </div>
         <button type="submit" class="btn" id="login">登入</button>
-    </div>
+    </form>
 </body>
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/login/js/index.js"></script>
