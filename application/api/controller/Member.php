@@ -3,6 +3,7 @@ namespace app\api\controller;
 use app\api\controller\Base;
 use think\facade\Session;
 use \think\Db;
+use think\facade\Session;
 
 
 class Member extends Base
@@ -165,7 +166,65 @@ class Member extends Base
 
 	}
 
+	/**
+	 * 新建会员
+	 */
 
+	public function addShareholder()
+	{
+		$parent_id 		= $this->request->param('agent_name',0);
+		$user_number 	= $this->request->param('user_num',0);
+		$user_name 		= $this->request->param('user_name',0);
+		$password 		= $this->request->param('password',0);
+		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
+		$blance 		= $this->request->param('quick_open_quote',0);
+		$part 			= $this->request->param('part/a',0);
+		$game_list 		= $this->request->param('game/a',0);
+
+		Db::startTrans();
+		try {
+			if (!Session::get('is_admin')) 
+				throw new \Exception("您不是超级管理员,不能添加股东账号");
+			if (!$user_number) 
+				throw new \Exception("账号不能为空");
+			if (!$user_name) 
+				throw new \Exception("会员名称不能为空");
+			if (!$password) 
+				throw new \Exception("密码不能为空");
+			if ($password != $confirm_pwd) 
+				throw new \Exception("两次密码输入不一致");
+
+			//$parent_info = Db::name('menber')->field('id,blance')->where('user_number=?',['dwc'])->find();
+/*			if ($parent_info['blance'] < $blance) 
+				throw new \Exception("代理可用额度不够");*/
+
+			$data = [
+				'parent_id' => $this->USER_ID,
+				'password' 	=> md5($password),
+				'user_name' => $user_name,
+				'blance' 	=> $blance,
+				'rule_name' => '股东',
+				'user_number' => $user_number,
+				'game_list' => json_encode($game_list),
+				'part' 		=> json_encode($part),
+				'create_time' => date('Y-m-d H:i:s',time()),
+			];
+
+			$user_id  = Db::name('menber')->insertGetId($data);
+			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
+			$this->init_user_method($user_id,'jlk3');
+			$this->init_user_method($user_id,'ssc');
+
+			Db::commit();
+
+		} catch (\Exception $e) {
+			Db::rollback();
+			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
+		}
+
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+
+	}
 
 
 	/**

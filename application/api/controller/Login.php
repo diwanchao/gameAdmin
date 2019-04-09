@@ -55,7 +55,7 @@ class Login extends Controller
         	if (!captcha_check($data['code'])) 
         		throw new \Exception("验证码不正确", 1);
 
-        	$user_data = Db::name('menber')->field('id,user_name,password,blance')->where('user_number=? and role_id !=?',[$data['user_name'],0])->find();
+        	$user_data = Db::name('menber')->field('id,user_name,password,blance,role_id')->where('user_number=? and role_id !=?',[$data['user_name'],0])->find();
         	if (!$user_data) 
         		throw new \Exception("用户名不存在", 1);
         	if ($user_data['password'] != md5($data['user_pwd'])) 
@@ -64,10 +64,12 @@ class Login extends Controller
         	Session::set('user_name',$user_data['user_name']);
 			Session::set('user_id', $user_data['id']);
 			Session::set('is_login',1);
+            if($user_data['role_id'] == 4)
+                Session::set('is_admin',1);
 
         } catch (\Exception $e) {
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
         }
-        return json(['msg' => 'succeed','code' => 200, 'data' =>['user'=>$user_data]]);
+        return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
     }
 }
