@@ -3,8 +3,6 @@ namespace app\api\controller;
 use app\api\controller\Base;
 use think\facade\Session;
 use \think\Db;
-use think\facade\Session;
-
 
 class Member extends Base
 {
@@ -167,7 +165,7 @@ class Member extends Base
 	}
 
 	/**
-	 * 新建会员
+	 * 新建股东
 	 */
 
 	public function addShareholder()
