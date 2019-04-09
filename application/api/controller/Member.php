@@ -419,7 +419,7 @@ class Member extends Base
 
 		$user_data 	= Db::name('menber')
 		->alias('m1')
-		->field('m1.blance as quick_open_quote,m2.user_name as general_name,m1.user_num,m1.user_number,m2.blance as usable_quote')
+		->field('m1.blance as quick_open_quote,m2.user_name as general_name,m1.user_name,m1.user_number as user_num,m2.blance as usable_quote')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->where('m1.id=?',[$user_id])
 		->find();
