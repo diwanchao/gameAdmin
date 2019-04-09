@@ -31,13 +31,13 @@ class Bet extends Base
         $status     = $this->request->param('status',''); 
         $page       = $this->request->param('index',1); 
 
-        $where[] = ['time','=',$time];
+        $where[] = ["DATE_FORMAT(time,'%Y-%m-%d')",'=',$time];
         if ($game_key) 
-            $where[] = ['game_key','=',$game_key];
+            $where[] = ['o.game_key','=',$game_key];
         if ($user_num) 
-            $where[] = ['user_id','=',$user_num];
+            $where[] = ['o.user_id','=',$user_num];
         if ($status) 
-            $where[] = ['status','=',$status];
+            $where[] = ['o.status','=',$status];
 
         $money=$handsel=$break=$amount=0;
 
