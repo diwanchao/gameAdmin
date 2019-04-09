@@ -324,7 +324,7 @@ class Member extends Base
 				'parent_id'			=>$this->USER_ID,
 				'parent_proportion'	=>$data['jlk3']['agent'],
 				'game_key'			=>'jlk3',
-			]
+			];
 		}
 		if ($data['ssc'] ?? '') 
 		{
@@ -334,7 +334,7 @@ class Member extends Base
 				'parent_id'			=>$this->USER_ID,
 				'parent_proportion'	=>$data['ssc']['agent'],
 				'game_key'			=>'ssc',
-			]
+			];
 		}
 		if ($insert_data) 
 			Db::name('proportion_log')->insertAll($insert_data);
