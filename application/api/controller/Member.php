@@ -416,13 +416,14 @@ class Member extends Base
 	public function editAgent()
 	{
 		$user_id 	= $this->request->param('id',0);
-		$data = [
-			'general_name'=>'111',
-			'user_num'=>'会员账号',
-			'user_name'=>'会员名称',
-			'quick_open_quote'=>100,
-			'usable_quote'=>50,
-		];
+
+		$user_data 	= Db::name('menber')
+		->alias('m1')
+		->field('m1.blance as quick_open_quote,m2.user_name as general_name,m1.user_num,m1.user_num,m2.blance as usable_quote')
+		->leftJoin('menber m2','m1.parent_id=m2.id')
+		->where('m1.id=?',[$user_id])
+		->find();
+
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
 
