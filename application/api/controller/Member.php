@@ -545,6 +545,7 @@ class Member extends Base
 		->field("CONCAT(m1.rule_name,m1.user_name,i.type) AS content, i.time,m2.user_name AS admin")
 		->leftJoin('menber m1','m1.id=i.user_id')
 		->leftJoin('menber m2','i.admin_id=m2.id')
+		->where('user_id=?',[$this->USER_ID])
 		->select();
 
 
