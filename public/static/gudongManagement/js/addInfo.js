@@ -14,8 +14,8 @@ var app = new Vue({
 
         //
         accountList: {
-            jlk3: {agent: 0, member: 0},
-            ssc: {agent: 0, member: 0},
+            jlk3: {agent: 100, member: 0},
+            ssc: {agent: 100, member: 0},
         }
     },
 
@@ -60,7 +60,7 @@ var app = new Vue({
 
             utils.getAjax({
 
-                url: '/api/Member/addAgent',
+                url: '/api/menber/addShareholder',
                 type: 'POST',
                 data: data,
                 success: function(result){
@@ -91,18 +91,18 @@ var app = new Vue({
         }
         this.game_list = ENV.userInfo.game_list;
 
-        utils.getAjax({
-            url: '/api/Member/getProportion',
-            type: 'GET',
-            data: {type: 0},
-            success: function(result){
-                for(var k in result) {
-                    if(result.hasOwnProperty(k)){
-                        _this.accountList[k].agent = result[k];
-                    }
-                }
-            }
-        })
+        // utils.getAjax({
+        //     url: '/api/Member/getProportion',
+        //     type: 'GET',
+        //     data: {type: 0},
+        //     success: function(result){
+        //         for(var k in result) {
+        //             if(result.hasOwnProperty(k)){
+        //                 _this.accountList[k].agent = result[k];
+        //             }
+        //         }
+        //     }
+        // })
     },
 
     watch: {

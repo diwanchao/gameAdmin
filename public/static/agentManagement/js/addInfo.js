@@ -60,7 +60,7 @@ var app = new Vue({
 
             utils.getAjax({
 
-                url: '/api/menber/addShareholder',
+                url: '/api/Member/addAgent',
                 type: 'POST',
                 data: data,
                 success: function(result){
