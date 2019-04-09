@@ -14,6 +14,7 @@ class User extends Base
 	public function logout()
 	{
     	Session::delete('is_login');
+    	Session::delete('is_admin');
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
 	}
 	/**
