@@ -17,8 +17,8 @@ var app = new Vue({
         pwd: '', // 密码
         confirm_pwd: '', // 确认密码
         levelValue: {},
-        quick: '',
-        usable_quick: 1,
+        // quick: '',
+        // usable_quick: 1,
         game_list: [],
     },
     methods: {
@@ -36,7 +36,7 @@ var app = new Vue({
                 user_name: this.name,
                 password: this.pwd,
                 confirm_pwd: this.confirm_pwd,
-                quick_open_quote: this.quick,
+                // quick_open_quote: this.quick,
                 part: this.levelValue,
                 game: game,
                 id: this.id
@@ -66,8 +66,8 @@ var app = new Vue({
                 _this.create_user_name = result.agent_name;
                 _this.username = result.user_num;
                 _this.name = result.user_name;
-                _this.usable_quick = result.usable_quote;
-                _this.quick = result.quick_open_quote;
+                // _this.usable_quick = result.usable_quote;
+                // _this.quick = result.quick_open_quote;
 
                 for(var i = 0 ; i < game_list.length; i++) {
                     var key = game_list[i].game_key;

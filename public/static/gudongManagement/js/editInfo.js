@@ -12,8 +12,8 @@ var app = new Vue({
         name: '', // 会员名称
         pwd: '', // 密码
         confirm_pwd: '', // 确认密码
-        quick: '', // 设置创建人应持有的额度（从当前登录人所持有的额度里扣除）
-        usable_quick: 1, // 当前登录人（代理）所持有的额度
+        // quick: '', // 设置创建人应持有的额度（从当前登录人所持有的额度里扣除）
+        // usable_quick: 1, // 当前登录人（代理）所持有的额度
     },
 
     methods: {
@@ -25,7 +25,7 @@ var app = new Vue({
                 user_name: this.name,
                 password: this.pwd,
                 confirm_pwd: this.confirm_pwd,
-                quick_open_quote: this.quick,
+                // quick_open_quote: this.quick,
                 id: this.id
             };
 
@@ -52,8 +52,8 @@ var app = new Vue({
                 _this.create_user_name = result.general_name;
                 _this.username = result.user_num;
                 _this.name = result.user_name;
-                _this.usable_quick = result.usable_quote;
-                _this.quick = result.quick_open_quote;
+                // _this.usable_quick = result.usable_quote;
+                // _this.quick = result.quick_open_quote;
             }
         })
     },
