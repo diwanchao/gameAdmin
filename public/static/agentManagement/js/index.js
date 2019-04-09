@@ -21,7 +21,7 @@ var app = new Vue({
             var _this = this;
             var data = {
                 index: this.search.index,
-                status: this.search.status,
+                status: this.search.state,
                 sort: this.search.sort,
                 user_name: this.search.user_name
             }

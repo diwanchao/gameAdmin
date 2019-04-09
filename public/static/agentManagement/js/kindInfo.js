@@ -66,7 +66,7 @@ var app = new Vue({
 
                 var level = {};
                 for(var i = 0 ; i < part_list.length; i++) {
-                    level[part_list[i]] = result.part[part_list[i]];
+                    level[part_list[i]] = eval(result.part[part_list[i]]);
                 }
 
                 _this.levelValue = level;
