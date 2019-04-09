@@ -126,19 +126,49 @@ class Member extends Base
 	{
 		$type 		= $this->request->param('type',0);
 		$user_id 	= $this->request->param('id',0);
+		$number 	= $this->request->param('number',0);
 
 		$user_data 	= Db::name('menber')
 		->alias('m1')
-		->field('m1.blance,m1.role_id,m2.blance as parent_blance')
+		->field('m1.blance,m1.role_id,m2.blance as parent_blance,m1.parent_id')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->where('m1.id=?',[$id])
-		->find();		
-		if (!$user_id) 
-		{
-	        return json(['msg' => '保存失败,数据异常.','code' => 201, 'data' =>[]]);		
+		->find();
+
+		Db::startTrans();
+		try {
+			if (!$user_id) 
+				throw new \Exception("数据异常", 1);
+
+			if ($type) 
+			{
+				if ($user_data['blance'] < $number)
+					throw new \Exception("存入金额大于最大值", 1);
+
+				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance-'.$value['value'])]);
+				Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance+'.$value['value'])]);
+				set_integral($user_id,$this->USER_ID,'上级提取',$number);
+				set_integral($user_data['parent_id'],$this->USER_ID,'提取下级',$number);
+			}else{
+				if ($user_data['parent_blance'] < $number)
+					throw new \Exception("提取金额大于最大值", 1);
+
+				Db::table('menber')->where('id', $user_id)->update(['blance' => Db::raw('blance+'.$value['value'])]);
+				if ($user_data['role_id'] !=3) 
+				{
+					Db::table('menber')->where('id', $user_data['parent_id'])->update(['blance' => Db::raw('blance-'.$value['value'])]);
+				}
+				set_integral($user_id,$this->USER_ID,'上级存入',$number);
+				set_integral($user_data['parent_id'],$this->USER_ID,'存入下级',$number);
+			}
+
+			Db::commit();
+		} catch (\Exception $e) {
+
+			Db::rollback();
+			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);   
 		}
-		$data 	= ['number'=>'123'];
-        return json(['msg' => '保存成功','code' => 200, 'data' =>$data]);
+        return json(['msg' => '保存成功','code' => 200, 'data' =>[]]);
 	}
 	/**
 	 * 变更账号状态
