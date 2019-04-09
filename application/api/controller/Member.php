@@ -109,7 +109,7 @@ class Member extends Base
 		{
 			if (($user_data['role_id'] ?? 0) == 3) 
 				$number = 99999;
-			}else
+			else
 				$number = $user_data['parent_blance'] ?? 0;
 		}else{
 			$number = $user_data['blance'] ?? 0;
