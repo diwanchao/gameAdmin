@@ -472,7 +472,7 @@ var ENV = {
 		}
 		
 		// 不是管理员以上 删除股东管理
-		else if(this.data.user_type_id < 3) {
+		if(this.data.user_type_id < 3) {
 			this.$gudong.hide();
 		}
 		this.$userType.text(this.data.user_type);
