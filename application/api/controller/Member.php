@@ -132,7 +132,7 @@ class Member extends Base
 		->alias('m1')
 		->field('m1.blance,m1.role_id,m2.blance as parent_blance,m1.parent_id')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
-		->where('m1.id=?',[$id])
+		->where('m1.id=?',[$user_id])
 		->find();
 
 		Db::startTrans();
