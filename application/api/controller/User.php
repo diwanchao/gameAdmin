@@ -29,7 +29,7 @@ class User extends Base
 			$game_data = get_user_info_by_user_id($this->USER_ID);
 			$user_data['role_type'] = $user_data['role_type'] -1;
 			$user_data['game_list'] = $game_data;
-			$user_data['dish'] 		= part_to_str($user_data['part']);
+			$user_data['dish'] 		= explode(',', part_to_str($user_data['part']));
 		}
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$user_data]);
