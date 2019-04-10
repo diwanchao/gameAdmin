@@ -64,7 +64,7 @@ class Member extends Base
 			$where[] = ['m1.user_name','=',$user_name];	
 		$subsql = Db::name('menber')
 		->field('COUNT(1) AS count_user,parent_id')
-		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 3')
+		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 2')
 		->group('parent_id')
 		->buildSql();
 
