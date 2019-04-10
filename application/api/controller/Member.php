@@ -66,8 +66,9 @@ class Member extends Base
 		->field('COUNT(1) AS count_user,parent_id')
 		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 2')
 		->group('parent_id')
+		->fetchSql(true)
 		->buildSql();
-
+		var_dump($subsql);die();
 		$data = Db::name('menber')
 		->alias('m1')
 		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
