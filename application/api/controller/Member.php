@@ -19,11 +19,6 @@ class Member extends Base
 		$status 	= $this->request->param('status',1);
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
-		$parent_id 	= $this->request->param('id',$this->USER_ID);
-
-		$status 	= $this->request->param('status',1);
-		$user_name 	= $this->request->param('user_name','');
-		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
 
 
@@ -37,7 +32,7 @@ class Member extends Base
 
 		$user_data = Db::table('menber')
 		->alias('a')
-		->field('b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
+		->field('a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where($where)
 		->order($order, 'desc')
