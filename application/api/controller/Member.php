@@ -130,13 +130,52 @@ class Member extends Base
 	 */
 	public function agentList()
 	{
-		$data =[
+		$role_id = Session::get('role_id');
+		if (!$role_id) 
+        	return json(['msg' => '数据异常','code' => 201, 'data' =>[]]);
+
+		$status 	= $this->request->param('status',1);
+		$user_name 	= $this->request->param('user_name','');
+		$order 		= $this->request->param('sort','create_time');
+		$id 		= $this->request->param('id',$this->USER_ID);
+
+
+		$where[] = ['m1.role_id','=',1];
+		$where[] = ['m1.status','=',$status];
+		if ($role_id<3) 
+			$where[] = ['m1.parent_id','=',$id];
+
+		if ($user_name) 
+			$where[] = ['m1.user_name','=',$user_name];	
+		$subsql = Db::name('menber')
+		->field('COUNT(1) AS count_user,parent_id')
+		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 1')
+		->group('parent_id')
+		->fetchSql(false)
+		->buildSql();
+
+		$data = Db::name('menber')
+		->alias('m1')
+		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->leftJoin('menber m2','m1.parent_id=m2.id')
+		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
+		->where($where)
+		->order('m1.'.$order, 'desc')
+
+		->paginate(10,false,['var_page'=>'index']);
+
+
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+
+
+
+/*		$data =[
 			'total'=>10,
 			'data'=>[
 				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
 				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
 			],
-		];
+		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
 
