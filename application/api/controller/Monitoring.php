@@ -55,12 +55,19 @@ class Monitoring extends Base
    			}
             if ($game_key == 'ssc') 
             {
-                $return_data = [
-                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                    ['game_type'=>'前三','part'=>'A','content'=>'1234','money'=>'10'],
-                ];
+              $periods  = get_ssc_number() == $periods ? $periods : get_ssc_number();
+              switch ($tab) {
+                case 'lhh':
+                       $data        = Db::table('order')->field('COUNT(`no`) AS num,play_key')->where('play_name','like','龙虎%')->where('part','=',$levelValue)->where('number','=',$periods)->group('play_key')->fetchSql(false)->select();
+                       $return_data = array_column($data,'num','play_key');
+                  break;
+                case 'zxs':
+                    $return_data = Db::table('order')->field('play_key as game_type,part,content,money')->where('play_name','like','组选三%')->where('part','=',$levelValue)->where('number','=',$periods)->fetchSql(false)->select();
+                    break;
+                case 'zxl':
+                    $return_data = Db::table('order')->field('play_key as game_type,part,content,money')->where('play_name','like','组选六%')->where('part','=',$levelValue)->where('number','=',$periods)->select();
+                    break;
+              }
             }
    		}
         return json(['msg' => 'succeed','code' => 200, 'data' =>$return_data]);
