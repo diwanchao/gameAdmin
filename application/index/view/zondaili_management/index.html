@@ -2,7 +2,7 @@
 <html>
 
 <HEAD>
-    <TITLE>股东管理</TITLE>
+    <TITLE>总代理管理</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
     <link href="/static/global/style/modal.css" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
                                                         <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td width="12%" height="21" align="center">股东管理</td>
+                                                                    <td width="12%" height="21" align="center">总代理管理</td>
                                                                     <td width="40%" nowrap="">
                                                                         <select @change="init" v-model="search.state" class="asas">
                                                                             <option value="1">启用</option>
@@ -41,7 +41,7 @@
                                                                         排序
                                                                         <select @change="init" v-model="search.sort" class="asas">
                                                                             <option value="create_time">新增日期</option>
-                                                                            <option value="user_name">股东名称</option>
+                                                                            <option value="user_name">总代理名称</option>
                                                                             <!-- <option value="balance">信用额度</option> -->
                                                                             <option value="login_time">最后登录</option>
                                                                         </select>
@@ -50,7 +50,7 @@
                                                                         总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
-                                                                    <td v-if="ENV.userInfo.role_type == 3" width="48%" align="center"><a href="/index/shareholder/addinfo">新增</a></td>
+                                                                    <td v-if="ENV.userInfo.role_type == 2" width="48%" align="center"><a href="/index/shareholder/addinfo">新增</a></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -93,7 +93,7 @@
                                         <div align="center" class="fw12">名称</div>
                                     </td>
                                     <td>
-                                        <div align="center" class="fw12">总代理数</div>
+                                        <div align="center" class="fw12">代理数</div>
                                     </td>
                                     <td>
                                         <div align="center" class="fw12">信用额度/快开额度</div>
@@ -192,5 +192,5 @@
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
 <script src="/static/global/js/modal.js"></script>
-<script src="/static/gudongManagement/js/index.js"></script>
+<script src="/static/zongdailiManagement/js/index.js"></script>
 </html>

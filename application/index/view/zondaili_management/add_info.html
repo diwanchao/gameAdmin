@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>添加股东</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+
+        <table height="91" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+        <table width="800" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+            style="border:1px solid #76694c;font-size:14px;">
+            <tbody>
+                <tr class="note_title">
+                    <td width="530" height="25">
+                        <strong class="fw12">　
+                            添加股东
+
+                        </strong></td>
+                    <td width="90"><a href="javascript: history.back(1);"
+                            style="CURSOR: pointer;font-weight:bold">返回上一页</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div align="center">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="1" id="Table_01"
+                                style="font-size:14px;">
+
+                                <tbody>
+                                    <tr>
+                                        <td width="21%">
+                                            <div align="right">管理员：</div>
+                                        </td>
+                                        <td width="79%">{{create_user_name}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td height="22" nowrap="">
+                                            <div align="right">股东账号：</div>
+                                        </td>
+                                        <td nowrap="">
+                                            <input maxlength="15" size="15" type="text" class="input" v-model="username" @blur="verificationUsername" @input="usernameStatus = '0'">
+                                            <img :src="usernameStatus == '1' ? '/static/global/image/s01.gif' : '/static/global/image/s02.gif'">
+                                            <span class="fbred">
+                                                <input type="button" value="检测" @click="verificationUsername">
+                                            </span>
+                                            <span class="fbred">帐号必须至少4个字元长，并只能有数字(0-9)，及英文大小写字母</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="24">
+                                            <div align="right">股东名字：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="name" maxlength="15" size="15" v-model="name" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">密码：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="password" name="passwd" maxlength="15" size="15" v-model="pwd" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="25">
+                                            <div align="right">确认密码：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="password" name="passwordResult" maxlength="15" size="15" v-model="confirm_pwd" class="input">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">开放盘别：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <template v-for="(item, index) in levelValue">
+                                                    <input  type="checkbox" name="plate_no" :value="index"
+                                                    v-model="levelValue[index]">{{index}}
+                                                </template>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td height="26">
+                                            <div align="right">信用额度：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="text" name="balance" maxlength="15" size="15" value=""
+                                                    onkeydown="onlyNum2(event);" id="balance" class="input">
+
+                                                (可用额度 <span class="fred12" id="balance_value">0</span>)
+                                                (目前用于单日单期数彩球游戏(香港六合彩，福彩3D，体彩PL3...等)
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td height="26">
+                                            <div align="right">快开额度：</div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div align="left">
+                                                <input maxlength="15" size="15" type="text" class="input" v-model="quick">
+                                                (可用额度 <span class="fred12">{{usable_quick}}</span>)(目前用于单日多期数彩球游戏(新疆时时彩，重庆时时彩...等)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="18">
+                                            <div align="right">占成设置：</div>
+                                        </td>
+                                        <td>
+
+                                            <table width="400" border="0" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            <font color="red">调整此列</font>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td>各省时时彩</td>
+                                                        <td align="center">管理员占成：</td>
+                                                        <td>
+                                                            <select v-model="accountList.ssc.agent">
+                                                                <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
+                                                                    <option value="0">0%</option>
+                                                                </template>
+                                                                <template>
+                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                                                                </template>
+                                                            </select>
+                                                        </td>
+                                                        <td align="right">股东占成：</td>
+                                                        <td>
+                                                            <select v-model="accountList.ssc.member">
+                                                                <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
+                                                                    <option value="0">0%</option>
+                                                                </template>
+                                                                <template>
+                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                                                                </template>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>各省快3</td>
+                                                        <td align="center">管理员占成：</td>
+                                                        <td>
+                                                            <select v-model="accountList.jlk3.agent">
+                                                                <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
+                                                                    <option value="0">0%</option>
+                                                                </template>
+                                                                <template>
+                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                                                                </template>
+                                                            </select>
+                                                        </td>
+                                                        <td align="right">股东占成：</td>
+                                                        <td>
+                                                            <select v-model="accountList.jlk3.member">
+                                                                <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
+                                                                    <option value="0">0%</option>
+                                                                </template>
+                                                                <template>
+                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                                                                </template>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right">开放：</div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <template v-for="(item, index) in game_list">
+                                                    <input type="checkbox" :value="item.game_key" v-model="item.select"> {{item.name}}
+                                                </template>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="right"></div>
+                                        </td>
+                                        <td>
+                                            <div align="left">
+                                                <input type="button" id="Submit" name="Submit" value="确认添加"
+                                                    @click="submit"> 　
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script src="/static/gudongManagement/js/addInfo.js"></script>
+</html>

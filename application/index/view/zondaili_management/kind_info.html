@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<HEAD>
+    <TITLE>修改彩种</TITLE>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!--時間-->
+    <!--span class="online_time">|&nbsp;香港时间&nbsp;|</span> <span id="onlinetime" class="online_time2"></span> <span id="onlinetime2" style="display:none" class="online_time2"></span -->
+
+    <!--帳號-->
+    {include file="public/header"}
+
+    <div id="main" class="main">
+        <table height="91" border="0" align="left" cellpadding="0" cellspacing="0" class="tmove">
+            <tbody>
+                <tr>
+                    <td height="91" valign="top">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="1"
+                            style="border:1px solid #76694c;font-size:14px;">
+                            <tbody>
+                                <tr class="note_title">
+                                    <td width="530" height="25"><strong>
+                                            修改股东开放游戏设定
+                                        </strong></td>
+                                    <td width="90"><a href="javascript:history.back(1)"
+                                            class="ah">返回上一页</a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div align="center">
+                                            <table width="100%" height="232" border="0" cellspacing="1">
+                                                <tbody>
+                                                    <tr>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="24">
+                                                            <div align="right">
+                                                                管理员：</div>
+                                                        </td>
+                                                        <td>&nbsp;{{create_user_name}}</td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td height="22">
+                                                            <div align="right">账号：</div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="left">{{name}}</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right">开放盘别：</div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="left">
+                                                                <template v-for="(item, index) in levelValue">
+                                                                    <input  type="checkbox" :value="index"
+                                                                    v-model="levelValue[index]">{{index}}
+                                                                </template>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right">开放：</div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="left">
+                                                                <template v-for="(item, index) in game_list">
+                                                                    <input type="checkbox" :value="item.game_key" v-model="item.select"> {{item.name}}
+                                                                </template>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div align="right"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div align="left">
+                                                                <input type="button" name="Submit" value="确认修改"
+                                                                    @click="submit">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<script src="/static/global/js/jquery-2.1.4.min.js"></script>
+<script src="/static/global/js/vue.min.js"></script>
+<script src="/static/global/js/global.js"></script>
+<script src="/static/gudongManagement/js/kindInfo.js"></script>
+</html>
