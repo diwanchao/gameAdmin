@@ -29,7 +29,11 @@ var jlk3 = [
 ];
 
 
-var ssc = [];
+var ssc = [
+    {select: false, Amax: 5, Bmax: 15, Cmax: 20, Dmax: 5, NSMax: 80000, CSMax: 30000, CSMin: 2},
+    {select: false, Amax: 5, Bmax: 15, Cmax: 20, Dmax: 5, NSMax: 30000, CSMax: 10000, CSMin: 2},
+    {select: false, Amax: 8, Bmax: 4, Cmax: 2, Dmax: 1.8, NSMax: 100000, CSMax: 50000, CSMin: 2},
+];
 
 // 当前被操作人的id
 var id = utils.getURL(location.search, 'id');

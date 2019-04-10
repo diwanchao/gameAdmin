@@ -50,7 +50,7 @@ var app = new Vue({
             data: {id: this.id},
             success: function(result){
                 _this.create_user_name = result.general_name;
-                _this.username = result.user_number;
+                _this.username = result.user_num;
                 _this.name = result.user_name;
                 // _this.usable_quick = result.usable_quote;
                 // _this.quick = result.quick_open_quote;
