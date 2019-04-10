@@ -473,7 +473,7 @@ var ENV = {
 		}
 
 		// 不是股东以上 删除总代理管理
-		if(tgus.data.user_type_id < 2) {
+		if(this.data.user_type_id < 2) {
 			this.$zongdaili.hide();
 		}
 		
