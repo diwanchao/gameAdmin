@@ -605,11 +605,10 @@ class Member extends Base
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
-
 	/**
-	 * 新增代理
+	 * 新建代理
 	 */
-	public function addAgent()
+	public function setAgent()
 	{
 		$parent_id 		= $this->request->param('agent_name',0);
 		$user_number 	= $this->request->param('user_num',0);
@@ -665,6 +664,29 @@ class Member extends Base
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
 		}
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+	}
+
+
+	/**
+	 * 编辑代理资料
+	 */
+	public function addAgent()
+	{
+		$user_name 		= $this->request->param('user_name','');
+		$user_id 		= $this->request->param('id',0);
+		$password 		= $this->request->param('password','');
+		$confirm_pwd 	= $this->request->param('confirm_pwd','');
+		if (!$user_name) 
+        	return json(['msg' => '用户名不能为空','code' => 201, 'data' =>[]]);	
+        if ($password != $confirm_pwd) 
+        	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>[]]);	
+
+        $data['user_name'] = $user_name;
+        if ($password)
+        	$data['password'] = md5($password);
+
+        Db::name('menber')->where('id=?',[$user_id])->update($data);
+        return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);
 	}
 	/**
 	 * 检测用户名
