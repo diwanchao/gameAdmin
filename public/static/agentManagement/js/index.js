@@ -103,7 +103,7 @@ function bindValue(ele, value){
     ele.unbind();
 
     ele.bind('blur', function(){
-        if(isNaN(this.value)){
+        if(isNaN(this.value) || !this.value){
             alert('请输入纯数字');
             this.value = '';
         }
