@@ -12,18 +12,39 @@ class Member extends Base
 	 */
 	public function userList()
 	{
+		$role_id = Session::get('role_id');
+		if (!$role_id) 
+        	return json(['msg' => '数据异常','code' => 201, 'data' =>[]]);
 
-		$parent_id 	= $this->request->param('id',$this->USER_ID);
 		$status 	= $this->request->param('status',1);
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
+		$parent_id 	= $this->request->param('id',$this->USER_ID);
 
-		$where = "a.parent_id = {$parent_id} and a.status ={$status}";
-		$order = "{$order} DESC";
+		$status 	= $this->request->param('status',1);
+		$user_name 	= $this->request->param('user_name','');
+		$order 		= $this->request->param('sort','create_time');
+		$id 		= $this->request->param('id',$this->USER_ID);
+
+
+		$where[] = ['a.role_id','=',1];
+		$where[] = ['a.status','=',$status];
+		if ($role_id<2) 
+			$where[] = ['a.parent_id','=',$id];
+
 		if ($user_name) 
-			$where .= " and a.user_name='{$user_name}'";
+			$where[] = ['a.user_name','=',$user_name];	
 
-		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE {$where} ORDER BY {$order}";
+		$user_data = Db::table('menber')
+		->alias('a')
+		->field('b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
+		->leftJoin('menber b','a.parent_id=b.id')
+		->where($where)
+		->order($order, 'desc')
+		->paginate(10,false,['var_page'=>'index']);
+
+
+/*		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE {$where} ORDER BY {$order}";
 
 		$user_data = Db::query($sql);
 
@@ -37,8 +58,8 @@ class Member extends Base
 			'total' => 10,
 			'data' 	=> $user_data,
 
-		];
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+		];*/
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$user_data]);
 	}
 	/**
 	 * 总代理列表
