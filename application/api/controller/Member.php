@@ -54,6 +54,9 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
+		$index 		= $this->request->param('index',0);
+
+		var_dump($index);die();
 
 		$where[] = ['m1.role_id','=',2];
 		$where[] = ['m1.status','=',$status];
@@ -77,8 +80,8 @@ class Member extends Base
 		->where($where)
 		->order('m1.'.$order, 'desc')
 		->fetchSql(true)
-		//->select();
 		->paginate(10,false,['var_page'=>'index']);	
+
 		var_dump($data);die();
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
