@@ -36,26 +36,12 @@ class Member extends Base
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where($where)
 		->order($order, 'desc')
-//		->select();
-		->paginate(10,false,['var_page'=>'index']);
-//		echo $user_data;die();
+		->paginate(10,false,['var_page'=>'index'])
+		->each(function($item, $key){
+    		$item['part'] = part_to_str($item['part']);
+    		return $item;
+    	});
 
-
-/*		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE {$where} ORDER BY {$order}";
-
-		$user_data = Db::query($sql);
-
-		foreach ($user_data as $key => $value) 
-		{
-			if ($value['part']) 
-				$user_data[$key]['part'] = part_to_str($value['part']);
-		}
-
-		$data =[
-			'total' => 10,
-			'data' 	=> $user_data,
-
-		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$user_data]);
 	}
 	/**
