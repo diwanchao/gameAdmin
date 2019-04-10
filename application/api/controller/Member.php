@@ -181,6 +181,7 @@ class Member extends Base
 		->field('m1.blance,m1.role_id,m2.blance as parent_blance,m1.parent_id')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->where('m1.id=?',[$user_id])
+		->fetchSql(true)
 		->find();
 		var_dump($user_data);die();
 		Db::startTrans();
