@@ -75,7 +75,7 @@ class Member extends Base
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
 		->order('m1.'.$order, 'desc')
-		->fetchSql(false)
+		->fetchSql(true)
 		->paginate(10,false,['var_page'=>'index']);	
 		var_dump($data);die();
 
