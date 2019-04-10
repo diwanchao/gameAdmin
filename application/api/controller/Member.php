@@ -77,8 +77,8 @@ class Member extends Base
 		->where($where)
 		->order('m1.'.$order, 'desc')
 		->fetchSql(true)
-		->select();
-		//->paginate(10,false,['var_page'=>'index']);	
+		//->select();
+		->paginate(10,false,['var_page'=>'index']);	
 		var_dump($data);die();
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
