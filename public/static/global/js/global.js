@@ -410,6 +410,7 @@ var ENV = {
 		this.$headerGameList = $header.find('.headerGameList');
 		this.$dailishang = $header.find('.dailishang');
 		this.$gudong = $header.find('.gudong');
+		this.$zongdaili = $header.find('.zongdaili');
 		this.$dropdown = $header.find('.dropdown');
 
 		this.data = {
@@ -470,11 +471,18 @@ var ENV = {
 		if(this.data.user_type_id < 1){
 			this.$dailishang.hide();
 		}
+
+		// 不是股东以上 删除总代理管理
+		if(tgus.data.user_type_id < 2) {
+			this.$zongdaili.hide();
+		}
 		
 		// 不是管理员以上 删除股东管理
 		if(this.data.user_type_id < 3) {
 			this.$gudong.hide();
 		}
+
+		
 		this.$userType.text(this.data.user_type);
 		this.$username.text(this.data.user_name);
 	}
