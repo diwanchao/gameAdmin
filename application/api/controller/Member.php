@@ -68,6 +68,7 @@ class Member extends Base
 		->group('parent_id')
 		->fetchSql(false)
 		->buildSql();
+
 		$data = Db::name('menber')
 		->alias('m1')
 		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
@@ -76,7 +77,8 @@ class Member extends Base
 		->where($where)
 		->order('m1.'.$order, 'desc')
 		->fetchSql(true)
-		->paginate(10,false,['var_page'=>'index']);	
+		->select();
+		//->paginate(10,false,['var_page'=>'index']);	
 		var_dump($data);die();
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
