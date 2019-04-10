@@ -182,7 +182,7 @@ class Member extends Base
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->where('m1.id=?',[$user_id])
 		->find();
-
+		var_dump($user_data);die();
 		Db::startTrans();
 		try {
 			if (!$user_id) 
