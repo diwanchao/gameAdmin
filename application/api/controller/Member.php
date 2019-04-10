@@ -634,7 +634,7 @@ class Member extends Base
 
 		$ratio_info = Db::name('proportion_log')
 		->field('game_key,user_proportion')
-		->('user_id','=',$this->USER_ID)
+		->where('user_id','=',$this->USER_ID)
         ->select();
 		if ($ratio_info) 
 			$ratio_info = array_column($ratio_info, 'user_proportion','game_key');
