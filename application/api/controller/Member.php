@@ -47,7 +47,7 @@ class Member extends Base
 	public function GeneralAgentList()
 	{
 		$role_id = Session::get('role_id');
-		if ($role_id) 
+		if (!$role_id) 
         	return json(['msg' => '数据异常','code' => 201, 'data' =>[]]);
 
 		$status 	= $this->request->param('status',1);
