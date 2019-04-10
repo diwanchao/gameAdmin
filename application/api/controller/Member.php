@@ -36,7 +36,7 @@ class Member extends Base
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where($where)
 		->order($order, 'desc')
-		->fetchSql(false)
+		->fetchSql(true)
 		->paginate(10,false,['var_page'=>'index']);
 		echo $user_data;die();
 
