@@ -157,7 +157,7 @@
                                                                 <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
                                                                     <option value="0">0%</option>
                                                                 </template>
-                                                                <template>
+                                                                <template v-else>
                                                                     <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                                                                 </template>
                                                             </select>
@@ -168,7 +168,7 @@
                                                                 <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
                                                                     <option value="0">0%</option>
                                                                 </template>
-                                                                <template>
+                                                                <template v-else>
                                                                     <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                                                                 </template>
                                                             </select>
@@ -182,7 +182,7 @@
                                                                 <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
                                                                     <option value="0">0%</option>
                                                                 </template>
-                                                                <template>
+                                                                <template v-else>
                                                                     <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                                                                 </template>
                                                             </select>
@@ -193,7 +193,7 @@
                                                                 <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
                                                                     <option value="0">0%</option>
                                                                 </template>
-                                                                <template>
+                                                                <template v-else>
                                                                     <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                                                                 </template>
                                                             </select>
