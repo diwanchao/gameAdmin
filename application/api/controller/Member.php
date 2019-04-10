@@ -37,7 +37,8 @@ class Member extends Base
 		->where($where)
 		->order($order, 'desc')
 		->fetchSql(true)
-		->paginate(10,false,['var_page'=>'index']);
+		->select();
+		//->paginate(10,false,['var_page'=>'index']);
 		echo $user_data;die();
 
 
