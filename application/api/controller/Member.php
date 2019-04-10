@@ -385,7 +385,7 @@ class Member extends Base
 				throw new \Exception("两次密码输入不一致");
 
 			$parent_blance = Db::name('menber')->where('id=?',[$this->USER_ID])->value('blance');
-			if ($parent_blance['blance'] < $blance) 
+			if ($parent_blance < $blance) 
 				throw new \Exception("代理可用额度不够");
 
 			$data = [
