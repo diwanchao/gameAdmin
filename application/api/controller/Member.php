@@ -583,8 +583,6 @@ class Member extends Base
 		->where('a.id','=',$user_id)
 		->find();
 
-/*		$sql 		= "SELECT  FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id} limit 1";
-		$data 		= Db::query($sql);*/
 		if ($return_data)
 		{
 			$return_data['part'] = json_decode($return_data['part']);
