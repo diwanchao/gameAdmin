@@ -27,7 +27,7 @@ var app = new Vue({
             }
 
             utils.getAjax({
-                url: '/api/Member/shareholderList',
+                url: '/api/Member/generalAgentList',
                 type: 'POST',
                 data: data,
                 success: function(result){
