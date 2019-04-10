@@ -54,9 +54,7 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
-		$index 		= $this->request->param('index',0);
 
-		var_dump($index);die();
 
 		$where[] = ['m1.role_id','=',2];
 		$where[] = ['m1.status','=',$status];
@@ -74,9 +72,9 @@ class Member extends Base
 
 		$data = Db::name('menber')
 		->alias('m1')
-		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
-		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
+//		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
 		->order('m1.'.$order, 'desc')
 		->fetchSql(true)
