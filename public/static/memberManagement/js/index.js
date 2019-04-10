@@ -108,7 +108,7 @@ function bindValue(ele, value){
             alert('请输入纯数字');
             this.value = '';
         }
-        else if(this.value > value){
+        else if(Number(this.value) > Number(value)){
             alert('输入值不能超过最大限额');
             this.value = '';
         }
