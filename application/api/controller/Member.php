@@ -631,11 +631,17 @@ class Member extends Base
 	public function getProportion()
 	{
 		$type 		= $this->request->param('type',0);
-		$data = [
-			'jlk3'=>100,
-			'ssc'=>100,
-		];
-        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+
+		$ratio_info = Db::name('proportion_log')
+		->field('game_key,user_proportion')
+		->('user_id','=',$this->USER_ID)
+        ->select();
+		if ($ratio_info) 
+			$ratio_info = array_column($ratio_info, 'user_proportion','game_key');
+		else
+			$ratio_info = ['jlk3'=>0,'ssc'=>0];
+
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$ratio_info]);	
 	}
 
 	/**

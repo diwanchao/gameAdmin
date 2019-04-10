@@ -48,6 +48,7 @@ class User extends Base
 			->alias('p')
 			->field('name,user_proportion')
 			->leftJoin('game_info g','p.game_key=g.game_key')
+			->('p.user_id','=',$this->USER_ID)
             ->select();
 
 			if ($ratio_info) 
