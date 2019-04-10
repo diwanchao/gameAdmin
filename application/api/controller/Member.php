@@ -581,7 +581,7 @@ class Member extends Base
 		->field('a.id,b.user_name AS agent_name,a.user_name,a.user_number as user_num,a.part,a.blance AS quick_open_quote,a.game_list as game')
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where('a.id','=',$user_id)
-		->find;
+		->find();
 
 /*		$sql 		= "SELECT  FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id} limit 1";
 		$data 		= Db::query($sql);*/
