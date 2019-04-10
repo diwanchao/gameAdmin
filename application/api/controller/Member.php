@@ -575,11 +575,18 @@ class Member extends Base
 		$return_data = [];
 
 		$user_id 	= $this->request->param('id',0);
-		$sql 		= "SELECT a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.game_list as game FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id} limit 1";
-		$data 		= Db::query($sql);
-		if ($data)
+
+		$return_data = Db::name('menber')
+		->alias('a')
+		->field('a.id,b.user_name AS agent_name,a.user_name,a.user_number as user_num,a.part,a.blance AS quick_open_quote,a.game_list as game')
+		->leftJoin('menber b','a.parent_id=b.id')
+		->where('a.id','=',$user_id)
+		->find;
+
+/*		$sql 		= "SELECT  FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE a.id={$user_id} limit 1";
+		$data 		= Db::query($sql);*/
+		if ($return_data)
 		{
-			$return_data = $data[0];
 			$return_data['part'] = json_decode($return_data['part']);
 			$return_data['game'] = json_decode($return_data['game']);
 		}
