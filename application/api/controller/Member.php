@@ -161,21 +161,11 @@ class Member extends Base
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
 		->order('m1.'.$order, 'desc')
-
 		->paginate(10,false,['var_page'=>'index']);
 
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
-
-
-/*		$data =[
-			'total'=>10,
-			'data'=>[
-				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-				['id'=>1,'general_name'=>'dwc','user_number'=>'dwc123','user_name'=>'邸万超','count_user'=>2,'quick_open_quote'=>'570','create_time'=>'02-26 15:27:10','login_count'=>'33','login_time'=>'03-20 20:12:34','status'=>1,'bet_status'=>1],
-			],
-		];*/
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
 
@@ -297,6 +287,8 @@ class Member extends Base
 
 		Db::startTrans();
 		try {
+			if (Session::get('role_id') != 1) 
+				throw new \Exception("没有权限添加会员账号");
 			if (!$user_number) 
 				throw new \Exception("账号不能为空");
 			if (!$user_name) 
@@ -316,14 +308,15 @@ class Member extends Base
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
 				'rule_name' => '会员',
-				'user_number' => $user_number,
 				'game_list' => json_encode($game_list),
 				'part' 		=> json_encode($part),
+				'user_number' => $user_number,
 				'create_time' => date('Y-m-d H:i:s',time()),
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
 			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
+			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$blance)]);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
 
