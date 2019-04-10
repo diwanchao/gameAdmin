@@ -44,12 +44,14 @@ var app = new Vue({
                         _this.data = result;
                     }
                     else if(_this.tab == 'zxs'){
+                        _this.zxsMoneyTotal = 0;
                         for(var i = 0; i < result.length; i++) {
                             _this.zxsMoneyTotal += Number(result[i].money);
                         }
                         _this.zxsData = result;
                     }
                     else if(_this.tab == 'zxl'){
+                        _this.zxlMoneyTotal = 0;
                         for(var i = 0; i < result.length; i++) {
                             _this.zxlMoneyTotal += Number(result[i].money);
                         }
