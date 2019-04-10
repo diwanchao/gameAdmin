@@ -2,7 +2,7 @@
 <html>
 
 <HEAD>
-    <TITLE>修改股东成数</TITLE>
+    <TITLE>修改总代理成数</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
     <link href="/static/global/style/public.css" rel="stylesheet" type="text/css">
 </head>
@@ -15,7 +15,7 @@
     {include file="public/header"}
 
     <div id="main" class="main">
-        <h4>修改股东成数 <small class="fright topmargin-sm"><a href="javascript:history.back(1);">返回上一页</a></small></h4>
+        <h4>修改总代理成数 <small class="fright topmargin-sm"><a href="javascript:history.back(1);">返回上一页</a></small></h4>
         修改账号：{{name}}
         &nbsp;&nbsp;占成数据
         <table width="50%" border="0" cellpadding="0" cellspacing="1"
@@ -32,13 +32,13 @@
                 </tr>
                 <tr bgcolor="#f0f0f0">
                     <td>各省时时彩</td>
-                    <td align="center">管理员占成</td>
+                    <td align="center">股东占成</td>
                     <td>
                         <select v-model="accountList.ssc.agent">
                             <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                         </select>
                     </td>
-                    <td align="right">股东占成</td>
+                    <td align="right">总代理占成</td>
                     <td>
                         <select v-model="accountList.ssc.member">
                             <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
@@ -47,13 +47,13 @@
                 </tr>
                 <tr bgcolor="#f0f0f0">
                     <td>各省快3</td>
-                    <td align="center">管理员占成</td>
+                    <td align="center">股东占成</td>
                     <td>
                         <select v-model="accountList.jlk3.agent">
                             <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
                         </select>
                     </td>
-                    <td align="right">股东占成</td>
+                    <td align="right">总代理占成</td>
                     <td>
                         <select v-model="accountList.jlk3.member">
                             <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
@@ -77,5 +77,5 @@
 <script src="/static/global/js/jquery-2.1.4.min.js"></script>
 <script src="/static/global/js/vue.min.js"></script>
 <script src="/static/global/js/global.js"></script>
-<script src="/static/gudongManagement/js/accountInfo.js"></script>
+<script src="/static/zongdailiManagement/js/accountInfo.js"></script>
 </html>
