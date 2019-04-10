@@ -44,7 +44,7 @@ class Member extends Base
 	 * 总代理列表
 	 */
 
-	public function GeneralAgentList()
+	public function generalAgentList()
 	{
 		$role_id = Session::get('role_id');
 		if (!$role_id) 
@@ -352,10 +352,66 @@ class Member extends Base
 			Db::rollback();
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
 		}
-
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
-
 	}
+
+	/**
+	 * 新建总代理
+	 */
+
+	public function addGeneralAgent()
+	{
+		$parent_id 		= $this->request->param('agent_name',0);
+		$user_number 	= $this->request->param('user_num',0);
+		$user_name 		= $this->request->param('user_name',0);
+		$password 		= $this->request->param('password',0);
+		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
+		$blance 		= $this->request->param('quick_open_quote',0);
+		$part 			= $this->request->param('part/a',[]);
+		$game_list 		= $this->request->param('game/a',[]);
+		$accountList 	= $this->request->param('accountList/a',[]);
+
+		Db::startTrans();
+		try {
+			if (Session::get('role_id') != 3) 
+				throw new \Exception("没有权限添加总代理账号");
+			if (!$user_number) 
+				throw new \Exception("账号不能为空");
+			if (!$user_name) 
+				throw new \Exception("会员名称不能为空");
+			if (!$password) 
+				throw new \Exception("密码不能为空");
+			if ($password != $confirm_pwd) 
+				throw new \Exception("两次密码输入不一致");
+
+			$data = [
+				'parent_id' => $this->USER_ID,
+				'password' 	=> md5($password),
+				'user_name' => $user_name,
+				'blance' 	=> $blance,
+				'rule_name' => '总代理',
+				'role_id' 	=> '2',
+				'user_number' => $user_number,
+				'game_list' => json_encode($game_list),
+				'part' 		=> json_encode($part),
+				'create_time' => date('Y-m-d H:i:s',time()),
+			];
+
+			$user_id  = Db::name('menber')->insertGetId($data);
+			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
+			$this->init_user_method($user_id,'jlk3');
+			$this->init_user_method($user_id,'ssc');
+			$this->add_account_list($accountList,$user_id);
+
+			Db::commit();
+
+		} catch (\Exception $e) {
+			Db::rollback();
+			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
+		}
+        return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
+	}
+
 	/**
 	 * 新建设置游戏占比
 	 */
