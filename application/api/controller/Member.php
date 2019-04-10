@@ -41,7 +41,9 @@ class Member extends Base
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where($where)
 		->order($order, 'desc')
+		->fetchSql(false)
 		->paginate(10,false,['var_page'=>'index']);
+		echo $user_data;die();
 
 
 /*		$sql = "SELECT b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status FROM `menber` AS a LEFT JOIN menber AS b ON a.parent_id=b.id WHERE {$where} ORDER BY {$order}";
