@@ -40,6 +40,48 @@ class Member extends Base
 		];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 	}
+	/**
+	 * 总代理列表
+	 */
+
+	public function GeneralAgentList()
+	{
+		$role_id = Session::get('role_id');
+		if ($role_id) 
+        	return json(['msg' => '数据异常','code' => 201, 'data' =>[]]);
+
+		$status 	= $this->request->param('status',1);
+		$user_name 	= $this->request->param('user_name','');
+		$order 		= $this->request->param('sort','create_time');
+		$id 		= $this->request->param('id',$this->USER_ID);
+
+		$where[] = ['m1.role_id','=',2];
+		$where[] = ['m1.status','=',$status];
+		if ($role_id<4) 
+			$where[] = ['m1.parent_id','=',$id];
+
+		if ($user_name) 
+			$where[] = ['m1.user_name','=',$user_name];	
+		$subsql = Db::name('menber')
+		->field('COUNT(1) AS count_user,parent_id')
+		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 3')
+		->group('parent_id')
+		->buildSql();
+
+		$data = Db::name('menber')
+		->alias('m1')
+		->field('m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->leftJoin('menber m2','m1.parent_id=m2.id')
+		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
+		->where($where)
+		->order('m1.'.$order, 'desc')
+		->paginate(10,false,['var_page'=>'index']);	
+
+        return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
+
+	}
+
+
 
 	/**
 	 * 股东列表管理列表

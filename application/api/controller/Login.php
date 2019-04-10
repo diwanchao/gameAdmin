@@ -63,6 +63,7 @@ class Login extends Controller
         	Session::set('user_name',$user_data['user_name']);
 			Session::set('user_id', $user_data['id']);
 			Session::set('is_login',1);
+            Session::set('role_id',$user_data['role_id']);
             if($user_data['role_id'] == 4)
                 Session::set('is_admin',1);
 

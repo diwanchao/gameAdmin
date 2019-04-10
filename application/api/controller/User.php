@@ -15,6 +15,7 @@ class User extends Base
 	{
     	Session::delete('is_login');
     	Session::delete('is_admin');
+    	Session::delete('role_id');
         return json(['msg' => 'succeed','code' => 200, 'data' =>[]]);
 	}
 	/**
