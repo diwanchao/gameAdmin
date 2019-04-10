@@ -672,6 +672,7 @@ class Member extends Base
 	public function updateUser()
 	{
 		$user_name 		= $this->request->param('user_name',0);
+		$user_id 		= $this->request->param('id',0);
 		$password 		= $this->request->param('password',0);
 		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
 		$part 			= $this->request->param('part/a',0);
