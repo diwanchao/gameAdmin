@@ -81,11 +81,8 @@ class Member extends Base
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
 		->order('m1.'.$order, 'desc')
-		//->fetchSql(true)
-		//->select();
 		->paginate(10,false,['var_page'=>'index']);
 
-		//var_dump($data);die();
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
 
@@ -668,6 +665,34 @@ class Member extends Base
         return json(['msg' => '添加成功','code' => 200, 'data' =>[]]);	
 	}
 
+
+	/**
+	 * 修改会员资料
+	 */
+	public function updateUser()
+	{
+		$user_name 		= $this->request->param('user_name',0);
+		$password 		= $this->request->param('password',0);
+		$confirm_pwd 	= $this->request->param('confirm_pwd',0);
+		$part 			= $this->request->param('part/a',0);
+		$game_list 		= $this->request->param('game/a',0);
+
+		if (!$user_name) 
+        	return json(['msg' => '用户名不能为空','code' => 201, 'data' =>[]]);	
+        if ($password != $confirm_pwd) 
+        	return json(['msg' => '两次密码输入不一致','code' => 201, 'data' =>[]]);	
+
+		$data = [
+			'user_name' => $user_name,
+			'game_list' => json_encode($game_list),
+			'part' 		=> json_encode($part),
+		];
+        if ($password)
+        	$data['password'] = md5($password);
+
+        Db::name('menber')->where('id=?',[$user_id])->update($data);
+        return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);
+	}
 
 	/**
 	 * 编辑代理资料
