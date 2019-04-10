@@ -402,7 +402,7 @@ class Member extends Base
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
-			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$number)])
+			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$number)]);
 			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
