@@ -60,7 +60,7 @@ var d = {
 
             utils.getAjax({
 
-                url: '/api/Member/addAgent',
+                url: '/api/Member/setAgent',
                 type: 'POST',
                 data: data,
                 success: function(result){
