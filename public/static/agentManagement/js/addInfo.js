@@ -1,4 +1,4 @@
-var app = new Vue({
+var d = {
     el: '#main',
     data: {
         create_user_name: '', 
@@ -91,18 +91,7 @@ var app = new Vue({
         }
         this.game_list = ENV.userInfo.game_list;
 
-        utils.getAjax({
-            url: '/api/Member/getProportion',
-            type: 'GET',
-            data: {type: 0},
-            success: function(result){
-                for(var k in result) {
-                    if(result.hasOwnProperty(k)){
-                        _this.accountList[k].agent = result[k];
-                    }
-                }
-            }
-        })
+        
     },
 
     watch: {
@@ -120,4 +109,18 @@ var app = new Vue({
         },
     }
 
+};
+
+utils.getAjax({
+    url: '/api/Member/getProportion',
+    type: 'GET',
+    data: {type: 0},
+    success: function(result){
+        for(var k in result) {
+            if(result.hasOwnProperty(k)){
+                d.data.accountList[k].agent = result[k];
+            }
+        }
+        window.app = new Vue(d);
+    }
 })
