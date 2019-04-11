@@ -332,6 +332,7 @@ var app = new Vue({
         utils.getAjax({
             url: '/api/member/memberList',
             type: 'GET',
+            data: {id: this.id},
             success: function(result){
                 delete result[_this.id];
                 _this.memberList = result;
