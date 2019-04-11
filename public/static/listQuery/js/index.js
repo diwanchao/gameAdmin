@@ -1,3 +1,6 @@
+// 会从报表传来开始时间 结束时间 如果有 搜索报表的时间区间
+var timeStart = utils.getURL(location.search, 'time_start');
+var timeEnd = utils.getURL(location.search, 'time_end');
 var tablePage = new Page('#pageInfo', function(index){ app.query();});
 var app = new Vue({
     el: '#main',
@@ -5,7 +8,8 @@ var app = new Vue({
         search: {
             username: '',
             game_key: '',
-            time: utils.paseDate(),
+            time_start: timeStart || utils.paseDate(),
+            time_end: timeEnd || utils.paseDate(),
             status: '',
         },
         money: 0, //金额
@@ -19,10 +23,15 @@ var app = new Vue({
         query: function(){
             var _this = this;
 
+            if(!this.time_start){
+                return alert('请选择开始时间！');
+            }
+
             var data = {
                 user_num: this.search.username,
                 game_key: this.search.game_key,
-                time: this.search.time,
+                time_start: this.search.time_start,
+                time_end: this.search.time_end,
                 status: this.search.status,
                 index: tablePage.data.index,
             }
@@ -52,13 +61,20 @@ var app = new Vue({
     },
 
     directives: {
-        'time': {
+        'timeStart': {
             inserted: function(el){
                 bindTime(el.id, function(obj){
-                    app.search.time = obj.val;
+                    app.search.time_start = obj.val;
                 });
             }
-        }
+        },
+        'timeEnd': {
+            inserted: function(el){
+                bindTime(el.id, function(obj){
+                    app.search.time_end = obj.val;
+                });
+            }
+        },
     }
 
 });
