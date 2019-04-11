@@ -16,6 +16,7 @@ var app = new Vue({
         var _this = this;
         utils.getAjax( {
             url: '/api/Member/getOperationLog',
+            loading: true,
             type: 'GET',
             data: {id: this.id},
             success: function(result){

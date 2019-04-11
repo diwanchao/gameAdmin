@@ -25,6 +25,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/notice/list',
+                loading: true,
                 type: 'GET',
                 data: {index: this.search.index},
                 success: function(result){
@@ -39,6 +40,7 @@ var app = new Vue({
             if(window.confirm('是否删除当前公告？')){
                 utils.getAjax({
                     url: '/api/notice/delete',
+                    loading: true,
                     type: 'GET',
                     data: {id: item.id},
                     success: function(){
@@ -70,6 +72,7 @@ modal.on('bs-beforeSubmit', function(){
     
     utils.getAjax({
         url: '/api/notice/add',
+        loading: true,
         type: 'GET',
         data: data,
         success: function(){

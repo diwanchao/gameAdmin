@@ -28,6 +28,7 @@ var app = new Vue({
 
             utils.getAjax({
                 url: '/api/Member/generalAgentList',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){
@@ -52,6 +53,7 @@ var app = new Vue({
 
             utils.getAjax({
                 url: '/api/Member/getQuick',
+                loading: true,
                 data: {type: status, id: data.id},
                 success: function(result){
                     $('#modal .use_money').text(result.number);
@@ -70,6 +72,7 @@ var app = new Vue({
             H_confirm('是否确认<b style="color: red">' + (status == 0 ? '封存' : '启用') + '</b>当前账号',function(){
                 utils.getAjax({
                     url: '/api/Member/changeMemberStatus',
+                    loading: true,
                     data: {type: status, id: id},
                     success: function(result){
                         _this.init();
@@ -85,6 +88,7 @@ var app = new Vue({
             H_confirm('是否确认<b style="color: red">' + (status == 0 ? '封存' : '解封') + '</b>当前账号',function(){
                 utils.getAjax({
                     url: '/api/Member/changeBet',
+                    loading: true,
                     data: {type: status, id: id},
                     success: function(result){
                         _this.init();
@@ -128,6 +132,7 @@ modal.on('bs-beforeSubmit', function(){
     
     utils.getAjax({
         url: '/api/Member/setQuick',
+        loading: true,
         type: 'POST',
         data: data,
         alert: true,

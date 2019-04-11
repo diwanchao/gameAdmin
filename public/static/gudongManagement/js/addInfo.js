@@ -25,6 +25,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/Member/checkUserName',
+                loading: true,
                 data: {
                     user_name: this.username
                 },
@@ -61,6 +62,7 @@ var app = new Vue({
             utils.getAjax({
 
                 url: '/api/member/addShareholder',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){

@@ -45,6 +45,7 @@ var app = new Vue({
             utils.getAjax({
 
                 url: '/api/Member/updateUser',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){

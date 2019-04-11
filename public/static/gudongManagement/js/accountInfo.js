@@ -30,6 +30,7 @@ var app = new Vue({
             utils.getAjax({
                 url: '/api/Member/setAccount',
                 type: 'POST',
+                loading: true,
                 data: data,
                 success: function(result){
                     history.back(1);

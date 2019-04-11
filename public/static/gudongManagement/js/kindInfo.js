@@ -35,6 +35,7 @@ var app = new Vue({
             utils.getAjax({
 
                 url: '/api/Member/setGameInfo',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){

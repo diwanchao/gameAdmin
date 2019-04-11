@@ -12,6 +12,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/game/resultList',
+                loading: true,
                 type: 'GET',
                 data: {
                     index: tablePage.data.index,

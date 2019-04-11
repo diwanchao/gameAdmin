@@ -25,6 +25,7 @@ var d = {
             var _this = this;
             utils.getAjax({
                 url: '/api/Member/checkUserName',
+                loading: true,
                 data: {
                     user_name: this.username
                 },
@@ -61,6 +62,7 @@ var d = {
             utils.getAjax({
 
                 url: '/api/member/addGeneralAgent',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){

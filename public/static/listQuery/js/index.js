@@ -29,6 +29,7 @@ var app = new Vue({
 
             utils.getAjax({
                 url: '/api/Bet/list',
+                loading: true,
                 data: data,
                 type: 'GET',
                 success: function(json){

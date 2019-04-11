@@ -77,6 +77,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/Information/list',
+                loading: true,
                 data: {game_key: this.game_key, me: this.memberValue || this.id,},
                 success: function(result){
                     
@@ -310,6 +311,7 @@ var app = new Vue({
 
                 utils.getAjax({
                     url: '/api/member/setMemberMethod',
+                    loading: true,
                     type: 'POST',
                     data: {
                         id: _this.id,

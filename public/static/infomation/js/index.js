@@ -18,6 +18,7 @@ var app = new Vue({
             var _this = this;
             utils.getAjax({
                 url: '/api/Information/list',
+                loading: true,
                 type: 'GET',
                 data: {game_key: this.game_key},
                 success: function(result){

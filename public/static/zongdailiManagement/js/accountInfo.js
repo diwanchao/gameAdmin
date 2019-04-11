@@ -29,6 +29,7 @@ var app = new Vue({
 
             utils.getAjax({
                 url: '/api/Member/setAccount',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){

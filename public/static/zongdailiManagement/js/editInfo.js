@@ -32,6 +32,7 @@ var app = new Vue({
             utils.getAjax({
 
                 url: '/api/Member/addAgent',
+                loading: true,
                 type: 'POST',
                 data: data,
                 success: function(result){
