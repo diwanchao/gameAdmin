@@ -34,8 +34,8 @@ var app = new Vue({
             var data = {
                 user_num: this.search.username,
                 game_key: this.search.game_key,
-                time_start: this.search.time_start,
-                time_end: this.search.time_end,
+                time_start: this.search.time_start + ' 00:00:00',
+                time_end: this.search.time_end + ' 23:59:59',
                 status: this.search.status,
                 index: tablePage.data.index,
             }

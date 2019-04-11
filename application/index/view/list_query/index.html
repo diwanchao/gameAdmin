@@ -32,8 +32,8 @@
             <option value="jlk3">吉林快3</option>
         </select>
         &nbsp;&nbsp;&nbsp;&nbsp;时间： 
-        <input v-timestart v-model="search.time_start" id="query_time_start" placeholder="开始时间">
-        <input v-timeend v-model="search.time_end" id="query_time_end" placeholder="结束时间">
+        <input readonly style="background: #fff;" v-timestart v-model="search.time_start" id="query_time_start" placeholder="开始时间">
+        <input readonly style="background: #fff;" v-timeend v-model="search.time_end" id="query_time_end" placeholder="结束时间">
         "YYYY-MM-DD"&nbsp;&nbsp;&nbsp;&nbsp;是否结算： 
         <select v-model="search.status" style="FONT-SIZE: 12px; COLOR: navy; FONT-FAMILY: arial" size="1">
             <option value="" selected="">全部</option>
