@@ -27,8 +27,8 @@ class Bet extends Base
 
         $user_num   = $this->request->param('user_num',''); 
         $game_key   = $this->request->param('game_key',''); 
-        $time_start = $this->request->param('time_start',date('Y-m-d',time())); 
-        $time_end   = $this->request->param('time_end',date('Y-m-d',time())); 
+        $time_start = $this->request->param('time_start',date('Y-m-d 00:00:00',time())); 
+        $time_end   = $this->request->param('time_end',date('Y-m-d 23:59:59',time())); 
         $status     = $this->request->param('status',''); 
         $page       = $this->request->param('index',1); 
 
