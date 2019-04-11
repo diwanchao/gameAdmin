@@ -38,5 +38,6 @@ var app = new Vue({
     },
     mounted: function(){
         this.query();
+        $('body').fadeIn('fast');
     }
 })

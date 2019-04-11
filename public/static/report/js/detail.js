@@ -28,7 +28,8 @@ var app = new Vue({
                 delete result.down_total;
                 _this.list = result;
             }
-        })
+        });
+        $('body').fadeIn('fast');
     }
 
 })

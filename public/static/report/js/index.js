@@ -101,7 +101,11 @@ var app = new Vue({
                 this.selectUnAll();
             }
         }
-    }
+    },
+
+    mounted: function() {
+        $('body').fadeIn('fast');
+    },
 });
 
 function bindTime(id, callback) {

@@ -6,7 +6,9 @@ html, body{
 	color: #333;
 	background-color: #f0f0f0;
 }
-
+body{
+    display: none;
+}
 .header {
 	FONT-SIZE: 12px; MARGIN: 0px;
 	background-image :  url(../../global/image/body_03.gif);

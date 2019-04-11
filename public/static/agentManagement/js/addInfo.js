@@ -75,7 +75,6 @@ var d = {
 
 
     mounted: function(){
-        var _this = this;
 
         this.create_user_name = ENV.userInfo.user_name;
         this.usable_quick = ENV.userInfo.quick_open_quote;
@@ -91,7 +90,7 @@ var d = {
         }
         this.game_list = ENV.userInfo.game_list;
 
-        
+        $('body').fadeIn('fast');
     },
 
     watch: {

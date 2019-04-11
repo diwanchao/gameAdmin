@@ -83,6 +83,8 @@ var app = new Vue({
             ENV.userInfo.game_list[i].select = true;
         }
         this.game_list = ENV.userInfo.game_list;
+
+        $('body').fadeIn('fast');
     },
 
 

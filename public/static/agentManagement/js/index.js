@@ -96,6 +96,8 @@ var app = new Vue({
     },
     mounted: function(){
         this.init();
+
+        $('body').fadeIn('fast');
     }
 });
 

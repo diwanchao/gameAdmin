@@ -71,6 +71,8 @@ var app = new Vue({
 
                 _this.levelValue = level;
             }
-        })
+        });
+
+        $('body').fadeIn('fast');
     },
 });

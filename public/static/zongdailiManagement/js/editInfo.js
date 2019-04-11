@@ -55,7 +55,8 @@ var app = new Vue({
                 // _this.usable_quick = result.usable_quote;
                 // _this.quick = result.quick_open_quote;
             }
-        })
+        });
+        $('body').fadeIn('fast');
     },
 
 })

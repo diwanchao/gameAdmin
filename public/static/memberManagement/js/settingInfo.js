@@ -338,6 +338,7 @@ var app = new Vue({
 
         
         this.init();
+        $('body').fadeIn('fast');
     },
     watch:{
         game_key: function(){

@@ -49,7 +49,9 @@ var app = new Vue({
             success: function(result){
                 _this.accountList = result;
             }
-        })
+        });
+
+        $('body').fadeIn('fast');
     },
 
     watch: {

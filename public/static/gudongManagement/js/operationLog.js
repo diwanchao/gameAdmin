@@ -22,5 +22,6 @@ var app = new Vue({
                 _this.data = result;
             }
         });
+        $('body').fadeIn('fast');
     }
 })

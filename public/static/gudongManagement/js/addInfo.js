@@ -103,6 +103,7 @@ var app = new Vue({
         //         }
         //     }
         // })
+        $('body').fadeIn('fast');
     },
 
     watch: {

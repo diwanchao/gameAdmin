@@ -91,7 +91,7 @@ var d = {
         }
         this.game_list = ENV.userInfo.game_list;
 
-        
+        $('body').fadeIn('fast');
     },
 
     watch: {

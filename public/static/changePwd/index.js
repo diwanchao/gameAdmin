@@ -26,6 +26,10 @@ var app = new Vue({
             this.new_pwd = '';
             this.repeat_pwd = '';
         }
-    }
+    },
+
+    mounted: function() {
+        $('body').fadeIn('fast');
+    },
 
 })
