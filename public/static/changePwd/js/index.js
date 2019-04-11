@@ -7,12 +7,15 @@ var app = new Vue({
     },
     methods: {
         submit: function(){
-            var data = utils.deepCopy(this.data);
 
             utils.getAjax({
                 url: '/api/user/changePassword',
                 type: 'POST',
-                data: data,
+                data: {
+                    old_pwd: this.old_pwd,
+                    new_pwd: this.new_pwd,
+                    repeat_pwd: this.repeat_pwd
+                },
                 sucess: function(){
                     window.location = '/index/login';
                 }
