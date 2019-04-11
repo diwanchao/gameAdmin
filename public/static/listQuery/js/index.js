@@ -23,7 +23,7 @@ var app = new Vue({
         query: function(){
             var _this = this;
 
-            if(!this.time_start){
+            if(!this.search.time_start){
                 return alert('请选择开始时间！');
             }
 
