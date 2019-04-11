@@ -166,7 +166,7 @@ var utils = {
 				typeof opt.error == 'function' ? opt.error(err) : null;
 				alert('服务器错误');
 			},
-			complate: function(){
+			complete: function(){
 				if(opt.loading) {
 					$('.opacity').remove();
 				}
