@@ -130,14 +130,15 @@ var utils = {
 	},
 
 	getAjax: function (opt) {
-		if(opt.loading) {
-			$('body').append('<div class="opacity"><div class="bg"></div><div class="size" id="size"><span class="">L</span><span class="active"> o</span><span class="">a</span><span class="">d</span><span class="">i</span><span class="">n</span><span class="">g</span><span class=""></span></div></div>')
-		}
 		var userInfo = utils.getCookie('userInfo');
 		if (!userInfo) {
 			alert('登陆超时……');
 			window.location.href = '/index/login';
 			return;
+		}
+
+		if(opt.loading) {
+			$('body').append('<div class="opacity"><div class="bg"></div><div class="size" id="size"><span class="">L</span><span class="active"> o</span><span class="">a</span><span class="">d</span><span class="">i</span><span class="">n</span><span class="">g</span><span class=""></span></div></div>')
 		}
 
 		$.ajax({
