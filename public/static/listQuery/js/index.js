@@ -1,13 +1,14 @@
 // 会从报表传来开始时间 结束时间 如果有 搜索报表的时间区间
 var timeStart = utils.getURL(location.search, 'time_start');
 var timeEnd = utils.getURL(location.search, 'time_end');
+var gameKey = utils.getURL(location.search, 'game_key');
 var tablePage = new Page('#pageInfo', function(index){ app.query();});
 var app = new Vue({
     el: '#main',
     data: {
         search: {
             username: '',
-            game_key: '',
+            game_key: gameKey || '',
             time_start: timeStart || utils.paseDate(),
             time_end: timeEnd || utils.paseDate(),
             status: '',
