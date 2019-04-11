@@ -50,14 +50,14 @@ class Bet extends Base
             $total  = Db::name('order')
             ->alias('o')
             ->leftJoin('menber m','o.user_id = m.id')
-            ->whereBetweenTime("DATE_FORMAT(o.time,'%Y-%m-%d')", $time_start, $time_end)
+            ->whereBetweenTime("o.time", $time_start, $time_end)
             ->where($where)
             ->value('count(1)');
             $res    = Db::name('order')
                 ->alias('o')
                 ->field('user_name,user_number as user_num,o.user_id,o.time,o.game_key,o. NO AS number,o.part,o.number AS game_num,play_name,content,odds,game_result,money,handsel,break')
                 ->leftJoin('menber m','o.user_id = m.id')
-                ->whereBetweenTime("DATE_FORMAT(o.time,'%Y-%m-%d')", $time_start, $time_end)
+                ->whereBetweenTime("o.time", $time_start, $time_end)
                 ->where($where)
                 ->page($page,10)
                 ->select();
