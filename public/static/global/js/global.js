@@ -542,10 +542,11 @@ var ENV = {
 })();
 
 
-try {
-	(function () {
-		var stemp = 0;
-		window.setInterval(function () {
+
+(function () {
+	var stemp = 0;
+	window.setInterval(function () {
+		try {
 			var list = document.getElementById('size').children;
 			for (var i = 0; i < list.length; i++) {
 				list[i].className = "";
@@ -556,8 +557,8 @@ try {
 			} else {
 				stemp++
 			}
-		}, 200)
-	})();
-} catch (e) {
-	console.log(e);
-};
+		} catch (e) {
+			console.log(e);
+		};
+	}, 200)
+})();
