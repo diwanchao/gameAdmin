@@ -27,6 +27,9 @@ var app = new Vue({
             if(!this.search.time_start){
                 return alert('请选择开始时间！');
             }
+            else if(!this.search.time_end){
+                this.search.time_end = utils.paseDate();
+            }
 
             var data = {
                 user_num: this.search.username,
@@ -62,14 +65,14 @@ var app = new Vue({
     },
 
     directives: {
-        'timeStart': {
+        'timestart': {
             inserted: function(el){
                 bindTime(el.id, function(obj){
                     app.search.time_start = obj.val;
                 });
             }
         },
-        'timeEnd': {
+        'timeend': {
             inserted: function(el){
                 bindTime(el.id, function(obj){
                     app.search.time_end = obj.val;
