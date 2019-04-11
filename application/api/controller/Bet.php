@@ -27,7 +27,8 @@ class Bet extends Base
 
         $user_num   = $this->request->param('user_num',''); 
         $game_key   = $this->request->param('game_key',''); 
-        $time       = $this->request->param('time',date('Y-m-d',time())); 
+        $time_start = $this->request->param('time_start',date('Y-m-d',time())); 
+        $time_end   = $this->request->param('time_end',date('Y-m-d',time())); 
         $status     = $this->request->param('status',''); 
         $page       = $this->request->param('index',1); 
 
@@ -46,12 +47,17 @@ class Bet extends Base
         if($ids){
             $where[] = ['o.user_id','in',explode(',', $ids)];
 
-            $total  = Db::name('order')->alias('o')->leftJoin('menber m','o.user_id = m.id')->where("DATE_FORMAT(o.time,'%Y-%m-%d')=?",[$time])->where($where)->value('count(1)');
+            $total  = Db::name('order')
+            ->alias('o')
+            ->leftJoin('menber m','o.user_id = m.id')
+            ->where("DATE_FORMAT(o.time,'%Y-%m-%d')", 'between time', [$time_start, $time_end])
+            ->where($where)
+            ->value('count(1)');
             $res    = Db::name('order')
                 ->alias('o')
                 ->field('user_name,user_number as user_num,o.user_id,o.time,o.game_key,o. NO AS number,o.part,o.number AS game_num,play_name,content,odds,game_result,money,handsel,break')
                 ->leftJoin('menber m','o.user_id = m.id')
-                ->where("DATE_FORMAT(o.time,'%Y-%m-%d')=?",[$time])
+                ->where("DATE_FORMAT(o.time,'%Y-%m-%d')", 'between time', [$time_start, $time_end])
                 ->where($where)
                 ->page($page,10)
                 ->select();
