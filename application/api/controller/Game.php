@@ -23,15 +23,48 @@ class Game extends Base
      */
     public function detail()
     {
+        $sons = get_sons($this->USER_ID);
+        $money = $result = $break = $amount = 0;
+
+        $game_key   = $this->request->param('game_key',''); 
+        $part       = $this->request->param('part','');
+        $now_number = $game_key == 'jlk3' ? get_k3_number() : get_ssc_number();
+
+
+        $where []= ['game_key','=',$game_key];
+        $where []= ['order.part','=',$part];
+        $where []= ['role_id','=',0];
+        $where []= ['user_id','in',explode(',', $sons)];
+        $where []= ['order.number','=',$now_number];
+
+
+        $bet_data   = Db::name('order')
+                ->field('time,no as number,order.part,content,money,break,number as game_num,play_name,odds,game_result as result,user_number as user_num,user_name')
+                ->leftJoin('menber','order.user_id=menber.id')
+                ->where($where)
+                ->order('no desc')
+                ->fetchSql(0)
+                ->select();
+        if ($bet_data) {
+            foreach ($bet_data as $value) {
+                $money  += $value['money'] ?: 0;
+                $result += $value['result'] ?: 0;
+                $break  += $value['break'] ?: 0;
+                $amount ++;
+            }
+        }
+
+
     	$data = [
-            'data'=>[
+            'data'=>$bet_data ?? [],
+            /*[
                 ['number'=>'108132','time'=>date('Y-m-d H:i:s',time()),'user_num'=>'123','user_name'=>'dwc','break'=>12,'part'=>'A','game_num'=>'20190402018','play_name'=>'红马单双','content'=>'单','odds'=>2,'money'=>12,'result'=>10],
                 ['number'=>'108132','time'=>date('Y-m-d H:i:s',time()),'user_num'=>'123','user_name'=>'dwc','break'=>12,'part'=>'A','game_num'=>'20190402018','play_name'=>'红马单双','content'=>'单','odds'=>2,'money'=>12,'result'=>10],
-            ],
-            'money'=>10,
-            'result'=>10,
-            'break'=>10,
-            'amount'=>2,
+            ],*/
+            'money'     =>$money ?? 0,
+            'result'    =>$result ?? 0,
+            'break'     =>$break ?? 0,
+            'amount'    =>$amount ?? 0,
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }

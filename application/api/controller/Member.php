@@ -742,8 +742,13 @@ class Member extends Base
 	{
 		$return_data = [];
 		$user_id 	= $this->request->param('id',0);
-		$data 		= Db::name('menber')->field('id,user_name')->where('parent_id=?',[$user_id])->select();
 
+		$parent_id = Db::name('menber')->where('id','=',$user_id)->value('parent_id');
+		$data 		= Db::name('menber')
+					->field('id,user_name')
+					->where('parent_id','=',$parent_id)
+					->fetchSql(false)
+					->select();
 		if ($data)
 		{
 			$return_data = array_column($data, 'user_name','id');
@@ -756,6 +761,19 @@ class Member extends Base
 
 	public function setMemberMethod()
 	{
+		$user_id 	= $this->request->param('id',0);
+		$game_key 	= $this->request->param('game_key','jlk3');
+		$list 		= $this->request->param('list/a',[]);
+
+		if ($list) 
+		{
+			foreach ($list as $key => $value) {
+				$id = $value['id'];
+				unset($value['id']);
+				Db::name('user_game_method')->where('id','=',$id)->update($value);
+			}
+		}
+
         return json(['msg' => '保存成功','code' => 200, 'data' =>[]]);	
 	}
 

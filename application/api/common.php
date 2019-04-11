@@ -19,7 +19,7 @@ use \think\Db;
         	return date('Ymd',$now).'01';
         }
 	    $num = ceil((($now-$openstamp)/$period))+1;
-	    $num = ($num<10) ? '0'.$num : $num;
+	    $num = ($num<10) ? '00'.$num : '0'.$num;
 
 	    return date('Ymd').$num;
 
