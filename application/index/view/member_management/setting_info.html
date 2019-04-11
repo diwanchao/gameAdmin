@@ -108,13 +108,13 @@
                     </td>
 
                     <td style="font-size: 14px;" :title="item.methods + '单项(号)限额最高可设定 ' + item.NSMax">
-                        <input @blur="vailInput(item, 'limit', item.NSMax)" class="textradius width6em" type="text" :value="item.limit">≤<span>{{item.NSMax}}</span>
+                        <input @blur="vailInput(item, 'limit', item.NSMax)" class="textradius width6em" type="text" v-model="item.limit">≤<span>{{item.NSMax}}</span>
                     </td>
                     <td style="font-size: 14px;" :title="item.methods + '单注限额最高可设定 ' + item.CSMax">
-                        <input @blur="vailInput(item, 'max', item.CSMax)" class="textradius width6em" type="text" :value="item.max">≤<span>{{item.CSMax}}</span>
+                        <input @blur="vailInput(item, 'max', item.CSMax)" class="textradius width6em" type="text"  v-model="item.max">≤<span>{{item.CSMax}}</span>
                     </td>
                     <td style="font-size: 14px;" :title="item.methods + '單註限額低高可設定 ' + item.CSMin">
-                        <input @blur="vailInput(item, 'min')" class="textradius width6em" type="text" :value="item.min">&gt;=<span>{{item.CSMin}}</span>
+                        <input @blur="vailInput(item, 'min')" class="textradius width6em" type="text"  v-model="item.min">&gt;=<span>{{item.CSMin}}</span>
                     </td>
                 </tr>
 
