@@ -75,14 +75,23 @@
         <br>
         <table class="linetb" border="0" cellspacing="1" cellpadding="0" width="320">
             <tbody>
+                <!-- 代理端 下级账号 自身 下级 --> 
                 <tr v-if="user_type == 0" align="middle">
                     <td width="150" height="25" class="tb1_title">会员</td>
-                    <td width="100" class="tb1_title">总代</td>
+                    <td width="100" class="tb1_title">代理</td>
                     <td width="100" class="tb1_title">会员</td>
                     <td width="140" class="tb1_title">代理净利</td>
                 </tr>
+                <!-- 总代理 下级账号 自身 下级 -->
                 <tr v-else-if="user_type == 1" align="middle">
-                    <td width="150" height="25" class="tb1_title">代理</td>
+                    <td width="150" height="25" class="tb1_title">总代理</td>
+                    <td width="100" class="tb1_title">股东</td>
+                    <td width="100" class="tb1_title">总代理</td>
+                    <td width="140" class="tb1_title">总代净利</td>
+                </tr>
+                <!-- 股东 -->
+                <tr v-else-if="user_type == 2" align="middle">
+                    <td width="150" height="25" class="tb1_title">总代理</td>
                     <td width="100" class="tb1_title">股东</td>
                     <td width="100" class="tb1_title">代理</td>
                     <td width="140" class="tb1_title">总代净利</td>
