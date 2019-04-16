@@ -16,9 +16,7 @@ var d = {
         accountList: {
             jlk3: {agent: 100, member: 0},
             ssc: {agent: 100, member: 0},
-        },
-        jlk3Total: 0,
-        sscTotal: 0,
+        }
     },
 
     methods: {
