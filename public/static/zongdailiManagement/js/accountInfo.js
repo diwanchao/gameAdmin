@@ -52,7 +52,7 @@ var app = new Vue({
             success: function(result){
                 _this.accountList = result;
                 _this.jlk3Total = Number(result.jlk3.agent) + Number(result.jlk3.member);
-                _this.sscTotal = Number(result.ssc.agent) + Number(result.ssc.member)
+                _this.sscTotal = Number(result.ssc.agent) + Number(result.ssc.member);
             }
         });
         $('body').fadeIn('fast');
