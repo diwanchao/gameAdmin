@@ -130,13 +130,13 @@
                 </tr>
             </tbody>
         </table>
-        <!-- <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
+
+        <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
             cellpadding="0" width="100%">
             <tbody>
                 <tr>
                     <td style="PADDING-LEFT: 10px" class="icon" height="20" valign="bottom" width="150" nowrap="">
-                        <span v-if="index == 'ssc'">重庆时时彩</span>
-                        <span v-else-if="index == 'jlk3'">吉林快3</span>
+                        <span>{{item.game_name}}</span>
                     </td>
                     <td height="20" valign="bottom"><a onclick="javascript:history.back(1)"
                             style="CURSOR: pointer">上一页</a></td>
@@ -146,16 +146,17 @@
                         <table id="JLK3_datatable" class="linetb" border="0" cellspacing="1" cellpadding="0"
                             width="100%">
                             <tbody>
-                                <template v-if="user_type == 0">
-                                    <tr align="middle">
-                                        <td class="tb_title" height="20">层级</td>
-                                        <td class="tb_title" colspan="3">总额</td>
-                                        <td class="tb_title" scope="col">损益</td>
-                                        <td class="tb_title" colspan="2">占成</td>
-                                        <td class="tb_title" colspan="2">退水</td>
-                                        <td class="tb_title">返利</td>
-                                        <td class="tb_title" colspan="3">交收额度</td>
-                                    </tr>
+                                <tr align="middle">
+                                    <td class="tb_title" height="20">层级</td>
+                                    <td class="tb_title" colspan="3">总额</td>
+                                    <td class="tb_title" scope="col">损益</td>
+                                    <td class="tb_title" colspan="2">占成</td>
+                                    <td class="tb_title" colspan="2">退水</td>
+                                    <td class="tb_title">返利</td>
+                                    <td class="tb_title" colspan="3">交收额度</td>
+                                </tr>
+                                <!-- 代理 -->
+                                <template v-if="user_type == 0"> 
                                     <tr align="middle">
                                         <td width="150" height="25" class="tb1_title">会员</td>
                                         <td width="80" class="tb1_title">已开笔数</td>
@@ -172,16 +173,8 @@
                                         <td width="140" class="tb1_title">代理净利</td>
                                     </tr>
                                 </template>
+                                <!-- 总代理 -->
                                 <template v-else-if="user_type == 1">
-                                    <tr align="middle">
-                                        <td class="tb_title" height="20">层级</td>
-                                        <td class="tb_title" colspan="3">总额</td>
-                                        <td class="tb_title" scope="col">总损益</td>
-                                        <td class="tb_title" colspan="3">占成</td>
-                                        <td class="tb_title" colspan="2">退水</td>
-                                        <td class="tb_title">返利</td>
-                                        <td class="tb_title" colspan="3">交收额度</td>
-                                    </tr>
                                     <tr align="middle">
                                         <td width="150" height="25" class="tb1_title">代理</td>
                                         <td width="80" class="tb1_title">已开笔数</td>
@@ -199,23 +192,90 @@
                                         <td width="140" class="tb1_title">总代净利</td>
                                     </tr>
                                 </template>
+                                <!-- 股东 -->
+                                <template v-else-if="user_type == 2">
+                                    <tr align="middle">
+                                        <td width="150" height="25" class="tb1_title">总代理</td>
+                                        <td width="80" class="tb1_title">已开笔数</td>
+                                        <td width="80" class="tb1_title">未开笔数</td>
+                                        <td width="145" class="tb1_title">已开下注金额</td>
+                                        <td width="130" class="tb1_title">总损益</td>
+                                        <td width="100" class="tb1_title">管理员(向上总计)</td>
+                                        <td width="100" class="tb1_title">股东(自身)</td>
+                                        <td width="100" class="tb1_title">总代理(向下总计)</td>
+                                        <td width="100" class="tb1_title">股东退水</td>
+                                        <td width="140" class="tb1_title">总代理退水</td>
+                                        <td class="tb1_title">股东赔率返利</td>
+                                        <td width="100" class="tb1_title">管理员</td>
+                                        <td width="100" class="tb1_title">总代理</td>
+                                        <td width="140" class="tb1_title">股东净利</td>
+                                    </tr>
+                                </template>
+                                <!-- 管理员 -->
+                                <template v-else-if="user_type == 2">
+                                    <tr align="middle">
+                                        <td width="150" height="25" class="tb1_title">股东</td>
+                                        <td width="80" class="tb1_title">已开笔数</td>
+                                        <td width="80" class="tb1_title">未开笔数</td>
+                                        <td width="145" class="tb1_title">已开下注金额</td>
+                                        <td width="130" class="tb1_title">总损益</td>
+                                        <td width="100" class="tb1_title">无(向上总计)</td>
+                                        <td width="100" class="tb1_title">管理员(自身)</td>
+                                        <td width="100" class="tb1_title">股东(向下总计)</td>
+                                        <td width="100" class="tb1_title">管理员退水</td>
+                                        <td width="140" class="tb1_title">股东退水</td>
+                                        <td class="tb1_title">管理员赔率返利</td>
+                                        <td width="100" class="tb1_title">无</td>
+                                        <td width="100" class="tb1_title">股东理</td>
+                                        <td width="140" class="tb1_title">管理员净利</td>
+                                    </tr>
+                                </template>
+                                
+                                
+                                <tr v-for="(item2, index2) in item.list" align="right" bgcolor="#FFFFFF">
+                                    <td height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_number + '&user_type=' + user_type - 1">{{item2.user_name}}</a></td>
+                                    <td><a :href="'/index/list_query?time=' + startTime +','+endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=1'"></a>{{item2.open_count}}</td>
+                                    <td><a :href="'/index/list_query?time=' + startTime +','+endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=0'"></a>{{item2.not_open_count}}</td>
+                                    <td>{{item2.bet_amount}}</td>
+                                    <td>{{item2.sum_loss}}</td>
+                                    <td>{{item2.up_proportion}}</td>
+                                    <td>{{item2.self_proportion}}</td>
+                                    <td>{{item2.down_proportion}}</td>
+                                    <td>{{item2.self_back}}</td>
+                                    <td>{{item2.down_back}}</td>
+                                    <td>{{item2.rebate}}</td>
+
+                                    <td v-if="Number(item2.up_profit) > 0" bgcolor="#ffff00">缴{{Math.abs(item2.up_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item2.up_profit)}}</td>
+
+                                    <td v-if="Number(item2.down_profit) > 0" bgcolor="#ffff00">付{{Math.abs(item2.down_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item2.down_profit)}}</td>
+                                    
+                                    <td v-if="Number(item2.self_profit) > 0" bgcolor="#ffff00">输{{Math.abs(item2.self_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{Math.abs(item2.self_profit)}}</td>
+                                </tr>
 
                                 <tr align="right" bgcolor="#FFFFFF">
-                                    <td height="20">小计</td>
-                                    <td>{{item.open_count}}</td>
-                                    <td>{{item.not_open_count}}</td>
-                                    <td>{{item.bet_amount}}</td>
-                                    <td>{{item.sum_loss}}</td>
-                                    <td>{{item.up_proportion}}</td>
-                                    <td>{{item.self_proportion}}</td>
-                                    <td>{{item.down_proportion}}</td>
-                                    <td>{{item.all_agent_break}}</td>
-                                    <td>{{item.agent_break}}</td>
+                                    <td height="20">小记</td>
+                                    <td>{{item.total.open_count}}</td>
+                                    <td>{{item.total.not_open_count}}</td>
+                                    <td>{{item.total.bet_amount}}</td>
+                                    <td>{{item.total.sum_loss}}</td>
+                                    <td>{{item.total.up_proportion}}</td>
+                                    <td>{{item.total.self_proportion}}</td>
+                                    <td>{{item.total.down_proportion}}</td>
+                                    <td>{{item.total.self_back}}</td>
+                                    <td>{{item.total.down_back}}</td>
                                     <td>{{item.rebate}}</td>
+                                    
+                                    <td v-if="Number(item.total.up_profit) > 0" bgcolor="#ffff00">缴{{Math.abs(item.total.up_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item.total.up_profit)}}</td>
 
-                                    <td bgcolor="#ffff00">{{item.up_profit}}</td>
-                                    <td bgcolor="#ffff00">{{item.down_profit}}</td>
-                                    <td bgcolor="#ffff00">{{item.self_profit}}</td>
+                                    <td v-if="Number(item.total.down_profit) > 0" bgcolor="#ffff00">付{{Math.abs(item.total.down_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item.total.down_profit)}}</td>
+                                    
+                                    <td v-if="Number(item.total.self_profit) > 0" bgcolor="#ffff00">输{{Math.abs(item.total.self_profit)}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{Math.abs(item.total.self_profit)}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -228,7 +288,7 @@
         <br>
         <br>
         <div class="style1">[ 下线总计 ] </div>
-        <table class="linetb" border="0" cellspacing="1" cellpadding="0" width="100%">
+        <!-- <table class="linetb" border="0" cellspacing="1" cellpadding="0" width="100%">
             <tbody>
                 <tr align="middle">
                     <td class="tb_title" height="20">层级</td>

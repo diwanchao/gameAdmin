@@ -2,16 +2,18 @@
 var timeStart = utils.getURL(location.search, 'time_start');
 var timeEnd = utils.getURL(location.search, 'time_end');
 var gameKey = utils.getURL(location.search, 'game_key');
+var username = utils.getURL(location.search, 'user_name');
+var status = utils.getURL(location.search, 'status');
 var tablePage = new Page('#pageInfo', function(index){ app.query();});
 var app = new Vue({
     el: '#main',
     data: {
         search: {
-            username: '',
+            username: username || '',
             game_key: gameKey || '',
             time_start: timeStart || utils.paseDate(),
             time_end: timeEnd || utils.paseDate(),
-            status: '',
+            status: status || '',
         },
         money: 0, //金额
         handsel: 0, // 派彩
