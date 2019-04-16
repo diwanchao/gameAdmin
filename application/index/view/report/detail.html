@@ -267,7 +267,7 @@
                                     <td>{{changeTwoDecimal_f(item.total.down_proportion)}}</td>
                                     <td>{{changeTwoDecimal_f(item.total.self_back)}}</td>
                                     <td>{{changeTwoDecimal_f(item.total.down_back)}}</td>
-                                    <td>{{changeTwoDecimal_f(item.rebate)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.rebate)}}</td>
                                     
                                     <td v-if="Number(item.total.up_profit) > 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
