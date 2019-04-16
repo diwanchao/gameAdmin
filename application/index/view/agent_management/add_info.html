@@ -154,23 +154,23 @@
                                                         <td align="center">总代理占成：</td>
                                                         <td>
                                                             <select v-model="accountList.ssc.agent">
-                                                                <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
+                                                                <!-- <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
                                                                     <option value="0">0%</option>
-                                                                </template>
-                                                                <template v-else>
-                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
-                                                                </template>
+                                                                </template> -->
+                                                                <!-- <template v-else> -->
+                                                                    <option v-for="(item, index) in sscTotal + 1" :value="index">{{index}}%</option>
+                                                                <!-- </template> -->
                                                             </select>
                                                         </td>
                                                         <td align="right">代理占成：</td>
                                                         <td>
                                                             <select v-model="accountList.ssc.member">
-                                                                <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
+                                                                <!-- <template v-if="accountList.ssc.agent == 0 && accountList.ssc.member == 0">
                                                                     <option value="0">0%</option>
-                                                                </template>
-                                                                <template v-else>
-                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
-                                                                </template>
+                                                                </template> -->
+                                                                <!-- <template v-else> -->
+                                                                    <option v-for="(item, index) in sscTotal + 1" :value="index">{{index}}%</option>
+                                                                <!-- </template> -->
                                                             </select>
                                                         </td>
                                                     </tr>
@@ -179,23 +179,23 @@
                                                         <td align="center">总代理占成：</td>
                                                         <td>
                                                             <select v-model="accountList.jlk3.agent">
-                                                                <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
+                                                                <!-- <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
                                                                     <option value="0">0%</option>
-                                                                </template>
-                                                                <template v-else>
-                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
-                                                                </template>
+                                                                </template> -->
+                                                                <!-- <template v-else> -->
+                                                                    <option v-for="(item, index) in jlk3Total + 1" :value="index">{{index}}%</option>
+                                                                <!-- </template> -->
                                                             </select>
                                                         </td>
                                                         <td align="right">代理占成：</td>
                                                         <td>
                                                             <select v-model="accountList.jlk3.member">
-                                                                <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
+                                                                <!-- <template v-if="accountList.jlk3.agent == 0 && accountList.jlk3.member == 0">
                                                                     <option value="0">0%</option>
-                                                                </template>
-                                                                <template v-else>
-                                                                    <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
-                                                                </template>
+                                                                </template> -->
+                                                                <!-- <template v-else> -->
+                                                                    <option v-for="(item, index) in jlk3Total + 1" :value="index">{{index}}%</option>
+                                                                <!-- </template> -->
                                                             </select>
                                                         </td>
                                                     </tr>

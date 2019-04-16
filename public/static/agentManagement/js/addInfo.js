@@ -16,7 +16,9 @@ var d = {
         accountList: {
             jlk3: {agent: 0, member: 0},
             ssc: {agent: 0, member: 0},
-        }
+        },
+        jlk3Total: 0,
+        sscTotal: 0
     },
 
     methods: {
@@ -95,16 +97,16 @@ var d = {
 
     watch: {
         'accountList.jlk3.agent': function(val){
-            this.accountList.jlk3.member = 100 - val;
+            this.accountList.jlk3.member = this.jlk3Total - val;
         },
         'accountList.jlk3.member': function(val){
-            this.accountList.jlk3.agent = 100 - val;
+            this.accountList.jlk3.agent = this.jlk3Total - val;
         },
         'accountList.ssc.agent': function(val){
-            this.accountList.ssc.member = 100 - val;
+            this.accountList.ssc.member = this.sscTotal - val;
         },
         'accountList.ssc.member': function(val){
-            this.accountList.ssc.agent = 100 - val;
+            this.accountList.ssc.agent = this.sscTotal - val;
         },
     }
 
@@ -120,6 +122,8 @@ utils.getAjax({
                 d.data.accountList[k].agent = result[k];
             }
         }
+        d.data.jlk3Total = Number(result.jlk3);
+        d.data.sscTotal = Number(result.ssc);
         window.app = new Vue(d);
     }
 })
