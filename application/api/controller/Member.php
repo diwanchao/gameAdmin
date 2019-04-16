@@ -827,9 +827,8 @@ class Member extends Base
 			];
 			Db::name('proportion_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
 		}
-		$sons = get_sons();
+		$sons = get_sons($id);
 		$sons = str_replace($id.',', '', $sons);
-		var_dump($sons);die();
 		if ($sons) {
 			$where[] = ['user_id','in',explode(',', $sons)];
 			Db::name('proportion_log')->where($where)->update(['user_proportion'=>0,'parent_proportion'=>0]);
