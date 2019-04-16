@@ -785,7 +785,7 @@ class Member extends Base
 		$type 		= $this->request->param('type',0);
 		$ratio_info = Db::name('proportion_log')->field('game_key,user_proportion')->where('user_id','=',$this->USER_ID)->select();
 		if ($ratio_info) 
-			$ratio_info = ['jlk3'=>100,'ssc'=>100];
+			$ratio_info = array_column($ratio_info, 'user_proportion','game_key');
 		else
 			$ratio_info = ['jlk3'=>0,'ssc'=>0];
 
@@ -816,7 +816,7 @@ class Member extends Base
 			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);	
 		if ($accountList['jlk3'] ?? '') 
 		{
-			$k3_data = ['user_proportion'	=>$accountList['jlk3']['member'],'parent_proportion'	=>$accountList['jlk3']['agent']];
+			$k3_data = ['user_proportion'=>$accountList['jlk3']['member'],'parent_proportion'=>$accountList['jlk3']['agent']];
 			Db::name('proportion_log')->where("game_key = 'jlk3' and user_id=?",[$id])->update($k3_data);
 		}
 		if ($accountList['ssc'] ?? '') 
@@ -827,6 +827,13 @@ class Member extends Base
 			];
 			Db::name('proportion_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
 		}
+		$sons = get_sons();
+		$sons = str_replace($id.',', '', $sons);
+		if ($sons) {
+			$where[] = ['user_id','in',explode(',', $sons)];
+			Db::name('proportion_log')->where($where)->update(['user_proportion'=>0,'parent_proportion'=>0]);
+		}
+
 
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
