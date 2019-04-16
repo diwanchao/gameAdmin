@@ -42,8 +42,8 @@ class Report extends Base
 
 
         $data = [
-            ['down_name'=>'dwc','up_num'=>1000,'self_num'=>1000,'down_num'=>1000];
-            ['down_name'=>'hdj','up_num'=>1000,'self_num'=>1000,'down_num'=>1000];
+            ['down_name'=>'dwc','up_num'=>1000,'self_num'=>1000,'down_num'=>1000],
+            ['down_name'=>'hdj','up_num'=>1000,'self_num'=>1000,'down_num'=>1000],
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
