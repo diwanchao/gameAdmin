@@ -2,7 +2,7 @@ var startTime = utils.getURL(location.search, 'time').split(',')[0];
 var endTime = utils.getURL(location.search, 'time').split(',')[1];
 var gameList = utils.getURL(location.search, 'game_list').split(',');
 var id = utils.getURL(location.search, 'id');
-var user_type = utils.getURL(location.search, 'user_type') == -1 ? '0' : utils.getURL(location.search, 'user_type');
+var user_type = utils.getURL(location.search, 'user_type') < 0 ? '0' : utils.getURL(location.search, 'user_type');
 
 var getName = function(k){
     switch (k) {

@@ -105,7 +105,7 @@
                     <td width="140" class="tb1_title">管理员净利</td>
                 </tr>
                 <tr v-for="(item, index) in head_list">
-                    <td width="150">{{item.down_name}}</td>
+                    <td width="150" bgcolor="#fff">{{item.down_name}}</td>
 
                     <template v-if="Number(item.up_num) < 0">
                         <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.up_num}}</td>
@@ -165,6 +165,7 @@
                                         <td width="130" class="tb1_title">总损益</td>
                                         <td width="100" class="tb1_title">总代(向上总计)</td>
                                         <td width="100" class="tb1_title">代理(自身)</td>
+                                        <td width="100" class="tb1_title">会员(向下总计)</td>
                                         <td width="100" class="tb1_title">代理退水</td>
                                         <td width="100" class="tb1_title">会员退水</td>
                                         <td class="tb1_title">代理赔率返利</td>
@@ -233,7 +234,7 @@
                                 
                                 
                                 <tr v-for="(item2, index2) in item.list" align="right" bgcolor="#FFFFFF">
-                                    <td height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_number + '&user_type=' + (user_type - 1)">{{item2.user_name}}</a></td>
+                                    <td height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_number + '&user_type=' + (user_type - 1)">{{item2.user_name}}({{item2.user_number}})</a></td>
                                     <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=1'">{{item2.open_count}}</a></td>
                                     <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=0'">{{item2.not_open_count}}</a></td>
                                     <td>{{item2.bet_amount}}</td>
