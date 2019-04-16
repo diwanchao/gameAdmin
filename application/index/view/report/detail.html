@@ -212,7 +212,7 @@
                                     </tr>
                                 </template>
                                 <!-- 管理员 -->
-                                <template v-else-if="user_type == 2">
+                                <template v-else-if="user_type == 3">
                                     <tr align="middle">
                                         <td width="150" height="25" class="tb1_title">股东</td>
                                         <td width="80" class="tb1_title">已开笔数</td>
@@ -234,8 +234,8 @@
                                 
                                 <tr v-for="(item2, index2) in item.list" align="right" bgcolor="#FFFFFF">
                                     <td height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_number + '&user_type=' + user_type - 1">{{item2.user_name}}</a></td>
-                                    <td><a :href="'/index/list_query?time=' + startTime +','+endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=1'"></a>{{item2.open_count}}</td>
-                                    <td><a :href="'/index/list_query?time=' + startTime +','+endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=0'"></a>{{item2.not_open_count}}</td>
+                                    <td><a :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=1'"></a>{{item2.open_count}}</td>
+                                    <td><a :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item2.game_key + '&status=0'"></a>{{item2.not_open_count}}</td>
                                     <td>{{item2.bet_amount}}</td>
                                     <td>{{item2.sum_loss}}</td>
                                     <td>{{item2.up_proportion}}</td>
