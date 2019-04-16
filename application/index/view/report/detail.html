@@ -75,30 +75,62 @@
         <br>
         <table class="linetb" border="0" cellspacing="1" cellpadding="0" width="320">
             <tbody>
-                <!-- 代理端 下级账号 自身 下级 --> 
+                <!-- 代理端 下级账号 上级 下级 自身 --> 
                 <tr v-if="user_type == 0" align="middle">
                     <td width="150" height="25" class="tb1_title">会员</td>
-                    <td width="100" class="tb1_title">代理</td>
+                    <td width="100" class="tb1_title">总代理</td>
                     <td width="100" class="tb1_title">会员</td>
                     <td width="140" class="tb1_title">代理净利</td>
                 </tr>
                 <!-- 总代理 下级账号 自身 下级 -->
                 <tr v-else-if="user_type == 1" align="middle">
-                    <td width="150" height="25" class="tb1_title">总代理</td>
+                    <td width="150" height="25" class="tb1_title">代理</td>
                     <td width="100" class="tb1_title">股东</td>
-                    <td width="100" class="tb1_title">总代理</td>
+                    <td width="100" class="tb1_title">代理</td>
                     <td width="140" class="tb1_title">总代净利</td>
                 </tr>
                 <!-- 股东 -->
                 <tr v-else-if="user_type == 2" align="middle">
                     <td width="150" height="25" class="tb1_title">总代理</td>
+                    <td width="100" class="tb1_title">管理员</td>
+                    <td width="100" class="tb1_title">总代理</td>
+                    <td width="140" class="tb1_title">股东净利</td>
+                </tr>
+                <!-- 管理员 -->
+                <tr v-else-if="user_type == 3" align="middle">
+                    <td width="150" height="25" class="tb1_title">股东</td>
+                    <!-- 无上级 -->
+                    <td width="100" class="tb1_title">无上级</td>
                     <td width="100" class="tb1_title">股东</td>
-                    <td width="100" class="tb1_title">代理</td>
-                    <td width="140" class="tb1_title">总代净利</td>
+                    <td width="140" class="tb1_title">管理员净利</td>
+                </tr>
+                <tr v-for="(item, index) in head_list">
+                    <td width="150">{{item.down_name}}</td>
+
+                    <template v-if="Number(item.up_num) < 0">
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.up_num}}</td>
+                    </template>
+                    <template v-else>
+                        <td width="100" bgcolor="#ffff00">收{{item.up_num}}</td>
+                    </template>
+
+                    <template v-if="Number(item.down_num) < 0">
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.down_num}}</td>
+                    </template>
+                    <template v-else>
+                        <td width="100" bgcolor="#ffff00">收{{item.down_num}}</td>
+                    </template>
+
+                    <template v-if="Number(item.self_num) < 0">
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.self_num}}</td>
+                    </template>
+                    <template v-else>
+                        <td width="100" bgcolor="#ffff00">收{{item.self_num}}</td>
+                    </template>
                 </tr>
             </tbody>
         </table>
-        <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
+        <!-- <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
             cellpadding="0" width="100%">
             <tbody>
                 <tr>
@@ -242,7 +274,7 @@
                 </tr>
 
             </tbody>
-        </table>
+        </table> -->
     </div>
 
 
