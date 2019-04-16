@@ -108,24 +108,24 @@
                     <td width="150" bgcolor="#fff">{{item.down_name}}</td>
 
                     <template v-if="Number(item.up_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.up_num}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.up_num)}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{item.up_num}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.up_num)}}</td>
                     </template>
 
                     <template v-if="Number(item.down_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.down_num}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.down_num)}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{item.down_num}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.down_num)}}</td>
                     </template>
 
                     <template v-if="Number(item.self_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{item.self_num}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.self_num)}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{item.self_num}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.self_num)}}</td>
                     </template>
                 </tr>
             </tbody>
@@ -235,48 +235,48 @@
                                 
                                 <tr v-for="(item2, index2) in item.list" align="right" bgcolor="#FFFFFF">
                                     <td height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_number + '&user_type=' + (user_type - 1)">{{item2.user_name}}({{item2.user_number}})</a></td>
-                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=1'">{{item2.open_count}}</a></td>
-                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=0'">{{item2.not_open_count}}</a></td>
-                                    <td>{{item2.bet_amount}}</td>
-                                    <td>{{item2.sum_loss}}</td>
-                                    <td>{{item2.up_proportion}}</td>
-                                    <td>{{item2.self_proportion}}</td>
-                                    <td>{{item2.down_proportion}}</td>
-                                    <td>{{item2.self_back}}</td>
-                                    <td>{{item2.down_back}}</td>
-                                    <td>{{item2.rebate}}</td>
+                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=1'">{{changeTwoDecimal_f(item2.open_count)}}</a></td>
+                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=0'">{{changeTwoDecimal_f(item2.not_open_count)}}</a></td>
+                                    <td>{{changeTwoDecimal_f(item2.bet_amount)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.sum_loss)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.up_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.self_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.down_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.self_back)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.down_back)}}</td>
+                                    <td>{{changeTwoDecimal_f(item2.rebate)}}</td>
 
-                                    <td v-if="Number(item2.up_profit) > 0" bgcolor="#ffff00">缴{{Math.abs(item2.up_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item2.up_profit)}}</td>
+                                    <td v-if="Number(item2.up_profit) > 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item2.up_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item2.up_profit))}}</td>
 
-                                    <td v-if="Number(item2.down_profit) > 0" bgcolor="#ffff00">付{{Math.abs(item2.down_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item2.down_profit)}}</td>
+                                    <td v-if="Number(item2.down_profit) > 0" bgcolor="#ffff00">付{{changeTwoDecimal_f(Math.abs(item2.down_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item2.down_profit))}}</td>
                                     
-                                    <td v-if="Number(item2.self_profit) > 0" bgcolor="#ffff00">输{{Math.abs(item2.self_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{Math.abs(item2.self_profit)}}</td>
+                                    <td v-if="Number(item2.self_profit) > 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item2.self_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{changeTwoDecimal_f(Math.abs(item2.self_profit))}}</td>
                                 </tr>
 
                                 <tr align="right" bgcolor="#FFFFFF">
                                     <td height="20">小记</td>
-                                    <td>{{item.total.open_count}}</td>
-                                    <td>{{item.total.not_open_count}}</td>
-                                    <td>{{item.total.bet_amount}}</td>
-                                    <td>{{item.total.sum_loss}}</td>
-                                    <td>{{item.total.up_proportion}}</td>
-                                    <td>{{item.total.self_proportion}}</td>
-                                    <td>{{item.total.down_proportion}}</td>
-                                    <td>{{item.total.self_back}}</td>
-                                    <td>{{item.total.down_back}}</td>
-                                    <td>{{item.rebate}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.open_count)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.not_open_count)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.bet_amount)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.sum_loss)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.up_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.self_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.down_proportion)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.self_back)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.total.down_back)}}</td>
+                                    <td>{{changeTwoDecimal_f(item.rebate)}}</td>
                                     
-                                    <td v-if="Number(item.total.up_profit) > 0" bgcolor="#ffff00">缴{{Math.abs(item.total.up_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item.total.up_profit)}}</td>
+                                    <td v-if="Number(item.total.up_profit) > 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
 
-                                    <td v-if="Number(item.total.down_profit) > 0" bgcolor="#ffff00">付{{Math.abs(item.total.down_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">收{{Math.abs(item.total.down_profit)}}</td>
+                                    <td v-if="Number(item.total.down_profit) > 0" bgcolor="#ffff00">付{{changeTwoDecimal_f(Math.abs(item.total.down_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.total.down_profit))}}</td>
                                     
-                                    <td v-if="Number(item.total.self_profit) > 0" bgcolor="#ffff00">输{{Math.abs(item.total.self_profit)}}</td>
-                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{Math.abs(item.total.self_profit)}}</td>
+                                    <td v-if="Number(item.total.self_profit) > 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item.total.self_profit))}}</td>
+                                    <td v-else style="color: red" bgcolor="#ffff00">赢{{changeTwoDecimal_f(Math.abs(item.total.self_profit))}}</td>
                                 </tr>
                             </tbody>
                         </table>
