@@ -818,13 +818,6 @@ class Member extends Base
 		{
 			$k3_data = ['user_proportion'=>$accountList['jlk3']['member'],'parent_proportion'=>$accountList['jlk3']['agent']];
 			Db::name('proportion_log')->where("game_key = 'jlk3' and user_id=?",[$id])->update($k3_data);
-			$sons = get_sons();
-			$sons = str_replace($id.',', '', $sons);
-			if ($sons) {
-				$where[] = ['user_id','in',explode(',', $sons)];
-				$where[] = ['game_key','=','jlk3'];
-				Db::name('proportion_log')->where($where)->update(['user_proportion'=>0,'parent_proportion'=>0]);
-			}
 		}
 		if ($accountList['ssc'] ?? '') 
 		{
@@ -833,15 +826,14 @@ class Member extends Base
 				'parent_proportion'	=>$accountList['ssc']['agent'],
 			];
 			Db::name('proportion_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
-			$sons = get_sons();
-			$sons = str_replace($id.',', '', $sons);
-			if ($sons) {
-				$where[] = ['user_id','in',explode(',', $sons)];
-				$where[] = ['game_key','=','ssc'];
-				Db::name('proportion_log')->where($where)->update(['user_proportion'=>0,'parent_proportion'=>0]);
-			}
 		}
-
+		$sons = get_sons();
+		$sons = str_replace($id.',', '', $sons);
+		var_dump($sons);die();
+		if ($sons) {
+			$where[] = ['user_id','in',explode(',', $sons)];
+			Db::name('proportion_log')->where($where)->update(['user_proportion'=>0,'parent_proportion'=>0]);
+		}
 
 
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
