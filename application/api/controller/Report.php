@@ -27,8 +27,14 @@ class Report extends Base
         $end_time       = $this->request->param('end_time',0);
         $id  
     	$data = [
-            'jlk3'=>['open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
-            'ssc'=>['open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
+            'jlk3'=>[
+                ['down_id'=>1,'down_name'=>'dwc','open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
+                ['down_id'=>1,'down_name'=>'dwc','open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
+            ]
+            'ssc'=>[
+                ['down_id'=>1,'down_name'=>'dwc','open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
+                ['down_id'=>1,'down_name'=>'dwc','open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
+            ]
             //'down_total'=>['open_count'=>1,'not_open_count'=>1,'bet_amount'=>0,'sum_loss'=>1,'up_proportion'=>1,'self_proportion'=>0,'down_proportion'=>2,'self_back'=>1,'down_back'=>20,'rebate'=>'0','up_profit'=>100,'down_profit'=>1,'self_profit'=>9999],
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
