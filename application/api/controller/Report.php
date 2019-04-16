@@ -36,6 +36,11 @@ class Report extends Base
      */
     public function head()
     {
+        $start_time     = $this->request->param('start_time',0);
+        $end_time       = $this->request->param('end_time',0);
+        $id             = $this->request->param('id',0);
+
+
         $data = [
             ['down_name'=>'dwc','up_num'=>1000,'self_num'=>1000,'down_num'=>1000];
             ['down_name'=>'hdj','up_num'=>1000,'self_num'=>1000,'down_num'=>1000];

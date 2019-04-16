@@ -30,8 +30,8 @@ class Notice extends Base
 
     public function add()
     {
-        $content   = $this->request->param('content','');
-        $id   = $this->request->param('id',0);
+        $content    = $this->request->param('content','');
+        $id         = $this->request->param('id',0);
 
         $data = [
             'content'=>$content,
