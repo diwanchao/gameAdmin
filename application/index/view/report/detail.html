@@ -104,7 +104,7 @@
                     <td width="100" class="tb1_title">股东</td>
                     <td width="140" class="tb1_title">管理员净利</td>
                 </tr>
-                <tr v-for="(item, index) in head_list">
+                <tr v-for="(item, index) in head_list" align="right">
                     <td width="150" bgcolor="#fff">{{item.down_name}}</td>
 
                     <template v-if="Number(item.up_num) < 0">
@@ -130,7 +130,7 @@
                 </tr>
             </tbody>
         </table>
-
+        <br/>
         <table v-for="(item, index) in list" style="POSITION: static; margin-top: 10px" class="watable" border="0" cellspacing="0"
             cellpadding="0" width="100%">
             <tbody>
