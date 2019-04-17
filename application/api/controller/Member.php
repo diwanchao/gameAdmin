@@ -799,16 +799,12 @@ class Member extends Base
 	{
 		$data 		= [];
 		$id 		= $this->request->param('id',0);
-		//SELECT p1.`game_key`,p1.user_proportion as member,p1.parent_proportion as agent,p2.user_proportion FROM `proportion_log` p1 LEFT JOIN  WHERE ( p1.user_id='25' )
 		$user_data 	= Db::name('proportion_log')
 					->alias('p1')
 					->field('p1.`game_key`,p1.user_proportion as member,p1.parent_proportion as agent,p2.user_proportion')
 					->leftJoin('proportion_log p2','p1.parent_id=p2.user_id AND p1.game_key=p2.game_key')
 					->where('p1.user_id=?',[$id])
 					->select();
-
-
-		//$user_data 	= Db::name('proportion_log')->field('game_key,user_proportion as member,parent_proportion as agent')->where('user_id=?',[$id])->fetchSql(1)->select();
 		if ($user_data) {
 			$data = array_column($user_data, null,'game_key');
 			foreach ($data as $key => $value) 
