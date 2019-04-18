@@ -43,15 +43,31 @@ class Report extends Base
      */
     public function head()
     {
-        $start_time     = $this->request->param('start_time',0);
-        $end_time       = $this->request->param('end_time',0);
-        $id             = $this->request->param('id',0);
+        $start_time     = $this->request->param('start_time',date('Y-m-d 00:00:00',time()));
+        $end_time       = $this->request->param('end_time',date('Y-m-d 23:59:59',time()));
+        $game_key       = $this->request->param('game_key','');
+        $user_id        = $this->request->param('id','');
+        $user_id        = $user_id ?: $this->USER_ID;
+        $user_info  = Db::name('menber')->where('id','=',$user_id)->fetchSql(0)->find();
+        $up         = $user_info['role_id']+1;
+        $down       = $user_info['role_id']-1;
+        $self       = $user_info['role_id'];
 
 
-        $data = [
-            ['down_name'=>'dwc','up_num'=>1000,'self_num'=>1000,'down_num'=>1000],
-            ['down_name'=>'hdj','up_num'=>1000,'self_num'=>1000,'down_num'=>1000],
-        ];
+        if ($user_info['role_id'] != 1) {
+            $where[] = [$self.'_id','=',$user_id];
+            $where[] = ['game_key','in',$game_key];
+
+            $data = Db::name('order')
+                ->field("SUM({$up}_earn) as up_num,SUM({$self}_earn) AS self_num,SUM({$down}_earn) AS down_num,user_name AS down_name")
+                ->leftJoin('menber'," `order`.`{$down}_id` = menber.id")
+                ->group("{$down}_id")
+                ->whereBetweenTime("time", $start_time, $end_time)
+                ->where($where)
+                ->fetchSql(0)
+                ->select();
+
+        }
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
 }
