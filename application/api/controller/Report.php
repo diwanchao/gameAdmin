@@ -66,8 +66,25 @@ class Report extends Base
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
+        }else{
+            $where[] = [$self.'_id','=',$user_id];
+            $where[] = ['game_key','in',$game_key];
 
+            $data = Db::name('order')
+                ->field("SUM({$up}_earn) as up_num,SUM({$self}_earn) AS self_num,SUM(get) AS down_num,user_name AS down_name")
+                ->leftJoin('menber'," `order`.`user_id` = menber.id")
+                ->group("user_id")
+                ->whereBetweenTime("time", $start_time, $end_time)
+                ->where($where)
+                ->fetchSql(0)
+                ->select();
         }
+        foreach ($data as $key => $value) {
+            $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : $value['up_num'];
+            $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : $value['self_num'];
+            $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : $value['down_num'];
+        }
+
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
 }
