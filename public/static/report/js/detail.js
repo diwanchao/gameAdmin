@@ -59,8 +59,8 @@ var app = new Vue({
             type: 'GET',
             data: {
                 id: this.id,
-                start_time: this.startTime,
-                end_time: this.endTime,
+                start_time: this.startTime + ' 00:00:00',
+                end_time: this.endTime + ' 23:59:59',
                 game_key: this.game_key
             },
             success: function(result){
@@ -110,8 +110,8 @@ var app = new Vue({
             type: 'POST',
             data: {
                 id: this.id,
-                start_time: this.startTime,
-                end_time: this.endTime,
+                start_time: this.startTime + ' 00:00:00',
+                end_time: this.endTime + ' 23:59:59',
                 game_key: this.game_key
             },
             success: function(result){
