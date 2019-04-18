@@ -79,6 +79,7 @@ class Report extends Base
                 ->fetchSql(0)
                 ->select();
         }
+        var_dump($data);die();
         foreach ($data as $key => $value) {
             $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
             $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
