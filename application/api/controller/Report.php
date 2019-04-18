@@ -66,6 +66,11 @@ class Report extends Base
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
+            foreach ($data as $key => $value) {
+                $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
+                $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+            }
         }else{
             $where[] = [$self.'_id','=',$user_id];
             $where[] = ['game_key','in',$game_key];
@@ -78,13 +83,13 @@ class Report extends Base
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
+            foreach ($data as $key => $value) {
+                $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
+            }
         }
         //var_dump($data);die();
-        foreach ($data as $key => $value) {
-            $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
-            $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
-            $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
-        }
+
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
     }
