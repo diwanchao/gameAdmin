@@ -80,9 +80,9 @@ class Report extends Base
                 ->select();
         }
         foreach ($data as $key => $value) {
-            $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : $value['up_num'];
-            $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : $value['self_num'];
-            $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : $value['down_num'];
+            $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+            $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
+            $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
         }
 
         return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);
