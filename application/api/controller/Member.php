@@ -39,6 +39,7 @@ class Member extends Base
 		->paginate(10,false,['var_page'=>'index'])
 		->each(function($item, $key){
     		$item['part'] = part_to_str($item['part']);
+    		$item['quick_open_quote'] = intval($item['quick_open_quote']);
     		return $item;
     	});
 
