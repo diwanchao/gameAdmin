@@ -116,6 +116,10 @@
                                 </tr>
                                 <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
+                                        <div v-if="ENV.userInfo.role_type <= 1" align="center" class="fblue12">{{item.general_name}}</div>
+                                        <div v-else align="center" class="fblue12"><a :href="'/index/general_Agent?search=' + escape(item.general_name)">{{item.general_name}}</a></div>
+                                    </td>
+                                    <td>
                                         <div align="center" class="fblue12">{{item.general_name}}</div>
                                     </td>
                                     <td>
