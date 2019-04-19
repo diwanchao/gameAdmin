@@ -21,7 +21,10 @@ class Member extends Base
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
 
+		$sons 		= get_sons($id);
+		//var_dump($sons);die();
 
+		$where[] = ['a.id','in',explode(',', rtrim($sons, ','))];
 		$where[] = ['a.role_id','=',0];
 		$where[] = ['a.status','=',$status];
 		if ($role_id<2) 
@@ -29,6 +32,8 @@ class Member extends Base
 
 		if ($user_name) 
 			$where[] = ['a.user_name','=',$user_name];	
+
+
 
 		$user_data = Db::table('menber')
 		->alias('a')
