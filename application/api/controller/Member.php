@@ -20,9 +20,7 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
-
 		$sons 		= get_sons($id);
-		//var_dump($sons);die();
 
 		$where[] = ['a.id','in',explode(',', rtrim($sons, ','))];
 		$where[] = ['a.role_id','=',0];
@@ -32,8 +30,6 @@ class Member extends Base
 
 		if ($user_name) 
 			$where[] = ['a.user_name','=',$user_name];	
-
-
 
 		$user_data = Db::table('menber')
 		->alias('a')
@@ -65,7 +61,9 @@ class Member extends Base
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
 
+		$sons 		= get_sons($id);
 
+		$where[] = ['m1.id','in',explode(',', rtrim($sons, ','))];
 		$where[] = ['m1.role_id','=',2];
 		$where[] = ['m1.status','=',$status];
 		if ($role_id<4) 
@@ -145,8 +143,9 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
+		$sons 		= get_sons($id);
 
-
+		$where[] = ['m1.id','in',explode(',', rtrim($sons, ','))];
 		$where[] = ['m1.role_id','=',1];
 		$where[] = ['m1.status','=',$status];
 		if ($role_id<3) 
