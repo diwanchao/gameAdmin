@@ -84,6 +84,7 @@ var app = new Vue({
                     for(var j in result[k]){
                         total.open_count += Number(result[k][j].open_count);
                         total.not_open_count += Number(result[k][j].not_open_count);
+                        total.bet_amount += Number(result[k][j].bet_amount);
                         total.sum_loss += Number(result[k][j].sum_loss);
                         total.up_proportion += Number(result[k][j].up_proportion);
                         total.self_proportion += Number(result[k][j].self_proportion);
