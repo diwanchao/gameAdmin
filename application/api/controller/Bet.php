@@ -36,7 +36,7 @@ class Bet extends Base
         if ($game_key) 
             $where[] = ['o.game_key','=',$game_key];
         if ($user_num) 
-            $where[] = ['o.user_id','=',$user_num];
+            $where[] = ['m.user_number','=',$user_num];
         if ($status) 
             $where[] = ['o.status','=',$status];
 
@@ -55,7 +55,7 @@ class Bet extends Base
             ->value('count(1)');
             $res    = Db::name('order')
                 ->alias('o')
-                ->field('user_name,user_number as user_num,o.user_id,o.time,o.game_key,o. NO AS number,o.part,o.number AS game_num,play_name,content,odds,game_result,money,handsel,break')
+                ->field('user_name,user_number as user_num,o.user_id,o.time,o.game_key,o.NO AS number,o.part,o.number AS game_num,play_name,content,odds,game_result,money,handsel,break,get as amount')
                 ->leftJoin('menber m','o.user_id = m.id')
                 ->whereBetweenTime("o.time", $time_start, $time_end)
                 ->where($where)
@@ -65,7 +65,6 @@ class Bet extends Base
                 foreach ($res as $key => $value) 
                 {
                     $res[$key]['game_type'] = $game_type[$value['game_key']];
-                    $res[$key]['amount']    = $value['money'] - $value['break'] - $value['handsel'];
                     $money      += $value['money'] ?? 0;
                     $handsel    += $value['handsel'] ?? 0;
                     $break      += $value['break'] ?? 0;
