@@ -108,24 +108,24 @@
                     <td width="150" bgcolor="#fff">{{item.down_name}}</td>
 
                     <template v-if="Number(item.up_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.up_num)}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(Math.abs(item.up_num))}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.up_num)}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.up_num))}}</td>
                     </template>
 
                     <template v-if="Number(item.down_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.down_num)}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(Math.abs(item.down_num))}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.down_num)}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.down_num))}}</td>
                     </template>
 
                     <template v-if="Number(item.self_num) < 0">
-                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(item.self_num)}}</td>
+                        <td width="100" bgcolor="#ffff00" style="color: red">缴{{changeTwoDecimal_f(Math.abs(item.self_num))}}</td>
                     </template>
                     <template v-else>
-                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(item.self_num)}}</td>
+                        <td width="100" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.self_num))}}</td>
                     </template>
                 </tr>
             </tbody>
