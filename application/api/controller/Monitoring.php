@@ -62,7 +62,7 @@ class Monitoring extends Base
                        $return_data = array_column($data,'num','play_key');
                   break;
                 case 'zxs':
-                    $return_data = Db::table('order')->field('play_key as game_type,part,content,money')->where('play_name','like','组选三%')->where('part','=',$levelValue)->where('number','=',$periods)->fetchSql(false)->select();
+                    $return_data = Db::table('order')->field('play_key as game_type,part,content,money')->where('play_name','like','组选三%')->where('part','=',$levelValue)->where('number','=',$periods)->fetchSql(0)->select();
                     break;
                 case 'zxl':
                     $return_data = Db::table('order')->field('play_key as game_type,part,content,money')->where('play_name','like','组选六%')->where('part','=',$levelValue)->where('number','=',$periods)->select();
