@@ -35,13 +35,13 @@
                     <td align="center">管理员占成</td>
                     <td>
                         <select v-model="accountList.ssc.agent">
-                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                            <option v-for="(item, index) in 101" :value="index">{{index}}%</option>
                         </select>
                     </td>
                     <td align="right">股东占成</td>
                     <td>
                         <select v-model="accountList.ssc.member">
-                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                            <option v-for="(item, index) in 101" :value="index">{{index}}%</option>
                         </select>
                     </td>
                 </tr>
@@ -50,13 +50,13 @@
                     <td align="center">管理员占成</td>
                     <td>
                         <select v-model="accountList.jlk3.agent">
-                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                            <option v-for="(item, index) in 101" :value="index">{{index}}%</option>
                         </select>
                     </td>
                     <td align="right">股东占成</td>
                     <td>
                         <select v-model="accountList.jlk3.member">
-                            <option v-for="(item, index) in ((100 / 2) + 1)" :value="index * 2">{{index * 2}}%</option>
+                            <option v-for="(item, index) in 101" :value="index">{{index}}%</option>
                         </select>
                     </td>
                 </tr>
