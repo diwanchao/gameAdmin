@@ -825,10 +825,13 @@ class Member extends Base
 	 */
 	public function getBreakList()
 	{
+		$id 		= $this->request->param('id',0);
+
 		$data 		= ['jlk3'=>['agent'=>'100','member'=>'0'],'ssc'=>['agent'=>'100','member'=>'0']];
 		$id 		= $this->request->param('id',0);
 		$user_data 	= Db::name('break_log')
 					->field('user_proportion as member,parent_proportion as agent,game_key')
+					->where('user_id=?',[$id])
 					->select();
 		if ($user_data) 
 		{
@@ -888,20 +891,37 @@ class Member extends Base
 		$id 			= $this->request->param('id',0);
 		$accountList 	= $this->request->param('accountList/a','');
 		if (!$accountList) 
-			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);	
-		if ($accountList['jlk3'] ?? '') 
+			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);
+		$break_data 	= Db::name('break_log')
+						->field('user_proportion as member,parent_proportion as agent,game_key')
+						->where('user_id=?',[$id])
+						->select();
+		if ($break_data) 
 		{
-			$k3_data 	= ['user_proportion'=>$accountList['jlk3']['member'],'parent_proportion'=>$accountList['jlk3']['agent']];
-			$res 		= Db::name('break_log')->where("game_key = 'jlk3' and user_id=?",[$id])->fetchSql(0)->update($k3_data);
+			if ($accountList['jlk3'] ?? '') 
+			{
+				$k3_data 	= ['user_proportion'=>$accountList['jlk3']['member'],'parent_proportion'=>$accountList['jlk3']['agent']];
+				$res 		= Db::name('break_log')->where("game_key = 'jlk3' and user_id=?",[$id])->fetchSql(0)->update($k3_data);
+			}
+			if ($accountList['ssc'] ?? '') 
+			{
+				$ssc_data = [
+					'user_proportion'	=>$accountList['ssc']['member'],
+					'parent_proportion'	=>$accountList['ssc']['agent'],
+				];
+				$res = Db::name('break_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
+			}
+		}else{
+			//var_dump($accountList);die();
+			foreach ($accountList as $key => $value) {
+				$insert_data[] = ['user_id'=>$id,'user_proportion'=>$value['member'],'parent_proportion'=>$value['agent'],'game_key'=>$key,'parent_id'=>$this->USER_ID];
+			}
+			//var_dump($insert_data);die();
+			Db::name('break_log')->insertAll($insert_data);
 		}
-		if ($accountList['ssc'] ?? '') 
-		{
-			$ssc_data = [
-				'user_proportion'	=>$accountList['ssc']['member'],
-				'parent_proportion'	=>$accountList['ssc']['agent'],
-			];
-			$res = Db::name('break_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
-		}
+
+
+
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
 
