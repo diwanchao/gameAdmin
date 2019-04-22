@@ -74,6 +74,7 @@ var app = new Vue({
                         up_proportion: 0,
                         self_proportion: 0,
                         down_proportion: 0,
+                        up_back: 0,
                         self_back: 0,
                         down_back: 0,
                         rebate: 0,
@@ -89,6 +90,7 @@ var app = new Vue({
                         total.up_proportion += Number(result[k][j].up_proportion);
                         total.self_proportion += Number(result[k][j].self_proportion);
                         total.down_proportion += Number(result[k][j].down_proportion);
+                        total.up_back += Number(result[k][j].up_back);
                         total.self_back += Number(result[k][j].self_back);
                         total.down_back += Number(result[k][j].down_back);
                         total.rebate += Number(result[k][j].rebate);
