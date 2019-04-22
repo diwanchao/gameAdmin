@@ -28,7 +28,7 @@ var app = new Vue({
             }
 
             utils.getAjax({
-                url: '/api/Member/setAccount',
+                url: '/api/Member/setBreak',
                 type: 'POST',
                 loading: true,
                 data: data,
@@ -44,7 +44,7 @@ var app = new Vue({
     mounted() {
         var _this = this;
         utils.getAjax({
-            url: '/api/Member/getAccountList',
+            url: '/api/Member/getBreakList',
             type: 'GET',
             data: {id: this.id},
             success: function(result){
