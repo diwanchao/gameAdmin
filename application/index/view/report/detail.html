@@ -236,8 +236,8 @@
                                 <tr v-for="(item2, index2) in item.list" align="right" bgcolor="#FFFFFF">
                                     <td v-if="user_type <= 0" height="20">{{item2.user_name}}({{item2.user_number}})</td>
                                     <td v-else height="20"><a style="color: blue" :href="'/index/report/detail?time=' + startTime +','+endTime +'&game_list='+ game_key.toString() +'&id=' + item2.user_id + '&user_type=' + (user_type - 1)">{{item2.user_name}}({{item2.user_number}})</a></td>
-                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=1'">{{item2.open_count}}</a></td>
-                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + item2.user_name + '&game_key=' + item.game_key + '&status=0'">{{item2.not_open_count}}</a></td>
+                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + escape(item2.user_name) + '&game_key=' + item.game_key + '&status=1'">{{item2.open_count}}</a></td>
+                                    <td><a target="_blank" :href="'/index/list_query?time=' + startTime +','+ endTime +'&user_name=' + escape(item2.user_name) + '&game_key=' + item.game_key + '&status=0'">{{item2.not_open_count}}</a></td>
                                     <td>{{changeTwoDecimal_f(item2.bet_amount)}}</td>
                                     <td>{{changeTwoDecimal_f(item2.sum_loss)}}</td>
                                     <td>{{changeTwoDecimal_f(item2.up_proportion)}}</td>
