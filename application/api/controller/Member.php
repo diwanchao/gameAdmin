@@ -818,9 +818,26 @@ class Member extends Base
 					$data[$key]['agent'] = $value['user_proportion'];
 			}
 		}
-
 		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
 	}
+	/**
+	 * 获取股东反水占比
+	 */
+	public function getBreakList()
+	{
+		$data 		= ['jlk3'=>['agent'=>'100','member'=>'0'],'ssc'=>['agent'=>'100','member'=>'0']];
+		$id 		= $this->request->param('id',0);
+		$user_data 	= Db::name('break_log')
+					->field('user_proportion as member,parent_proportion as agent,game_key')
+					->select();
+		if ($user_data) 
+		{
+			$data = array_column($user_data, null,'game_key');
+		}
+		return json(['msg' => 'succeed','code' => 200, 'data' =>$data]);	
+	}
+
+
 	/**
 	 * 保存代理占比
 	 */
