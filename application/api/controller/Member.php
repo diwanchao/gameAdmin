@@ -878,11 +878,33 @@ class Member extends Base
 				}
 			}
 		}
-
-
-
 		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
 	}
+	/**
+	 * 保存股东反水占比
+	 */
+	public function setBreak()
+	{
+		$id 			= $this->request->param('id',0);
+		$accountList 	= $this->request->param('accountList/a','');
+		if (!$accountList) 
+			return json(['msg' => '修改失败,数据为空','code' => 201, 'data' =>[]]);	
+		if ($accountList['jlk3'] ?? '') 
+		{
+			$k3_data 	= ['user_proportion'=>$accountList['jlk3']['member'],'parent_proportion'=>$accountList['jlk3']['agent']];
+			$res 		= Db::name('break_log')->where("game_key = 'jlk3' and user_id=?",[$id])->fetchSql(0)->update($k3_data);
+		}
+		if ($accountList['ssc'] ?? '') 
+		{
+			$ssc_data = [
+				'user_proportion'	=>$accountList['ssc']['member'],
+				'parent_proportion'	=>$accountList['ssc']['agent'],
+			];
+			$res = Db::name('break_log')->where("game_key = 'ssc' and user_id=?",[$id])->update($ssc_data);
+		}
+		return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);	
+	}
+
 	/**
 	 * 获取代理游戏信息
 	 */
