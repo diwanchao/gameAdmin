@@ -23,6 +23,9 @@ class Shareholder extends Base
     }     
     public function operationLog(){
         return $this->fetch('gudong_management/operation_log');
+    }     
+    public function breakInfo(){
+        return $this->fetch('gudong_management/break_info');
     } 
 
 
