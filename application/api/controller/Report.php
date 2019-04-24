@@ -55,9 +55,17 @@ class Report extends Base
                 $value['self_back']         = $value['break']*$value['parent_proportion']*0.01;
                 $value['down_back']         = $value['break']*$value['user_proportion']*0.01;
                 $value['rebate']            = 0;
-                $value['up_profit']         = $value['up_proportion'] + $value['down_back'];
-                $value['down_profit']       = $value['sum_loss'] + $value['down_back'];
-                $value['self_profit']       = $value['down_proportion'] - $value['up_proportion'];
+                if ($value['sum_loss'] > 0) 
+                {
+                    $value['up_profit']         = 0;
+                    $value['down_profit']       = $value['self_proportion'] - $value['self_back'];
+                    $value['self_profit']       = $value['down_profit'];
+                }else{
+                    $value['up_profit']         = 0;
+                    $value['down_profit']       = $value['self_proportion'] + $value['self_back'];
+                    $value['self_profit']       = $value['down_profit'];
+                }
+
                 $data[$value['game_key']][] = $value;
             }
         }elseif ($user_info['role_id'] == 3) {
@@ -81,9 +89,9 @@ class Report extends Base
                 $value['up_back']           = $value['break']*$value['parent_proportion']*0.01;
                 $value['down_back']         = 0;
                 $value['rebate']            = 0;
-                $value['up_profit']         = $value['up_proportion'] + $value['down_back'];
+                $value['up_profit']         = $value['up_proportion'] + $value['self_back'];
                 $value['down_profit']       = $value['sum_loss'] + $value['down_back'];
-                $value['self_profit']       = $value['down_proportion'] - $value['up_proportion'];
+                $value['self_profit']       = $value['up_profit'] - $value['down_profit'];
                 $data[$value['game_key']][] = $value;   
             }
         }elseif ($user_info['role_id'] == 2) {
@@ -106,9 +114,9 @@ class Report extends Base
                 $value['up_back']           = $value['break'];
                 $value['down_back']         = 0;
                 $value['rebate']            = 0;
-                $value['up_profit']         = $value['up_proportion'] + $value['down_back'];
+                $value['up_profit']         = $value['up_proportion'] + $value['self_back'];
                 $value['down_profit']       = $value['sum_loss'] + $value['down_back'];
-                $value['self_profit']       = $value['down_proportion'] - $value['up_proportion'];
+                $value['self_profit']       = $value['up_profit'] - $value['down_profit'];
                 $data[$value['game_key']][] = $value;   
             }
         }elseif ($user_info['role_id'] == 1) {
@@ -131,9 +139,9 @@ class Report extends Base
                 $value['self_back']         = 0;
                 $value['down_back']         = 0;
                 $value['rebate']            = 0;
-                $value['up_profit']         = $value['up_proportion'] + $value['down_back'];
+                $value['up_profit']         = $value['up_proportion'] + $value['self_back'];
                 $value['down_profit']       = $value['sum_loss'] + $value['down_back'];
-                $value['self_profit']       = $value['down_proportion'] - $value['up_proportion'];
+                $value['self_profit']       = $value['up_profit'] - $value['down_profit'];
                 $data[$value['game_key']][] = $value;
             }
         }/*else{
