@@ -193,7 +193,7 @@ class Report extends Base
             $where[] = ['game_key','in',$game_key];
 
             $data = Db::name('order')
-                ->field("SUM(2_earn+3_earn+4_earn) as up_num,SUM({$self}_earn) AS self_num,SUM(get) AS down_num,user_name AS down_name")
+                ->field("SUM(2_earn+3_earn+4_earn) as up_num,SUM(get) AS down_num,user_name AS down_name")
                 ->leftJoin('menber'," `order`.`user_id` = menber.id")
                 ->group("user_id")
                 ->whereBetweenTime("time", $start_time, $end_time)
@@ -201,7 +201,8 @@ class Report extends Base
                 ->fetchSql(0)
                 ->select();
             foreach ($data as $key => $value) {
-                $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $data[$key]['up_num']   = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $value['self_num']      = $value['up_num'] - $value['down_num'];
                 $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
             }
 
@@ -211,7 +212,7 @@ class Report extends Base
             $where[] = ['game_key','in',$game_key];
 
             $data = Db::name('order')
-                ->field("SUM(3_earn+4_earn) as up_num,SUM({$self}_earn) AS self_num,SUM(1_earn) AS down_num,user_name AS down_name")
+                ->field("SUM(3_earn+4_earn) as up_num,SUM(get) AS down_num,user_name AS down_name")
                 ->leftJoin('menber'," `order`.`{$down}_id` = menber.id")
                 ->group("{$down}_id")
                 ->whereBetweenTime("time", $start_time, $end_time)
@@ -219,45 +220,94 @@ class Report extends Base
                 ->fetchSql(0)
                 ->select();
             foreach ($data as $key => $value) {
-                $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $data[$key]['up_num']   = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $value['self_num']      = $value['up_num'] - $value['down_num'];
                 $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
                 $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
             }
-        }elseif ($user_info['role_id'] == 3) 
-        {
-            $where[] = ['3_id','=',$user_id];
-            $where[] = ['game_key','in',$game_key];
+        }elseif ($user_info['role_id'] == 3) {
+            $item   = [];
 
-            $data = Db::name('order')
-                ->field("SUM(4_earn) as up_num,SUM({$self}_earn) AS self_num,SUM(1_earn+2_earn) AS down_num,user_name AS down_name")
+            $where[] = ['3_id','=',$user_id];
+            $where[] = ["order.game_key",'in',$game_key];
+
+            $res = Db::name('order')
+                ->field("SUM(break) AS break,IFNULL(user_proportion,0) AS user_proportion,IFNULL(parent_proportion,100) AS parent_proportion,SUM(4_earn) as up_num,SUM(get) AS down_num,user_name AS down_name")
                 ->leftJoin('menber'," `order`.`{$down}_id` = menber.id")
-                ->group("{$down}_id")
+                ->leftJoin('break_log',"`order`.`3_id` = break_log.user_id AND `order`.game_key = break_log.game_key")
+                ->group("{$down}_id,`order`.`game_key`")
                 ->whereBetweenTime("time", $start_time, $end_time)
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
-            foreach ($data as $key => $value) {
-                $data[$key]['up_num'] = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
-                $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
-                $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+
+            foreach ($res as  $value) {
+                $self_back         = $value['break']*$value['user_proportion']*0.01;
+                $up_back           = $value['break']*$value['parent_proportion']*0.01;
+                $item[$value['down_name']]['up_num']    = $item[$value['down_name']]['up_num'] ?? 0;
+                $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
+                $item[$value['down_name']]['self_num']  = $item[$value['down_name']]['self_num'] ?? 0;
+                $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
+
+                $item[$value['down_name']]['up_num']    +=  $value['up_num'] + $self_back;
+                $item[$value['down_name']]['down_num']  +=  $value['down_num'];
+                $item[$value['down_name']]['self_num']  +=  $value['up_num'] + $self_back - $value['down_num'];
             }
+
+            foreach ($item as $key => $value) {
+                $value['up_num']   = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                $value['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
+                $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+                $data[] = $value;
+            }
+
+/*            $res = Db::name('order')
+                ->field("SUM(break) AS break,IFNULL(user_proportion,0) AS user_proportion,IFNULL(parent_proportion,100) AS parent_proportion,user_name,{$down}_id as user_id,user_number,user_name AS down_name,order.game_key,IF(`order`.`status`=1,COUNT(1),0) AS open_count,IF(`order`.`status`=0,COUNT(1),0) AS not_open_count,SUM(money) AS bet_amount,SUM(get) AS sum_loss,SUM({$self}_earn) AS self_proportion,SUM(2_earn+1_earn) AS down_proportion,SUM({$up}_earn) as up_proportion")
+                ->leftJoin('menber',"`order`.`{$down}_id`=menber.id")
+                ->where($where)
+                ->whereBetweenTime("time", $start_time, $end_time)
+                ->leftJoin('break_log',"`order`.`3_id` = break_log.user_id AND `order`.game_key = break_log.game_key")
+                ->group("{$down}_id,`order`.`game_key`")
+                ->fetchSql(0)
+                ->select();*/
+
         }elseif($user_info['role_id'] == 4) {
             $where[] = [$self.'_id','=',$user_id];
-            $where[] = ['game_key','in',$game_key];
+            $where[] = ["order.game_key",'in',$game_key];
 
-            $data = Db::name('order')
-                ->field("SUM({$self}_earn) AS self_num,SUM(1_earn+2_earn+3_earn) AS down_num,user_name AS down_name")
+            $res = Db::name('order')
+                ->field("SUM(get) as get,SUM(break) AS break,IFNULL(parent_proportion,100) AS parent_proportion,SUM({$self}_earn) AS self_num,user_name AS down_name")
                 ->leftJoin('menber'," `order`.`{$down}_id` = menber.id")
-                ->group("{$down}_id")
+                ->leftJoin('break_log',"`order`.`3_id` = break_log.user_id AND `order`.game_key = break_log.game_key")
+                ->group("{$down}_id,`order`.`game_key`")
                 ->whereBetweenTime("time", $start_time, $end_time)
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
-            foreach ($data as $key => $value) {
+                //echo $data;die();
+
+            foreach ($res as  $value) {
+                $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
+                $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
+                if ($value['get'] > 0) 
+                {
+                    $item[$value['down_name']]['down_num']  +=  $value['self_num'] - ($value['break']*$value['parent_proportion']*0.01);
+                }else{
+                    $item[$value['down_name']]['down_num']  +=  $value['self_num'] + ($value['break']*$value['parent_proportion']*0.01);
+                }
+            }
+            foreach ($item as $key => $value) {
+                $value['up_num']   = 0;
+                $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+                $value['self_num'] = $value['down_num'];
+                $data[] = $value;
+            }
+
+/*            foreach ($data as $key => $value) {
                 $data[$key]['up_num']   = 0;
                 $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
                 $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
-            }
+            }*/
 
         }/*else{
             $where[] = [$self.'_id','=',$user_id];
