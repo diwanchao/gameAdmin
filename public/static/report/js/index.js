@@ -3,8 +3,8 @@ var app = new Vue({
     el: '#main',
     data: {
         selectBtn: 'select_all', //select_un_all
-        startTime: '',
-        endTime: '',
+        startTime: utils.paseDate(),
+        endTime: utils.paseDate(),
         game: [
             {game_name: '各省快3', game_key: 'jlk3', select: true},
             {game_name: '各省时时彩', game_key: 'ssc', select: true}

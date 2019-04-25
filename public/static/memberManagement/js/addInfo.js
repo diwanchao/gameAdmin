@@ -15,7 +15,7 @@ var app = new Vue({
         pwd: '', // 密码
         confirm_pwd: '', // 确认密码
         levelValue: {},
-        quick: '', // 设置创建人应持有的额度（从当前登录人所持有的额度里扣除）
+        quick: 0, // 设置创建人应持有的额度（从当前登录人所持有的额度里扣除）
         usable_quick: 1, // 当前登录人（代理）所持有的额度
         game_list: [],
     },
