@@ -225,9 +225,9 @@ class Report extends Base
                 $data[$key]['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
                 $data[$key]['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
             }
-        }elseif ($user_info['role_id'] == 3) {
-            $item   = [];
 
+        }elseif ($user_info['role_id'] == 3) 
+        {
             $where[] = ['3_id','=',$user_id];
             $where[] = ["order.game_key",'in',$game_key];
 
@@ -240,25 +240,27 @@ class Report extends Base
                 ->where($where)
                 ->fetchSql(0)
                 ->select();
+            if ($res) 
+            {
+                foreach ($res as  $value) {
+                    $self_back         = $value['break']*$value['user_proportion']*0.01;
+                    $up_back           = $value['break']*$value['parent_proportion']*0.01;
+                    $item[$value['down_name']]['up_num']    = $item[$value['down_name']]['up_num'] ?? 0;
+                    $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
+                    $item[$value['down_name']]['self_num']  = $item[$value['down_name']]['self_num'] ?? 0;
+                    $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
 
-            foreach ($res as  $value) {
-                $self_back         = $value['break']*$value['user_proportion']*0.01;
-                $up_back           = $value['break']*$value['parent_proportion']*0.01;
-                $item[$value['down_name']]['up_num']    = $item[$value['down_name']]['up_num'] ?? 0;
-                $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
-                $item[$value['down_name']]['self_num']  = $item[$value['down_name']]['self_num'] ?? 0;
-                $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
+                    $item[$value['down_name']]['up_num']    +=  $value['up_num'] + $self_back;
+                    $item[$value['down_name']]['down_num']  +=  $value['down_num'];
+                    $item[$value['down_name']]['self_num']  +=  $value['up_num'] + $self_back - $value['down_num'];
+                }
 
-                $item[$value['down_name']]['up_num']    +=  $value['up_num'] + $self_back;
-                $item[$value['down_name']]['down_num']  +=  $value['down_num'];
-                $item[$value['down_name']]['self_num']  +=  $value['up_num'] + $self_back - $value['down_num'];
-            }
-
-            foreach ($item as $key => $value) {
-                $value['up_num']   = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
-                $value['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
-                $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
-                $data[] = $value;
+                foreach ($item as $key => $value) {
+                    $value['up_num']   = $value['up_num'] > 0  ? -1*$value['up_num'] : abs($value['up_num']);
+                    $value['self_num'] = $value['self_num'] > 0  ? -1*$value['self_num'] : abs($value['self_num']);
+                    $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+                    $data[] = $value;
+                }
             }
 
 /*            $res = Db::name('order')
@@ -285,23 +287,26 @@ class Report extends Base
                 ->fetchSql(0)
                 ->select();
                 //echo $data;die();
-
-            foreach ($res as  $value) {
-                $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
-                $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
-                if ($value['get'] > 0) 
-                {
-                    $item[$value['down_name']]['down_num']  +=  $value['self_num'] - ($value['break']*$value['parent_proportion']*0.01);
-                }else{
-                    $item[$value['down_name']]['down_num']  +=  $value['self_num'] + ($value['break']*$value['parent_proportion']*0.01);
+            if ($res) 
+            {
+                foreach ($res as  $value) {
+                    $item[$value['down_name']]['down_num']  = $item[$value['down_name']]['down_num'] ?? 0;
+                    $item[$value['down_name']]['down_name'] = $item[$value['down_name']]['down_name'] ?? $value['down_name'];
+                    if ($value['get'] > 0) 
+                    {
+                        $item[$value['down_name']]['down_num']  +=  $value['self_num'] - ($value['break']*$value['parent_proportion']*0.01);
+                    }else{
+                        $item[$value['down_name']]['down_num']  +=  $value['self_num'] + ($value['break']*$value['parent_proportion']*0.01);
+                    }
+                }
+                foreach ($item as $key => $value) {
+                    $value['up_num']   = 0;
+                    $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
+                    $value['self_num'] = $value['down_num'];
+                    $data[] = $value;
                 }
             }
-            foreach ($item as $key => $value) {
-                $value['up_num']   = 0;
-                $value['down_num'] = $value['down_num'] > 0  ? -1*$value['down_num'] : abs($value['down_num']);
-                $value['self_num'] = $value['down_num'];
-                $data[] = $value;
-            }
+
 
 /*            foreach ($data as $key => $value) {
                 $data[$key]['up_num']   = 0;
