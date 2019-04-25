@@ -252,13 +252,13 @@
                                     <td>{{changeTwoDecimal_f(item2.down_back)}}</td>
                                     <td>{{changeTwoDecimal_f(item2.rebate)}}</td>
 
-                                    <td v-if="Number(item2.up_profit) > 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item2.up_profit))}}</td>
+                                    <td v-if="Number(item2.up_profit) < 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item2.up_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item2.up_profit))}}</td>
 
                                     <td v-if="Number(item2.down_profit) > 0" bgcolor="#ffff00">付{{changeTwoDecimal_f(Math.abs(item2.down_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item2.down_profit))}}</td>
                                     
-                                    <td v-if="Number(item2.self_profit) > 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item2.self_profit))}}</td>
+                                    <td v-if="Number(item2.self_profit) < 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item2.self_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">赢{{changeTwoDecimal_f(Math.abs(item2.self_profit))}}</td>
                                 </tr>
 
@@ -276,13 +276,13 @@
                                     <td>{{changeTwoDecimal_f(item.total.down_back)}}</td>
                                     <td>{{changeTwoDecimal_f(item.total.rebate)}}</td>
                                     
-                                    <td v-if="Number(item.total.up_profit) > 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
+                                    <td v-if="Number(item.total.up_profit) < 0" bgcolor="#ffff00">缴{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.total.up_profit))}}</td>
 
                                     <td v-if="Number(item.total.down_profit) > 0" bgcolor="#ffff00">付{{changeTwoDecimal_f(Math.abs(item.total.down_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">收{{changeTwoDecimal_f(Math.abs(item.total.down_profit))}}</td>
                                     
-                                    <td v-if="Number(item.total.self_profit) > 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item.total.self_profit))}}</td>
+                                    <td v-if="Number(item.total.self_profit) < 0" bgcolor="#ffff00">输{{changeTwoDecimal_f(Math.abs(item.total.self_profit))}}</td>
                                     <td v-else style="color: red" bgcolor="#ffff00">赢{{changeTwoDecimal_f(Math.abs(item.total.self_profit))}}</td>
                                 </tr>
                             </tbody>
