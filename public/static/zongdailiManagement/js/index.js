@@ -25,7 +25,8 @@ var app = new Vue({
                 index: this.search.index,
                 status: this.search.state,
                 sort: this.search.sort,
-                user_name: this.search.user_name
+                user_name: this.search.user_name,
+                general_search: this.search.general_search
             }
 
             utils.getAjax({
