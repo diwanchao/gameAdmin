@@ -47,6 +47,8 @@
                                                                         </select>
                                                                         用户名：<input type="text" v-model="search.user_name" class="input">
                                                                         <input type="button" value="查询" @click="init">
+                                                                        所属上级：<input type="text" v-model="search.general_search" class="input">
+                                                                        <input type="button" value="查询" @click="init">
                                                                         总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
@@ -119,7 +121,7 @@
                                         <div align="center" class="fblue12">{{item.general_name}}</div>
                                     </td>
                                     <td>
-                                        <div align="center" class="fblue12"><a :href="'/index/general_Agent?search=' + escape(item.user_name)">{{item.user_number}}</a></div>
+                                        <div align="center" class="fblue12"><a :href="'/index/general_Agent?general_search=' + escape(item.user_name)">{{item.user_number}}</a></div>
                                     </td>
                                     <td>
                                         <!-- <div align="center"><a :href="'/index/member_management?search=' + escape(item.user_name)">{{item.user_name}}</a></div> -->
