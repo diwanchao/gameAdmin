@@ -63,6 +63,8 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
+		$general_name 	= $this->request->param('general_name','');
+
 
 		$sons 		= get_sons($id);
 
@@ -74,6 +76,8 @@ class Member extends Base
 
 		if ($user_name) 
 			$where[] = ['m1.user_name','=',$user_name];	
+		if ($general_name) 
+			$where[] = ['m2.user_name','=',$general_name];
 		$subsql = Db::name('menber')
 		->field('COUNT(1) AS count_user,parent_id')
 		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 2')
@@ -108,12 +112,15 @@ class Member extends Base
 		$status 	= $this->request->param('status',1);
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
+		$general_name 	= $this->request->param('general_name','');
+
 
 		$where[] = ['m1.role_id','=',3];
 		$where[] = ['m1.status','=',$status];
 		if ($user_name) 
 			$where[] = ['m1.user_name','=',$user_name];
-
+		if ($general_name) 
+			$where[] = ['m2.user_name','=',$general_name];
 		$subsql = Db::name('menber')
 		->field('COUNT(1) AS count_user,parent_id')
 		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 3')
@@ -146,6 +153,8 @@ class Member extends Base
 		$user_name 	= $this->request->param('user_name','');
 		$order 		= $this->request->param('sort','create_time');
 		$id 		= $this->request->param('id',$this->USER_ID);
+		$general_name 	= $this->request->param('general_name','');
+
 		$sons 		= get_sons($id);
 
 		$where[] = ['m1.id','in',explode(',', rtrim($sons, ','))];
@@ -156,6 +165,8 @@ class Member extends Base
 
 		if ($user_name) 
 			$where[] = ['m1.user_name','=',$user_name];	
+		if ($general_name) 
+			$where[] = ['m2.user_name','=',$general_name];
 		$subsql = Db::name('menber')
 		->field('COUNT(1) AS count_user,parent_id')
 		->where('parent_id','in','SELECT id FROM `menber` WHERE role_id = 1')
