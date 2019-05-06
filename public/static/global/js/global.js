@@ -121,7 +121,7 @@ var utils = {
 	getURL: function (search, name) {
 		var reg = new RegExp("[?&]" + name + "=([^&]*)(&|$)", "i");
 		var r = search.match(reg);
-		if (r != null && r[1] != 'null') return unescape(r[1]);
+		if (r != null && r[1] != 'null' && r[1] != 'undefined') return unescape(r[1]);
 		return null;
 	},
 
