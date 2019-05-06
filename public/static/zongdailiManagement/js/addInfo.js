@@ -124,7 +124,7 @@ var d = {
 utils.getAjax({
     url: '/api/Member/getProportion',
     type: 'GET',
-    data: {type: 0, parent_id: parent_id},
+    data: {type: 0, parent_id: parent_id || ''},
     success: function(result){
         for(var k in result) {
             if(result.hasOwnProperty(k)){
