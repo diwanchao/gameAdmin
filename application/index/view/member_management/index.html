@@ -120,7 +120,7 @@
                                 <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
                                         <div v-if="ENV.userInfo.role_type <= 0" align="center" class="fblue12">{{item.agent_name}}</div>
-                                        <div v-else align="center" class="fblue12"><a :href="'/index/agent_management?search=' + escape(item.agent_name) + '&id=' + item.agent_id">{{item.agent_name}}</a></div>
+                                        <div v-else align="center" class="fblue12"><a :href="'/index/agent_management?search=' + escape(item.agent_name) + '&id=' + item.parent_id">{{item.agent_name}}</a></div>
                                     </td>
                                     <td>
                                         <div align="center">{{item.user_number}}</div>
