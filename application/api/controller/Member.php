@@ -36,7 +36,7 @@ class Member extends Base
 
 		$user_data = Db::table('menber')
 		->alias('a')
-		->field('b.parent_id as grandparent_id,a.parent_id,a.id,b.user_name AS agent_name,c.user_num as grandparent_name, a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
+		->field('b.parent_id as grandparent_id,a.parent_id,a.id,b.user_name AS agent_name,c.user_name as grandparent_name, a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
 		->leftJoin('menber b','a.parent_id=b.id')
 		->leftJoin('menber c','b.parent_id=c.id')
 		->where($where)
