@@ -36,7 +36,7 @@ class Member extends Base
 
 		$user_data = Db::table('menber')
 		->alias('a')
-		->field('a.parent_id,a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
+		->field('b.parent_id as grandparent_id,a.parent_id,a.id,b.user_name AS agent_name,a.user_name,a.user_number,a.part,a.blance AS quick_open_quote,a.create_time,a.login_time,a.status,a.bet_status')
 		->leftJoin('menber b','a.parent_id=b.id')
 		->where($where)
 		->order($order, 'desc')
@@ -87,7 +87,7 @@ class Member extends Base
 
 		$data = Db::name('menber')
 		->alias('m1')
-		->field('m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->field('m2.parent_id as grandparent_id, m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
@@ -129,7 +129,7 @@ class Member extends Base
 
 		$data = Db::name('menber')
 		->alias('m1')
-		->field('m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->field('m2.parent_id as grandparent_id, m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
@@ -176,7 +176,7 @@ class Member extends Base
 
 		$data = Db::name('menber')
 		->alias('m1')
-		->field('m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
+		->field('m2.parent_id as grandparent_id,m1.parent_id,m1.id,m2.user_name AS general_name,m1.user_name,m1.user_number,IFNULL(m3.count_user,0) as count_user,m1.blance AS quick_open_quote,m1.create_time,m1.login_time,m1.`status`,m1.bet_status')
 		->leftJoin('menber m2','m1.parent_id=m2.id')
 		->leftJoin([$subsql=> 'm3'],'m1.id=m3.parent_id')
 		->where($where)
