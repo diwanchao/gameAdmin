@@ -1,6 +1,10 @@
+var parent_name = utils.getURL(location.search, 'name');
+var parent_id = utils.getURL(location.search, 'id');
 var app = new Vue({
     el: '#main',
     data: {
+        parent_name: parent_name,
+        parent_id: parent_id,
         create_user_name: '', 
         username: '', // 会员账号
         usernameStatus: 0, // 0=》未检测 -》检测通过
@@ -49,6 +53,7 @@ var app = new Vue({
             }
             var data = {
                 agent_name: this.create_user_name,
+                parent_id: this.parent_id || '',
                 user_num: this.username,
                 user_name: this.name,
                 password: this.pwd,
