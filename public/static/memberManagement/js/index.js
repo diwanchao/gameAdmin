@@ -1,6 +1,7 @@
 var modal = new H_modal('#modal');
 var search = utils.getURL(location.search, 'search');
 var general_search = utils.getURL(location.search, 'general_search');
+var general_id = utils.getURL(location.search, 'general_id');
 
 var app = new Vue({
     el: '#main',
@@ -11,12 +12,10 @@ var app = new Vue({
             status: 1, // 停用启用 0->停用 1->启用
             sort: 'create_time', // createTime->新增日期 account->名称 balance->信用额度 loginTime->最后登录
             user_name: search || '', // 用户姓名
-            general_search: general_search || ''
+            general_search: general_search || '',
+            general_id: general_id || '',
         },
-
         data:[],
-        
-
     },
 
     methods: {
@@ -27,7 +26,7 @@ var app = new Vue({
                 status: this.search.state,
                 sort: this.search.sort,
                 user_name: this.search.user_name,
-                general_name: this.search.general_search
+                general_name: this.search.general_search,
             }
 
             utils.getAjax({
