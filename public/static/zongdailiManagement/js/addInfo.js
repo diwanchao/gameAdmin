@@ -1,6 +1,10 @@
+var parent_name = utils.getURL(location.search, 'name');
+var parent_id = utils.getURL(location.search, 'id');
 var d = {
     el: '#main',
     data: {
+        parent_name: parent_name,
+        parent_id: parent_id,
         create_user_name: '', 
         username: '', // 会员账号
         usernameStatus: 0, // 0=》未检测 -》检测通过
@@ -50,7 +54,8 @@ var d = {
                 }
             }
             var data = {
-                agent_name: this.create_user_name,
+                agent_name: this.parent_name || this.create_user_name,
+                parent_id: this.parent_id || '',
                 user_num: this.username,
                 user_name: this.name,
                 password: this.pwd,
@@ -119,7 +124,7 @@ var d = {
 utils.getAjax({
     url: '/api/Member/getProportion',
     type: 'GET',
-    data: {type: 0},
+    data: {type: 0, parent_id: parent_id || ''},
     success: function(result){
         for(var k in result) {
             if(result.hasOwnProperty(k)){

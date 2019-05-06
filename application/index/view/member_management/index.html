@@ -53,7 +53,11 @@
                                                                         总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
-                                                                    <td width="48%" align="center"><a :href="'/index/member_management/addinfo?name=' + escape(general_search) + '&id=' + general_id">新增</a></td>
+                                                                    <td width="48%" align="center">
+                                                                        <template v-if="ENV.userInfo.role_type == 0 || (general_name && general_id)">
+                                                                            <a :href="'/index/member_management/addinfo?name=' + escape(general_name) + '&id=' + general_id">新增</a>
+                                                                        </template>
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -120,7 +124,7 @@
                                 <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
                                         <div v-if="ENV.userInfo.role_type <= 0" align="center" class="fblue12">{{item.agent_name}}</div>
-                                        <div v-else align="center" class="fblue12"><a :href="'/index/agent_management?search=' + escape(item.agent_name) + '&id=' + item.parent_id">{{item.agent_name}}</a></div>
+                                        <div v-else align="center" class="fblue12"><a :href="'/index/agent_management?search=' + escape(item.agent_name) + '&general_id=' + item.grandparent_id + '&general_name=' + escape(item.grandparent_name)">{{item.agent_name}}</a></div>
                                     </td>
                                     <td>
                                         <div align="center">{{item.user_number}}</div>
