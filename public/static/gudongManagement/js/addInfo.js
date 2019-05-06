@@ -52,7 +52,7 @@ var app = new Vue({
                 }
             }
             var data = {
-                agent_name: this.create_user_name,
+                agent_name: this.parent_name || this.create_user_name,
                 parent_id: this.parent_id || '',
                 user_num: this.username,
                 user_name: this.name,
