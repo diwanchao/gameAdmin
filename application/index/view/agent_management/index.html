@@ -52,7 +52,11 @@
                                                                         总页数：<select @change="init" v-model="search.index" style="font-family:'宋体'; font-size:12px;">
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
-                                                                    <td width="48%" align="center"><a :href="'/index/agent_management/addinfo?name=' + escape(general_name) + '&id=' + general_id">新增</a></td>
+                                                                    <td width="48%" align="center">
+                                                                        <template v-if="ENV.userInfo.role_type == 1 || (general_name && general_id)">
+                                                                            <a :href="'/index/agent_management/addinfo?name=' + escape(general_name) + '&id=' + general_id">新增</a>
+                                                                        </template>
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
