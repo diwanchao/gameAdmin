@@ -119,7 +119,7 @@
                                 <tr v-for="(item, index) in data" class="t15" height="22">
                                     <td>
                                         <div v-if="ENV.userInfo.role_type <= 1" align="center" class="fblue12">{{item.general_name}}</div>
-                                        <div v-else align="center" class="fblue12"><a :href="'/index/general_Agent?search=' + escape(item.general_name) + '&general_name=' + escape(item.general_name) + '&general_id=' + item.general_id">{{item.general_name}}</a></div>
+                                        <div v-else align="center" class="fblue12"><a :href="'/index/general_Agent?search=' + escape(item.general_name) + '&general_name=' + escape(item.grandparent_name) + '&general_id=' + item.grandparent_id">{{item.general_name}}</a></div>
                                     </td>
                                     <td>
                                             <div align="center" class="fblue12"><a :href="'/index/member_management?general_search=' + escape(item.user_name) + '&general_name=' + escape(item.user_name) + '&general_id=' + item.id">{{item.user_number}}</a></div>
