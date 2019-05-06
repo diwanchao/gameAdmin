@@ -1,5 +1,5 @@
-var agent_name = utils.getURL(location.search, 'name');
-var agent_id = utils.getURL(location.search, 'id');
+var parent_name = utils.getURL(location.search, 'name');
+var parent_id = utils.getURL(location.search, 'id');
 // 需用修改人的ID
 var app = new Vue({
     el: '#main',
@@ -10,8 +10,8 @@ var app = new Vue({
         //     '3425': 'han433'
         // },
         // agentValue: '',
-        agent_name: agent_name,
-        agent_id: agent_id,
+        parent_name: parent_name,
+        parent_id: parent_id,
         create_user_name: '', 
         username: '', // 会员账号
         usernameStatus: 0, // 0=》未检测 -》检测通过
@@ -52,8 +52,8 @@ var app = new Vue({
                 }
             }
             var data = {
-                agent_name: this.agent_name || this.create_user_name,
-                agent_id: this.agent_id || '',
+                agent_name: this.parent_name || this.create_user_name,
+                parent_id: this.parent_id || '',
                 user_num: this.username,
                 user_name: this.name,
                 password: this.pwd,

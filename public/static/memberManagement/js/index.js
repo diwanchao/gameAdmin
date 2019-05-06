@@ -13,7 +13,6 @@ var app = new Vue({
             sort: 'create_time', // createTime->新增日期 account->名称 balance->信用额度 loginTime->最后登录
             user_name: search || '', // 用户姓名
             general_search: general_search || '',
-            general_id: general_id || '',
         },
         data:[],
     },
