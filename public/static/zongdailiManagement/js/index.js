@@ -1,7 +1,7 @@
 var modal = new H_modal('#modal');
 var search = utils.getURL(location.search, 'search');
 var general_search = utils.getURL(location.search, 'general_search');
-var general_name = utils.getURL(location.search, 'general_name');
+// var general_name = utils.getURL(location.search, 'general_name');
 var general_id = utils.getURL(location.search, 'general_id');
 
 var app = new Vue({

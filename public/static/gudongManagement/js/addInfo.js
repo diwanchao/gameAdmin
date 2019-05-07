@@ -1,9 +1,8 @@
-var parent_name = utils.getURL(location.search, 'name');
 var parent_id = utils.getURL(location.search, 'id');
 var app = new Vue({
     el: '#main',
     data: {
-        parent_name: parent_name,
+        parent_name: '',
         parent_id: parent_id,
         create_user_name: '', 
         username: '', // 会员账号
@@ -77,40 +76,44 @@ var app = new Vue({
             })
         },
 
+        setInfo: function(result){
+            this.create_user_name = result.user_name;
+            this.usable_quick = result.quick_open_quote;
+    
+            var level = {};
+            for(var i = 0; i < result.dish.length; i++) {
+                level[result.dish[i]] = true;
+            }
+            this.levelValue = level;
+            
+            for(var i = 0; i < result.game_list.length; i++){
+                result.game_list[i].select = true;
+            }
+            this.game_list = result.game_list;
+    
+            $('body').fadeIn('fast');
+        },  
+
+
 
     },
 
 
     mounted: function(){
         var _this = this;
-
-        this.create_user_name = ENV.userInfo.user_name;
-        this.usable_quick = ENV.userInfo.quick_open_quote;
-
-        var level = {};
-        for(var i = 0; i < ENV.userInfo.dish.length; i++) {
-            level[ENV.userInfo.dish[i]] = true;
+        if(parent_id) {
+            utils.getAjax({
+                url: '/api/user/getuserinfo',
+                type: 'GET',
+                data: {id: parent_id},
+                success: function(result){
+                    _this.setInfo(result);
+                }
+            });
         }
-        this.levelValue = level;
-        
-        for(var i = 0; i < ENV.userInfo.game_list.length; i++){
-            ENV.userInfo.game_list[i].select = true;
+        else {
+            this.setInfo(ENV.userInfo);
         }
-        this.game_list = ENV.userInfo.game_list;
-
-        // utils.getAjax({
-        //     url: '/api/Member/getProportion',
-        //     type: 'GET',
-        //     data: {type: 0},
-        //     success: function(result){
-        //         for(var k in result) {
-        //             if(result.hasOwnProperty(k)){
-        //                 _this.accountList[k].agent = result[k];
-        //             }
-        //         }
-        //     }
-        // })
-        $('body').fadeIn('fast');
     },
 
     watch: {
