@@ -807,7 +807,7 @@ class Member extends Base
 	public function getProportion()
 	{
 		$type 		= $this->request->param('type',0);
-		$id 		= $this->request->param('id',$this->USER_ID);
+		$id 		= $this->request->param('parent_id',$this->USER_ID);
 
 		$ratio_info = Db::name('proportion_log')->field('game_key,user_proportion')->where('user_id','=',$id)->select();
 		if ($ratio_info) 
