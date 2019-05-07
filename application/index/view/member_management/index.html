@@ -54,7 +54,7 @@
                                                                             <option v-for="item in (Math.ceil(search.total / 10) || 1)" :value="item">{{item}}</option>
                                                                         </select> / {{Math.ceil(search.total / 10) || 1}}页</td>
                                                                     <td width="48%" align="center">
-                                                                        <template v-if="ENV.userInfo.role_type == 0 || (general_name && general_id)">
+                                                                        <template v-if="ENV.userInfo.role_type == 0 || general_id">
                                                                             <a :href="'/index/member_management/addinfo?id=' + general_id">新增</a>
                                                                         </template>
                                                                     </td>
