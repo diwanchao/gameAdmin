@@ -300,7 +300,7 @@ class Member extends Base
 
 	public function addUser()
 	{
-		$parent_id 		= $this->request->param('agent_name',0);
+		$parent_id 		= $this->request->param('parent_id',$this->USER_ID);
 		$user_number 	= $this->request->param('user_num',0);
 		$user_name 		= $this->request->param('user_name',0);
 		$password 		= $this->request->param('password',0);
@@ -311,8 +311,8 @@ class Member extends Base
 
 		Db::startTrans();
 		try {
-			if (Session::get('role_id') != 1) 
-				throw new \Exception("没有权限添加会员账号");
+/*			if (Session::get('role_id') != 1) 
+				throw new \Exception("没有权限添加会员账号");*/
 			if (!$user_number) 
 				throw new \Exception("账号不能为空");
 			if (!$user_name) 
@@ -327,7 +327,7 @@ class Member extends Base
 				throw new \Exception("代理可用额度不够");
 
 			$data = [
-				'parent_id' => $this->USER_ID,
+				'parent_id' => $parent_id,
 				'password' 	=> md5($password),
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
@@ -339,8 +339,8 @@ class Member extends Base
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
-			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
-			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$blance)]);
+			set_integral($user_id,$parent_id,'存入金额',$blance);
+			Db::name('menber')->where('id=?',[$parent_id])->update(['blance' => Db::raw('blance-'.$blance)]);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
 
@@ -418,7 +418,8 @@ class Member extends Base
 
 	public function addGeneralAgent()
 	{
-		$parent_id 		= $this->request->param('agent_name',0);
+
+		$parent_id 		= $this->request->param('parent_id',$this->USER_ID);
 		$user_number 	= $this->request->param('user_num',0);
 		$user_name 		= $this->request->param('user_name',0);
 		$password 		= $this->request->param('password',0);
@@ -430,8 +431,8 @@ class Member extends Base
 
 		Db::startTrans();
 		try {
-			if (Session::get('role_id') != 3) 
-				throw new \Exception("没有权限添加总代理账号");
+/*			if (Session::get('role_id') != 3) 
+				throw new \Exception("没有权限添加总代理账号");*/
 			if (!$user_number) 
 				throw new \Exception("账号不能为空");
 			if (!$user_name) 
@@ -446,7 +447,7 @@ class Member extends Base
 				throw new \Exception("代理可用额度不够");
 
 			$data = [
-				'parent_id' => $this->USER_ID,
+				'parent_id' => $parent_id,
 				'password' 	=> md5($password),
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
@@ -459,8 +460,8 @@ class Member extends Base
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
-			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$blance)]);
-			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
+			Db::name('menber')->where('id=?',[$parent_id])->update(['blance' => Db::raw('blance-'.$blance)]);
+			set_integral($user_id,$parent_id,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
 			$this->add_account_list($accountList,$user_id);
@@ -632,7 +633,7 @@ class Member extends Base
 	 */
 	public function setAgent()
 	{
-		$parent_id 		= $this->request->param('agent_name',0);
+		$parent_id 		= $this->request->param('parent_id',$this->USER_ID);
 		$user_number 	= $this->request->param('user_num',0);
 		$user_name 		= $this->request->param('user_name',0);
 		$password 		= $this->request->param('password',0);
@@ -644,8 +645,8 @@ class Member extends Base
 
 		Db::startTrans();
 		try {
-			if (Session::get('role_id') != 2) 
-				throw new \Exception("没有权限添加代理账号");
+/*			if (Session::get('role_id') != 2) 
+				throw new \Exception("没有权限添加代理账号");*/
 			if (!$user_number) 
 				throw new \Exception("账号不能为空");
 			if (!$user_name) 
@@ -660,7 +661,7 @@ class Member extends Base
 				throw new \Exception("代理可用额度不够");
 
 			$data = [
-				'parent_id' => $this->USER_ID,
+				'parent_id' => $parent_id,
 				'password' 	=> md5($password),
 				'user_name' => $user_name,
 				'blance' 	=> $blance,
@@ -673,8 +674,8 @@ class Member extends Base
 			];
 
 			$user_id  = Db::name('menber')->insertGetId($data);
-			Db::name('menber')->where('id=?',[$this->USER_ID])->update(['blance' => Db::raw('blance-'.$blance)]);
-			set_integral($user_id,$this->USER_ID,'存入金额',$blance);
+			Db::name('menber')->where('id=?',[$parent_id])->update(['blance' => Db::raw('blance-'.$blance)]);
+			set_integral($user_id,$parent_id,'存入金额',$blance);
 			$this->init_user_method($user_id,'jlk3');
 			$this->init_user_method($user_id,'ssc');
 			$this->add_account_list($accountList,$user_id);
@@ -806,7 +807,9 @@ class Member extends Base
 	public function getProportion()
 	{
 		$type 		= $this->request->param('type',0);
-		$ratio_info = Db::name('proportion_log')->field('game_key,user_proportion')->where('user_id','=',$this->USER_ID)->select();
+		$id 		= $this->request->param('id',$this->USER_ID);
+
+		$ratio_info = Db::name('proportion_log')->field('game_key,user_proportion')->where('user_id','=',$id)->select();
 		if ($ratio_info) 
 			$ratio_info = array_column($ratio_info, 'user_proportion','game_key');
 		else

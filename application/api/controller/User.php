@@ -25,7 +25,8 @@ class User extends Base
 	public function getUserInfo()
 	{
 
-		$user_data = Db::name('menber')->field('role_id as role_type,rule_name as role_name,user_name,blance as quick_open_quote,game_list,part')->where('id=?',[$this->USER_ID])->find();
+        $id  		= $this->request->param('id',$this->USER_ID);
+		$user_data 	= Db::name('menber')->field('role_id as role_type,rule_name as role_name,user_name,blance as quick_open_quote,game_list,part')->where('id=?',[$id])->find();
 		if ($user_data) 
 		{
 			$game_data = get_user_info_by_user_id($this->USER_ID);
